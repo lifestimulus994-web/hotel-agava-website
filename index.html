@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>სასტუმრო აგავა — Hotel Agava</title>
+  <meta name="description" content="სასტუმრო აგავა — კომფორტი, სილამაზე და სტუმართმოყვარეობა. დაჯავშნეთ ოთახი დღესვე.">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&family=Noto+Serif+Georgian:wght@400;500;600;700&family=Noto+Sans+Georgian:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════ NAVBAR ═══════════ -->
+  <header class="navbar" id="navbar">
+    <div class="navbar__inner container">
+      <a href="#hero" class="navbar__brand" aria-label="სასტუმრო აგავა — მთავარი">
+        <img src="assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="navbar__logo">
+        <span class="navbar__name">AGAVA<small>HOTEL</small></span>
+      </a>
+      <nav class="navbar__nav" id="navMenu" aria-label="მთავარი ნავიგაცია">
+        <a href="#hero" class="navbar__link is-active">მთავარი</a>
+        <a href="#rooms" class="navbar__link">ოთახები</a>
+        <a href="#services" class="navbar__link">სერვისები</a>
+        <a href="#gallery" class="navbar__link">გალერეა</a>
+        <a href="#contact" class="navbar__link">კონტაქტი</a>
+      </nav>
+      <button class="btn btn--gold navbar__cta" data-open-booking>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="17" height="17" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+        დაჯავშნა
+      </button>
+      <button class="navbar__burger" id="burger" aria-label="მენიუს გახსნა" aria-expanded="false" aria-controls="navMenu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <img src="assets/hero.jpg" alt="" fetchpriority="high">
+      </div>
+      <div class="hero__overlay" aria-hidden="true"></div>
+      <div class="hero__content container">
+        <div class="hero__stars" aria-label="ხუთვარსკვლავიანი კომფორტი">
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+          <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
+        </div>
+        <p class="hero__eyebrow">მოგესალმებით</p>
+        <h1 class="hero__title">სასტუმრო <span>აგავა</span></h1>
+        <p class="hero__subtitle">კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა თბილისში — თქვენი სრულყოფილი დასვენებისთვის</p>
+        <div class="hero__actions">
+          <a href="#rooms" class="btn btn--gold btn--lg">ოთახების ნახვა</a>
+          <button class="btn btn--ghost btn--lg" data-open-booking>დაჯავშნა</button>
+        </div>
+      </div>
+      <a href="#stats" class="hero__scroll" aria-label="ჩამოსქროლვა">
+        <span>დასქროლეთ</span>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+      </a>
+    </section>
+
+    <!-- ═══════════ STATS STRIP ═══════════ -->
+    <section class="stats" id="stats" aria-label="სასტუმროს მაჩვენებლები">
+      <div class="container stats__grid">
+        <div class="stat reveal">
+          <span class="stat__num" data-count="21">0</span>
+          <span class="stat__label">კომფორტული ნომერი</span>
+        </div>
+        <div class="stat reveal" style="--d:.1s">
+          <span class="stat__num" data-count="9.0" data-decimal="1">0</span>
+          <span class="stat__label">შეფასება Booking.com-ზე</span>
+        </div>
+        <div class="stat reveal" style="--d:.2s">
+          <span class="stat__num" data-count="94">0</span>
+          <span class="stat__label">სტუმრის შეფასება</span>
+        </div>
+        <div class="stat reveal" style="--d:.3s">
+          <span class="stat__num" data-count="24" data-suffix="/7">0</span>
+          <span class="stat__label">მომსახურება</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FEATURES ═══════════ -->
+    <section class="features">
+      <div class="container features__grid">
+        <article class="feature reveal">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          </div>
+          <h3>მოსახერხებელი მდებარეობა</h3>
+          <p>მარტივად მისადგომი ადგილმდებარეობა — ქალაქის ცენტრთან და მთავარ გზებთან ახლოს.</p>
+        </article>
+        <article class="feature reveal" style="--d:.1s">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 18v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M2 18h20v3H2z"/></svg>
+          </div>
+          <h3>კომფორტული ოთახები</h3>
+          <p>თანამედროვე და ელეგანტურად მოწყობილი ოთახები — ცის ჭერით და განსაკუთრებული დიზაინით.</p>
+        </article>
+        <article class="feature reveal" style="--d:.2s">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3>სტუმართმოყვარე პერსონალი</h3>
+          <p>ჩვენი გუნდი ზრუნავს, რომ თქვენი ყოფნა იყოს სასიამოვნო და დაუვიწყარი — ნებისმიერ დროს.</p>
+        </article>
+        <article class="feature reveal" style="--d:.3s">
+          <div class="feature__icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+          </div>
+          <h3>საუკეთესო ფასები</h3>
+          <p>მიიღეთ მაქსიმალური კომფორტი ხელმისაწვდომ ფასად — სპეციალური შეთავაზებებით.</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ═══════════ ABOUT ═══════════ -->
+    <section class="about" id="about">
+      <div class="container about__grid">
+        <div class="about__photos reveal">
+          <figure class="about__photo about__photo--1">
+            <img src="assets/exterior-2.jpg" alt="სასტუმრო აგავას ნათელი ლობი" loading="lazy">
+          </figure>
+          <figure class="about__photo about__photo--2">
+            <img src="assets/exterior-1.jpg" alt="სასტუმრო აგავას შენობა ღამით" loading="lazy">
+          </figure>
+        </div>
+        <div class="about__text reveal" style="--d:.15s">
+          <p class="section-eyebrow">მოგესალმებით აგავაში</p>
+          <h2 class="section-title">სასტუმრო, სადაც კომფორტი ხელოვნებას ხვდება</h2>
+          <p>სასტუმრო აგავა გთავაზობთ ელეგანტურად მოწყობილ ოთახებს, გამორჩეული ინტერიერით — ცის ჭერებით, კლასიკური ავეჯითა და თბილი განათებით. ჩვენი მიზანია, ყოველი სტუმარი თავს განსაკუთრებულად გრძნობდეს.</p>
+          <p>ვრცელი ფოიე, მყუდრო ეზო, დაცული პარკინგი და ყურადღებიანი პერსონალი — ყველაფერი თქვენი დასვენებისთვის.</p>
+          <ul class="about__list">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              ელეგანტური ლუქსი და სტანდარტული ოთახები
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              ოჯახური ნომრები 3–4 სტუმარზე
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="18" height="18" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>
+              სუპერ ლუქსი ჯაკუზით
+            </li>
+          </ul>
+          <a href="#rooms" class="btn btn--dark">გაიგეთ მეტი
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ ROOMS ═══════════ -->
+    <section class="rooms" id="rooms">
+      <div class="container">
+        <div class="rooms__head reveal">
+          <p class="section-eyebrow">დახვეწილი და მყუდრო</p>
+          <h2 class="section-title">ოთახები და ლუქსები</h2>
+        </div>
+        <div class="rooms__grid" id="roomsGrid"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════ SERVICES ═══════════ -->
+    <section class="services" id="services">
+      <div class="container">
+        <div class="services__head reveal">
+          <p class="section-eyebrow">თანამედროვე და კომფორტული</p>
+          <h2 class="section-title">სერვისები და კომფორტი</h2>
+        </div>
+        <div class="services__grid">
+          <article class="service reveal">
+            <div class="service__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg>
+            </div>
+            <div>
+              <h3>უფასო Wi-Fi</h3>
+              <p>მაღალსიჩქარიანი ინტერნეტი სასტუმროს მთელ ტერიტორიაზე.</p>
+            </div>
+          </article>
+          <article class="service reveal" style="--d:.05s">
+            <div class="service__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg>
+            </div>
+            <div>
+              <h3>დაცული პარკინგი</h3>
+              <p>უფასო და დაცული ავტოსადგომი სასტუმროს სტუმრებისთვის.</p>
+            </div>
+          </article>
+          <article class="service reveal" style="--d:.1s">
+            <div class="service__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 11h18a1 1 0 0 1 1 1 8 8 0 0 1-8 8H10a8 8 0 0 1-8-8 1 1 0 0 1 1-1z"/><path d="M7 11V7a2 2 0 0 1 4 0"/><path d="M13 11V6a2 2 0 0 1 4 0v5"/></svg>
+            </div>
+            <div>
+              <h3>საუზმე</h3>
+              <p>გემრიელი საუზმე ყოველ დილით — მრავალფეროვანი მენიუთი.</p>
+            </div>
+          </article>
+          <article class="service reveal" style="--d:.15s">
+            <div class="service__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+            </div>
+            <div>
+              <h3>ტრანსფერი</h3>
+              <p>ტრანსფერის სერვისი აეროპორტიდან და აეროპორტამდე — წინასწარი მოთხოვნით.</p>
+            </div>
+          </article>
+          <article class="service reveal" style="--d:.2s">
+            <div class="service__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            </div>
+            <div>
+              <h3>24/7 მიღება</h3>
+              <p>რეცეფცია მუშაობს მთელი დღე-ღამის განმავლობაში.</p>
+            </div>
+          </article>
+          <article class="service reveal" style="--d:.25s">
+            <div class="service__icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20.4 6.5L17 4l-2 2-3-3-3 3-2-2-3.4 2.5c-.4.3-.5.8-.3 1.2L5 12v8a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-8l1.7-4.3c.2-.4.1-.9-.3-1.2z"/></svg>
+            </div>
+            <div>
+              <h3>სამრეცხაო და დაუთოება</h3>
+              <p>სამრეცხაოსა და დაუთოების მომსახურება ადგილზე.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ REVIEWS ═══════════ -->
+    <section class="reviews" id="reviews">
+      <div class="container">
+        <div class="reviews__head reveal">
+          <p class="section-eyebrow">რას ამბობენ სტუმრები</p>
+          <h2 class="section-title">სტუმრების შეფასებები</h2>
+        </div>
+        <div class="reviews__grid">
+          <div class="reviews__score reveal">
+            <div class="reviews__score-num">9.0</div>
+            <div class="reviews__score-label">შესანიშნავი</div>
+            <div class="reviews__score-sub">94 შეფასება · Booking.com</div>
+          </div>
+          <div class="reviews__bars reveal" style="--d:.1s">
+            <div class="review-bar">
+              <div class="review-bar__top"><span>პერსონალი</span><strong>9.4</strong></div>
+              <div class="review-bar__track"><div class="review-bar__fill" style="--w:.94"></div></div>
+            </div>
+            <div class="review-bar">
+              <div class="review-bar__top"><span>სისუფთავე</span><strong>9.2</strong></div>
+              <div class="review-bar__track"><div class="review-bar__fill" style="--w:.92"></div></div>
+            </div>
+            <div class="review-bar">
+              <div class="review-bar__top"><span>კომფორტი</span><strong>8.9</strong></div>
+              <div class="review-bar__track"><div class="review-bar__fill" style="--w:.89"></div></div>
+            </div>
+            <div class="review-bar">
+              <div class="review-bar__top"><span>ფასი / ხარისხი</span><strong>8.9</strong></div>
+              <div class="review-bar__track"><div class="review-bar__fill" style="--w:.89"></div></div>
+            </div>
+            <div class="review-bar">
+              <div class="review-bar__top"><span>უფასო Wi-Fi</span><strong>10</strong></div>
+              <div class="review-bar__track"><div class="review-bar__fill" style="--w:1"></div></div>
+            </div>
+          </div>
+        </div>
+        <div class="reviews__quotes">
+          <blockquote class="review-quote reveal">
+            <p>„ბევრ მაღალი კლასის სასტუმროში ვყოფილვარ და ზოგჯერ უკმაყოფილო დავრჩენილვარ. ამ სასტუმრომ კი სასიამოვნოდ გამაკვირვა — ყველაფერი, რაც მჭირდებოდა, ოთახში იყო და კარგად ორგანიზებული."</p>
+            <footer>
+              <span class="review-quote__avatar" aria-hidden="true">თ</span>
+              <div>
+                <div class="review-quote__name">თორნიკე</div>
+                <div class="review-quote__from">საქართველო</div>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="review-quote reveal" style="--d:.1s">
+            <p>„ერთ-ერთი საუკეთესო სასტუმრო — სისუფთავე, სითბო და კომფორტი. ეზოში პარკინგიც აქვთ, რაც ძალიან მოსახერხებელია. ეზოშივე შეგიძლიათ დაისვენოთ და ყავით დატკბეთ. დიდი რეკომენდაცია ჩვენგან!"</p>
+            <footer>
+              <span class="review-quote__avatar" aria-hidden="true">თ</span>
+              <div>
+                <div class="review-quote__name">თურქია</div>
+                <div class="review-quote__from">საქართველო</div>
+              </div>
+            </footer>
+          </blockquote>
+          <blockquote class="review-quote reveal" style="--d:.2s">
+            <p>„კომფორტული სასტუმრო, კარგად მოვლილი ოთახები და მეგობრული, ყურადღებიანი პერსონალი. ატმოსფერო თბილი და მისასალმებელია — სიამოვნებით დავბრუნდები."</p>
+            <footer>
+              <span class="review-quote__avatar" aria-hidden="true">A</span>
+              <div>
+                <div class="review-quote__name">Abdallah</div>
+                <div class="review-quote__from">არაბთა გაერთიანებული საამიროები</div>
+              </div>
+            </footer>
+          </blockquote>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ GALLERY ═══════════ -->
+    <section class="gallery" id="gallery">
+      <div class="container">
+        <div class="gallery__head reveal">
+          <p class="section-eyebrow">დაათვალიერეთ</p>
+          <h2 class="section-title">გალერეა</h2>
+        </div>
+        <div class="gallery__grid">
+          <figure class="gallery__item gallery__item--wide reveal">
+            <img src="assets/exterior-4.jpg" alt="სასტუმროს ლობი და სასადილო სივრცე" loading="lazy">
+            <figcaption>ლობი</figcaption>
+          </figure>
+          <figure class="gallery__item reveal" style="--d:.05s">
+            <img src="assets/room-superlux-2.jpg" alt="სუპერლუქსი ცის ჭერით" loading="lazy">
+            <figcaption>სუპერლუქსი</figcaption>
+          </figure>
+          <figure class="gallery__item reveal" style="--d:.1s">
+            <img src="assets/room-jacuzzi-1.jpg" alt="ოქროსფერი ლუქსის ინტერიერი" loading="lazy">
+            <figcaption>სუპერ ლუქსი</figcaption>
+          </figure>
+          <figure class="gallery__item reveal" style="--d:.15s">
+            <img src="assets/room-lux-2.jpg" alt="ლუქსი ცის ჭერით" loading="lazy">
+            <figcaption>ლუქსი</figcaption>
+          </figure>
+          <figure class="gallery__item reveal" style="--d:.2s">
+            <img src="assets/room-standard-2.jpg" alt="სტანდარტული ოთახი" loading="lazy">
+            <figcaption>სტანდარტი</figcaption>
+          </figure>
+          <figure class="gallery__item gallery__item--wide reveal" style="--d:.25s">
+            <img src="assets/exterior-1.jpg" alt="სასტუმრო აგავას ფასადი ღამით" loading="lazy">
+            <figcaption>ჩვენი შენობა</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ═══════════ CTA ═══════════ -->
+    <section class="cta">
+      <div class="cta__bg" aria-hidden="true">
+        <img src="assets/room-standard-5.jpg" alt="" loading="lazy">
+      </div>
+      <div class="cta__overlay" aria-hidden="true"></div>
+      <div class="container cta__content reveal">
+        <img src="assets/logo.png" alt="" class="cta__logo" aria-hidden="true">
+        <h2>დაგეგმეთ თქვენი დასვენება აგავაში</h2>
+        <p>დაჯავშნეთ ოთახი დღესვე და მიიღეთ საუკეთესო ფასი — პირდაპირ ჩვენგან.</p>
+        <button class="btn btn--gold btn--lg" data-open-booking>დაჯავშნეთ ახლავე</button>
+      </div>
+    </section>
+
+    <!-- ═══════════ CONTACT ═══════════ -->
+    <section class="contact" id="contact">
+      <div class="container contact__grid">
+        <div class="contact__info reveal">
+          <p class="section-eyebrow">დაგვიკავშირდით</p>
+          <h2 class="section-title">კონტაქტი</h2>
+          <ul class="contact__list">
+            <li>
+              <span class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 1 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+              </span>
+              <div>
+                <strong>მისამართი</strong>
+                <p>თბილისი, აკაკი ბელიაშვილის ქ. 161</p>
+                <p class="muted">ამერიკის საელჩო — 800 მ · სარაჯიშვილის მეტრო — 2.2 კმ · აეროპორტი — 23 კმ</p>
+              </div>
+            </li>
+            <li>
+              <span class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              </span>
+              <div>
+                <strong>ტელეფონი</strong>
+                <p><a href="tel:+995597121212">+995 597 12 12 12</a></p>
+              </div>
+            </li>
+            <li>
+              <span class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M22 7l-10 6L2 7"/></svg>
+              </span>
+              <div>
+                <strong>ელფოსტა</strong>
+                <p><a href="mailto:agavahoteltbilisi@gmail.com">agavahoteltbilisi@gmail.com</a></p>
+              </div>
+            </li>
+            <li>
+              <span class="contact__icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" width="20" height="20" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+              </span>
+              <div>
+                <strong>რეცეფცია — 24/7</strong>
+                <p>შესვლა: 13:00 · გასვლა: 12:00</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="contact__form-wrap reveal" style="--d:.15s">
+          <form class="booking-form" id="contactForm" novalidate>
+            <h3>გამოგვიგზავნეთ შეტყობინება</h3>
+            <div class="field">
+              <label for="cfName">სახელი <span aria-hidden="true">*</span></label>
+              <input type="text" id="cfName" name="name" autocomplete="name" required>
+            </div>
+            <div class="field">
+              <label for="cfPhone">ტელეფონი <span aria-hidden="true">*</span></label>
+              <input type="tel" id="cfPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+            </div>
+            <div class="field">
+              <label for="cfMsg">შეტყობინება</label>
+              <textarea id="cfMsg" name="message" rows="4"></textarea>
+            </div>
+            <button type="submit" class="btn btn--gold btn--block">გაგზავნა</button>
+            <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ═══════════ FOOTER ═══════════ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <img src="assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
+        <p>კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა.</p>
+      </div>
+      <nav class="footer__nav" aria-label="ქვედა ნავიგაცია">
+        <h4>ნავიგაცია</h4>
+        <a href="#hero">მთავარი</a>
+        <a href="#rooms">ოთახები</a>
+        <a href="#services">სერვისები</a>
+        <a href="#gallery">გალერეა</a>
+        <a href="#contact">კონტაქტი</a>
+      </nav>
+      <div class="footer__contact">
+        <h4>კონტაქტი</h4>
+        <p>თბილისი, აკაკი ბელიაშვილის ქ. 161</p>
+        <p>+995 597 12 12 12</p>
+        <p>agavahoteltbilisi@gmail.com</p>
+        <p>რეცეფცია: 24/7</p>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© <span id="year"></span> სასტუმრო აგავა · Hotel Agava — ყველა უფლება დაცულია</p>
+    </div>
+  </footer>
+
+  <!-- ═══════════ BOOKING MODAL ═══════════ -->
+  <div class="modal" id="bookingModal" role="dialog" aria-modal="true" aria-labelledby="bmTitle" hidden>
+    <div class="modal__backdrop" data-close-booking></div>
+    <div class="modal__panel">
+      <button class="modal__close" data-close-booking aria-label="დახურვა">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="20" height="20" aria-hidden="true"><path d="M18 6L6 18M6 6l12 12"/></svg>
+      </button>
+      <img src="assets/logo.png" alt="" class="modal__logo" aria-hidden="true">
+      <h3 id="bmTitle">ოთახის დაჯავშნა</h3>
+      <p class="modal__note">შეავსეთ ფორმა და ჩვენ დაგიკავშირდებით დასტურისთვის.</p>
+      <form class="booking-form" id="bookingForm" novalidate>
+        <div class="field">
+          <label for="bfName">სახელი, გვარი <span aria-hidden="true">*</span></label>
+          <input type="text" id="bfName" name="name" autocomplete="name" required>
+        </div>
+        <div class="field">
+          <label for="bfPhone">ტელეფონი <span aria-hidden="true">*</span></label>
+          <input type="tel" id="bfPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label for="bfIn">შესვლა <span aria-hidden="true">*</span></label>
+            <input type="date" id="bfIn" name="checkin" required>
+          </div>
+          <div class="field">
+            <label for="bfOut">გასვლა <span aria-hidden="true">*</span></label>
+            <input type="date" id="bfOut" name="checkout" required>
+          </div>
+        </div>
+        <div class="field">
+          <label for="bfRoom">ოთახის ტიპი</label>
+          <select id="bfRoom" name="room"></select>
+        </div>
+        <button type="submit" class="btn btn--gold btn--block">მოთხოვნის გაგზავნა</button>
+        <p class="form-status" id="bfStatus" role="status" aria-live="polite"></p>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
