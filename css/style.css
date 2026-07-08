@@ -1,7 +1,6 @@
 /* ═══════════════════════════════════════════
    HOTEL AGAVA — Elegant gold & cream
-   Playfair Display + Noto Serif Georgian (headings)
-   Inter + Noto Sans Georgian (body)
+   DejaVu Sans (headings + body)
    ═══════════════════════════════════════════ */
 
 @font-face {
@@ -38,7 +37,7 @@
   --white:       #FFFFFF;
   --line:        #E4DCCC;
 
-  --font-head: "Playfair Display", "Noto Serif Georgian", serif;
+  --font-head: "DejaVu Sans", "Noto Sans Georgian", sans-serif;
   --font-body: "DejaVu Sans", "Inter", "Noto Sans Georgian", sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
