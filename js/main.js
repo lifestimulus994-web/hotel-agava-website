@@ -50,10 +50,16 @@
   /* ═══════════ ROOMS DATA (real prices) ═══════════ */
   var ROOMS = [
     {
-      name: "სტანდარტული ოთახი",
+      name: "სტანდარტული ოთახი — 2 სტუმარზე",
       badge: "სტანდარტი",
       price: 120,
-      image: "assets/room-standard-2.jpg",
+      images: [
+        "assets/room-standard-1.jpg",
+        "assets/room-standard-2.jpg",
+        "assets/room-standard-3.jpg",
+        "assets/room-standard-4.jpg",
+        "assets/room-standard-5.jpg"
+      ],
       alt: "სტანდარტული ოთახი ცის ჭერით",
       count: "7 ოთახი",
       specs: [
@@ -63,10 +69,15 @@
       ]
     },
     {
-      name: "ლუქსი",
+      name: "ლუქსი — 2 სტუმარზე",
       badge: "ლუქსი",
       price: 120,
-      image: "assets/room-lux-2.jpg",
+      images: [
+        "assets/room-lux-1.jpg",
+        "assets/room-lux-2.jpg",
+        "assets/room-lux-3.jpg",
+        "assets/room-lux-4.jpg"
+      ],
       alt: "ლუქსი ოთახი ბაროკოს სტილში, ცის ჭერით",
       count: "5 ოთახი",
       specs: [
@@ -76,10 +87,14 @@
       ]
     },
     {
-      name: "სუპერლუქსი",
+      name: "სუპერლუქსი — 2 სტუმარზე",
       badge: "სუპერლუქსი",
       price: 120,
-      image: "assets/room-superlux-2.jpg",
+      images: [
+        "assets/room-superlux-1.jpg",
+        "assets/room-superlux-2.jpg",
+        "assets/room-superlux-3.jpg"
+      ],
       alt: "სუპერლუქსი ბაროკოს სტილის ინტერიერით",
       count: "1 ნომერი",
       specs: [
@@ -92,7 +107,12 @@
       name: "საოჯახო ოთახი — 3 სტუმარზე",
       badge: "საოჯახო",
       price: 150,
-      image: "assets/room-family3-3.jpg",
+      images: [
+        "assets/room-family3-1.jpg",
+        "assets/room-family3-2.jpg",
+        "assets/room-family3-3.jpg",
+        "assets/room-family3-4.jpg"
+      ],
       alt: "საოჯახო ოთახი სამ სტუმარზე",
       count: "3 ოთახი",
       specs: [
@@ -105,7 +125,9 @@
       name: "საოჯახო ოთახი — 4 სტუმარზე",
       badge: "საოჯახო",
       price: 200,
-      image: "assets/room-family3-2.jpg",
+      images: [
+        "assets/room-family4-1.jpg"
+      ],
       alt: "საოჯახო ოთახი ოთხ სტუმარზე",
       count: "2 ოთახი",
       specs: [
@@ -118,7 +140,12 @@
       name: "ორ ოთახიანი ლუქსი",
       badge: "ლუქსი",
       price: 200,
-      image: "assets/room-twobedlux-1.jpg",
+      images: [
+        "assets/room-twobedlux-1.jpg",
+        "assets/room-twobedlux-2.jpg",
+        "assets/room-twobedlux-3.jpg",
+        "assets/room-twobedlux-4.jpg"
+      ],
       alt: "ორ ოთახიანი ლუქსი ცის ჭერით",
       count: "1 ნომერი",
       specs: [
@@ -132,7 +159,12 @@
       badge: "VIP ლუქსი",
       price: 300,
       seasonal: true,
-      image: "assets/room-jacuzzi-1.jpg",
+      images: [
+        "assets/room-jacuzzi-1.jpg",
+        "assets/room-jacuzzi-2.jpg",
+        "assets/room-jacuzzi-3.jpg",
+        "assets/room-jacuzzi-4.jpg"
+      ],
       alt: "სუპერ ლუქსი ჯაკუზით, ოქროსფერი ინტერიერი",
       count: "1 ნომერი",
       specs: [
@@ -153,13 +185,74 @@
   /* ─── Render room grid (Royelle-style tiles) ─── */
   var roomsGrid = document.getElementById("roomsGrid");
 
+  var ARROW_SVG = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" width="18" height="18" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>';
+
+  function sliderHTML(room) {
+    var multi = room.images.length > 1;
+    var html = '<div class="room-slider__track">' +
+      room.images.map(function (src, idx) {
+        return '<img src="' + src + '" alt="' + room.alt + '"' +
+          (idx === 0 ? "" : ' loading="lazy" decoding="async"') +
+          ' class="room-slider__img' + (idx === 0 ? " is-active" : "") + '">';
+      }).join("") +
+      "</div>";
+    if (multi) {
+      html +=
+        '<button type="button" class="room-slider__arrow room-slider__arrow--prev" data-dir="-1" aria-label="წინა ფოტო">' + ARROW_SVG + "</button>" +
+        '<button type="button" class="room-slider__arrow room-slider__arrow--next" data-dir="1" aria-label="შემდეგი ფოტო">' + ARROW_SVG + "</button>" +
+        '<div class="room-slider__dots">' +
+          room.images.map(function (_, idx) {
+            return '<button type="button" class="room-slider__dot' + (idx === 0 ? " is-active" : "") +
+              '" data-idx="' + idx + '" aria-label="ფოტო ' + (idx + 1) + '"></button>';
+          }).join("") +
+        "</div>";
+    }
+    return html;
+  }
+
+  function initSlider(media, total) {
+    if (total < 2) return;
+    var imgs = media.querySelectorAll(".room-slider__img");
+    var dots = media.querySelectorAll(".room-slider__dot");
+    var current = 0;
+
+    function goTo(idx) {
+      idx = (idx + total) % total;
+      if (idx === current) return;
+      imgs[current].classList.remove("is-active");
+      dots[current].classList.remove("is-active");
+      imgs[idx].classList.add("is-active");
+      dots[idx].classList.add("is-active");
+      current = idx;
+    }
+
+    media.addEventListener("click", function (e) {
+      var arrow = e.target.closest(".room-slider__arrow");
+      if (arrow) { goTo(current + parseInt(arrow.getAttribute("data-dir"), 10)); return; }
+      var dot = e.target.closest(".room-slider__dot");
+      if (dot) goTo(parseInt(dot.getAttribute("data-idx"), 10));
+    });
+
+    /* swipe */
+    var startX = null;
+    media.addEventListener("touchstart", function (e) {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+    media.addEventListener("touchend", function (e) {
+      if (startX === null) return;
+      var dx = e.changedTouches[0].clientX - startX;
+      if (Math.abs(dx) > 40) goTo(current + (dx < 0 ? 1 : -1));
+      startX = null;
+    }, { passive: true });
+  }
+
   ROOMS.forEach(function (room, i) {
     var tile = document.createElement("article");
     tile.className = "room-tile reveal";
     if (!prefersReducedMotion) tile.style.setProperty("--d", (i % 3) * 0.08 + "s");
     tile.innerHTML =
-      '<div class="room-tile__media">' +
-        '<img src="' + room.image + '" alt="' + room.alt + '" loading="lazy">' +
+      '<div class="room-tile__media room-slider">' +
+        sliderHTML(room) +
         '<span class="room-tile__badge">' + room.badge + "</span>" +
         (room.seasonal ? '<span class="room-tile__badge room-tile__badge--season">სეზონური</span>' : "") +
       "</div>" +
@@ -177,6 +270,7 @@
         '<button class="btn btn--gold room-tile__btn" data-room="' + room.name + '">დაჯავშნა</button>' +
       "</div>";
     roomsGrid.appendChild(tile);
+    initSlider(tile.querySelector(".room-slider"), room.images.length);
   });
 
   /* CTA tile */

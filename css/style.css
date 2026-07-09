@@ -521,13 +521,80 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   height: 230px;
   overflow: hidden;
 }
-.room-tile__media img {
+
+/* ─── Room photo slider ─── */
+.room-slider__track {
+  position: absolute;
+  inset: 0;
+}
+.room-slider__img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform .8s var(--ease-out-expo);
+  opacity: 0;
+  transform: scale(1.07);
+  transition: opacity .55s ease, transform 1s var(--ease-out-expo);
+  pointer-events: none;
 }
-.room-tile:hover .room-tile__media img { transform: scale(1.06); }
+.room-slider__img.is-active {
+  opacity: 1;
+  transform: scale(1);
+}
+.room-tile:hover .room-slider__img.is-active { transform: scale(1.05); }
+
+.room-slider__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(20, 16, 10, .45);
+  color: #FFF;
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transition: opacity .3s, background-color .25s, transform .3s var(--ease-out-expo);
+  z-index: 2;
+}
+.room-slider__arrow--prev { left: 12px; transform: translateY(-50%) rotate(180deg); }
+.room-slider__arrow--next { right: 12px; }
+.room-tile:hover .room-slider__arrow,
+.room-slider__arrow:focus-visible { opacity: 1; }
+.room-slider__arrow:hover { background: var(--gold); }
+.room-slider__arrow--prev:hover { transform: translateY(-50%) rotate(180deg) scale(1.08); }
+.room-slider__arrow--next:hover { transform: translateY(-50%) scale(1.08); }
+
+.room-slider__dots {
+  position: absolute;
+  left: 50%;
+  bottom: 12px;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+.room-slider__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, .55);
+  box-shadow: 0 1px 3px rgba(0,0,0,.35);
+  transition: width .35s var(--ease-out-expo), background-color .3s;
+}
+.room-slider__dot.is-active {
+  width: 20px;
+  background: var(--gold-light);
+}
+
+/* touch devices: arrows always visible */
+@media (hover: none) {
+  .room-slider__arrow { opacity: 1; background: rgba(20, 16, 10, .35); }
+}
 
 .room-tile__badge {
   position: absolute;
