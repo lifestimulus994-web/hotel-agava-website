@@ -50,6 +50,7 @@
   /* ═══════════ ROOMS DATA (real prices) ═══════════ */
   var ROOMS = [
     {
+      slug: "standard",
       name: "სტანდარტული ოთახი — 2 სტუმარზე",
       badge: "სტანდარტი",
       price: 120,
@@ -69,6 +70,7 @@
       ]
     },
     {
+      slug: "lux",
       name: "ლუქსი — 2 სტუმარზე",
       badge: "ლუქსი",
       price: 120,
@@ -87,6 +89,7 @@
       ]
     },
     {
+      slug: "superlux",
       name: "სუპერლუქსი — 2 სტუმარზე",
       badge: "სუპერლუქსი",
       price: 120,
@@ -104,6 +107,7 @@
       ]
     },
     {
+      slug: "family3",
       name: "საოჯახო ოთახი — 3 სტუმარზე",
       badge: "საოჯახო",
       price: 150,
@@ -122,6 +126,7 @@
       ]
     },
     {
+      slug: "family4",
       name: "საოჯახო ოთახი — 4 სტუმარზე",
       badge: "საოჯახო",
       price: 200,
@@ -137,6 +142,7 @@
       ]
     },
     {
+      slug: "twobedlux",
       name: "ორ ოთახიანი ლუქსი",
       badge: "ლუქსი",
       price: 200,
@@ -155,6 +161,7 @@
       ]
     },
     {
+      slug: "jacuzzi",
       name: "სუპერ ლუქსი ჯაკუზით",
       badge: "VIP ლუქსი",
       price: 300,
@@ -174,6 +181,8 @@
       ]
     }
   ];
+
+  window.AGAVA_ROOMS = ROOMS; /* booking.js consumes */
 
   var SPEC_ICONS = {
     size:    '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><path d="M21 3L3 21M21 3h-6M21 3v6M3 21h6M3 21v-6"/></svg>',
@@ -267,8 +276,12 @@
             return "<li>" + (SPEC_ICONS[s.icon] || "") + "<span>" + s.text + "</span></li>";
           }).join("") +
         "</ul>" +
-        '<button class="btn btn--gold room-tile__btn" data-room="' + room.name + '">დაჯავშნა</button>' +
+        '<div class="room-tile__actions">' +
+          '<button class="btn btn--dark" data-view-room="' + room.slug + '">ნახვა</button>' +
+          '<button class="btn btn--gold" data-room="' + room.slug + '">დაჯავშნა</button>' +
+        "</div>" +
       "</div>";
+    tile.setAttribute("data-room-slug", room.slug);
     roomsGrid.appendChild(tile);
     initSlider(tile.querySelector(".room-slider"), room.images.length);
   });
@@ -363,61 +376,7 @@
     reviewBars.forEach(function (el) { barObserver.observe(el); });
   }
 
-  /* ═══════════ BOOKING MODAL ═══════════ */
-  var modal = document.getElementById("bookingModal");
-  var roomSelect = document.getElementById("bfRoom");
-  var lastFocused = null;
-
-  ROOMS.forEach(function (room) {
-    var opt = document.createElement("option");
-    opt.value = room.name;
-    opt.textContent = room.name + " — " + room.price + " ₾/ღამე";
-    roomSelect.appendChild(opt);
-  });
-
-  function openModal(presetRoom) {
-    lastFocused = document.activeElement;
-    modal.hidden = false;
-    document.body.classList.add("modal-open");
-    if (presetRoom) roomSelect.value = presetRoom;
-    var first = modal.querySelector("input");
-    if (first) first.focus();
-  }
-  function closeModal() {
-    modal.hidden = true;
-    document.body.classList.remove("modal-open");
-    if (lastFocused) lastFocused.focus();
-  }
-
-  document.addEventListener("click", function (e) {
-    var openBtn = e.target.closest("[data-open-booking]");
-    if (openBtn) { openModal(); return; }
-    var roomBtn = e.target.closest("[data-room]");
-    if (roomBtn) { openModal(roomBtn.getAttribute("data-room")); return; }
-    if (e.target.closest("[data-close-booking]")) closeModal();
-  });
-  document.addEventListener("keydown", function (e) {
-    if (e.key === "Escape" && !modal.hidden) closeModal();
-  });
-
-  /* focus trap */
-  modal.addEventListener("keydown", function (e) {
-    if (e.key !== "Tab") return;
-    var focusables = modal.querySelectorAll("button, input, select, textarea, a[href]");
-    if (!focusables.length) return;
-    var first = focusables[0];
-    var last = focusables[focusables.length - 1];
-    if (e.shiftKey && document.activeElement === first) {
-      e.preventDefault(); last.focus();
-    } else if (!e.shiftKey && document.activeElement === last) {
-      e.preventDefault(); first.focus();
-    }
-  });
-
-  /* date min = today */
-  var today = new Date().toISOString().split("T")[0];
-  document.getElementById("bfIn").min = today;
-  document.getElementById("bfOut").min = today;
+  /* Booking wizard & modals live in js/booking.js */
 
   /* ─── Demo form handling ─── */
   function handleForm(formId, statusId, okMsg) {
@@ -450,7 +409,6 @@
       }, 900);
     });
   }
-  handleForm("bookingForm", "bfStatus", "მოთხოვნა მიღებულია! ჩვენ მალე დაგიკავშირდებით. (დემო ვერსია)");
   handleForm("contactForm", "cfStatus", "შეტყობინება გაგზავნილია! გმადლობთ. (დემო ვერსია)");
 
   /* ─── Footer year ─── */

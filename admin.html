@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>აგავა — ადმინ პანელი</title>
+  <meta name="robots" content="noindex, nofollow">
+  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Georgian:wght@400;500;600;700&family=Cinzel:wght@700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/admin.css">
+</head>
+<body>
+
+  <!-- ═══ LOGIN ═══ -->
+  <div class="login" id="loginView" hidden>
+    <form class="login__card" id="loginForm">
+      <img src="assets/logo.png" alt="" class="login__logo">
+      <h1>AGAVA <span>ადმინი</span></h1>
+      <div class="fld">
+        <label for="loginEmail">ელფოსტა</label>
+        <input type="email" id="loginEmail" autocomplete="username" required>
+      </div>
+      <div class="fld">
+        <label for="loginPass">პაროლი</label>
+        <input type="password" id="loginPass" autocomplete="current-password" required>
+      </div>
+      <button type="submit" class="abtn abtn--gold abtn--block">შესვლა</button>
+      <p class="login__status" id="loginStatus"></p>
+    </form>
+  </div>
+
+  <!-- ═══ APP ═══ -->
+  <div class="app" id="appView" hidden>
+    <aside class="side">
+      <div class="side__brand">
+        <img src="assets/logo.png" alt="">
+        <span>AGAVA</span>
+      </div>
+      <nav class="side__nav">
+        <button class="side__link is-active" data-pane="dashboard">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+          მთავარი
+        </button>
+        <button class="side__link" data-pane="bookings">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18"/></svg>
+          ჯავშნები <span class="side__badge" id="pendingBadge" hidden></span>
+        </button>
+        <button class="side__link" data-pane="calendar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M8 3v4M16 3v4M3 10h18M8 14h2M14 14h2M8 18h2M14 18h2"/></svg>
+          კალენდარი
+        </button>
+        <button class="side__link" data-pane="rooms">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M2 18v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M2 18h20v3H2z"/></svg>
+          ოთახები
+        </button>
+      </nav>
+      <button class="side__logout" id="logoutBtn">გასვლა</button>
+    </aside>
+
+    <main class="main">
+      <!-- DASHBOARD -->
+      <section class="pane" id="pane-dashboard">
+        <h2>მთავარი</h2>
+        <div class="stats-row" id="statCards"><!-- JS --></div>
+        <h3 class="sub">მოლოდინში მყოფი ჯავშნები</h3>
+        <div class="table-wrap"><table class="tbl" id="pendingTable"></table></div>
+      </section>
+
+      <!-- BOOKINGS -->
+      <section class="pane" id="pane-bookings" hidden>
+        <div class="pane__head">
+          <h2>ჯავშნები</h2>
+          <button class="abtn abtn--gold" id="addBookingBtn">+ ახალი ჯავშანი</button>
+        </div>
+        <div class="filters">
+          <select id="fltStatus">
+            <option value="">ყველა სტატუსი</option>
+            <option value="pending">მოლოდინში</option>
+            <option value="confirmed">დადასტურებული</option>
+            <option value="cancelled">გაუქმებული</option>
+            <option value="completed">დასრულებული</option>
+          </select>
+          <select id="fltRoom"><option value="">ყველა ოთახი</option></select>
+          <input type="date" id="fltDate" title="თარიღი დიაპაზონში">
+          <input type="search" id="fltSearch" placeholder="სახელი ან ტელეფონი…">
+        </div>
+        <div class="table-wrap"><table class="tbl" id="bookingsTable"></table></div>
+      </section>
+
+      <!-- CALENDAR -->
+      <section class="pane" id="pane-calendar" hidden>
+        <div class="pane__head">
+          <h2>კალენდარი</h2>
+          <div class="cal-nav">
+            <button class="abtn" id="calPrev">◀</button>
+            <strong id="calLabel"></strong>
+            <button class="abtn" id="calNext">▶</button>
+          </div>
+        </div>
+        <p class="cal-legend">
+          <span class="lg lg--free"></span> თავისუფალი
+          <span class="lg lg--part"></span> ნაწილობრივ
+          <span class="lg lg--full"></span> სავსე
+          <span class="lg lg--block"></span> დაბლოკილი
+          <span class="lg lg--price"></span> სპეც. ფასი
+        </p>
+        <div class="table-wrap cal-wrap"><table class="cal" id="calTable"></table></div>
+        <div class="cal-detail" id="calDetail" hidden></div>
+      </section>
+
+      <!-- ROOMS -->
+      <section class="pane" id="pane-rooms" hidden>
+        <h2>ოთახები</h2>
+        <div class="rooms-admin" id="roomsAdmin"><!-- JS --></div>
+      </section>
+    </main>
+  </div>
+
+  <!-- BOOKING EDIT MODAL -->
+  <div class="amodal" id="editModal" hidden>
+    <div class="amodal__backdrop" data-close-edit></div>
+    <form class="amodal__panel" id="editForm">
+      <button type="button" class="amodal__close" data-close-edit>✕</button>
+      <h3 id="editTitle">ჯავშნის რედაქტირება</h3>
+      <input type="hidden" id="ebId">
+      <div class="fld-row">
+        <div class="fld"><label for="ebName">სახელი, გვარი *</label><input type="text" id="ebName" required></div>
+        <div class="fld"><label for="ebPhone">ტელეფონი *</label><input type="tel" id="ebPhone" required></div>
+      </div>
+      <div class="fld-row">
+        <div class="fld"><label for="ebRoom">ოთახი</label><select id="ebRoom"></select></div>
+        <div class="fld"><label for="ebGuests">სტუმრები</label><input type="number" id="ebGuests" min="1" max="6" value="2"></div>
+      </div>
+      <div class="fld-row">
+        <div class="fld"><label for="ebIn">შესვლა</label><input type="date" id="ebIn" required></div>
+        <div class="fld"><label for="ebOut">გასვლა</label><input type="date" id="ebOut" required></div>
+      </div>
+      <div class="fld-row">
+        <div class="fld"><label for="ebStatus">სტატუსი</label>
+          <select id="ebStatus">
+            <option value="pending">მოლოდინში</option>
+            <option value="confirmed">დადასტურებული</option>
+            <option value="cancelled">გაუქმებული</option>
+            <option value="completed">დასრულებული</option>
+          </select>
+        </div>
+        <div class="fld"><label for="ebPrice">ჯამური ფასი ₾</label><input type="number" id="ebPrice" min="0" step="1"></div>
+      </div>
+      <div class="fld"><label for="ebComment">კომენტარი</label><textarea id="ebComment" rows="2"></textarea></div>
+      <button type="submit" class="abtn abtn--gold abtn--block">შენახვა</button>
+      <p class="amodal__status" id="editStatus"></p>
+    </form>
+  </div>
+
+  <script src="js/config.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
