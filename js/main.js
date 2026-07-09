@@ -54,11 +54,11 @@
       badge: "სტანდარტი",
       price: 120,
       images: [
-        "assets/room-standard-1.jpg",
         "assets/room-standard-2.jpg",
         "assets/room-standard-3.jpg",
         "assets/room-standard-4.jpg",
-        "assets/room-standard-5.jpg"
+        "assets/room-standard-5.jpg",
+        "assets/room-standard-1.jpg"
       ],
       alt: "სტანდარტული ოთახი ცის ჭერით",
       count: "7 ოთახი",
@@ -108,10 +108,10 @@
       badge: "საოჯახო",
       price: 150,
       images: [
-        "assets/room-family3-1.jpg",
         "assets/room-family3-2.jpg",
         "assets/room-family3-3.jpg",
-        "assets/room-family3-4.jpg"
+        "assets/room-family3-4.jpg",
+        "assets/room-family3-1.jpg"
       ],
       alt: "საოჯახო ოთახი სამ სტუმარზე",
       count: "3 ოთახი",
@@ -160,9 +160,9 @@
       price: 300,
       seasonal: true,
       images: [
+        "assets/room-jacuzzi-3.jpg",
         "assets/room-jacuzzi-1.jpg",
         "assets/room-jacuzzi-2.jpg",
-        "assets/room-jacuzzi-3.jpg",
         "assets/room-jacuzzi-4.jpg"
       ],
       alt: "სუპერ ლუქსი ჯაკუზით, ოქროსფერი ინტერიერი",
