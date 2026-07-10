@@ -1288,53 +1288,6 @@ body.modal-open { overflow: hidden; }
   .navbar__name { font-size: 18px; }
 }
 
-/* ═══════════ HERO SEARCH WIDGET ═══════════ */
-.hero-search {
-  display: flex;
-  align-items: flex-end;
-  gap: 10px;
-  margin-top: 34px;
-  padding: 16px;
-  background: rgba(20, 16, 10, .55);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, .14);
-  border-radius: var(--radius);
-  max-width: 720px;
-  margin-inline: auto;
-}
-.hero-search__field {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  flex: 1;
-  text-align: left;
-}
-.hero-search__field label {
-  font-size: 11.5px;
-  font-weight: 600;
-  color: var(--gold-light);
-}
-.hero-search__field input,
-.hero-search__field select {
-  background: rgba(255, 255, 255, .96);
-  border: none;
-  border-radius: 8px;
-  padding: 10px 12px;
-  font: inherit;
-  font-size: 14px;
-  color: var(--ink);
-  min-height: 42px;
-  width: 100%;
-}
-.hero-search__btn {
-  min-height: 42px;
-  padding: 10px 22px;
-  display: inline-flex;
-  align-items: center;
-  gap: 7px;
-  white-space: nowrap;
-}
-
 /* ═══════════ ROOM TILE ACTIONS ═══════════ */
 .room-tile__actions {
   display: grid;
@@ -1526,6 +1479,25 @@ body.modal-open { overflow: hidden; }
 }
 .btn--ghost-dark:hover { border-color: var(--gold); color: var(--gold); }
 
+.qb-total {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  background: #FAF6EE;
+  border: 1px solid #EDE5D4;
+  border-radius: var(--radius);
+  padding: 9px 14px;
+  margin: -6px 0 16px;
+}
+.qb-total strong { color: var(--gold); }
+.qb-success {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 14px;
+  color: var(--ink);
+}
+.qb-success p { margin-bottom: 10px; }
+.qb-success strong { color: var(--gold); }
+
 /* ═══════════ FAQ ═══════════ */
 .faq { padding: 90px 0; background: var(--white); }
 .faq__head { text-align: center; margin-bottom: 40px; }
@@ -1592,18 +1564,10 @@ body.modal-open { overflow: hidden; }
 
 /* ═══════════ RESPONSIVE (new blocks) ═══════════ */
 @media (max-width: 820px) {
-  .hero-search { flex-wrap: wrap; }
-  .hero-search__field { flex: 1 1 45%; }
-  .hero-search__btn { flex: 1 1 100%; justify-content: center; }
   .room-detail { grid-template-columns: 1fr; }
   .room-detail__main { height: 230px; }
 }
 @media (max-width: 520px) {
-  .hero-search { padding: 12px; gap: 8px; margin-top: 22px; }
-  .hero-search__field { flex: 1 1 44%; }
-  .hero-search__field input,
-  .hero-search__field select { min-height: 38px; padding: 8px 10px; font-size: 13px; }
-  .hero__actions { margin-bottom: 0; }
   .bw-room { grid-template-columns: 72px 1fr; }
   .bw-room img { width: 72px; height: 56px; }
   .bw-room__pick { grid-column: 1 / -1; width: 100%; }

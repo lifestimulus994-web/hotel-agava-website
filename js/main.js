@@ -378,39 +378,6 @@
 
   /* Booking wizard & modals live in js/booking.js */
 
-  /* ─── Demo form handling ─── */
-  function handleForm(formId, statusId, okMsg) {
-    var form = document.getElementById(formId);
-    var status = document.getElementById(statusId);
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();
-      var invalid = false;
-      form.querySelectorAll("[required]").forEach(function (input) {
-        var bad = !input.value.trim();
-        input.classList.toggle("is-invalid", bad);
-        if (bad) invalid = true;
-      });
-      if (invalid) {
-        status.textContent = "გთხოვთ, შეავსოთ სავალდებულო ველები.";
-        status.className = "form-status is-error";
-        var firstBad = form.querySelector(".is-invalid");
-        if (firstBad) firstBad.focus();
-        return;
-      }
-      var btn = form.querySelector("button[type=submit]");
-      btn.disabled = true;
-      status.textContent = "იგზავნება…";
-      status.className = "form-status";
-      setTimeout(function () {
-        btn.disabled = false;
-        form.reset();
-        status.textContent = okMsg;
-        status.className = "form-status is-ok";
-      }, 900);
-    });
-  }
-  handleForm("contactForm", "cfStatus", "შეტყობინება გაგზავნილია! გმადლობთ. (დემო ვერსია)");
-
   /* ─── Footer year ─── */
   document.getElementById("year").textContent = new Date().getFullYear();
 })();

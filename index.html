@@ -59,29 +59,6 @@
           <a href="#rooms" class="btn btn--gold btn--lg">ოთახების ნახვა</a>
           <button class="btn btn--ghost btn--lg" data-open-booking>დაჯავშნა</button>
         </div>
-        <form class="hero-search" id="heroSearch" aria-label="თავისუფალი ოთახების ძებნა">
-          <div class="hero-search__field">
-            <label for="hsIn">შესვლა</label>
-            <input type="date" id="hsIn" required>
-          </div>
-          <div class="hero-search__field">
-            <label for="hsOut">გასვლა</label>
-            <input type="date" id="hsOut" required>
-          </div>
-          <div class="hero-search__field">
-            <label for="hsGuests">სტუმრები</label>
-            <select id="hsGuests">
-              <option value="1">1 სტუმარი</option>
-              <option value="2" selected>2 სტუმარი</option>
-              <option value="3">3 სტუმარი</option>
-              <option value="4">4 სტუმარი</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn--gold hero-search__btn">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.35-4.35"/></svg>
-            ძებნა
-          </button>
-        </form>
       </div>
       <a href="#stats" class="hero__scroll" aria-label="ჩამოსქროლვა">
         <span>დასქროლეთ</span>
@@ -472,22 +449,62 @@
           </ul>
         </div>
         <div class="contact__form-wrap reveal" style="--d:.15s">
-          <form class="booking-form" id="contactForm" novalidate>
-            <h3>გამოგვიგზავნეთ შეტყობინება</h3>
-            <div class="field">
-              <label for="cfName">სახელი <span aria-hidden="true">*</span></label>
-              <input type="text" id="cfName" name="name" autocomplete="name" required>
+          <form class="booking-form" id="quickBookForm" novalidate>
+            <h3>დაჯავშნეთ ოთახი</h3>
+            <div class="field-row">
+              <div class="field">
+                <label for="qbIn">შესვლა <span aria-hidden="true">*</span></label>
+                <input type="date" id="qbIn" required>
+              </div>
+              <div class="field">
+                <label for="qbOut">გასვლა <span aria-hidden="true">*</span></label>
+                <input type="date" id="qbOut" required>
+              </div>
+            </div>
+            <div class="field-row">
+              <div class="field">
+                <label for="qbRoom">ოთახი <span aria-hidden="true">*</span></label>
+                <select id="qbRoom" required></select>
+              </div>
+              <div class="field">
+                <label for="qbGuests">სტუმრები</label>
+                <select id="qbGuests">
+                  <option value="1">1 სტუმარი</option>
+                  <option value="2" selected>2 სტუმარი</option>
+                  <option value="3">3 სტუმარი</option>
+                  <option value="4">4 სტუმარი</option>
+                </select>
+              </div>
+            </div>
+            <p class="qb-total" id="qbTotal" hidden></p>
+            <div class="field-row">
+              <div class="field">
+                <label for="qbName">სახელი <span aria-hidden="true">*</span></label>
+                <input type="text" id="qbName" autocomplete="given-name" required>
+              </div>
+              <div class="field">
+                <label for="qbSurname">გვარი <span aria-hidden="true">*</span></label>
+                <input type="text" id="qbSurname" autocomplete="family-name" required>
+              </div>
             </div>
             <div class="field">
-              <label for="cfPhone">ტელეფონი <span aria-hidden="true">*</span></label>
-              <input type="tel" id="cfPhone" name="phone" autocomplete="tel" inputmode="tel" required>
+              <label for="qbPhone">ტელეფონი <span aria-hidden="true">*</span></label>
+              <input type="tel" id="qbPhone" autocomplete="tel" inputmode="tel" required>
             </div>
             <div class="field">
-              <label for="cfMsg">შეტყობინება</label>
-              <textarea id="cfMsg" name="message" rows="4"></textarea>
+              <label for="qbEmail">ელფოსტა</label>
+              <input type="email" id="qbEmail" autocomplete="email">
             </div>
-            <button type="submit" class="btn btn--gold btn--block">გაგზავნა</button>
-            <p class="form-status" id="cfStatus" role="status" aria-live="polite"></p>
+            <div class="field">
+              <label for="qbComment">კომენტარი / სპეციალური მოთხოვნა</label>
+              <textarea id="qbComment" rows="3" placeholder="მაგ.: გვიანი ჩამოსვლა, დამატებითი საწოლი, ტრანსფერი…"></textarea>
+            </div>
+            <button type="submit" class="btn btn--gold btn--block" id="qbSubmit">დაჯავშნა</button>
+            <p class="form-status" id="qbStatus" role="status" aria-live="polite"></p>
+            <div class="qb-success" id="qbSuccess" hidden>
+              <p>✓ ჯავშანი მიღებულია! ნომერი: <strong id="qbNumber"></strong></p>
+              <a class="btn btn--dark btn--block" id="qbWhatsApp" target="_blank" rel="noopener">WhatsApp-ით დადასტურება</a>
+            </div>
           </form>
         </div>
       </div>

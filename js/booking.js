@@ -373,24 +373,125 @@
     if (e.target.closest("[data-close-room]")) { closeModal(roomModal); return; }
   });
 
-  /* ═══════════ HERO SEARCH ═══════════ */
-  var heroSearch = document.getElementById("heroSearch");
-  var hsIn = document.getElementById("hsIn");
-  var hsOut = document.getElementById("hsOut");
-  hsIn.min = todayISO();
-  hsOut.min = todayISO();
-  hsIn.addEventListener("change", function () { if (hsOut.value <= hsIn.value) hsOut.value = ""; hsOut.min = hsIn.value; });
-
-  heroSearch.addEventListener("submit", function (e) {
-    e.preventDefault();
-    bwIn.value = hsIn.value;
-    bwOut.value = hsOut.value;
-    bwGuests.value = document.getElementById("hsGuests").value;
-    openWizard();
-    if (hsIn.value && hsOut.value) {
-      /* auto-run step 1 */
-      var evt = new Event("submit", { cancelable: true });
-      document.getElementById("bwDatesForm").dispatchEvent(evt);
+  /* ═══════════ DATE INPUTS: one click opens calendar ═══════════ */
+  document.addEventListener("click", function (e) {
+    var d = e.target;
+    if (d.tagName === "INPUT" && d.type === "date" && typeof d.showPicker === "function") {
+      try { d.showPicker(); } catch (err) { /* needs gesture / unsupported — native behavior stays */ }
     }
   });
+
+  /* ═══════════ QUICK BOOKING FORM (contact section) ═══════════ */
+  var qbForm = document.getElementById("quickBookForm");
+  var qbIn = document.getElementById("qbIn");
+  var qbOut = document.getElementById("qbOut");
+  var qbRoom = document.getElementById("qbRoom");
+  var qbGuests = document.getElementById("qbGuests");
+  qbIn.min = todayISO();
+  qbOut.min = todayISO();
+  qbIn.addEventListener("change", function () {
+    if (qbOut.value && qbOut.value <= qbIn.value) qbOut.value = "";
+    qbOut.min = qbIn.value || todayISO();
+    updateQbTotal();
+  });
+  qbOut.addEventListener("change", updateQbTotal);
+  qbRoom.addEventListener("change", updateQbTotal);
+
+  function fillQbRooms() {
+    qbRoom.length = 0;
+    ROOMS.forEach(function (r) {
+      var dbrt = DB.bySlug[r.slug];
+      if (dbrt && !dbrt.visible) return;
+      var price = dbrt ? Number(dbrt.base_price) : r.price;
+      qbRoom.add(new Option(r.name + " — " + price + " ₾/ღამე", r.slug));
+    });
+  }
+  fillQbRooms();
+
+  function updateQbTotal() {
+    var el = document.getElementById("qbTotal");
+    var slug = qbRoom.value;
+    if (!qbIn.value || !qbOut.value || qbOut.value <= qbIn.value || !slug) { el.hidden = true; return; }
+    var n = nightsBetween(qbIn.value, qbOut.value);
+    var room = roomBySlug[slug];
+    var dbrt = DB.bySlug[slug];
+    var price = dbrt ? Number(dbrt.base_price) : room.price;
+    el.hidden = false;
+    el.innerHTML = n + " ღამე × " + price + " ₾ ≈ <strong>" + (n * price) + " ₾</strong>";
+  }
+
+  qbForm.addEventListener("submit", function (e) {
+    e.preventDefault();
+    var status = document.getElementById("qbStatus");
+    var success = document.getElementById("qbSuccess");
+    success.hidden = true;
+
+    var ci = qbIn.value, co = qbOut.value;
+    var slug = qbRoom.value;
+    var guests = parseInt(qbGuests.value, 10);
+    var name = document.getElementById("qbName").value.trim();
+    var surname = document.getElementById("qbSurname").value.trim();
+    var phone = document.getElementById("qbPhone").value.trim();
+    var email = document.getElementById("qbEmail").value.trim();
+    var comment = document.getElementById("qbComment").value.trim();
+
+    function err(msg) { status.textContent = msg; status.className = "form-status is-error"; }
+    if (!ci || !co) return err("აირჩიეთ თარიღები.");
+    if (co <= ci) return err("გასვლის თარიღი შესვლაზე გვიან უნდა იყოს.");
+    if (ci < todayISO()) return err("წარსული თარიღი ვერ აირჩევა.");
+    if (nightsBetween(ci, co) > 30) return err("მაქსიმუმ 30 ღამე.");
+    if (name.length < 2 || surname.length < 2) return err("შეავსეთ სახელი და გვარი.");
+    if (phone.replace(/\D/g, "").length < 9) return err("შეიყვანეთ სწორი ტელეფონი.");
+
+    var room = roomBySlug[slug];
+    var dbrt = DB.bySlug[slug];
+    var maxGuests = dbrt ? dbrt.max_guests : parseInt((room.specs[1] || {}).text, 10) || 2;
+    if (guests > maxGuests) return err("ამ ოთახში მაქსიმუმ " + maxGuests + " სტუმარია — აირჩიეთ სხვა ოთახი.");
+
+    var fullName = name + " " + surname;
+    var waText = "გამარჯობა! მინდა დაჯავშნა:\n🏨 " + room.name +
+      "\n📅 " + ci + " → " + co + "\n👤 " + guests + " სტუმარი — " + fullName +
+      "\n📞 " + phone + (comment ? "\n💬 " + comment : "");
+
+    if (!sb) {
+      window.open(waLink(waText), "_blank", "noopener");
+      status.textContent = "ჯავშნის დეტალები გაიგზავნა WhatsApp-ით — დაასრულეთ იქ.";
+      status.className = "form-status is-ok";
+      return;
+    }
+
+    var btn = document.getElementById("qbSubmit");
+    btn.disabled = true;
+    status.textContent = "იგზავნება…";
+    status.className = "form-status";
+
+    sb.rpc("create_booking", {
+      p_room_type_id: dbrt ? dbrt.id : null,
+      p_in: ci, p_out: co, p_guests: guests,
+      p_name: fullName, p_phone: phone,
+      p_email: email || null, p_comment: comment || null
+    }).then(function (res) {
+      btn.disabled = false;
+      if (res.error) {
+        err(/no availability/.test(res.error.message)
+          ? "ამ თარიღებზე ეს ოთახი დაკავებულია — სცადეთ სხვა თარიღები."
+          : "შეცდომა — სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.");
+        return;
+      }
+      status.textContent = "";
+      qbForm.reset();
+      document.getElementById("qbTotal").hidden = true;
+      document.getElementById("qbNumber").textContent = res.data.booking_number;
+      document.getElementById("qbWhatsApp").href =
+        waLink("გამარჯობა! დავჯავშნე ოთახი საიტიდან — ჯავშნის ნომერი: " + res.data.booking_number +
+               " (" + room.name + ", " + ci + " → " + co + "). გთხოვთ დამიდასტუროთ.");
+      success.hidden = false;
+    });
+  });
+
+  /* refresh quick-form room prices once DB loads */
+  var qbRefresh = setInterval(function () {
+    if (DB.loaded) { fillQbRooms(); updateQbTotal(); clearInterval(qbRefresh); }
+  }, 700);
+  setTimeout(function () { clearInterval(qbRefresh); }, 8000);
 })();

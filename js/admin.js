@@ -43,6 +43,14 @@
   function nights(a, b) { return Math.round((new Date(b) - new Date(a)) / 86400000); }
   function statusBadge(st) { return '<span class="badge badge--' + st + '">' + STATUS_KA[st] + "</span>"; }
 
+  /* date inputs: one click opens calendar */
+  document.addEventListener("click", function (e) {
+    var d = e.target;
+    if (d.tagName === "INPUT" && d.type === "date" && typeof d.showPicker === "function") {
+      try { d.showPicker(); } catch (err) { /* gesture required / unsupported */ }
+    }
+  });
+
   /* ═══ AUTH ═══ */
   sb.auth.getSession().then(function (res) {
     if (res.data.session) enterApp(); else loginView.hidden = false;
