@@ -146,8 +146,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
   padding-block: 14px;
 }
 .navbar.is-solid {
-  background: rgba(250, 247, 241, .92);
-  backdrop-filter: blur(14px);
+  background: rgba(250, 247, 241, .97);
   box-shadow: var(--shadow-sm);
   padding-block: 6px;
 }
