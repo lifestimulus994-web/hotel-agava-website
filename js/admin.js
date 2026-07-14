@@ -82,7 +82,20 @@
       loadBookings();
       renderCalendar();
       renderRoomsAdmin();
+      startRealtimeBookings();
     });
+  }
+
+  function startRealtimeBookings() {
+    sb.channel("realtime_bookings")
+      .on("postgres_changes", {
+        event: "*",
+        schema: "public",
+        table: "bookings"
+      }, function () {
+        refreshAll();
+      })
+      .subscribe();
   }
 
   /* ═══ NAV ═══ */
