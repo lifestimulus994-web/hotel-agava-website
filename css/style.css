@@ -228,6 +228,44 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .navbar__cta { padding: 11px 22px; min-height: 44px; font-size: 14px; }
 
+/* ─── Language switch ─── */
+.lang-switch {
+  display: flex;
+  gap: 2px;
+  padding: 3px;
+  border: 1px solid rgba(255, 255, 255, .3);
+  border-radius: 20px;
+}
+.lang-switch button {
+  font-size: 11.5px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, .85);
+  padding: 5px 10px;
+  border-radius: 14px;
+  transition: background-color .25s, color .25s;
+}
+.lang-switch button:hover { color: #FFF; }
+.lang-switch button.is-active {
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  color: #FFF;
+}
+.navbar.is-solid .lang-switch { border-color: var(--line); }
+.navbar.is-solid .lang-switch button { color: var(--muted); }
+.navbar.is-solid .lang-switch button:hover { color: var(--ink); }
+.navbar.is-solid .lang-switch button.is-active { color: #FFF; }
+
+/* RU/EN strings are wider — tighten navbar so centered links never collide */
+html[lang="ru"] .navbar__link,
+html[lang="en"] .navbar__link { padding: 10px 10px; }
+html[lang="ru"] .navbar__link::after,
+html[lang="en"] .navbar__link::after { left: 10px; right: 10px; }
+@media (min-width: 821px) and (max-width: 1240px) {
+  html[lang="ru"] .navbar__link,
+  html[lang="en"] .navbar__link { padding: 10px 6px; font-size: 12.5px; }
+  html[lang="ru"] .navbar__cta,
+  html[lang="en"] .navbar__cta { padding: 10px 12px; font-size: 12.5px; }
+}
+
 .navbar__burger {
   display: none;
   flex-direction: column;
@@ -1228,9 +1266,12 @@ body.modal-open { overflow: hidden; }
 }
 
 @media (min-width: 821px) and (max-width: 1040px) {
-  .navbar__link { padding: 10px 9px; font-size: 13px; }
-  .navbar__link::after { left: 9px; right: 9px; }
+  .navbar__link { padding: 10px 7px; font-size: 12.5px; }
+  .navbar__link::after { left: 7px; right: 7px; }
   .navbar__name { font-size: 21px; }
+  .navbar__inner { gap: 14px; }
+  .navbar__cta { padding: 10px 14px; font-size: 13px; }
+  .lang-switch button { padding: 4px 7px; font-size: 10.5px; }
 }
 
 @media (max-width: 820px) {
@@ -1254,6 +1295,7 @@ body.modal-open { overflow: hidden; }
   .navbar__nav .navbar__link { color: var(--gold-pale) !important; font-size: 17px; padding: 14px; }
   .navbar__burger { display: flex; }
   .navbar__cta { display: none; }
+  .navbar__inner { gap: 12px; }
 
   .about__grid,
   .contact__grid { grid-template-columns: 1fr; }
@@ -1285,6 +1327,9 @@ body.modal-open { overflow: hidden; }
   .hero__actions .btn { width: 100%; }
 
   .navbar__name { font-size: 18px; }
+  .navbar__logo { width: 40px; height: 40px; }
+  .lang-switch { padding: 2px; }
+  .lang-switch button { padding: 4px 6px; font-size: 10px; }
 }
 
 /* ═══════════ ROOM TILE ACTIONS ═══════════ */
