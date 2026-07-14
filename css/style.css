@@ -1,28 +1,11 @@
 /* ═══════════════════════════════════════════
    HOTEL AGAVA — Elegant gold & cream
-   DejaVu Sans (headings + body)
+   System stack with a single local fallback to reduce font cost
    ═══════════════════════════════════════════ */
 
-@font-face {
-  font-family: "DejaVu Sans";
-  src: url("../assets/fonts/DejaVuSans.ttf") format("truetype");
-  font-weight: 300 500;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "DejaVu Sans";
-  src: url("../assets/fonts/DejaVuSans-Bold.ttf") format("truetype");
-  font-weight: 600 700;
-  font-style: normal;
-  font-display: swap;
-}
-@font-face {
-  font-family: "DejaVu Sans";
-  src: url("../assets/fonts/DejaVuSans-Oblique.ttf") format("truetype");
-  font-weight: 300 500;
-  font-style: italic;
-  font-display: swap;
+:root {
+  --font-head: "Noto Sans Georgian", "Segoe UI", Arial, sans-serif;
+  --font-body: "Noto Sans Georgian", "Segoe UI", Arial, sans-serif;
 }
 
 :root {
@@ -36,9 +19,6 @@
   --muted:       #7A7060;
   --white:       #FFFFFF;
   --line:        #E4DCCC;
-
-  --font-head: "DejaVu Sans", "Noto Sans Georgian", sans-serif;
-  --font-body: "DejaVu Sans", "Inter", "Noto Sans Georgian", sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --shadow-sm: 0 2px 10px rgba(36, 29, 20, .07);
@@ -124,7 +104,6 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .btn--ghost {
   border: 1px solid rgba(255, 255, 255, .6);
   color: #FFF;
-  backdrop-filter: blur(4px);
 }
 .btn--ghost:hover { background: rgba(255, 255, 255, .12); border-color: #FFF; }
 
@@ -546,10 +525,9 @@ html[lang="en"] .navbar__link::after { left: 10px; right: 10px; }
   box-shadow: var(--shadow-sm);
   display: flex;
   flex-direction: column;
-  transition: transform .35s var(--ease-out-expo), box-shadow .35s;
+  transition: box-shadow .25s ease;
 }
 .room-tile:hover {
-  transform: translateY(-6px);
   box-shadow: var(--shadow-md);
 }
 
@@ -593,9 +571,8 @@ html[lang="en"] .navbar__link::after { left: 10px; right: 10px; }
   border-radius: 50%;
   background: rgba(20, 16, 10, .45);
   color: #FFF;
-  backdrop-filter: blur(4px);
   opacity: 0;
-  transition: opacity .3s, background-color .25s, transform .3s var(--ease-out-expo);
+  transition: opacity .2s ease, background-color .2s ease;
   z-index: 2;
 }
 .room-slider__arrow--prev { left: 12px; transform: translateY(-50%) rotate(180deg); }

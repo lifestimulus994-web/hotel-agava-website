@@ -51,9 +51,20 @@
 
   loadRoomTypes();
   if (sb) {
-    window.setInterval(function () {
-      loadRoomTypes();
-    }, 5000);
+    var refreshTimer = null;
+    function scheduleRoomRefresh() {
+      if (refreshTimer) return;
+      refreshTimer = window.setTimeout(function () {
+        refreshTimer = null;
+        loadRoomTypes();
+      }, 8000);
+    }
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") scheduleRoomRefresh();
+    });
+    window.addEventListener("focus", function () {
+      scheduleRoomRefresh();
+    });
   }
 
   /* ─── helpers ─── */
