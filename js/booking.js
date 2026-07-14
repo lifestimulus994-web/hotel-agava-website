@@ -36,9 +36,25 @@
           tile.style.display = rt.visible ? "" : "none";
         }
       });
+      refreshPublicViews();
     });
   }
+
+  function refreshPublicViews() {
+    if (document.getElementById("bwRooms") && state && state.checkIn && state.checkOut) {
+      renderRooms(state.avail || null);
+    }
+    if (state && state.chosen) {
+      renderSummary("bwSummary");
+    }
+  }
+
   loadRoomTypes();
+  if (sb) {
+    window.setInterval(function () {
+      loadRoomTypes();
+    }, 5000);
+  }
 
   /* ─── helpers ─── */
   var KA_MONTHS = ["იან", "თებ", "მარ", "აპრ", "მაი", "ივნ", "ივლ", "აგვ", "სექ", "ოქტ", "ნოე", "დეკ"];
