@@ -83,13 +83,6 @@
       }).join("");
     }
 
-    var roomsMedia = document.getElementById("roomsMedia");
-    if (roomsMedia) {
-      roomsMedia.innerHTML = sectionItems("rooms").map(function (item) {
-        return '<div class="rooms__media-item"><img src="' + item.url + '" alt="' + (item.alt || "") + '" loading="lazy"></div>';
-      }).join("");
-    }
-
     function renderGallery(hostId, items) {
       var host = document.getElementById(hostId);
       if (!host) return;

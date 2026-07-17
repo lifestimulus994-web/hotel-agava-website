@@ -35,7 +35,6 @@
   function contentBlocks() {
     var blocks = [
       { key: "about", title: "ჩვენს შესახებ", hint: "ფოტოები „ჩვენს შესახებ“ სექციაში" },
-      { key: "rooms", title: "ოთახები — ზოლი მთავარ გვერდზე", hint: "დეკორატიული ფოტოების ზოლი" },
       { key: "gallery_breakfast", title: "გალერეა — საუზმე", hint: "საუზმის განყოფილება გალერეაში" },
       { key: "gallery_hotel", title: "გალერეა — სასტუმრო", hint: "სასტუმროსა და ოთახების განყოფილება გალერეაში" }
     ];
