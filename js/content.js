@@ -21,6 +21,7 @@
     bucket: BUCKET,
     configured: !!sb,
     loaded: false,
+    ok: false,          /* true once a DB fetch succeeded → DB is authoritative */
     /* section -> [{id, url, alt, caption, sort}] (only what DB returned) */
     sections: {},
     /* slug -> [{id, url, alt, caption, sort}] */
@@ -63,6 +64,7 @@
           var g = groupRows(res.data);
           store.sections = g.sections;
           store.roomImages = g.roomImages;
+          store.ok = true;
         }
         store.loaded = true;
         return store;

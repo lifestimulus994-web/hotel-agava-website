@@ -71,8 +71,10 @@
 
   function sectionItems(key) {
     var store = window.AGAVA_STORE;
-    var rows = store && store.sections && store.sections[key];
-    return (rows && rows.length) ? rows : DEFAULT_CONTENT[key];
+    /* once the DB fetch succeeded it is authoritative — an empty section
+       means the client cleared it, so DON'T fall back to defaults. */
+    if (store && store.ok) return (store.sections && store.sections[key]) || [];
+    return DEFAULT_CONTENT[key] || [];
   }
 
   function renderContent() {
@@ -86,7 +88,14 @@
     function renderGallery(hostId, items) {
       var host = document.getElementById(hostId);
       if (!host) return;
-      host.innerHTML = (items || []).map(function (item, index) {
+      var group = host.closest ? host.closest(".gallery__group") : null;
+      if (!items || !items.length) {
+        host.innerHTML = "";
+        if (group) group.style.display = "none";   /* no lonely heading */
+        return;
+      }
+      if (group) group.style.display = "";
+      host.innerHTML = items.map(function (item, index) {
         return '<figure class="gallery__item' + (index % 2 === 0 ? " gallery__item--wide" : "") + ' reveal is-visible"><img src="' + item.url + '" alt="' + (item.alt || "") + '" loading="lazy"><figcaption>' + (item.caption || "") + '</figcaption></figure>';
       }).join("");
     }
