@@ -47,6 +47,63 @@
     if (el) sectionObserver.observe(el);
   });
 
+  /* ═══════════ SECTION IMAGES (about / rooms strip / gallery) ═══════════
+     Source of truth: Supabase (js/content.js → AGAVA_STORE).
+     Fallback per-section: DEFAULT_CONTENT (used before load, offline, or empty). */
+  var DEFAULT_CONTENT = {
+    about: [
+      { url: "assets/exterior-2.jpg", alt: "სასტუმრო აგავას ნათელი ლობი", caption: "" },
+      { url: "assets/exterior-1.jpg", alt: "სასტუმრო აგავას შენობა ღამით", caption: "" }
+    ],
+    rooms: [
+      { url: "assets/room-jacuzzi-1.jpg", alt: "ოთახის ლუქსური ინტერიერი", caption: "" },
+      { url: "assets/room-lux-2.jpg", alt: "ლუქსი ცის ჭერით", caption: "" },
+      { url: "assets/room-standard-2.jpg", alt: "სტანდარტული ოთახი", caption: "" }
+    ],
+    gallery_breakfast: [
+      { url: "assets/room-lux-2.jpg", alt: "საუზმე", caption: "საუზმე" }
+    ],
+    gallery_hotel: [
+      { url: "assets/room-superlux-2.jpg", alt: "ლუქსი", caption: "სასტუმრო" },
+      { url: "assets/exterior-1.jpg", alt: "სასტუმრო", caption: "ჩვენი შენობა" }
+    ]
+  };
+
+  function sectionItems(key) {
+    var store = window.AGAVA_STORE;
+    var rows = store && store.sections && store.sections[key];
+    return (rows && rows.length) ? rows : DEFAULT_CONTENT[key];
+  }
+
+  function renderContent() {
+    var aboutHost = document.getElementById("aboutPhotos");
+    if (aboutHost) {
+      aboutHost.innerHTML = sectionItems("about").map(function (item, index) {
+        return '<figure class="about__photo' + (index === 0 ? " about__photo--1" : " about__photo--2") + '"><img src="' + item.url + '" alt="' + (item.alt || "") + '" loading="lazy"></figure>';
+      }).join("");
+    }
+
+    var roomsMedia = document.getElementById("roomsMedia");
+    if (roomsMedia) {
+      roomsMedia.innerHTML = sectionItems("rooms").map(function (item) {
+        return '<div class="rooms__media-item"><img src="' + item.url + '" alt="' + (item.alt || "") + '" loading="lazy"></div>';
+      }).join("");
+    }
+
+    function renderGallery(hostId, items) {
+      var host = document.getElementById(hostId);
+      if (!host) return;
+      host.innerHTML = (items || []).map(function (item, index) {
+        return '<figure class="gallery__item' + (index % 2 === 0 ? " gallery__item--wide" : "") + ' reveal is-visible"><img src="' + item.url + '" alt="' + (item.alt || "") + '" loading="lazy"><figcaption>' + (item.caption || "") + '</figcaption></figure>';
+      }).join("");
+    }
+
+    renderGallery("galleryBreakfast", sectionItems("gallery_breakfast"));
+    renderGallery("galleryHotel", sectionItems("gallery_hotel"));
+  }
+
+  renderContent();
+
   /* ═══════════ ROOMS DATA (real prices) ═══════════ */
   var ROOMS = [
     {
@@ -161,6 +218,25 @@
       ]
     },
     {
+      slug: "jacuzzi-suite",
+      name: "ლუქსი ჯაკუზით",
+      badge: "ლუქსი",
+      price: 300,
+      images: [
+        "assets/room-jacuzzi-suite-1.jpg",
+        "assets/room-jacuzzi-suite-2.jpg",
+        "assets/room-jacuzzi-suite-3.jpg"
+      ],
+      alt: "ლუქსი ჯაკუზით ქალაქის ხედით",
+      count: "1 ნომერი",
+      specs: [
+        { icon: "bed", text: "1 დიდი ორმაგი საწოლი" },
+        { icon: "guests", text: "2 სტუმარი" },
+        { icon: "size", text: "30 მ²" },
+        { icon: "jacuzzi", text: "ჯაკუზი" }
+      ]
+    },
+    {
       slug: "jacuzzi",
       name: "სუპერ ლუქსი ჯაკუზით",
       badge: "VIP ლუქსი",
@@ -255,46 +331,73 @@
     }, { passive: true });
   }
 
-  ROOMS.forEach(function (room, i) {
-    var tile = document.createElement("article");
-    tile.className = "room-tile reveal";
-    if (!prefersReducedMotion) tile.style.setProperty("--d", (i % 3) * 0.08 + "s");
-    tile.innerHTML =
-      '<div class="room-tile__media room-slider">' +
-        sliderHTML(room) +
-        '<span class="room-tile__badge">' + room.badge + "</span>" +
-        (room.seasonal ? '<span class="room-tile__badge room-tile__badge--season">სეზონური</span>' : "") +
-      "</div>" +
-      '<div class="room-tile__body">' +
-        '<div class="room-tile__meta">' +
-          '<p class="room-tile__price">' + room.price + ' ₾<span>/ღამე</span></p>' +
-          '<span class="room-tile__count">' + room.count + "</span>" +
-        "</div>" +
-        '<h3 class="room-tile__title">' + room.name + "</h3>" +
-        '<ul class="room-tile__specs">' +
-          room.specs.map(function (s) {
-            return "<li>" + (SPEC_ICONS[s.icon] || "") + "<span>" + s.text + "</span></li>";
-          }).join("") +
-        "</ul>" +
-        '<div class="room-tile__actions">' +
-          '<button class="btn btn--dark" data-view-room="' + room.slug + '">ნახვა</button>' +
-          '<button class="btn btn--gold" data-room="' + room.slug + '">დაჯავშნა</button>' +
-        "</div>" +
-      "</div>";
-    tile.setAttribute("data-room-slug", room.slug);
-    roomsGrid.appendChild(tile);
-    initSlider(tile.querySelector(".room-slider"), room.images.length);
-  });
+  /* apply DB room-card images (AGAVA_STORE) onto ROOMS[].images before build */
+  function applyRoomImages() {
+    var store = window.AGAVA_STORE;
+    if (!store || !store.roomImages) return;
+    ROOMS.forEach(function (room) {
+      var rows = store.roomImages[room.slug];
+      if (rows && rows.length) {
+        room.images = rows.map(function (r) { return r.url; });
+        if (rows[0].alt) room.alt = rows[0].alt;
+      }
+    });
+  }
 
-  /* CTA tile */
-  var ctaTile = document.createElement("article");
-  ctaTile.className = "room-tile room-tile--cta reveal";
-  ctaTile.innerHTML =
-    '<img src="assets/logo.png" alt="" aria-hidden="true">' +
-    "<h3>ვერ იპოვეთ სასურველი ოთახი?</h3>" +
-    "<p>დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.</p>" +
-    '<button class="btn btn--gold" data-open-booking>დაგვიკავშირდით</button>';
-  roomsGrid.appendChild(ctaTile);
+  function buildRoomGrid(skipAnim) {
+    roomsGrid.innerHTML = "";
+    ROOMS.forEach(function (room, i) {
+      var tile = document.createElement("article");
+      tile.className = "room-tile reveal" + (skipAnim ? " is-visible" : "");
+      if (!prefersReducedMotion && !skipAnim) tile.style.setProperty("--d", (i % 3) * 0.08 + "s");
+      tile.innerHTML =
+        '<div class="room-tile__media room-slider">' +
+          sliderHTML(room) +
+          '<span class="room-tile__badge">' + room.badge + "</span>" +
+          (room.seasonal ? '<span class="room-tile__badge room-tile__badge--season">სეზონური</span>' : "") +
+        "</div>" +
+        '<div class="room-tile__body">' +
+          '<div class="room-tile__meta">' +
+            '<p class="room-tile__price">' + room.price + ' ₾<span>/ღამე</span></p>' +
+            '<span class="room-tile__count">' + room.count + "</span>" +
+          "</div>" +
+          '<h3 class="room-tile__title">' + room.name + "</h3>" +
+          '<ul class="room-tile__specs">' +
+            room.specs.map(function (s) {
+              return "<li>" + (SPEC_ICONS[s.icon] || "") + "<span>" + s.text + "</span></li>";
+            }).join("") +
+          "</ul>" +
+          '<div class="room-tile__actions">' +
+            '<button class="btn btn--dark" data-view-room="' + room.slug + '">ნახვა</button>' +
+            '<button class="btn btn--gold" data-room="' + room.slug + '">დაჯავშნა</button>' +
+          "</div>" +
+        "</div>";
+      tile.setAttribute("data-room-slug", room.slug);
+      roomsGrid.appendChild(tile);
+      initSlider(tile.querySelector(".room-slider"), room.images.length);
+    });
+
+    /* CTA tile */
+    var ctaTile = document.createElement("article");
+    ctaTile.className = "room-tile room-tile--cta reveal" + (skipAnim ? " is-visible" : "");
+    ctaTile.innerHTML =
+      '<img src="assets/logo.png" alt="" aria-hidden="true">' +
+      "<h3>ვერ იპოვეთ სასურველი ოთახი?</h3>" +
+      "<p>დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.</p>" +
+      '<button class="btn btn--gold" data-open-booking>დაგვიკავშირდით</button>';
+    roomsGrid.appendChild(ctaTile);
+  }
+
+  buildRoomGrid(false);
+
+  /* Load DB-backed images, then re-render sections + room cards */
+  if (window.AGAVA_STORE && window.AGAVA_STORE.load) {
+    window.AGAVA_STORE.load().then(function () {
+      renderContent();
+      applyRoomImages();
+      buildRoomGrid(true);
+    });
+  }
 
   /* ─── Reveal on scroll (whileInView, once:true) ─── */
   var revealEls = document.querySelectorAll(".reveal");

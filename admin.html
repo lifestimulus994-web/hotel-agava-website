@@ -55,6 +55,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M2 18v-6a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v6"/><path d="M4 10V6a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v4"/><path d="M2 18h20v3H2z"/></svg>
           ოთახები
         </button>
+        <button class="side__link" data-pane="content">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
+          სურათები
+        </button>
       </nav>
       <button class="side__logout" id="logoutBtn">გასვლა</button>
     </aside>
@@ -115,6 +119,19 @@
         <h2>ოთახები</h2>
         <div class="rooms-admin" id="roomsAdmin"><!-- JS --></div>
       </section>
+
+      <!-- CONTENT -->
+      <section class="pane" id="pane-content" hidden>
+        <div class="pane__head">
+          <h2>საიტის სურათები</h2>
+          <div class="content-toolbar">
+            <span class="content-status" id="contentStatus">ცვლილებები შენახული არ არის</span>
+            <button class="abtn abtn--gold abtn--sm" id="saveContentBtn">შენახვა</button>
+          </div>
+        </div>
+        <p class="muted">დაამატეთ, გადაათრიეთ, დაალაგეთ ან წაშალეთ ფოტოები — „ჩვენს შესახებ“, გალერეის ორივე ნაწილში (საუზმე / სასტუმრო) და თითოეული ოთახის ბარათში. ცვლილება მაშინვე ინახება და ჩანს ყველა ვიზიტორთან.</p>
+        <div class="content-admin" id="contentAdmin"></div>
+      </section>
     </main>
   </div>
 
@@ -156,6 +173,7 @@
 
   <script src="js/config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script src="js/content.js"></script>
   <script src="js/admin.js"></script>
 </body>
 </html>

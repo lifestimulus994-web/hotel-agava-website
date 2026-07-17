@@ -19,6 +19,230 @@
 
   var ROOM_TYPES = [];        /* from DB */
   var rtById = {};
+  /* ═══════════ SITE IMAGES (Supabase-backed) ═══════════
+     Source of truth: site_images table + site-photos storage bucket.
+     Shared helpers live in js/content.js → window.AGAVA_STORE. */
+  var STORE = window.AGAVA_STORE;
+
+  function setContentStatus(message, isOk) {
+    var el = document.getElementById("contentStatus");
+    if (!el) return;
+    el.textContent = message;
+    el.className = "content-status" + (isOk === true ? " is-ok" : isOk === false ? " is-error" : "");
+  }
+
+  /* ordered list of blocks: fixed sections + one per room type */
+  function contentBlocks() {
+    var blocks = [
+      { key: "about", title: "ჩვენს შესახებ", hint: "ფოტოები „ჩვენს შესახებ“ სექციაში" },
+      { key: "rooms", title: "ოთახები — ზოლი მთავარ გვერდზე", hint: "დეკორატიული ფოტოების ზოლი" },
+      { key: "gallery_breakfast", title: "გალერეა — საუზმე", hint: "საუზმის განყოფილება გალერეაში" },
+      { key: "gallery_hotel", title: "გალერეა — სასტუმრო", hint: "სასტუმროსა და ოთახების განყოფილება გალერეაში" }
+    ];
+    ROOM_TYPES.forEach(function (rt) {
+      blocks.push({ key: "room:" + rt.slug, title: "ოთახი — " + rt.name, hint: "ამ ოთახის ბარათის ფოტოები (სლაიდერი + ჯავშანი)" });
+    });
+    return blocks;
+  }
+
+  function rowsFor(key) {
+    if (!STORE) return [];
+    if (key.indexOf("room:") === 0) return STORE.roomImages[key.slice(5)] || [];
+    return STORE.sections[key] || [];
+  }
+
+  function reloadAndRender() {
+    if (!STORE) return Promise.resolve();
+    return STORE.reload().then(renderContentAdmin);
+  }
+
+  function renderContentAdmin() {
+    var host = document.getElementById("contentAdmin");
+    if (!host) return;
+    if (!STORE || !STORE.configured) {
+      host.innerHTML = '<div class="muted">Supabase არ არის კონფიგურირებული — ფოტოების მართვა მიუწვდომელია.</div>';
+      return;
+    }
+
+    host.innerHTML = contentBlocks().map(function (block) {
+      var items = rowsFor(block.key);
+      var groupClass = block.key.indexOf("room:") === 0 ? " content-block--room" : "";
+      return '<div class="content-block' + groupClass + '" data-section="' + esc(block.key) + '">' +
+        '<div class="content-block__head"><div>' +
+          '<div class="content-block__title">' + esc(block.title) + '</div>' +
+          '<div class="content-block__hint">' + esc(block.hint) + '</div>' +
+        '</div>' +
+        '<label class="content-upload-btn abtn abtn--sm"><input class="content-upload" type="file" accept="image/*" multiple data-key="' + esc(block.key) + '" hidden>+ ფოტოს დამატება</label>' +
+        '</div>' +
+        '<div class="content-upload-drop" data-dropzone="' + esc(block.key) + '">ჩააგდე ფოტო აქ ან დააჭირე ღილაკს ზემოთ</div>' +
+        '<div class="content-list">' + (items.length ? items.map(function (item) {
+          return '<div class="content-card" draggable="true" data-key="' + esc(block.key) + '" data-id="' + item.id + '">' +
+            '<img class="content-card__img" src="' + esc(item.url) + '" alt="">' +
+            '<div class="content-card__fields">' +
+              '<input type="text" value="' + esc(item.alt || "") + '" data-id="' + item.id + '" data-field="alt" placeholder="Alt ტექსტი">' +
+              '<input type="text" value="' + esc(item.caption || "") + '" data-id="' + item.id + '" data-field="caption" placeholder="კაპტიონი">' +
+            '</div>' +
+            '<div class="content-card__actions">' +
+              '<button type="button" class="content-card__move" data-action="move" data-key="' + esc(block.key) + '" data-id="' + item.id + '" data-dir="-1">▲</button>' +
+              '<button type="button" class="content-card__move" data-action="move" data-key="' + esc(block.key) + '" data-id="' + item.id + '" data-dir="1">▼</button>' +
+              '<button type="button" class="content-card__remove" data-action="remove" data-id="' + item.id + '" data-url="' + esc(item.url) + '">წაშლა</button>' +
+            '</div></div>';
+        }).join("") : '<div class="muted">ფოტოები ჯერ არ არის.</div>') + '</div></div>';
+    }).join("");
+  }
+
+  function handleUpload(key, files) {
+    if (!STORE) return;
+    var pending = Array.prototype.filter.call(files || [], function (f) { return f && f.type && f.type.indexOf("image/") === 0; });
+    if (!pending.length) return;
+    setContentStatus("იტვირთება… (" + pending.length + ")");
+    var base = rowsFor(key).length;
+    var chain = Promise.resolve();
+    pending.forEach(function (file, i) {
+      chain = chain.then(function () {
+        return STORE.uploadFile(file).then(function (up) {
+          return STORE.insertImage(key, up.url, file.name, "", base + i);
+        });
+      });
+    });
+    chain.then(reloadAndRender).then(function () {
+      setContentStatus("ატვირთულია ✓", true);
+    }).catch(function (err) {
+      setContentStatus("შეცდომა: " + (err && err.message || err), false);
+    });
+  }
+
+  function removeImg(id, url) {
+    if (!STORE) return;
+    if (!confirm("წავშალო ეს ფოტო?")) return;
+    setContentStatus("იშლება…");
+    STORE.deleteImage(id, url).then(reloadAndRender).then(function () {
+      setContentStatus("წაშლილია ✓", true);
+    }).catch(function (err) {
+      setContentStatus("შეცდომა: " + (err && err.message || err), false);
+    });
+  }
+
+  function moveImg(key, id, dir) {
+    if (!STORE) return;
+    var rows = rowsFor(key).slice();
+    var idx = -1;
+    rows.forEach(function (r, i) { if (String(r.id) === String(id)) idx = i; });
+    var to = idx + dir;
+    if (idx < 0 || to < 0 || to >= rows.length) return;
+    var tmp = rows[idx]; rows[idx] = rows[to]; rows[to] = tmp;
+    setContentStatus("ინახება…");
+    STORE.setOrder(rows).then(reloadAndRender).then(function () {
+      setContentStatus("შენახულია ✓", true);
+    }).catch(function (err) {
+      setContentStatus("შეცდომა: " + (err && err.message || err), false);
+    });
+  }
+
+  function reorderByDrop(key, fromId, toId) {
+    if (!STORE || String(fromId) === String(toId)) return;
+    var rows = rowsFor(key).slice();
+    var from = -1, to = -1;
+    rows.forEach(function (r, i) {
+      if (String(r.id) === String(fromId)) from = i;
+      if (String(r.id) === String(toId)) to = i;
+    });
+    if (from < 0 || to < 0) return;
+    var item = rows.splice(from, 1)[0];
+    rows.splice(to, 0, item);
+    setContentStatus("ინახება…");
+    STORE.setOrder(rows).then(reloadAndRender).then(function () {
+      setContentStatus("შენახულია ✓", true);
+    }).catch(function (err) {
+      setContentStatus("შეცდომა: " + (err && err.message || err), false);
+    });
+  }
+
+  var contentHost = document.getElementById("contentAdmin");
+
+  contentHost.addEventListener("change", function (e) {
+    var input = e.target;
+    if (input.matches(".content-upload")) {
+      handleUpload(input.getAttribute("data-key"), input.files);
+      input.value = "";
+      return;
+    }
+    if (input.matches("[data-field]")) {
+      var id = input.getAttribute("data-id");
+      var field = input.getAttribute("data-field");
+      var patch = {}; patch[field] = input.value;
+      setContentStatus("ინახება…");
+      STORE.updateImage(id, patch).then(function () {
+        setContentStatus("შენახულია ✓", true);
+      }).catch(function (err) {
+        setContentStatus("შეცდომა: " + (err && err.message || err), false);
+      });
+    }
+  });
+
+  contentHost.addEventListener("click", function (e) {
+    var rm = e.target.closest("[data-action='remove']");
+    if (rm) { removeImg(rm.getAttribute("data-id"), rm.getAttribute("data-url")); return; }
+    var mv = e.target.closest("[data-action='move']");
+    if (mv) { moveImg(mv.getAttribute("data-key"), mv.getAttribute("data-id"), parseInt(mv.getAttribute("data-dir"), 10)); }
+  });
+
+  contentHost.addEventListener("dragstart", function (e) {
+    var card = e.target.closest(".content-card");
+    if (!card) return;
+    card.classList.add("is-dragging");
+    e.dataTransfer.setData("text/plain", card.getAttribute("data-key") + ":" + card.getAttribute("data-id"));
+  });
+
+  contentHost.addEventListener("dragend", function () {
+    document.querySelectorAll(".content-card.is-dragging").forEach(function (n) { n.classList.remove("is-dragging"); });
+    document.querySelectorAll(".content-card.is-drop-target").forEach(function (n) { n.classList.remove("is-drop-target"); });
+  });
+
+  contentHost.addEventListener("dragover", function (e) {
+    var card = e.target.closest(".content-card");
+    if (card) {
+      e.preventDefault();
+      document.querySelectorAll(".content-card.is-drop-target").forEach(function (n) { n.classList.remove("is-drop-target"); });
+      card.classList.add("is-drop-target");
+    }
+  });
+
+  contentHost.addEventListener("drop", function (e) {
+    var dz = e.target.closest(".content-upload-drop");
+    if (dz && e.dataTransfer && e.dataTransfer.files && e.dataTransfer.files.length) {
+      e.preventDefault();
+      dz.classList.remove("is-active");
+      handleUpload(dz.getAttribute("data-dropzone"), e.dataTransfer.files);
+      return;
+    }
+    var card = e.target.closest(".content-card");
+    if (!card) return;
+    e.preventDefault();
+    var data = e.dataTransfer.getData("text/plain");
+    if (!data) return;
+    var parts = data.split(":");
+    var fromKey = parts[0], fromId = parts.slice(1).join(":");
+    var toKey = card.getAttribute("data-key");
+    var toId = card.getAttribute("data-id");
+    if (fromKey === toKey) reorderByDrop(fromKey, fromId, toId);
+    document.querySelectorAll(".content-card.is-drop-target").forEach(function (n) { n.classList.remove("is-drop-target"); });
+  });
+
+  contentHost.addEventListener("dragenter", function (e) {
+    var dz = e.target.closest(".content-upload-drop");
+    if (dz) dz.classList.add("is-active");
+  });
+
+  contentHost.addEventListener("dragleave", function (e) {
+    var dz = e.target.closest(".content-upload-drop");
+    if (dz) dz.classList.remove("is-active");
+  });
+
+  document.getElementById("saveContentBtn").addEventListener("click", function () {
+    setContentStatus("ნახლდება…");
+    reloadAndRender().then(function () { setContentStatus("განახლდა ✓", true); });
+  });
 
   var STATUS_KA = {
     pending: "მოლოდინში",
@@ -83,6 +307,9 @@
       renderCalendar();
       renderRoomsAdmin();
       startRealtimeBookings();
+      return STORE ? STORE.load() : null;
+    }).then(function () {
+      renderContentAdmin();
     });
   }
 
@@ -104,7 +331,9 @@
       document.querySelectorAll(".side__link").forEach(function (b) { b.classList.remove("is-active"); });
       btn.classList.add("is-active");
       document.querySelectorAll(".pane").forEach(function (p) { p.hidden = true; });
-      document.getElementById("pane-" + btn.getAttribute("data-pane")).hidden = false;
+      var targetPane = document.getElementById("pane-" + btn.getAttribute("data-pane"));
+      if (targetPane) targetPane.hidden = false;
+      if (btn.getAttribute("data-pane") === "content") renderContentAdmin();
     });
   });
 
