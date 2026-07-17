@@ -1,0 +1,7 @@
+# secrets & non-runtime files — never ship to the CDN
+.env
+.env.local
+.env*.local
+sql/
+scripts/
+*.md
