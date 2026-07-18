@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════
-   HOTEL AGAVA — i18n (KA default / EN / RU)
+   HOTEL AGAVA — i18n (KA default / EN / RU / TR)
    Text-dictionary translation over DOM — no markup changes needed.
    Lang stored in localStorage("agava_lang"); switch = reload.
    ═══════════════════════════════════════════ */
@@ -8,12 +8,12 @@
 
   var LANG = "ka";
   try { LANG = localStorage.getItem("agava_lang") || "ka"; } catch (e) {}
-  var urlLang = location.search.match(/[?&]lang=(ka|en|ru)/);
+  var urlLang = location.search.match(/[?&]lang=(ka|en|ru|tr)/);
   if (urlLang) {
     LANG = urlLang[1];
     try { localStorage.setItem("agava_lang", LANG); } catch (e) {}
   }
-  if (LANG !== "en" && LANG !== "ru") LANG = "ka";
+  if (LANG !== "en" && LANG !== "ru" && LANG !== "tr") LANG = "ka";
   window.AGAVA_LANG = LANG;
   document.documentElement.lang = LANG;
 
@@ -34,7 +34,248 @@
 
   if (LANG === "ka") return; /* Georgian = source language, nothing to do */
 
-  var E = LANG === "en" ? 0 : 1; /* index into [en, ru] pairs */
+  var E = LANG === "en" ? 0 : LANG === "ru" ? 1 : 2; /* index into [en, ru, tr] pairs */
+
+  var TR_FALLBACK = {
+    /* meta / navbar */
+    "სასტუმრო აგავა — Hotel Agava": "Otel Agava — Tiflis",
+    "მთავარი ნავიგაცია": "Ana navigasyon",
+    "სასტუმრო აგავა — მთავარი": "Otel Agava — ana sayfa",
+    "მენიუს გახსნა": "Menüyü aç",
+    "მენიუს დახურვა": "Menüyü kapat",
+    "მთავარი": "Ana Sayfa",
+    "ოთახები და ლუქსები": "Odalar ve Süitler",
+    "ოთახები": "Odalar",
+    "სერვისები და კომფორტი": "Hizmetler ve Konfor",
+    "სერვისები": "Hizmetler",
+    "გალერეა": "Galeri",
+    "კონტაქტი": "İletişim",
+
+    /* hero */
+    "ხუთვარსკვლავიანი კომფორტი": "Beş yıldızlı konfor",
+    "მოგესალმებით აგავაში": "Agava'ya hoş geldiniz",
+    "მოგესალმებით": "Hoş geldiniz",
+    "კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა თბილისში — თქვენი სრულყოფილი დასვენებისთვის":
+      "Tiflis'te konfor, zarafet ve Gürcü misafirperverliği — kusursuz konaklamanız için",
+    "ოთახების ნახვა": "Odaları Gör",
+    "დასქროლეთ": "Aşağı kaydırın",
+    "ჩამოსქროლვა": "Aşağı kaydırın",
+    "სასტუმრო": "Otel",
+    "აგავა": "AGAVA",
+
+    /* stats */
+    "სასტუმროს მაჩვენებლები": "Otel göstergeleri",
+    "კომფორტული ნომერი": "Konforlu oda",
+    "შეფასება Booking.com-ზე": "Booking.com puanı",
+    "სტუმრის შეფასება": "Misafir değerlendirmesi",
+    "მომსახურება": "Hizmet",
+
+    /* features */
+    "მოსახერხებელი მდებარეობა": "Elverişli konum",
+    "მარტივად მისადგომი ადგილმდებარეობა — ქალაქის ცენტრთან და მთავარ გზებთან ახლოს.":
+      "Kolay ulaşılabilir konum — şehir merkezine ve ana yollara yakın.",
+    "კომფორტული ოთახები": "Konforlu odalar",
+    "თანამედროვე და ელეგანტურად მოწყობილი ოთახები — ცის ჭერით და განსაკუთრებული დიზაინით.":
+      "Modern ve zarif döşenmiş odalar — gökyüzü tavanları ve özgün tasarımla.",
+    "სტუმართმოყვარე პერსონალი": "Misafirperver personel",
+    "ჩვენი გუნდი ზრუნავს, რომ თქვენი ყოფნა იყოს სასიამოვნო და დაუვიწყარი — ნებისმიერ დროს.":
+      "Ekibimiz, konaklamanızın keyifli ve unutulmaz olması için her an özen gösterir.",
+    "საუკეთესო ფასები": "En iyi fiyatlar",
+    "მიიღეთ მაქსიმალური კომფორტი ხელმისაწვდომ ფასად — სპეციალური შეთავაზებებით.":
+      "Uygun fiyata maksimum konfor — özel tekliflerle.",
+
+    /* about */
+    "სასტუმრო, სადაც კომფორტი ხელოვნებას ხვდება": "Konforun sanatla buluştuğu bir otel",
+    "სასტუმრო აგავა გთავაზობთ ელეგანტურად მოწყობილ ოთახებს, გამორჩეული ინტერიერით — ცის ჭერებით, კლასიკური ავეჯითა და თბილი განათებით. ჩვენი მიზანია, ყოველი სტუმარი თავს განსაკუთრებულად გრძნობდეს.":
+      "Otel Agava, özgün iç mekânlara sahip zarif döşenmiş odalar sunar — gökyüzü tavanları, klasik mobilyalar ve sıcak aydınlatma. Amacımız her misafirin kendini özel hissetmesidir.",
+    "ვრცელი ფოიე, მყუდრო ეზო, დაცული პარკინგი და ყურადღებიანი პერსონალი — ყველაფერი თქვენი დასვენებისთვის.":
+      "Geniş lobi, şirin avlu, güvenli otopark ve ilgili personel — dinlenmeniz için her şey.",
+    "ელეგანტური ლუქსი და სტანდარტული ოთახები": "Zarif süitler ve standart odalar",
+    "ოჯახური ნომრები 3–4 სტუმარზე": "3–4 misafir için aile odaları",
+    "გაიგეთ მეტი": "Daha fazla bilgi",
+    "დახვეწილი და მყუდრო": "Zarif ve huzurlu",
+    "თანამედროვე და კომფორტული": "Modern ve konforlu",
+
+    /* services */
+    "უფასო Wi-Fi": "Ücretsiz Wi-Fi",
+    "მაღალსიჩქარიანი ინტერნეტი სასტუმროს მთელ ტერიტორიაზე.": "Otelin her yerinde yüksek hızlı internet.",
+    "დაცული პარკინგი": "Güvenli otopark",
+    "უფასო და დაცული ავტოსადგომი სასტუმროს სტუმრებისთვის.": "Otel misafirleri için ücretsiz ve güvenli otopark.",
+    "გემრიელი საუზმე ყოველ დილით — მრავალფეროვანი მენიუთი.": "Her sabah zengin menülü lezzetli kahvaltı.",
+    "საუზმე": "Kahvaltı",
+    "ტრანსფერის სერვისი აეროპორტიდან და აეროპორტამდე — წინასწარი მოთხოვნით.": "Havalimanına gidiş-dönüş transfer hizmeti — ön talep üzerine.",
+    "ტრანსფერი": "Transfer",
+    "24/7 მიღება": "24/7 resepsiyon",
+    "რეცეფცია მუშაობს მთელი დღე-ღამის განმავლობაში.": "Resepsiyon gün boyu açıktır.",
+    "სამრეცხაო და დაუთოება": "Çamaşır ve ütü",
+    "სამრეცხაოსა და დაუთოების მომსახურება ადგილზე.": "Yerinde çamaşır ve ütü hizmeti.",
+
+    /* reviews */
+    "რას ამბობენ სტუმრები": "Misafirler ne diyor",
+    "სტუმრების შეფასებები": "Misafir Değerlendirmeleri",
+    "შესანიშნავი": "Mükemmel",
+    "94 შეფასება · Booking.com": "94 değerlendirme · Booking.com",
+    "პერსონალი": "Personel",
+    "სისუფთავე": "Temizlik",
+    "კომფორტი": "Konfor",
+    "ფასი / ხარისხი": "Fiyat / kalite",
+    "„ბევრ მაღალი კლასის სასტუმროში ვყოფილვარ და ზოგჯერ უკმაყოფილო დავრჩენილვარ. ამ სასტუმრომ კი სასიამოვნოდ გამაკვირვა — ყველაფერი, რაც მჭირდებოდა, ოთახში იყო და კარგად ორგანიზებული.“":
+      "“Birçok üst düzey otelde kaldım ve bazen hayal kırıklığına uğradım. Bu otel beni hoş bir şekilde şaşırttı — ihtiyacım olan her şey odadaydı ve düzenliydi.”",
+    "„ერთ-ერთი საუკეთესო სასტუმრო — სისუფთავე, სითბო და კომფორტი. ეზოში პარკინგიც აქვთ, რაც ძალიან მოსახერხებელია. ეზოშივე შეგიძლიათ დაისვენოთ და ყავით დატკბეთ. დიდი რეკომენდაცია ჩვენგან!“":
+      "“En iyi otellerden biri — temizlik, sıcaklık ve konfor. Avluda otopark da var, bu çok kullanışlı. Avluda dinlenip kahvenizi yudumlayabilirsiniz. Kesinlikle tavsiye ederiz!”",
+    "„კომფორტული სასტუმრო, კარგად მოვლილი ოთახები და მეგობრული, ყურადღებიანი პერსონალი. ატმოსფერო თბილი და მისასალმებელია — სიამოვნებით დავბრუნდები.“":
+      "“Konforlu bir otel, bakımlı odalar ve güler yüzlü, ilgili personel. Atmosfer sıcak ve davetkâr — memnuniyetle geri dönerim.”",
+    "თორნიკე": "Tornike",
+    "თურქია": "Türkiye",
+    "საქართველო": "Gürcistan",
+    "არაბთა გაერთიანებული საამიროები": "Birleşik Arap Emirlikleri",
+
+    /* gallery + cta */
+    "დაათვალიერეთ": "Göz atın",
+    "ლობი": "Lobi",
+    "ჩვენი შენობა": "Binamız",
+    "დაგეგმეთ თქვენი დასვენება აგავაში": "Agava'da tatilinizi planlayın",
+    "დაჯავშნეთ ოთახი დღესვე და მიიღეთ საუკეთესო ფასი — პირდაპირ ჩვენგან.": "Bugün oda ayırtın ve en iyi fiyatı alın — doğrudan bizden.",
+    "დაჯავშნეთ ახლავე": "Şimdi rezervasyon yap",
+
+    /* FAQ */
+    "ხშირად დასმული კითხვები": "Sıkça sorulan sorular",
+    "რომელ საათზეა შესვლა და გასვლა?": "Giriş ve çıkış saatleri nedir?",
+    "შესვლა (check-in) — 13:00-დან, გასვლა (check-out) — 12:00-მდე. ადრეული შესვლა ან გვიანი გასვლა შესაძლებელია წინასწარი შეთანხმებით, ხელმისაწვდომობის მიხედვით.":
+      "Giriş 13:00'ten itibaren, çıkış 12:00'ye kadar. Erken giriş veya geç çıkış, uygunluğa göre önceden anlaşmayla mümkündür.",
+    "როგორ ხდება გადახდა?": "Ödeme nasıl yapılır?",
+    "გადახდა ხდება ადგილზე, სასტუმროში — ნაღდი ანგარიშსწორებით ან ბარათით. ონლაინ ჯავშნისთვის წინასწარი გადახდა არ არის საჭირო.":
+      "Ödeme otelde yerinde yapılır — nakit veya kartla. Online rezervasyon için ön ödeme gerekmez.",
+    "როგორია გაუქმების პირობები?": "İptal koşulları nelerdir?",
+    "ჯავშნის უფასო გაუქმება შესაძლებელია ჩამოსვლამდე 24 საათით ადრე — დაგვირეკეთ ან მოგვწერეთ WhatsApp-ზე ჯავშნის ნომრის მითითებით.":
+      "Rezervasyon, gelişten 24 saat öncesine kadar ücretsiz iptal edilebilir — bizi arayın veya rezervasyon numaranızla WhatsApp'tan yazın.",
+    "არის თუ არა პარკინგი?": "Otopark var mı?",
+    "დიახ, სასტუმროს აქვს უფასო და დაცული ავტოსადგომი სტუმრებისთვის — ეზოშივე.": "Evet, otelin misafirler için ücretsiz ve güvenli otoparkı var — avluda.",
+    "შედის თუ არა საუზმე ფასში?": "Kahvaltı fiyata dahil mi?",
+    "საუზმე შესაძლებელია დამატებით — მრავალფეროვანი მენიუთი ყოველ დილით. მიუთითეთ ჯავშნის კომენტარში ან შეუთანხმდით რეცეფციას.":
+      "Kahvaltı ek olarak sunulur — her sabah zengin menüyle. Rezervasyon notunda belirtin veya resepsiyonla anlaşın.",
+    "დაშვებულია თუ არა შინაური ცხოველები?": "Evcil hayvan kabul ediliyor mu?",
+    "შინაური ცხოველების შესახებ გთხოვთ წინასწარ დაგვიკავშირდეთ — განვიხილავთ ინდივიდუალურად.": "Evcil hayvanlar için lütfen önceden bizimle iletişime geçin — her durumu ayrı değerlendiriyoruz.",
+
+    /* contact */
+    "დაგვიკავშირდით": "İletişime geçin",
+    "მისამართი": "Adres",
+    "თბილისი, აკაკი ბელიაშვილის ქ. 161": "Akaki Beliaşvili Cad. 161, Tiflis",
+    "ამერიკის საელჩო — 800 მ · სარაჯიშვილის მეტრო — 2.2 კმ · აეროპორტი — 23 კმ": "ABD Büyükelçiliği — 800 m · Sarajişvili metrosu — 2,2 km · Havalimanı — 23 km",
+    "ტელეფონი": "Telefon",
+    "მოგვწერეთ WhatsApp-ზე": "WhatsApp'tan yazın",
+    "ელფოსტა": "E-posta",
+    "რეცეფცია — 24/7": "Resepsiyon — 24/7",
+    "შესვლა: 13:00 · გასვლა: 12:00": "Giriş: 13:00 · Çıkış: 12:00",
+    "სასტუმრო აგავა რუკაზე — ბელიაშვილის 161, თბილისი": "Otel Agava haritada — Beliaşvili Cad. 161, Tiflis",
+
+    /* quick booking form */
+    "დაჯავშნეთ ოთახი": "Oda ayırtın",
+    "სტუმრების რაოდენობა": "Misafir sayısı",
+    "სტუმრები": "Misafirler",
+    "1 სტუმარი": "1 misafir",
+    "2 სტუმარი": "2 misafir",
+    "3 სტუმარი": "3 misafir",
+    "4 სტუმარი": "4 misafir",
+    "სახელი": "Ad",
+    "გვარი": "Soyad",
+    "კომენტარი / სპეციალური მოთხოვნა": "Yorum / özel istek",
+    "მაგ.: გვიანი ჩამოსვლა, დამატებითი საწოლი, ტრანსფერი…": "Örn.: geç giriş, ilave yatak, transfer…",
+    "✓ ჯავშანი მიღებულია! ნომერი:": "✓ Rezervasyon alındı! Numara:",
+    "WhatsApp-ით დადასტურება": "WhatsApp ile onayla",
+
+    /* footer */
+    "კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა.": "Konfor, zarafet ve Gürcü misafirperverliği.",
+    "ნავიგაცია": "Navigasyon",
+    "ქვედა ნავიგაცია": "Alt navigasyon",
+    "რეცეფცია: 24/7": "Resepsiyon: 24/7",
+    "სასტუმრო აგავა · Hotel Agava — ყველა უფლება დაცულია": "Otel Agava — tüm hakları saklıdır",
+
+    /* wizard */
+    "ოთახის დაჯავშნა": "Oda rezervasyonu",
+    "თარიღები": "Tarihler",
+    "მონაცემები": "Bilgiler",
+    "შესვლა": "Giriş",
+    "გასვლა": "Çıkış",
+    "თავისუფალი ოთახების ნახვა": "Boş odaları göster",
+    "← თარიღების შეცვლა": "← Tarihleri değiştir",
+    "← ოთახის შეცვლა": "← Odayı değiştir",
+    "ჯავშანი მიღებულია!": "Rezervasyon alındı!",
+    "ჯავშნის ნომერი:": "Rezervasyon numarası:",
+    "ჩვენ დაგიდასტურებთ 24 საათის განმავლობაში. სწრაფი დადასტურებისთვის მოგვწერეთ WhatsApp-ზე:":
+      "24 saat içinde onaylayacağız. Daha hızlı onay için WhatsApp'tan yazın:",
+    "დახურვა": "Kapat",
+    "მოწმდება ხელმისაწვდომობა…": "Uygunluk kontrol ediliyor…",
+    "იგზავნება…": "Gönderiliyor…",
+    "ჯამური ღირებულება": "Toplam tutar",
+    "გადახდა — ადგილზე, სასტუმროში. უფასო გაუქმება ჩამოსვლამდე 24 სთ-ით ადრე.": "Ödeme otelde yerinde. Gelişten 24 saat öncesine kadar ücretsiz iptal.",
+    "ამ თარიღებზე დაკავებულია": "Bu tarihlerde dolu",
+    "არჩევა": "Seç",
+    "ხელმისაწვდომობა დადასტურდება ოპერატორის მიერ.": "Uygunluk operatörümüz tarafından onaylanacaktır.",
+    "ამ პარამეტრებით ოთახი ვერ მოიძებნა — სცადეთ სხვა თარიღები ან მოგვწერეთ WhatsApp-ზე.": "Bu parametrelere uygun oda bulunamadı — başka tarih deneyin veya WhatsApp'tan yazın.",
+
+    /* validation / statuses */
+    "აირჩიეთ ორივე თარიღი.": "Her iki tarihi de seçin.",
+    "აირჩიეთ თარიღები.": "Tarihleri seçin.",
+    "გასვლის თარიღი შესვლაზე გვიან უნდა იყოს.": "Çıkış tarihi girişten sonra olmalı.",
+    "წარსული თარიღი ვერ აირჩევა.": "Geçmiş tarih seçilemez.",
+    "მაქსიმუმ 30 ღამე.": "En fazla 30 gece.",
+    "შეავსეთ სახელი და გვარი.": "Ad ve soyadı doldurun.",
+    "შეიყვანეთ სწორი ტელეფონი.": "Geçerli bir telefon girin.",
+    "შეცდომა — სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.": "Hata — tekrar deneyin veya WhatsApp'tan yazın.",
+    "სამწუხაროდ, ეს ოთახი ახლახან დაიკავეს — სცადეთ სხვა თარიღები.": "Maalesef bu oda az önce ayırtıldı — başka tarih deneyin.",
+    "ამ თარიღებზე ეს ოთახი დაკავებულია — სცადეთ სხვა თარიღები.": "Bu oda bu tarihlerde dolu — başka tarih deneyin.",
+    "ჯავშნის დეტალები გაიგზავნა WhatsApp-ით — დაასრულეთ იქ.": "Rezervasyon detayları WhatsApp ile gönderildi — orada tamamlayın.",
+
+    /* room cards / detail */
+    "სტანდარტული ოთახი — 2 სტუმარზე": "Standart Oda — 2 misafir",
+    "ლუქსი — 2 სტუმარზე": "Lüks Oda — 2 misafir",
+    "სუპერლუქსი — 2 სტუმარზე": "Süper Lüks — 2 misafir",
+    "საოჯახო ოთახი — 3 სტუმარზე": "Aile Odası — 3 misafir",
+    "საოჯახო ოთახი — 4 სტუმარზე": "Aile Odası — 4 misafir",
+    "ორ ოთახიანი ლუქსი": "İki Odalı Süit",
+    "ლუქსი ჯაკუზით": "Jakuzili Kral Odası",
+    "სუპერ ლუქსი ჯაკუზით": "Jakuzili Süper Süit",
+    "სუპერლუქსი": "Süper Lüks",
+    "სუპერ ლუქსი": "Süper Süit",
+    "1 დიდი ორმაგი საწოლი": "1 çok büyük çift kişilik yatak",
+    "VIP ლუქსი": "VIP Süit",
+    "ლუქსი": "Lüks",
+    "სტანდარტი": "Standart",
+    "საოჯახო": "Aile",
+    "სეზონური": "Sezonluk",
+    "ნახვა": "Gör",
+    "დაჯავშნა": "Rezervasyon",
+    "დარეკვა": "Ara",
+    "წინა ფოტო": "Önceki fotoğraf",
+    "შემდეგი ფოტო": "Sonraki fotoğraf",
+    "1 King საწოლი": "1 King yatak",
+    "1 საწოლი": "1 yatak",
+    "2 საწოლი": "2 yatak",
+    "3 საწოლი": "3 yatak",
+    "ამ ოთახში": "Bu odada",
+    "— აირჩიეთ სხვა ოთახი.": "— başka oda seçin.",
+    "ჯაკუზი": "Jakuzi",
+    "კონდიციონერი": "Klima",
+    "მაცივარი": "Buzdolabı",
+    "აბაზანა": "Banyo",
+    "ცის ჭერი": "Gökyüzü tavan",
+    "გადახდა ადგილზე · უფასო გაუქმება ჩამოსვლამდე 24 სთ-ით ადრე · შესვლა 13:00, გასვლა 12:00":
+      "Ödeme yerinde · Gelişten 24 saat öncesine kadar ücretsiz iptal · Giriş 13:00, çıkış 12:00",
+
+    /* CTA tile */
+    "ვერ იპოვეთ სასურველი ოთახი?": "Aradığınız odayı bulamadınız mı?",
+    "დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.": "Bize ulaşın, en iyi seçimde yardımcı olalım — giriş 13:00, çıkış 12:00.",
+    "დაგვიკავშირდით და დაგეხმარებით": "Bize ulaşın, yardımcı olalım",
+
+    /* small tokens */
+    "ჯამში:": "Toplam:",
+    "/ღამე": "/gece",
+    "ოთახი": "Oda",
+    "იან": "Oca", "თებ": "Şub", "მარ": "Mar", "აპრ": "Nis",
+    "მაი": "May", "ივნ": "Haz", "ივლ": "Tem", "აგვ": "Ağu",
+    "სექ": "Eyl", "ოქტ": "Eki", "ნოე": "Kas", "დეკ": "Ara"
+  };
 
   /* ─── literal dictionary: ka → [en, ru] ─── */
   var D = {
@@ -250,9 +491,11 @@
     "საოჯახო ოთახი — 3 სტუმარზე": ["Family Room — 3 guests", "Семейный номер — 3 гостя"],
     "საოჯახო ოთახი — 4 სტუმარზე": ["Family Room — 4 guests", "Семейный номер — 4 гостя"],
     "ორ ოთახიანი ლუქსი": ["Two-Room Suite", "Двухкомнатный люкс"],
+    "ლუქსი ჯაკუზით": ["King Room with Spa Bath", "Люкс с джакузи"],
     "სუპერ ლუქსი ჯაკუზით": ["Super Suite with Jacuzzi", "Суперлюкс с джакузи"],
     "სუპერლუქსი": ["Superior", "Суперлюкс"],
     "სუპერ ლუქსი": ["Super Suite", "Суперлюкс"],
+    "1 დიდი ორმაგი საწოლი": ["1 extra-large double bed", "1 большая двухспальная кровать"],
     "VIP ლუქსი": ["VIP Suite", "VIP люкс"],
     "ლუქსი": ["Deluxe", "Люкс"],
     "სტანდარტი": ["Standard", "Стандарт"],
@@ -294,6 +537,16 @@
 
   var KEYS = Object.keys(D).sort(function (a, b) { return b.length - a.length; });
 
+  function getTranslationValue(entry, langIndex) {
+    if (!entry) return "";
+    if (Array.isArray(entry)) {
+      if (langIndex === 2 && entry.length >= 3) return entry[2];
+      if (langIndex === 1 && entry.length >= 2) return entry[1];
+      return entry[0];
+    }
+    return entry;
+  }
+
   /* ─── numeric patterns with plural handling ─── */
   function ruPlural(n, one, few, many) {
     var m10 = n % 10, m100 = n % 100;
@@ -302,13 +555,13 @@
     return many;
   }
   var PATTERNS = [
-    [/(\d+)\s*ღამე/g, function (n) { return n + (E === 0 ? (n === 1 ? " night" : " nights") : " " + ruPlural(n, "ночь", "ночи", "ночей")); }],
-    [/(\d+)\s*სტუმარია/g, function (n) { return E === 0 ? n + " guests" : n + " " + ruPlural(n, "гость", "гостя", "гостей"); }],
-    [/(\d+)\s*სტუმარი/g, function (n) { return n + (E === 0 ? (n === 1 ? " guest" : " guests") : " " + ruPlural(n, "гость", "гостя", "гостей")); }],
-    [/(\d+)\s*ოთახი/g, function (n) { return n + (E === 0 ? (n === 1 ? " room" : " rooms") : " " + ruPlural(n, "номер", "номера", "номеров")); }],
-    [/(\d+)\s*ნომერი/g, function (n) { return n + (E === 0 ? (n === 1 ? " room" : " rooms") : " " + ruPlural(n, "номер", "номера", "номеров")); }],
-    [/დარჩა\s*(\d+)/g, function (n) { return E === 0 ? "only " + n + " left" : "осталось " + n; }],
-    [/მაქსიმუმ\s*(\d+)/g, function (n) { return E === 0 ? "maximum " + n : "максимум " + n; }],
+    [/(\d+)\s*ღამე/g, function (n) { return n + (E === 0 ? (n === 1 ? " night" : " nights") : E === 2 ? " gece" : " " + ruPlural(n, "ночь", "ночи", "ночей")); }],
+    [/(\d+)\s*სტუმარია/g, function (n) { return E === 0 ? n + " guests" : E === 2 ? n + " misafir" : n + " " + ruPlural(n, "гость", "гостя", "гостей"); }],
+    [/(\d+)\s*სტუმარი/g, function (n) { return n + (E === 0 ? (n === 1 ? " guest" : " guests") : E === 2 ? " misafir" : " " + ruPlural(n, "гость", "гостя", "гостей")); }],
+    [/(\d+)\s*ოთახი/g, function (n) { return n + (E === 0 ? (n === 1 ? " room" : " rooms") : E === 2 ? " oda" : " " + ruPlural(n, "номер", "номера", "номеров")); }],
+    [/(\d+)\s*ნომერი/g, function (n) { return n + (E === 0 ? (n === 1 ? " room" : " rooms") : E === 2 ? " oda" : " " + ruPlural(n, "номер", "номера", "номеров")); }],
+    [/დარჩა\s*(\d+)/g, function (n) { return E === 0 ? "only " + n + " left" : E === 2 ? "sadece " + n + " kaldı" : "осталось " + n; }],
+    [/მაქსიმუმ\s*(\d+)/g, function (n) { return E === 0 ? "maximum " + n : E === 2 ? "en fazla " + n : "максимум " + n; }],
     [/(\d+)\s*მ²/g, function (n) { return n + " m²"; }]
   ];
 
@@ -324,7 +577,10 @@
     for (i = 0; i < KEYS.length; i++) {
       if (!KA_RE.test(s)) return s;
       k = KEYS[i];
-      if (s.indexOf(k) !== -1) s = s.split(k).join(D[k][E]);
+      if (s.indexOf(k) !== -1) {
+        var translated = LANG === "tr" && TR_FALLBACK[k] ? TR_FALLBACK[k] : getTranslationValue(D[k], E);
+        s = s.split(k).join(translated);
+      }
     }
     return s;
   }

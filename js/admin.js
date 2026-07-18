@@ -44,15 +44,51 @@
     return blocks;
   }
 
-  function rowsFor(key) {
+  /* live array reference in the store (created if missing) — mutate directly */
+  function listRef(key) {
     if (!STORE) return [];
-    if (key.indexOf("room:") === 0) return STORE.roomImages[key.slice(5)] || [];
-    return STORE.sections[key] || [];
+    if (key.indexOf("room:") === 0) {
+      var slug = key.slice(5);
+      return STORE.roomImages[slug] || (STORE.roomImages[slug] = []);
+    }
+    return STORE.sections[key] || (STORE.sections[key] = []);
+  }
+  function sortByOrder(arr) {
+    arr.sort(function (a, b) { return (a.sort || 0) - (b.sort || 0); });
+    return arr;
   }
 
   function reloadAndRender() {
     if (!STORE) return Promise.resolve();
     return STORE.reload().then(renderContentAdmin);
+  }
+
+  function cardHTML(key, item) {
+    return '<div class="content-card" draggable="true" data-key="' + esc(key) + '" data-id="' + item.id + '">' +
+      '<img class="content-card__img" src="' + esc(item.url) + '" alt="" loading="lazy">' +
+      '<div class="content-card__fields">' +
+        '<input type="text" value="' + esc(item.alt || "") + '" data-id="' + item.id + '" data-field="alt" placeholder="Alt ტექსტი">' +
+        '<input type="text" value="' + esc(item.caption || "") + '" data-id="' + item.id + '" data-field="caption" placeholder="კაპტიონი">' +
+      '</div>' +
+      '<div class="content-card__actions">' +
+        '<button type="button" class="content-card__move" data-action="move" data-key="' + esc(key) + '" data-id="' + item.id + '" data-dir="-1">▲</button>' +
+        '<button type="button" class="content-card__move" data-action="move" data-key="' + esc(key) + '" data-id="' + item.id + '" data-dir="1">▼</button>' +
+        '<button type="button" class="content-card__remove" data-action="remove" data-key="' + esc(key) + '" data-id="' + item.id + '" data-url="' + esc(item.url) + '">წაშლა</button>' +
+      '</div></div>';
+  }
+  function listHTML(key, items) {
+    return items.length
+      ? items.map(function (it) { return cardHTML(key, it); }).join("")
+      : '<div class="muted">ფოტოები ჯერ არ არის.</div>';
+  }
+  /* re-render ONLY one block's list — avoids rebuilding every block/image */
+  function renderBlockList(key) {
+    var host = document.getElementById("contentAdmin");
+    if (!host) return;
+    var block = host.querySelector('.content-block[data-section="' + key + '"]');
+    if (!block) return;
+    var list = block.querySelector(".content-list");
+    if (list) list.innerHTML = listHTML(key, sortByOrder(listRef(key)));
   }
 
   function renderContentAdmin() {
@@ -64,7 +100,7 @@
     }
 
     host.innerHTML = contentBlocks().map(function (block) {
-      var items = rowsFor(block.key);
+      var items = sortByOrder(listRef(block.key));
       var groupClass = block.key.indexOf("room:") === 0 ? " content-block--room" : "";
       return '<div class="content-block' + groupClass + '" data-section="' + esc(block.key) + '">' +
         '<div class="content-block__head"><div>' +
@@ -74,19 +110,7 @@
         '<label class="content-upload-btn abtn abtn--sm"><input class="content-upload" type="file" accept="image/*" multiple data-key="' + esc(block.key) + '" hidden>+ ფოტოს დამატება</label>' +
         '</div>' +
         '<div class="content-upload-drop" data-dropzone="' + esc(block.key) + '">ჩააგდე ფოტო აქ ან დააჭირე ღილაკს ზემოთ</div>' +
-        '<div class="content-list">' + (items.length ? items.map(function (item) {
-          return '<div class="content-card" draggable="true" data-key="' + esc(block.key) + '" data-id="' + item.id + '">' +
-            '<img class="content-card__img" src="' + esc(item.url) + '" alt="">' +
-            '<div class="content-card__fields">' +
-              '<input type="text" value="' + esc(item.alt || "") + '" data-id="' + item.id + '" data-field="alt" placeholder="Alt ტექსტი">' +
-              '<input type="text" value="' + esc(item.caption || "") + '" data-id="' + item.id + '" data-field="caption" placeholder="კაპტიონი">' +
-            '</div>' +
-            '<div class="content-card__actions">' +
-              '<button type="button" class="content-card__move" data-action="move" data-key="' + esc(block.key) + '" data-id="' + item.id + '" data-dir="-1">▲</button>' +
-              '<button type="button" class="content-card__move" data-action="move" data-key="' + esc(block.key) + '" data-id="' + item.id + '" data-dir="1">▼</button>' +
-              '<button type="button" class="content-card__remove" data-action="remove" data-id="' + item.id + '" data-url="' + esc(item.url) + '">წაშლა</button>' +
-            '</div></div>';
-        }).join("") : '<div class="muted">ფოტოები ჯერ არ არის.</div>') + '</div></div>';
+        '<div class="content-list">' + listHTML(block.key, items) + '</div></div>';
     }).join("");
   }
 
@@ -95,66 +119,78 @@
     var pending = Array.prototype.filter.call(files || [], function (f) { return f && f.type && f.type.indexOf("image/") === 0; });
     if (!pending.length) return;
     setContentStatus("იტვირთება… (" + pending.length + ")");
-    var base = rowsFor(key).length;
-    var chain = Promise.resolve();
-    pending.forEach(function (file, i) {
-      chain = chain.then(function () {
-        return STORE.uploadFile(file).then(function (up) {
-          return STORE.insertImage(key, up.url, file.name, "", base + i);
-        });
+    var arr = listRef(key);
+    var base = arr.length;
+    /* upload in parallel; append each row to the live list as it lands */
+    Promise.all(pending.map(function (file, i) {
+      return STORE.uploadFile(file).then(function (up) {
+        return STORE.insertImage(key, up.url, file.name, "", base + i);
+      }).then(function (row) {
+        if (row) { arr.push(row); renderBlockList(key); }
+        return row;
       });
-    });
-    chain.then(reloadAndRender).then(function () {
+    })).then(function () {
+      renderBlockList(key);
       setContentStatus("ატვირთულია ✓", true);
     }).catch(function (err) {
       setContentStatus("შეცდომა: " + (err && err.message || err), false);
+      reloadAndRender();
     });
   }
 
-  function removeImg(id, url) {
+  function removeImg(key, id, url) {
     if (!STORE) return;
     if (!confirm("წავშალო ეს ფოტო?")) return;
+    var arr = listRef(key);
+    var idx = -1;
+    arr.forEach(function (r, i) { if (String(r.id) === String(id)) idx = i; });
+    if (idx >= 0) arr.splice(idx, 1);
+    renderBlockList(key);                 /* instant */
     setContentStatus("იშლება…");
-    STORE.deleteImage(id, url).then(reloadAndRender).then(function () {
+    STORE.deleteImage(id, url).then(function () {
       setContentStatus("წაშლილია ✓", true);
     }).catch(function (err) {
       setContentStatus("შეცდომა: " + (err && err.message || err), false);
+      reloadAndRender();
+    });
+  }
+
+  function persistOrder(key, arr) {
+    STORE.setOrder(arr).then(function () {
+      setContentStatus("შენახულია ✓", true);
+    }).catch(function (err) {
+      setContentStatus("შეცდომა: " + (err && err.message || err), false);
+      reloadAndRender();
     });
   }
 
   function moveImg(key, id, dir) {
     if (!STORE) return;
-    var rows = rowsFor(key).slice();
+    var arr = listRef(key);
     var idx = -1;
-    rows.forEach(function (r, i) { if (String(r.id) === String(id)) idx = i; });
+    arr.forEach(function (r, i) { if (String(r.id) === String(id)) idx = i; });
     var to = idx + dir;
-    if (idx < 0 || to < 0 || to >= rows.length) return;
-    var tmp = rows[idx]; rows[idx] = rows[to]; rows[to] = tmp;
-    setContentStatus("ინახება…");
-    STORE.setOrder(rows).then(reloadAndRender).then(function () {
-      setContentStatus("შენახულია ✓", true);
-    }).catch(function (err) {
-      setContentStatus("შეცდომა: " + (err && err.message || err), false);
-    });
+    if (idx < 0 || to < 0 || to >= arr.length) return;
+    var tmp = arr[idx]; arr[idx] = arr[to]; arr[to] = tmp;
+    arr.forEach(function (r, i) { r.sort = i; });
+    renderBlockList(key);                 /* instant */
+    persistOrder(key, arr);
   }
 
   function reorderByDrop(key, fromId, toId) {
     if (!STORE || String(fromId) === String(toId)) return;
-    var rows = rowsFor(key).slice();
+    var arr = listRef(key);
     var from = -1, to = -1;
-    rows.forEach(function (r, i) {
+    arr.forEach(function (r, i) {
       if (String(r.id) === String(fromId)) from = i;
       if (String(r.id) === String(toId)) to = i;
     });
     if (from < 0 || to < 0) return;
-    var item = rows.splice(from, 1)[0];
-    rows.splice(to, 0, item);
-    setContentStatus("ინახება…");
-    STORE.setOrder(rows).then(reloadAndRender).then(function () {
-      setContentStatus("შენახულია ✓", true);
-    }).catch(function (err) {
-      setContentStatus("შეცდომა: " + (err && err.message || err), false);
-    });
+    var item = arr.splice(from, 1)[0];
+    arr.splice(to, 0, item);
+    arr.forEach(function (r, i) { r.sort = i; });
+    renderBlockList(key);                 /* instant */
+    persistOrder(key, arr);
   }
 
   var contentHost = document.getElementById("contentAdmin");
@@ -169,7 +205,13 @@
     if (input.matches("[data-field]")) {
       var id = input.getAttribute("data-id");
       var field = input.getAttribute("data-field");
-      var patch = {}; patch[field] = input.value;
+      var val = input.value;
+      var card = input.closest(".content-card");
+      var key = card && card.getAttribute("data-key");
+      if (key) {
+        listRef(key).forEach(function (r) { if (String(r.id) === String(id)) r[field] = val; });
+      }
+      var patch = {}; patch[field] = val;
       setContentStatus("ინახება…");
       STORE.updateImage(id, patch).then(function () {
         setContentStatus("შენახულია ✓", true);
@@ -181,7 +223,7 @@
 
   contentHost.addEventListener("click", function (e) {
     var rm = e.target.closest("[data-action='remove']");
-    if (rm) { removeImg(rm.getAttribute("data-id"), rm.getAttribute("data-url")); return; }
+    if (rm) { removeImg(rm.getAttribute("data-key"), rm.getAttribute("data-id"), rm.getAttribute("data-url")); return; }
     var mv = e.target.closest("[data-action='move']");
     if (mv) { moveImg(mv.getAttribute("data-key"), mv.getAttribute("data-id"), parseInt(mv.getAttribute("data-dir"), 10)); }
   });
