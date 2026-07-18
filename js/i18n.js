@@ -268,6 +268,10 @@
     "დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.": "Bize ulaşın, en iyi seçimde yardımcı olalım — giriş 13:00, çıkış 12:00.",
     "დაგვიკავშირდით და დაგეხმარებით": "Bize ulaşın, yardımcı olalım",
 
+    /* breakfast add-on */
+    "დაამატეთ საუზმე": "Kahvaltı ekle",
+    "სტუმარი / ღამე": "misafir / gece",
+
     /* small tokens */
     "ჯამში:": "Toplam:",
     "/ღამე": "/gece",
@@ -525,6 +529,10 @@
     "ვერ იპოვეთ სასურველი ოთახი?": ["Can't find the right room?", "Не нашли подходящий номер?"],
     "დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.": ["Contact us and we'll help you choose — check-in 13:00, check-out 12:00.", "Свяжитесь с нами, и мы поможем с выбором — заезд 13:00, выезд 12:00."],
     "დაგვიკავშირდით და დაგეხმარებით": ["Contact us and we'll help", "Свяжитесь с нами, и мы поможем"],
+
+    /* breakfast add-on */
+    "დაამატეთ საუზმე": ["Add breakfast", "Добавить завтрак"],
+    "სტუმარი / ღამე": ["guest / night", "гость / ночь"],
 
     /* small tokens (keep last — longest strings above already handled) */
     "ჯამში:": ["Total:", "Итого:"],

@@ -351,6 +351,7 @@
       return STORE ? STORE.load() : null;
     }).then(function () {
       renderContentAdmin();
+      renderBreakfastSettings();
     });
   }
 
@@ -481,7 +482,9 @@
       return "<tr>" +
         "<td><strong>" + esc(b.booking_number) + "</strong><div class='muted'>" + (b.source || "") + "</div></td>" +
         "<td>" + esc(b.guest_name) + "<div class='muted'>" + esc(b.guest_phone) + "</div></td>" +
-        "<td>" + esc(b.room_types ? b.room_types.name : "") + "<div class='muted'>" + b.guests + " სტუმარი</div></td>" +
+        "<td>" + esc(b.room_types ? b.room_types.name : "") +
+          (b.room_no ? " <span class='room-no'>#" + esc(b.room_no) + "</span>" : "") +
+          "<div class='muted'>" + b.guests + " სტუმარი" + (b.breakfast ? " · 🍳 საუზმე" : "") + "</div></td>" +
         "<td>" + fmtKa(b.check_in) + " → " + fmtKa(b.check_out) + "<div class='muted'>" + nights(b.check_in, b.check_out) + " ღამე</div></td>" +
         "<td><strong>" + (b.total_price != null ? Number(b.total_price) + " ₾" : "—") + "</strong></td>" +
         "<td>" + statusBadge(b.status) + "</td>" +
@@ -519,21 +522,38 @@
   /* ═══ EDIT / ADD MODAL ═══ */
   var editModal = document.getElementById("editModal");
 
+  function fillRoomNoOptions(rtId, selected) {
+    var sel = document.getElementById("ebRoomNo");
+    if (!sel) return;
+    var rt = rtById[rtId];
+    var nums = (rt && rt.room_numbers) || [];
+    sel.innerHTML = '<option value="">—</option>' +
+      nums.map(function (n) { return '<option value="' + esc(n) + '">' + esc(n) + "</option>"; }).join("");
+    sel.value = selected || "";
+  }
+
   function openEdit(b) {
     document.getElementById("editTitle").textContent = b ? "ჯავშნის რედაქტირება" : "ახალი ჯავშანი";
     document.getElementById("ebId").value = b ? b.id : "";
     document.getElementById("ebName").value = b ? b.guest_name : "";
     document.getElementById("ebPhone").value = b ? b.guest_phone : "";
-    document.getElementById("ebRoom").value = b ? b.room_type_id : (ROOM_TYPES[0] ? ROOM_TYPES[0].id : "");
+    var rtId = b ? b.room_type_id : (ROOM_TYPES[0] ? ROOM_TYPES[0].id : "");
+    document.getElementById("ebRoom").value = rtId;
     document.getElementById("ebGuests").value = b ? b.guests : 2;
     document.getElementById("ebIn").value = b ? b.check_in : todayISO();
     document.getElementById("ebOut").value = b ? b.check_out : "";
     document.getElementById("ebStatus").value = b ? b.status : "confirmed";
     document.getElementById("ebPrice").value = b && b.total_price != null ? Number(b.total_price) : "";
     document.getElementById("ebComment").value = b ? (b.comment || "") : "";
+    fillRoomNoOptions(parseInt(rtId, 10), b ? b.room_no : "");
+    document.getElementById("ebBreakfast").checked = b ? !!b.breakfast : false;
     document.getElementById("editStatus").textContent = "";
     editModal.hidden = false;
   }
+
+  document.getElementById("ebRoom").addEventListener("change", function () {
+    fillRoomNoOptions(parseInt(this.value, 10), "");
+  });
   document.getElementById("addBookingBtn").addEventListener("click", function () { openEdit(null); });
   editModal.addEventListener("click", function (e) {
     if (e.target.closest("[data-close-edit]")) editModal.hidden = true;
@@ -555,7 +575,9 @@
       check_in: ci,
       check_out: co,
       status: document.getElementById("ebStatus").value,
-      comment: document.getElementById("ebComment").value.trim() || null
+      comment: document.getElementById("ebComment").value.trim() || null,
+      room_no: document.getElementById("ebRoomNo").value || null,
+      breakfast: document.getElementById("ebBreakfast").checked
     };
     var priceVal = document.getElementById("ebPrice").value;
     payload.total_price = priceVal === "" ? null : Number(priceVal);
@@ -699,6 +721,7 @@
         '<div class="room-row__name">' + esc(rt.name) + "<small>" + esc(rt.bed_type || "") + " · " + (rt.room_size || "—") + " მ² · მაქს. " + rt.max_guests + " სტუმარი</small></div>" +
         '<div><label>ფასი ₾/ღამე</label><input type="number" min="0" class="rr-price" value="' + Number(rt.base_price) + '"></div>' +
         '<div><label>ოთახების რაოდ.</label><input type="number" min="0" class="rr-total" value="' + rt.total_rooms + '"></div>' +
+        '<div class="room-row__nums"><label>ოთახის ნომრები (მძიმით)</label><input type="text" class="rr-nums" placeholder="მაგ.: 410, 411" value="' + esc((rt.room_numbers || []).join(", ")) + '"></div>' +
         '<label class="switch"><input type="checkbox" class="rr-visible"' + (rt.visible ? " checked" : "") + "> საიტზე ჩანს</label>" +
         '<button class="abtn abtn--gold abtn--sm rr-save">შენახვა</button>' +
       "</div>";
@@ -711,14 +734,57 @@
     var row = btn.closest(".room-row");
     var id = parseInt(row.getAttribute("data-rt"), 10);
     btn.textContent = "ინახება…";
+    var numsInput = row.querySelector(".rr-nums");
+    var nums = numsInput
+      ? numsInput.value.split(/[,\s]+/).map(function (s) { return s.trim(); }).filter(Boolean)
+      : [];
     sb.from("room_types").update({
       base_price: Number(row.querySelector(".rr-price").value),
       total_rooms: parseInt(row.querySelector(".rr-total").value, 10),
+      room_numbers: nums,
       visible: row.querySelector(".rr-visible").checked
     }).eq("id", id).then(function (res) {
       btn.textContent = res.error ? "შეცდომა" : "შენახულია ✓";
       setTimeout(function () { btn.textContent = "შენახვა"; }, 1400);
       loadRoomTypes().then(renderCalendar);
+    });
+  });
+
+  /* ═══ BREAKFAST SETTINGS (price + menu) ═══ */
+  function renderBreakfastSettings() {
+    var host = document.getElementById("breakfastSettings");
+    if (!host || !STORE) return;
+    var price = STORE.setting("breakfast_price", "30");
+    var menu = STORE.setting("breakfast_menu", "");
+    host.innerHTML =
+      '<div class="bset__head"><strong>საუზმის პარამეტრები</strong>' +
+        '<button class="abtn abtn--gold abtn--sm" id="bsetSave">შენახვა</button>' +
+        '<span class="content-status" id="bsetStatus"></span>' +
+      '</div>' +
+      '<div class="bset__grid">' +
+        '<div class="bset__fld"><label>ფასი ₾ (თითო სტუმარზე / ღამეზე)</label>' +
+          '<input type="number" min="0" id="bsetPrice" value="' + esc(price) + '"></div>' +
+        '<div class="bset__fld bset__fld--wide"><label>საუზმის მენიუ (ჩანს ჯავშნის დროს)</label>' +
+          '<textarea id="bsetMenu" rows="2" placeholder="ომლეტი • ხაჭაპური • ყავა…">' + esc(menu) + '</textarea></div>' +
+      '</div>';
+  }
+
+  document.getElementById("breakfastSettings").addEventListener("click", function (e) {
+    if (!e.target.closest("#bsetSave")) return;
+    var status = document.getElementById("bsetStatus");
+    var price = document.getElementById("bsetPrice").value;
+    var menu = document.getElementById("bsetMenu").value;
+    status.textContent = "ინახება…";
+    status.className = "content-status";
+    Promise.all([
+      STORE.setSetting("breakfast_price", String(Number(price) || 0)),
+      STORE.setSetting("breakfast_menu", menu)
+    ]).then(function () {
+      status.textContent = "შენახულია ✓";
+      status.className = "content-status is-ok";
+    }).catch(function (err) {
+      status.textContent = "შეცდომა: " + (err && err.message || err);
+      status.className = "content-status is-error";
     });
   });
 })();

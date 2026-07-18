@@ -26,6 +26,8 @@
     sections: {},
     /* slug -> [{id, url, alt, caption, sort}] */
     roomImages: {},
+    /* app_settings key -> value (breakfast_price, breakfast_menu, …) */
+    settings: {},
     load: load,
     reload: load,
     uploadFile: uploadFile,
@@ -35,8 +37,23 @@
     setOrder: setOrder,
     /* helpers for public renderers: return DB rows or [] */
     section: function (key) { return store.sections[key] || []; },
-    room: function (slug) { return store.roomImages[slug] || []; }
+    room: function (slug) { return store.roomImages[slug] || []; },
+    setting: function (key, dflt) {
+      var v = store.settings[key];
+      return (v === undefined || v === null) ? dflt : v;
+    },
+    setSetting: setSetting
   };
+
+  function setSetting(key, value) {
+    if (!sb) return Promise.reject(new Error("supabase not configured"));
+    return sb.from("app_settings").upsert({ key: key, value: value }, { onConflict: "key" })
+      .then(function (res) {
+        if (res.error) throw res.error;
+        store.settings[key] = value;
+        return true;
+      });
+  }
   window.AGAVA_STORE = store;
 
   function groupRows(rows) {
@@ -58,21 +75,28 @@
       store.loaded = true;
       return Promise.resolve(store);
     }
-    return sb.from("site_images").select("*").order("sort", { ascending: true })
-      .then(function (res) {
-        if (!res.error && res.data) {
-          var g = groupRows(res.data);
-          store.sections = g.sections;
-          store.roomImages = g.roomImages;
-          store.ok = true;
-        }
-        store.loaded = true;
-        return store;
-      })
-      .catch(function () {
-        store.loaded = true;
-        return store;
-      });
+    return Promise.all([
+      sb.from("site_images").select("*").order("sort", { ascending: true }),
+      sb.from("app_settings").select("*")
+    ]).then(function (res) {
+      var imgRes = res[0], setRes = res[1];
+      if (imgRes && !imgRes.error && imgRes.data) {
+        var g = groupRows(imgRes.data);
+        store.sections = g.sections;
+        store.roomImages = g.roomImages;
+        store.ok = true;
+      }
+      if (setRes && !setRes.error && setRes.data) {
+        var s = {};
+        setRes.data.forEach(function (row) { s[row.key] = row.value; });
+        store.settings = s;
+      }
+      store.loaded = true;
+      return store;
+    }).catch(function () {
+      store.loaded = true;
+      return store;
+    });
   }
 
   /* ─── Storage upload → returns { url, path } ─── */

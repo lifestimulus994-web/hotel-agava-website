@@ -20,7 +20,9 @@
 
   function loadRoomTypes() {
     if (!sb) return Promise.resolve();
-    return sb.from("room_types").select("*").order("sort").then(function (res) {
+    return sb.from("room_types")
+      .select("id,slug,name,badge,base_price,total_rooms,max_guests,bed_type,room_size,amenities,seasonal,visible,sort")
+      .order("sort").then(function (res) {
       if (res.error || !res.data) return;
       DB.loaded = true;
       res.data.forEach(function (rt) {
@@ -130,7 +132,32 @@
     success: document.getElementById("bwSuccess")
   };
   var stepsBar = document.getElementById("wizardSteps");
-  var state = { checkIn: null, checkOut: null, guests: 2, avail: null, chosen: null, preferSlug: null };
+  var state = { checkIn: null, checkOut: null, guests: 2, avail: null, chosen: null, preferSlug: null, breakfast: false };
+
+  function breakfastPrice() {
+    var s = window.AGAVA_STORE;
+    var v = s ? Number(s.setting("breakfast_price", 30)) : 30;
+    return isNaN(v) ? 0 : v;
+  }
+  function breakfastMenu() {
+    var s = window.AGAVA_STORE;
+    return s ? String(s.setting("breakfast_menu", "")) : "";
+  }
+  function initBreakfastUI() {
+    var priceEl = document.getElementById("bwBreakfastPrice");
+    var menuEl = document.getElementById("bwBreakfastMenu");
+    var cb = document.getElementById("bwBreakfast");
+    if (priceEl) priceEl.textContent = "+" + breakfastPrice() + " ₾ / სტუმარი / ღამე";
+    if (menuEl) menuEl.textContent = breakfastMenu();
+    if (cb) cb.checked = state.breakfast;
+  }
+  (function () {
+    var cb = document.getElementById("bwBreakfast");
+    if (cb) cb.addEventListener("change", function () {
+      state.breakfast = cb.checked;
+      renderSummary("bwSummary");
+    });
+  })();
 
   var bwIn = document.getElementById("bwIn");
   var bwOut = document.getElementById("bwOut");
@@ -150,6 +177,7 @@
 
   function openWizard(preferSlug) {
     state.preferSlug = preferSlug || null;
+    state.breakfast = false;
     showPane(1);
     document.getElementById("bwStatus1").textContent = "";
     openModal(bookingModal);
@@ -250,6 +278,7 @@
       nights: nights,
       total: a ? Number(a.total_price) : room.price * nights
     };
+    initBreakfastUI();
     renderSummary("bwSummary");
     document.getElementById("bwStatus3").textContent = "";
     showPane(3);
@@ -257,11 +286,16 @@
 
   function renderSummary(elId) {
     var c = state.chosen;
+    var bfCost = state.breakfast ? breakfastPrice() * state.guests * c.nights : 0;
+    var total = c.total + bfCost;
     document.getElementById(elId).innerHTML =
       '<div class="bw-summary__room">' + esc(c.name) + "</div>" +
       '<div class="bw-summary__row"><span>' + fmtDate(state.checkIn) + " — " + fmtDate(state.checkOut) +
       "</span><span>" + c.nights + " ღამე · " + state.guests + " სტუმარი</span></div>" +
-      '<div class="bw-summary__row bw-summary__total"><span>ჯამური ღირებულება</span><span>' + c.total + " ₾</span></div>" +
+      (bfCost > 0
+        ? '<div class="bw-summary__row"><span>საუზმე (' + state.guests + " × " + c.nights + ")</span><span>+" + bfCost + " ₾</span></div>"
+        : "") +
+      '<div class="bw-summary__row bw-summary__total"><span>ჯამური ღირებულება</span><span>' + total + " ₾</span></div>" +
       '<div class="bw-summary__note">გადახდა — ადგილზე, სასტუმროში. უფასო გაუქმება ჩამოსვლამდე 24 სთ-ით ადრე.</div>';
   }
 
@@ -289,6 +323,7 @@
       "🏨 " + state.chosen.name + "\n" +
       "📅 " + state.checkIn + " → " + state.checkOut + " (" + state.chosen.nights + " ღამე)\n" +
       "👤 " + state.guests + " სტუმარი — " + fullName + "\n" +
+      "🍳 საუზმე: " + (state.breakfast ? "კი" : "არა") + "\n" +
       "📞 " + phone + (comment ? "\n💬 " + comment : "");
 
     if (!sb) {
@@ -312,7 +347,8 @@
       p_name: fullName,
       p_phone: phone,
       p_email: email || null,
-      p_comment: comment || null
+      p_comment: comment || null,
+      p_breakfast: state.breakfast
     }).then(function (res) {
       btn.disabled = false;
       if (res.error) {
