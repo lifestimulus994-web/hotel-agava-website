@@ -1117,7 +1117,7 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
   min-height: 46px;
   padding: 11px 14px;
   font: inherit;
-  font-size: 15px;
+  font-size: 16px; /* ≥16px stops iOS Safari auto-zoom on focus */
   color: var(--ink);
   background: var(--cream);
   border: 1px solid var(--line);
@@ -1370,8 +1370,13 @@ body.modal-open { overflow: hidden; }
 
   .navbar__name { font-size: 18px; }
   .navbar__logo { width: 40px; height: 40px; }
-  .lang-switch { padding: 2px; }
-  .lang-switch button { padding: 4px 6px; font-size: 10px; }
+  .lang-switch { padding: 3px; }
+  .lang-switch button { padding: 7px 8px; font-size: 11px; } /* bigger tap target */
+
+  /* ≥16px on every text control stops iOS Safari zooming in on focus */
+  input:not([type="checkbox"]):not([type="radio"]),
+  select,
+  textarea { font-size: 16px; }
 }
 
 /* ═══════════ ROOM TILE ACTIONS ═══════════ */
