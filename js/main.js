@@ -215,7 +215,7 @@
       count: "1 ნომერი",
       specs: [
         { icon: "bed", text: "2 ოთახი, 3 საწოლი" },
-        { icon: "guests", text: "4 სტუმარი" },
+        { icon: "guests", text: "5 სტუმარი" },
         { icon: "size", text: "45 მ²" }
       ]
     },

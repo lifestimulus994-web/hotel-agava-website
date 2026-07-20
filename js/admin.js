@@ -481,7 +481,8 @@
       acts += '<button class="abtn abtn--sm" data-edit="' + b.id + '">✎</button></div>';
       return "<tr>" +
         "<td><strong>" + esc(b.booking_number) + "</strong><div class='muted'>" + (b.source || "") + "</div></td>" +
-        "<td>" + esc(b.guest_name) + "<div class='muted'>" + esc(b.guest_phone) + "</div></td>" +
+        "<td>" + esc(b.guest_name) + "<div class='muted'>" + esc(b.guest_phone) + "</div>" +
+          (b.comment ? "<div class='row-comment'>💬 " + esc(b.comment) + "</div>" : "") + "</td>" +
         "<td>" + esc(b.room_types ? b.room_types.name : "") +
           (b.room_no ? " <span class='room-no'>#" + esc(b.room_no) + "</span>" : "") +
           "<div class='muted'>" + b.guests + " სტუმარი" + (b.breakfast ? " · 🍳 საუზმე" : "") + "</div></td>" +
@@ -718,9 +719,10 @@
   function renderRoomsAdmin() {
     document.getElementById("roomsAdmin").innerHTML = ROOM_TYPES.map(function (rt) {
       return '<div class="room-row" data-rt="' + rt.id + '">' +
-        '<div class="room-row__name">' + esc(rt.name) + "<small>" + esc(rt.bed_type || "") + " · " + (rt.room_size || "—") + " მ² · მაქს. " + rt.max_guests + " სტუმარი</small></div>" +
+        '<div class="room-row__name">' + esc(rt.name) + "<small>" + esc(rt.bed_type || "") + " · " + (rt.room_size || "—") + " მ²</small></div>" +
         '<div><label>ფასი ₾/ღამე</label><input type="number" min="0" class="rr-price" value="' + Number(rt.base_price) + '"></div>' +
         '<div><label>ოთახების რაოდ.</label><input type="number" min="0" class="rr-total" value="' + rt.total_rooms + '"></div>' +
+        '<div><label>მაქს. სტუმარი</label><input type="number" min="1" class="rr-guests" value="' + rt.max_guests + '"></div>' +
         '<div class="room-row__nums"><label>ოთახის ნომრები (მძიმით)</label><input type="text" class="rr-nums" placeholder="მაგ.: 410, 411" value="' + esc((rt.room_numbers || []).join(", ")) + '"></div>' +
         '<label class="switch"><input type="checkbox" class="rr-visible"' + (rt.visible ? " checked" : "") + "> საიტზე ჩანს</label>" +
         '<button class="abtn abtn--gold abtn--sm rr-save">შენახვა</button>' +
@@ -741,6 +743,7 @@
     sb.from("room_types").update({
       base_price: Number(row.querySelector(".rr-price").value),
       total_rooms: parseInt(row.querySelector(".rr-total").value, 10),
+      max_guests: parseInt(row.querySelector(".rr-guests").value, 10) || 1,
       room_numbers: nums,
       visible: row.querySelector(".rr-visible").checked
     }).eq("id", id).then(function (res) {
