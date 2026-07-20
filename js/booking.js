@@ -89,6 +89,19 @@
   function waLink(text) {
     return "https://wa.me/" + CFG.WHATSAPP + "?text=" + encodeURIComponent(text);
   }
+  function manageUrl(token) {
+    try { return new URL("manage.html", location.href).href + "?t=" + token; }
+    catch (e) { return location.origin + "/manage.html?t=" + token; }
+  }
+  function showManageLink(wrapId, linkId, token) {
+    if (!token) return "";
+    var url = manageUrl(token);
+    var link = document.getElementById(linkId);
+    var wrap = document.getElementById(wrapId);
+    if (link) { link.href = url; link.textContent = url; }
+    if (wrap) wrap.hidden = false;
+    return url;
+  }
 
   /* ═══════════ MODAL MANAGEMENT ═══════════ */
   var bookingModal = document.getElementById("bookingModal");
@@ -362,9 +375,11 @@
       var b = res.data;
       document.getElementById("bwNumber").textContent = b.booking_number;
       renderSummary("bwSuccessSummary");
+      var mUrl = showManageLink("bwManage", "bwManageLink", b.manage_token);
       document.getElementById("bwWhatsApp").href =
         waLink("გამარჯობა! დავჯავშნე ოთახი საიტიდან — ჯავშნის ნომერი: " + b.booking_number +
-               " (" + state.chosen.name + ", " + state.checkIn + " → " + state.checkOut + "). გთხოვთ დამიდასტუროთ.");
+               " (" + state.chosen.name + ", " + state.checkIn + " → " + state.checkOut + "). გთხოვთ დამიდასტუროთ." +
+               (mUrl ? "\nჯავშნის მართვა: " + mUrl : ""));
       showPane("success");
       this && this.reset && this.reset();
       document.getElementById("bwGuestForm").reset();
@@ -545,9 +560,11 @@
       qbForm.reset();
       document.getElementById("qbTotal").hidden = true;
       document.getElementById("qbNumber").textContent = res.data.booking_number;
+      var mUrl = showManageLink("qbManage", "qbManageLink", res.data.manage_token);
       document.getElementById("qbWhatsApp").href =
         waLink("გამარჯობა! დავჯავშნე ოთახი საიტიდან — ჯავშნის ნომერი: " + res.data.booking_number +
-               " (" + room.name + ", " + ci + " → " + co + "). გთხოვთ დამიდასტუროთ.");
+               " (" + room.name + ", " + ci + " → " + co + "). გთხოვთ დამიდასტუროთ." +
+               (mUrl ? "\nჯავშნის მართვა: " + mUrl : ""));
       success.hidden = false;
     });
   });
