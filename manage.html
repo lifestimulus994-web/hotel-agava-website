@@ -11,30 +11,55 @@
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <style>
+    [hidden] { display: none !important; }
     body { background: linear-gradient(180deg, #fcf8ee 0%, #f2ead9 100%); min-height: 100vh; }
-    .mg-wrap { max-width: 560px; margin: 0 auto; padding: 40px 18px 64px; }
-    .mg-brand { display: flex; align-items: center; gap: 12px; justify-content: center; margin-bottom: 26px; }
-    .mg-brand img { width: 52px; height: 52px; object-fit: contain; }
+    .mg-wrap { max-width: 500px; margin: 0 auto; padding: 36px 18px 64px; }
+    .mg-brand { display: flex; align-items: center; gap: 12px; justify-content: center; margin-bottom: 22px; }
+    .mg-brand img { width: 50px; height: 50px; object-fit: contain; }
     .mg-brand span { font-family: "Cinzel", serif; font-size: 26px; font-weight: 700;
       background: linear-gradient(180deg,#C9A050,#8A6A24); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .mg-card { background: #fff; border: 1px solid #EDE5D4; border-radius: 12px; box-shadow: 0 12px 40px rgba(36,29,20,.1); padding: 26px 24px; }
-    .mg-card h1 { font-size: 22px; margin-bottom: 6px; color: var(--ink); }
-    .mg-num { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
-    .mg-rows { display: grid; gap: 10px; margin: 16px 0 20px; }
-    .mg-row { display: flex; justify-content: space-between; gap: 12px; font-size: 14.5px; color: var(--ink-soft); border-bottom: 1px dashed #EFE7D6; padding-bottom: 9px; }
-    .mg-row b { color: var(--ink); font-weight: 700; }
-    .mg-total b { color: var(--gold); font-size: 17px; }
-    .mg-badge { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 20px; }
+    .mg-card { background: #fff; border: 1px solid #EDE5D4; border-radius: 14px; box-shadow: 0 12px 40px rgba(36,29,20,.1); padding: 24px 22px; }
+
+    /* summary */
+    .mg-room { font-size: 21px; font-weight: 700; color: var(--ink); }
+    .mg-num { font-size: 13px; color: var(--muted); margin: 2px 0 16px; }
+    .mg-dates { font-size: 20px; font-weight: 700; color: var(--ink); text-align: center;
+      background: #FAF6EE; border: 1px solid #EFE7D6; border-radius: 10px; padding: 16px; margin-bottom: 10px; }
+    .mg-meta { text-align: center; font-size: 14px; color: var(--ink-soft); margin-bottom: 6px; }
+    .mg-status-line { text-align: center; margin-bottom: 20px; }
+    .mg-badge { display: inline-block; font-size: 13px; font-weight: 700; padding: 4px 14px; border-radius: 20px; }
     .mg-badge--pending { background:#FDF3E1; color:#9A6B12; }
     .mg-badge--confirmed { background:#E7F4EA; color:#2C7A43; }
     .mg-badge--cancelled { background:#FBEBE7; color:#B4552D; }
     .mg-badge--completed { background:#EDEAF3; color:#5A4B8A; }
-    .mg-section { margin-top: 22px; padding-top: 20px; border-top: 1px solid #F0E8D8; }
-    .mg-section h2 { font-size: 15px; margin-bottom: 12px; color: var(--ink); }
-    .mg-actions { display: grid; gap: 10px; }
-    .mg-note { font-size: 12.5px; color: var(--muted); margin-top: 10px; line-height: 1.55; }
-    #mgStatus { text-align: center; padding: 40px 0; color: var(--muted); }
-    .mg-back { display:inline-block; margin-top: 22px; color: var(--gold); font-weight: 600; font-size: 14px; }
+
+    /* big action buttons */
+    .mg-menu { display: grid; gap: 12px; }
+    .mg-big { display: flex; align-items: center; gap: 14px; width: 100%;
+      padding: 18px 20px; border-radius: 12px; font-size: 17px; font-weight: 700; cursor: pointer;
+      border: 2px solid transparent; transition: transform .15s, box-shadow .2s, background-color .2s; text-align: left; }
+    .mg-big:active { transform: scale(.98); }
+    .mg-big__ico { font-size: 24px; line-height: 1; }
+    .mg-big--dates { background: linear-gradient(135deg, var(--gold-light), var(--gold)); color: #fff; }
+    .mg-big--dates:hover { box-shadow: 0 8px 24px rgba(176,138,60,.32); }
+    .mg-big--cancel { background: #fff; border-color: #E7C4B8; color: #B4552D; }
+    .mg-big--cancel:hover { background: #FCF3F0; }
+
+    /* expandable panels */
+    .mg-panel { margin-top: 4px; }
+    .mg-panel h2 { font-size: 17px; margin-bottom: 4px; color: var(--ink); text-align: center; }
+    .mg-panel .mg-hint { font-size: 13px; color: var(--muted); text-align: center; margin-bottom: 16px; line-height: 1.5; }
+    .mg-panel .field { margin-bottom: 14px; }
+    .mg-panel .field label { font-size: 14px; }
+    .mg-row2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 14px; }
+    .btn--back { background: #F1EBE0; color: var(--ink-soft); }
+    .btn--back:hover { background: #E8E0D0; }
+    .mg-confirm-q { text-align: center; font-size: 16px; color: var(--ink); margin: 6px 0 18px; line-height: 1.5; }
+
+    #mgStatus { text-align: center; padding: 50px 0; color: var(--muted); font-size: 15px; }
+    .mg-help { text-align: center; margin-top: 18px; font-size: 13px; color: var(--muted); }
+    .mg-help a { color: #1FA855; font-weight: 700; }
+    .mg-back-home { display:block; text-align:center; margin-top: 18px; color: var(--gold); font-weight: 600; font-size: 14px; }
   </style>
 </head>
 <body>
@@ -46,30 +71,50 @@
     <div id="mgStatus">იტვირთება…</div>
 
     <div class="mg-card" id="mgCard" hidden>
-      <h1 id="mgRoom">—</h1>
+      <div class="mg-room" id="mgRoom">—</div>
       <div class="mg-num" id="mgNumber"></div>
-      <div class="mg-rows" id="mgRows"></div>
 
-      <div class="mg-section" id="mgReschedule">
-        <h2>თარიღების შეცვლა</h2>
-        <div class="mg-actions">
-          <div class="field"><label for="mgIn">ახალი შესვლა</label><input type="date" id="mgIn"></div>
-          <div class="field"><label for="mgOut">ახალი გასვლა</label><input type="date" id="mgOut"></div>
-          <button class="btn btn--gold" id="mgSaveDates" type="button">თარიღების განახლება</button>
+      <div class="mg-dates" id="mgDates">—</div>
+      <div class="mg-meta" id="mgMeta"></div>
+      <div class="mg-status-line" id="mgStatusLine"></div>
+
+      <!-- STEP 0: two big buttons -->
+      <div class="mg-menu" id="mgMenu">
+        <button class="mg-big mg-big--dates" id="mgBtnDates" type="button">
+          <span class="mg-big__ico">🗓</span><span>თარიღის შეცვლა</span>
+        </button>
+        <button class="mg-big mg-big--cancel" id="mgBtnCancel" type="button">
+          <span class="mg-big__ico">✕</span><span>ჯავშნის გაუქმება</span>
+        </button>
+      </div>
+
+      <!-- STEP A: change dates -->
+      <div class="mg-panel" id="mgDatesPanel" hidden>
+        <h2>ახალი თარიღები</h2>
+        <p class="mg-hint">აირჩიეთ ახალი შესვლა და გასვლა, დააჭირეთ „შენახვას".</p>
+        <div class="field"><label for="mgIn">შესვლა</label><input type="date" id="mgIn"></div>
+        <div class="field"><label for="mgOut">გასვლა</label><input type="date" id="mgOut"></div>
+        <div class="mg-row2">
+          <button class="btn btn--back" id="mgBackA" type="button">← უკან</button>
+          <button class="btn btn--gold" id="mgSaveDates" type="button">შენახვა</button>
         </div>
-        <p class="mg-note">თარიღების შეცვლის შემდეგ ჯავშანი დაბრუნდება „მოლოდინში“ და სასტუმრო ხელახლა დაგიდასტურებთ.</p>
         <p class="form-status" id="mgResStatus" role="status" aria-live="polite"></p>
       </div>
 
-      <div class="mg-section" id="mgCancelSec">
-        <h2>ჯავშნის გაუქმება</h2>
-        <button class="btn btn--ghost-dark" id="mgCancel" type="button">ჯავშნის გაუქმება</button>
-        <p class="mg-note">გაუქმება უფასოა ჩამოსვლამდე 24 საათით ადრე.</p>
+      <!-- STEP B: cancel confirm -->
+      <div class="mg-panel" id="mgCancelPanel" hidden>
+        <p class="mg-confirm-q">ნამდვილად გსურთ ჯავშნის გაუქმება?</p>
+        <div class="mg-row2">
+          <button class="btn btn--back" id="mgBackB" type="button">← არა, დავტოვებ</button>
+          <button class="btn btn--gold" id="mgDoCancel" type="button">დიახ, გავაუქმებ</button>
+        </div>
         <p class="form-status" id="mgCancelStatus" role="status" aria-live="polite"></p>
       </div>
 
-      <a class="mg-back" href="index.html">← მთავარ გვერდზე</a>
+      <p class="mg-help">დახმარება? <a id="mgWa" href="#" target="_blank" rel="noopener">მოგვწერეთ WhatsApp-ზე</a></p>
     </div>
+
+    <a class="mg-back-home" href="index.html">← მთავარ გვერდზე</a>
   </div>
 
   <script src="js/config.js"></script>
