@@ -478,7 +478,8 @@
       if (b.status === "pending" || b.status === "confirmed") {
         acts += '<button class="abtn abtn--sm abtn--danger" data-act="cancelled" data-id="' + b.id + '">გაუქმება</button>';
       }
-      acts += '<button class="abtn abtn--sm" data-edit="' + b.id + '">✎</button></div>';
+      acts += '<button class="abtn abtn--sm" data-edit="' + b.id + '">✎</button>';
+      acts += '<button class="abtn abtn--sm abtn--danger" data-del="' + b.id + '" title="სამუდამოდ წაშლა">🗑</button></div>';
       return "<tr>" +
         "<td><strong>" + esc(b.booking_number) + "</strong><div class='muted'>" + (b.source || "") + "</div></td>" +
         "<td>" + esc(b.guest_name) + "<div class='muted'>" + esc(b.guest_phone) + "</div>" +
@@ -511,6 +512,18 @@
     if (editBtn) {
       var b = allBookings.find(function (x) { return x.id === editBtn.getAttribute("data-edit"); });
       if (b) openEdit(b);
+      return;
+    }
+    var delBtn = e.target.closest("[data-del]");
+    if (delBtn) {
+      var delId = delBtn.getAttribute("data-del");
+      var bk = allBookings.find(function (x) { return x.id === delId; });
+      var label = bk ? (bk.booking_number + " · " + bk.guest_name) : "ეს ჯავშანი";
+      if (!confirm("სამუდამოდ წავშალო " + label + "?\nისტორიაში აღარ დარჩება — ეს ქმედება შეუქცევადია.")) return;
+      sb.from("bookings").delete().eq("id", delId).then(function (res) {
+        if (res.error) { alert("შეცდომა: " + res.error.message); return; }
+        refreshAll();
+      });
     }
   });
 
