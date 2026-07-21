@@ -57,7 +57,7 @@ create policy "site_photos_delete" on storage.objects for delete
 -- ─── NEW ROOM: ლუქსი ჯაკუზით (bookable) ──────────────────────
 insert into room_types (slug, name, badge, base_price, total_rooms, max_guests, bed_type, room_size, amenities, seasonal, sort)
 values
-  ('jacuzzi-suite', 'ლუქსი ჯაკუზით', 'ლუქსი', 300, 1, 2, '1 დიდი ორმაგი საწოლი', 30,
+  ('jacuzzi-suite', 'ლუქსი ჯაკუზით — 2 სტუმარზე', 'ლუქსი', 300, 1, 2, '1 დიდი ორმაგი საწოლი', 30,
    '{"Wi-Fi","TV","კონდიციონერი","ჯაკუზი","აბაზანა","ქალაქის ხედი"}', false, 8)
 on conflict (slug) do nothing;
 

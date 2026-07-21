@@ -202,7 +202,7 @@
     },
     {
       slug: "twobedlux",
-      name: "ორ ოთახიანი ლუქსი",
+      name: "ორ ოთახიანი ლუქსი — 5 სტუმარზე",
       badge: "ლუქსი",
       price: 200,
       images: [
@@ -221,7 +221,7 @@
     },
     {
       slug: "jacuzzi-suite",
-      name: "ლუქსი ჯაკუზით",
+      name: "ლუქსი ჯაკუზით — 2 სტუმარზე",
       badge: "ლუქსი",
       price: 300,
       images: [
@@ -240,7 +240,7 @@
     },
     {
       slug: "jacuzzi",
-      name: "სუპერ ლუქსი ჯაკუზით",
+      name: "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე",
       badge: "VIP ლუქსი",
       price: 300,
       seasonal: true,

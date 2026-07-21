@@ -1,0 +1,14 @@
+.git
+.git/**
+.gitignore
+.env
+.env.*
+.env.local
+*.local
+.vercel
+.vercel/**
+.vercelignore
+sql
+sql/**
+scripts
+scripts/**
