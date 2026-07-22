@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /admin.html
+Disallow: /manage.html
+
+Sitemap: https://hotelagava.ge/sitemap.xml
