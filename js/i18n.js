@@ -17,13 +17,16 @@
   window.AGAVA_LANG = LANG;
   document.documentElement.lang = LANG;
 
-  /* ─── switcher: navigate to the language's URL (ka=/, others=/xx/) ─── */
+  /* ─── switcher: swap the language segment, keep the current path
+         (so /rooms/lux/ ↔ /en/rooms/lux/, homepage / ↔ /en/) ─── */
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-lang]");
     if (!b) return;
     e.preventDefault();
     var L = b.getAttribute("data-lang");
-    var target = (L === "ka" ? "/" : "/" + L + "/") + location.hash;
+    var rest = location.pathname.replace(/^\/(en|ru|tr)(?=\/|$)/, "");
+    if (rest.charAt(0) !== "/") rest = "/" + rest;
+    var target = (L === "ka" ? rest : "/" + L + rest) + location.hash;
     if (location.pathname + location.hash !== target) location.href = target;
   });
   document.addEventListener("DOMContentLoaded", function () {
@@ -42,6 +45,9 @@
     /* meta / navbar */
     "სასტუმრო აგავა — Hotel Agava | თბილისი, ბელიაშვილის 161": "Otel Agava — Tiflis | Beliaşvili Cad. 161",
     "სასტუმრო აგავა — Hotel Agava": "Otel Agava — Tiflis",
+    "სასტუმრო აგავა · თბილისი": "Otel Agava · Tiflis",
+    "ქალაქის ხედი": "Şehir manzarası",
+    "ყველა ოთახი": "Tüm odalar",
     "ჯავშნის მართვა — შეცვლა ან გაუქმება:": "Rezervasyon yönetimi — değiştir veya iptal et:",
     "მთავარი ნავიგაცია": "Ana navigasyon",
     "სასტუმრო აგავა — მთავარი": "Otel Agava — ana sayfa",
@@ -293,6 +299,9 @@
     /* meta / navbar */
     "სასტუმრო აგავა — Hotel Agava | თბილისი, ბელიაშვილის 161": ["Hotel Agava — Tbilisi | Beliashvili St 161", "Отель Агава — Тбилиси | ул. Белиашвили 161"],
     "სასტუმრო აგავა — Hotel Agava": ["Hotel Agava — Tbilisi", "Отель Агава — Тбилиси"],
+    "სასტუმრო აგავა · თბილისი": ["Hotel Agava · Tbilisi", "Отель Агава · Тбилиси"],
+    "ქალაქის ხედი": ["City view", "Вид на город"],
+    "ყველა ოთახი": ["All rooms", "Все номера"],
     "ჯავშნის მართვა — შეცვლა ან გაუქმება:": ["Manage booking — change or cancel:", "Управление бронированием — изменить или отменить:"],
     "მთავარი ნავიგაცია": ["Main navigation", "Главная навигация"],
     "სასტუმრო აგავა — მთავარი": ["Hotel Agava — home", "Отель Агава — главная"],

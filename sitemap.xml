@@ -21,7 +21,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/"/>
     <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://hotelagava.ge/ru/</loc>
@@ -32,7 +32,7 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/"/>
     <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://hotelagava.ge/tr/</loc>
@@ -43,6 +43,358 @@
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/"/>
     <lastmod>2026-07-25</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/standard/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/standard/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/standard/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/standard/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/standard/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/standard/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/standard/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/standard/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/standard/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/lux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/lux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/lux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/lux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/lux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/lux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/lux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/lux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/lux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/superlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/superlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/superlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/superlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/superlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/superlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/superlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/superlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/superlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/family3/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family3/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/family3/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family3/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/family3/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family3/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/family3/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family3/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family3/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/family4/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family4/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/family4/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family4/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/family4/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family4/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/family4/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/family4/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/family4/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/twobedlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/twobedlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/twobedlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/twobedlux/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/twobedlux/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/twobedlux/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/jacuzzi-suite/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/jacuzzi-suite/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/jacuzzi-suite/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/jacuzzi-suite/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi-suite/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi-suite/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/rooms/jacuzzi/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/en/rooms/jacuzzi/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/ru/rooms/jacuzzi/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://hotelagava.ge/tr/rooms/jacuzzi/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/rooms/jacuzzi/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/rooms/jacuzzi/"/>
+    <lastmod>2026-07-25</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>

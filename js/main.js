@@ -11,6 +11,12 @@
     return "/" + u;
   }
 
+  /* per-language link to a room's landing page (/rooms/<slug>/ or /en/rooms/<slug>/) */
+  function roomHref(slug) {
+    var L = window.AGAVA_LANG;
+    return (L && L !== "ka" ? "/" + L : "") + "/rooms/" + slug + "/";
+  }
+
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ─── Navbar: solid on scroll ─── */
@@ -113,159 +119,8 @@
 
   renderContent();
 
-  /* ═══════════ ROOMS DATA (real prices) ═══════════ */
-  var ROOMS = [
-    {
-      slug: "standard",
-      name: "სტანდარტული ოთახი — 2 სტუმარზე",
-      badge: "სტანდარტი",
-      price: 120,
-      images: [
-        "assets/room-standard-2.jpg",
-        "assets/room-standard-3.jpg",
-        "assets/room-standard-4.jpg",
-        "assets/room-standard-5.jpg",
-        "assets/room-standard-1.jpg"
-      ],
-      alt: "სტანდარტული ოთახი ცის ჭერით",
-      count: "7 ოთახი",
-      specs: [
-        { icon: "bed", text: "1 საწოლი" },
-        { icon: "guests", text: "2 სტუმარი" },
-        { icon: "size", text: "22 მ²" }
-      ]
-    },
-    {
-      slug: "lux",
-      name: "ლუქსი — 2 სტუმარზე",
-      badge: "ლუქსი",
-      price: 120,
-      images: [
-        "assets/room-lux-1.jpg",
-        "assets/room-lux-2.jpg",
-        "assets/room-lux-3.jpg",
-        "assets/room-lux-4.jpg"
-      ],
-      alt: "ლუქსი ოთახი ბაროკოს სტილში, ცის ჭერით",
-      count: "5 ოთახი",
-      specs: [
-        { icon: "bed", text: "1 King საწოლი" },
-        { icon: "guests", text: "2 სტუმარი" },
-        { icon: "size", text: "28 მ²" }
-      ]
-    },
-    {
-      slug: "superlux",
-      name: "სუპერლუქსი — 2 სტუმარზე",
-      badge: "სუპერლუქსი",
-      price: 120,
-      images: [
-        "assets/room-superlux-1.jpg",
-        "assets/room-superlux-2.jpg",
-        "assets/room-superlux-3.jpg"
-      ],
-      alt: "სუპერლუქსი ბაროკოს სტილის ინტერიერით",
-      count: "1 ნომერი",
-      specs: [
-        { icon: "bed", text: "1 King საწოლი" },
-        { icon: "guests", text: "2 სტუმარი" },
-        { icon: "size", text: "36 მ²" }
-      ]
-    },
-    {
-      slug: "family3",
-      name: "საოჯახო ოთახი — 3 სტუმარზე",
-      badge: "საოჯახო",
-      price: 150,
-      images: [
-        "assets/room-family3-2.jpg",
-        "assets/room-family3-3.jpg",
-        "assets/room-family3-4.jpg",
-        "assets/room-family3-1.jpg"
-      ],
-      alt: "საოჯახო ოთახი სამ სტუმარზე",
-      count: "3 ოთახი",
-      specs: [
-        { icon: "bed", text: "2 საწოლი" },
-        { icon: "guests", text: "3 სტუმარი" },
-        { icon: "size", text: "32 მ²" }
-      ]
-    },
-    {
-      slug: "family4",
-      name: "საოჯახო ოთახი — 4 სტუმარზე",
-      badge: "საოჯახო",
-      price: 200,
-      images: [
-        "assets/room-family4-1.jpg"
-      ],
-      alt: "საოჯახო ოთახი ოთხ სტუმარზე",
-      count: "2 ოთახი",
-      specs: [
-        { icon: "bed", text: "2 საწოლი" },
-        { icon: "guests", text: "4 სტუმარი" },
-        { icon: "size", text: "38 მ²" }
-      ]
-    },
-    {
-      slug: "twobedlux",
-      name: "ორ ოთახიანი ლუქსი — 5 სტუმარზე",
-      badge: "ლუქსი",
-      price: 200,
-      images: [
-        "assets/room-twobedlux-1.jpg",
-        "assets/room-twobedlux-2.jpg",
-        "assets/room-twobedlux-3.jpg",
-        "assets/room-twobedlux-4.jpg"
-      ],
-      alt: "ორ ოთახიანი ლუქსი ცის ჭერით",
-      count: "1 ნომერი",
-      specs: [
-        { icon: "bed", text: "2 ოთახი, 3 საწოლი" },
-        { icon: "guests", text: "5 სტუმარი" },
-        { icon: "size", text: "45 მ²" }
-      ]
-    },
-    {
-      slug: "jacuzzi-suite",
-      name: "ლუქსი ჯაკუზით — 2 სტუმარზე",
-      badge: "ლუქსი",
-      price: 300,
-      images: [
-        "assets/room-jacuzzi-suite-1.jpg",
-        "assets/room-jacuzzi-suite-2.jpg",
-        "assets/room-jacuzzi-suite-3.jpg"
-      ],
-      alt: "ლუქსი ჯაკუზით ქალაქის ხედით",
-      count: "1 ნომერი",
-      specs: [
-        { icon: "bed", text: "1 დიდი ორმაგი საწოლი" },
-        { icon: "guests", text: "2 სტუმარი" },
-        { icon: "size", text: "30 მ²" },
-        { icon: "jacuzzi", text: "ჯაკუზი" }
-      ]
-    },
-    {
-      slug: "jacuzzi",
-      name: "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე",
-      badge: "VIP ლუქსი",
-      price: 300,
-      seasonal: true,
-      images: [
-        "assets/room-jacuzzi-3.jpg",
-        "assets/room-jacuzzi-1.jpg",
-        "assets/room-jacuzzi-2.jpg",
-        "assets/room-jacuzzi-4.jpg"
-      ],
-      alt: "სუპერ ლუქსი ჯაკუზით, ოქროსფერი ინტერიერი",
-      count: "1 ნომერი",
-      specs: [
-        { icon: "bed", text: "1 King საწოლი" },
-        { icon: "guests", text: "2 სტუმარი" },
-        { icon: "jacuzzi", text: "ჯაკუზი" }
-      ]
-    }
-  ];
+  /* ═══════════ ROOMS DATA (single source: js/rooms-data.js) ═══════════ */
+  var ROOMS = window.AGAVA_ROOMS_DATA || [];
 
   window.AGAVA_ROOMS = ROOMS; /* booking.js consumes */
 
@@ -377,7 +232,7 @@
             }).join("") +
           "</ul>" +
           '<div class="room-tile__actions">' +
-            '<button class="btn btn--dark" data-view-room="' + room.slug + '">ნახვა</button>' +
+            '<a class="btn btn--dark" href="' + roomHref(room.slug) + '">ნახვა</a>' +
             '<button class="btn btn--gold" data-room="' + room.slug + '">დაჯავშნა</button>' +
           "</div>" +
         "</div>";
