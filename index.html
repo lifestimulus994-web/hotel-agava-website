@@ -13,6 +13,13 @@
   <meta name="theme-color" content="#b8935a">
   <link rel="canonical" href="https://hotelagava.ge/">
 
+  <!-- hreflang (ka default; en/ru/tr localized URLs) -->
+  <link rel="alternate" hreflang="ka" href="https://hotelagava.ge/">
+  <link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/">
+  <link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/">
+  <link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/">
+  <link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/">
+
   <!-- geo -->
   <meta name="geo.region" content="GE-TB">
   <meta name="geo.placename" content="Tbilisi">
@@ -39,14 +46,14 @@
   <meta name="twitter:image" content="https://hotelagava.ge/assets/hero.jpg">
 
   <!-- icons / manifest -->
-  <link rel="icon" type="image/png" href="assets/logo.png">
-  <link rel="apple-touch-icon" href="assets/logo.png">
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="apple-touch-icon" href="/assets/logo.png">
+  <link rel="manifest" href="/site.webmanifest">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="/css/style.css">
 
   <!-- ═══════════ STRUCTURED DATA — Hotel (JSON-LD) ═══════════ -->
   <script type="application/ld+json">
@@ -108,7 +115,7 @@
   <header class="navbar" id="navbar">
     <div class="navbar__inner container">
       <a href="#hero" class="navbar__brand" aria-label="სასტუმრო აგავა — მთავარი">
-        <img src="assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="navbar__logo">
+        <img src="/assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
       <nav class="navbar__nav" id="navMenu" aria-label="მთავარი ნავიგაცია">
@@ -138,7 +145,7 @@
     <!-- ═══════════ HERO ═══════════ -->
     <section class="hero" id="hero">
       <div class="hero__bg" aria-hidden="true">
-        <img src="assets/hero.jpg" alt="" fetchpriority="high">
+        <img src="/assets/hero.jpg" alt="" fetchpriority="high">
       </div>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__content container">
@@ -365,7 +372,7 @@
         </div>
         <div class="reviews__quotes">
           <blockquote class="review-quote reveal">
-            <p>„ბევრ მაღალი კლასის სასტუმროში ვყოფილვარ და ზოგჯერ უკმაყოფილო დავრჩენილვარ. ამ სასტუმრომ კი სასიამოვნოდ გამაკვირვა — ყველაფერი, რაც მჭირდებოდა, ოთახში იყო და კარგად ორგანიზებული."</p>
+            <p>„ბევრ მაღალი კლასის სასტუმროში ვყოფილვარ და ზოგჯერ უკმაყოფილო დავრჩენილვარ. ამ სასტუმრომ კი სასიამოვნოდ გამაკვირვა — ყველაფერი, რაც მჭირდებოდა, ოთახში იყო და კარგად ორგანიზებული.“</p>
             <footer>
               <span class="review-quote__avatar" aria-hidden="true">თ</span>
               <div>
@@ -375,7 +382,7 @@
             </footer>
           </blockquote>
           <blockquote class="review-quote reveal" style="--d:.1s">
-            <p>„ერთ-ერთი საუკეთესო სასტუმრო — სისუფთავე, სითბო და კომფორტი. ეზოში პარკინგიც აქვთ, რაც ძალიან მოსახერხებელია. ეზოშივე შეგიძლიათ დაისვენოთ და ყავით დატკბეთ. დიდი რეკომენდაცია ჩვენგან!"</p>
+            <p>„ერთ-ერთი საუკეთესო სასტუმრო — სისუფთავე, სითბო და კომფორტი. ეზოში პარკინგიც აქვთ, რაც ძალიან მოსახერხებელია. ეზოშივე შეგიძლიათ დაისვენოთ და ყავით დატკბეთ. დიდი რეკომენდაცია ჩვენგან!“</p>
             <footer>
               <span class="review-quote__avatar" aria-hidden="true">თ</span>
               <div>
@@ -385,7 +392,7 @@
             </footer>
           </blockquote>
           <blockquote class="review-quote reveal" style="--d:.2s">
-            <p>„კომფორტული სასტუმრო, კარგად მოვლილი ოთახები და მეგობრული, ყურადღებიანი პერსონალი. ატმოსფერო თბილი და მისასალმებელია — სიამოვნებით დავბრუნდები."</p>
+            <p>„კომფორტული სასტუმრო, კარგად მოვლილი ოთახები და მეგობრული, ყურადღებიანი პერსონალი. ატმოსფერო თბილი და მისასალმებელია — სიამოვნებით დავბრუნდები.“</p>
             <footer>
               <span class="review-quote__avatar" aria-hidden="true">A</span>
               <div>
@@ -421,11 +428,11 @@
     <!-- ═══════════ CTA ═══════════ -->
     <section class="cta">
       <div class="cta__bg" aria-hidden="true">
-        <img src="assets/room-standard-5.jpg" alt="" loading="lazy">
+        <img src="/assets/room-standard-5.jpg" alt="" loading="lazy">
       </div>
       <div class="cta__overlay" aria-hidden="true"></div>
       <div class="container cta__content reveal">
-        <img src="assets/logo.png" alt="" class="cta__logo" aria-hidden="true">
+        <img src="/assets/logo.png" alt="" class="cta__logo" aria-hidden="true">
         <h2>დაგეგმეთ თქვენი დასვენება აგავაში</h2>
         <p>დაჯავშნეთ ოთახი დღესვე და მიიღეთ საუკეთესო ფასი — პირდაპირ ჩვენგან.</p>
         <button class="btn btn--gold btn--lg" data-open-booking>დაჯავშნეთ ახლავე</button>
@@ -609,7 +616,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img src="assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
+        <img src="/assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
         <p>კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა.</p>
       </div>
       <nav class="footer__nav" aria-label="ქვედა ნავიგაცია">
@@ -753,11 +760,11 @@
     </div>
   </div>
 
-  <script defer src="js/config.js"></script>
-  <script defer src="js/i18n.js"></script>
+  <script defer src="/js/config.js"></script>
+  <script defer src="/js/i18n.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script defer src="js/content.js"></script>
-  <script defer src="js/main.js"></script>
-  <script defer src="js/booking.js"></script>
+  <script defer src="/js/content.js"></script>
+  <script defer src="/js/main.js"></script>
+  <script defer src="/js/booking.js"></script>
 </body>
 </html>

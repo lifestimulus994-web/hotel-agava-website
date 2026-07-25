@@ -5,6 +5,13 @@
 (function () {
   "use strict";
 
+  /* root-absolute asset URLs (pages under /en/ /ru/ /tr/) */
+  function assetURL(u) {
+    if (!u) return u;
+    if (u.charAt(0) === "/" || /^https?:/i.test(u) || u.indexOf("data:") === 0) return u;
+    return "/" + u;
+  }
+
   var CFG = window.AGAVA_CONFIG || {};
   var sb = null;
   if (CFG.CONFIGURED && window.supabase) {
@@ -253,7 +260,7 @@
       el.className = "bw-room" + (soldOut ? " is-soldout" : "") +
         (state.preferSlug === room.slug && !soldOut ? " is-preferred" : "");
       el.innerHTML =
-        '<img src="' + room.images[0] + '" alt="" loading="lazy">' +
+        '<img src="' + assetURL(room.images[0]) + '" alt="" loading="lazy">' +
         '<div class="bw-room__info">' +
           "<h4>" + esc(room.name) + "</h4>" +
           '<p class="bw-room__meta">' + Math.round(total / nights) + " ₾/ღამე · " + nights + " ღამე" +
@@ -396,12 +403,12 @@
 
     var thumbs = room.images.map(function (src, i) {
       return '<button type="button" class="room-detail__thumb' + (i === 0 ? " is-active" : "") +
-        '" data-gallery-idx="' + i + '"><img src="' + src + '" alt="" loading="lazy"></button>';
+        '" data-gallery-idx="' + i + '"><img src="' + assetURL(src) + '" alt="" loading="lazy"></button>';
     }).join("");
 
     document.getElementById("roomDetail").innerHTML =
       '<div class="room-detail__gallery">' +
-        '<img class="room-detail__main" id="rdMain" src="' + room.images[0] + '" alt="' + esc(room.alt) + '">' +
+        '<img class="room-detail__main" id="rdMain" src="' + assetURL(room.images[0]) + '" alt="' + esc(room.alt) + '">' +
         (room.images.length > 1 ? '<div class="room-detail__thumbs">' + thumbs + "</div>" : "") +
       "</div>" +
       '<div class="room-detail__body">' +
@@ -429,7 +436,7 @@
     if (!th) return;
     var idx = parseInt(th.getAttribute("data-gallery-idx"), 10);
     var slug = document.querySelector("#roomDetail [data-room]").getAttribute("data-room");
-    document.getElementById("rdMain").src = roomBySlug[slug].images[idx];
+    document.getElementById("rdMain").src = assetURL(roomBySlug[slug].images[idx]);
     roomModal.querySelectorAll(".room-detail__thumb").forEach(function (t) { t.classList.remove("is-active"); });
     th.classList.add("is-active");
   });

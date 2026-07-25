@@ -6,23 +6,25 @@
 (function () {
   "use strict";
 
+  /* language = URL path (/en/ /ru/ /tr/), else ?lang=, else ka.
+     One URL = one language (clean for SEO — no localStorage-based swapping). */
   var LANG = "ka";
-  try { LANG = localStorage.getItem("agava_lang") || "ka"; } catch (e) {}
-  var urlLang = location.search.match(/[?&]lang=(ka|en|ru|tr)/);
-  if (urlLang) {
-    LANG = urlLang[1];
-    try { localStorage.setItem("agava_lang", LANG); } catch (e) {}
-  }
+  var pathLang = location.pathname.match(/^\/(en|ru|tr)(\/|$)/);
+  var queryLang = location.search.match(/[?&]lang=(ka|en|ru|tr)/);
+  if (pathLang) LANG = pathLang[1];
+  else if (queryLang) LANG = queryLang[1];
   if (LANG !== "en" && LANG !== "ru" && LANG !== "tr") LANG = "ka";
   window.AGAVA_LANG = LANG;
   document.documentElement.lang = LANG;
 
-  /* ─── switcher (works in every language) ─── */
+  /* ─── switcher: navigate to the language's URL (ka=/, others=/xx/) ─── */
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-lang]");
     if (!b) return;
-    try { localStorage.setItem("agava_lang", b.getAttribute("data-lang")); } catch (err) {}
-    location.reload();
+    e.preventDefault();
+    var L = b.getAttribute("data-lang");
+    var target = (L === "ka" ? "/" : "/" + L + "/") + location.hash;
+    if (location.pathname + location.hash !== target) location.href = target;
   });
   document.addEventListener("DOMContentLoaded", function () {
     var sw = document.getElementById("langSwitch");
@@ -38,7 +40,9 @@
 
   var TR_FALLBACK = {
     /* meta / navbar */
+    "სასტუმრო აგავა — Hotel Agava | თბილისი, ბელიაშვილის 161": "Otel Agava — Tiflis | Beliaşvili Cad. 161",
     "სასტუმრო აგავა — Hotel Agava": "Otel Agava — Tiflis",
+    "ჯავშნის მართვა — შეცვლა ან გაუქმება:": "Rezervasyon yönetimi — değiştir veya iptal et:",
     "მთავარი ნავიგაცია": "Ana navigasyon",
     "სასტუმრო აგავა — მთავარი": "Otel Agava — ana sayfa",
     "მენიუს გახსნა": "Menüyü aç",
@@ -233,6 +237,9 @@
     "სუპერლუქსი — 2 სტუმარზე": "Süper Lüks — 2 misafir",
     "საოჯახო ოთახი — 3 სტუმარზე": "Aile Odası — 3 misafir",
     "საოჯახო ოთახი — 4 სტუმარზე": "Aile Odası — 4 misafir",
+    "ორ ოთახიანი ლუქსი — 5 სტუმარზე": "İki Odalı Süit — 5 misafir",
+    "ლუქსი ჯაკუზით — 2 სტუმარზე": "Jakuzili Kral Odası — 2 misafir",
+    "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე": "Jakuzili Süper Süit — 2 misafir",
     "ორ ოთახიანი ლუქსი": "İki Odalı Süit",
     "ლუქსი ჯაკუზით": "Jakuzili Kral Odası",
     "სუპერ ლუქსი ჯაკუზით": "Jakuzili Süper Süit",
@@ -284,7 +291,9 @@
   /* ─── literal dictionary: ka → [en, ru] ─── */
   var D = {
     /* meta / navbar */
+    "სასტუმრო აგავა — Hotel Agava | თბილისი, ბელიაშვილის 161": ["Hotel Agava — Tbilisi | Beliashvili St 161", "Отель Агава — Тбилиси | ул. Белиашвили 161"],
     "სასტუმრო აგავა — Hotel Agava": ["Hotel Agava — Tbilisi", "Отель Агава — Тбилиси"],
+    "ჯავშნის მართვა — შეცვლა ან გაუქმება:": ["Manage booking — change or cancel:", "Управление бронированием — изменить или отменить:"],
     "მთავარი ნავიგაცია": ["Main navigation", "Главная навигация"],
     "სასტუმრო აგავა — მთავარი": ["Hotel Agava — home", "Отель Агава — главная"],
     "მენიუს გახსნა": ["Open menu", "Открыть меню"],
@@ -494,6 +503,9 @@
     "სუპერლუქსი — 2 სტუმარზე": ["Superior Suite — 2 guests", "Суперлюкс — 2 гостя"],
     "საოჯახო ოთახი — 3 სტუმარზე": ["Family Room — 3 guests", "Семейный номер — 3 гостя"],
     "საოჯახო ოთახი — 4 სტუმარზე": ["Family Room — 4 guests", "Семейный номер — 4 гостя"],
+    "ორ ოთახიანი ლუქსი — 5 სტუმარზე": ["Two-Room Suite — 5 guests", "Двухкомнатный люкс — 5 гостей"],
+    "ლუქსი ჯაკუზით — 2 სტუმარზე": ["King Room with Spa Bath — 2 guests", "Люкс с джакузи — 2 гостя"],
+    "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე": ["Super Suite with Jacuzzi — 2 guests", "Суперлюкс с джакузи — 2 гостя"],
     "ორ ოთახიანი ლუქსი": ["Two-Room Suite", "Двухкомнатный люкс"],
     "ლუქსი ჯაკუზით": ["King Room with Spa Bath", "Люкс с джакузи"],
     "სუპერ ლუქსი ჯაკუზით": ["Super Suite with Jacuzzi", "Суперлюкс с джакузи"],
@@ -592,6 +604,9 @@
     }
     return s;
   }
+
+  /* exposed for the static-page build script (prerenders /en/ /ru/ /tr/) */
+  window.AGAVA_T = translateText;
 
   var ATTRS = ["placeholder", "aria-label", "title", "alt"];
 

@@ -4,6 +4,13 @@
 (function () {
   "use strict";
 
+  /* root-absolute asset URLs so pages under /en/ /ru/ /tr/ resolve images from site root */
+  function assetURL(u) {
+    if (!u) return u;
+    if (u.charAt(0) === "/" || /^https?:/i.test(u) || u.indexOf("data:") === 0) return u;
+    return "/" + u;
+  }
+
   var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ─── Navbar: solid on scroll ─── */
@@ -81,7 +88,7 @@
     var aboutHost = document.getElementById("aboutPhotos");
     if (aboutHost) {
       aboutHost.innerHTML = sectionItems("about").map(function (item, index) {
-        return '<figure class="about__photo' + (index === 0 ? " about__photo--1" : " about__photo--2") + '"><img src="' + item.url + '" alt="' + (item.alt || "") + '" loading="lazy"></figure>';
+        return '<figure class="about__photo' + (index === 0 ? " about__photo--1" : " about__photo--2") + '"><img src="' + assetURL(item.url) + '" alt="' + (item.alt || "") + '" loading="lazy"></figure>';
       }).join("");
     }
 
@@ -96,7 +103,7 @@
       }
       if (group) group.style.display = "";
       host.innerHTML = items.map(function (item, index) {
-        return '<figure class="gallery__item' + (index % 2 === 0 ? " gallery__item--wide" : "") + ' reveal is-visible"><img src="' + item.url + '" alt="' + (item.alt || "") + '" loading="lazy"><figcaption>' + (item.caption || "") + '</figcaption></figure>';
+        return '<figure class="gallery__item' + (index % 2 === 0 ? " gallery__item--wide" : "") + ' reveal is-visible"><img src="' + assetURL(item.url) + '" alt="' + (item.alt || "") + '" loading="lazy"><figcaption>' + (item.caption || "") + '</figcaption></figure>';
       }).join("");
     }
 
@@ -278,7 +285,7 @@
     var multi = room.images.length > 1;
     var html = '<div class="room-slider__track">' +
       room.images.map(function (src, idx) {
-        return '<img src="' + src + '" alt="' + room.alt + '"' +
+        return '<img src="' + assetURL(src) + '" alt="' + room.alt + '"' +
           (idx === 0 ? "" : ' loading="lazy" decoding="async"') +
           ' class="room-slider__img' + (idx === 0 ? " is-active" : "") + '">';
       }).join("") +
@@ -383,7 +390,7 @@
     var ctaTile = document.createElement("article");
     ctaTile.className = "room-tile room-tile--cta reveal" + (skipAnim ? " is-visible" : "");
     ctaTile.innerHTML =
-      '<img src="assets/logo.png" alt="" aria-hidden="true">' +
+      '<img src="/assets/logo.png" alt="" aria-hidden="true">' +
       "<h3>ვერ იპოვეთ სასურველი ოთახი?</h3>" +
       "<p>დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.</p>" +
       '<button class="btn btn--gold" data-open-booking>დაგვიკავშირდით</button>';
