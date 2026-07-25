@@ -376,6 +376,7 @@
       var targetPane = document.getElementById("pane-" + btn.getAttribute("data-pane"));
       if (targetPane) targetPane.hidden = false;
       if (btn.getAttribute("data-pane") === "content") renderContentAdmin();
+      if (btn.getAttribute("data-pane") === "blog") renderBlogAdmin();
     });
   });
 
@@ -802,5 +803,104 @@
       status.textContent = "შეცდომა: " + (err && err.message || err);
       status.className = "content-status is-error";
     });
+  });
+
+  /* ═══ BLOG ═══ */
+  var blogPosts = [];
+  function slugify(s) {
+    return String(s).toLowerCase().trim()
+      .replace(/[\s_]+/g, "-")
+      .replace(/[^a-z0-9Ⴀ-ჿ-]/g, "")
+      .replace(/-+/g, "-").replace(/^-|-$/g, "");
+  }
+  function renderBlogAdmin() {
+    var list = document.getElementById("blogList");
+    var editor = document.getElementById("blogEditor");
+    editor.hidden = true; list.hidden = false;
+    list.innerHTML = "<p class='muted'>იტვირთება…</p>";
+    sb.from("blog_posts").select("*").order("created_at", { ascending: false }).then(function (res) {
+      if (res.error) { list.innerHTML = "<p class='content-status is-error'>შეცდომა: " + esc(res.error.message) + "</p>"; return; }
+      blogPosts = res.data || [];
+      if (!blogPosts.length) { list.innerHTML = "<p class='muted'>ჯერ პოსტები არ არის. დააჭირეთ „+ ახალი პოსტი“.</p>"; return; }
+      list.innerHTML = '<div class="table-wrap"><table class="tbl"><thead><tr><th>სათაური</th><th>სტატუსი</th><th>თარიღი</th><th></th></tr></thead><tbody>' +
+        blogPosts.map(function (p) {
+          return '<tr>' +
+            '<td>' + esc(p.title) + '</td>' +
+            '<td>' + (p.published ? '<span class="pill pill--ok">გამოქვეყნებული</span>' : '<span class="pill">დრაფტი</span>') + '</td>' +
+            '<td>' + (p.created_at || "").slice(0, 10) + '</td>' +
+            '<td class="tbl__actions"><button class="abtn abtn--sm" data-edit="' + esc(p.id) + '">რედაქტ.</button> <button class="abtn abtn--sm abtn--danger" data-del="' + esc(p.id) + '">წაშლა</button></td>' +
+          '</tr>';
+        }).join("") + '</tbody></table></div>';
+    });
+  }
+  function openEditor(post) {
+    var list = document.getElementById("blogList");
+    var editor = document.getElementById("blogEditor");
+    list.hidden = true; editor.hidden = false;
+    var p = post || { title: "", slug: "", excerpt: "", cover_url: "", body_html: "", published: false };
+    editor.innerHTML =
+      '<div class="blog-form">' +
+        '<label>სათაური<input id="bpTitle" type="text" value="' + esc(p.title) + '"></label>' +
+        '<label>Slug (URL მისამართი)<input id="bpSlug" type="text" value="' + esc(p.slug) + '" placeholder="ავტომატურად შეივსება სათაურიდან"></label>' +
+        '<label>მოკლე აღწერა<textarea id="bpExcerpt" rows="2">' + esc(p.excerpt) + '</textarea></label>' +
+        '<label>ტექსტი (HTML ნებადართულია: &lt;p&gt; &lt;h2&gt; &lt;b&gt; &lt;a&gt; &lt;img&gt; …)<textarea id="bpBody" rows="12">' + esc(p.body_html) + '</textarea></label>' +
+        '<div class="blog-cover">' +
+          '<label class="content-upload-btn abtn abtn--sm"><input id="bpCoverFile" type="file" accept="image/*" hidden>ქავერის ატვირთვა</label>' +
+          '<input id="bpCover" type="text" value="' + esc(p.cover_url) + '" placeholder="ქავერის URL">' +
+          '<img class="blog-cover__preview" id="bpCoverPrev" src="' + esc(p.cover_url) + '"' + (p.cover_url ? '' : ' hidden') + ' alt="">' +
+        '</div>' +
+        '<label class="blog-check"><input id="bpPublished" type="checkbox"' + (p.published ? ' checked' : '') + '> გამოქვეყნებული (საიტზე გამოჩნდება)</label>' +
+        '<p class="content-status" id="bpStatus"></p>' +
+        '<div class="blog-form__actions">' +
+          '<button class="abtn abtn--gold" id="bpSave">შენახვა</button>' +
+          '<button class="abtn" id="bpCancel">გაუქმება</button>' +
+        '</div>' +
+      '</div>';
+    editor.setAttribute("data-id", post ? post.id : "");
+    var titleEl = document.getElementById("bpTitle");
+    var slugEl = document.getElementById("bpSlug");
+    titleEl.addEventListener("input", function () { if (!post && !slugEl.value) slugEl.placeholder = slugify(titleEl.value) || "ავტომატურად შეივსება"; });
+    document.getElementById("bpCancel").addEventListener("click", renderBlogAdmin);
+    document.getElementById("bpCoverFile").addEventListener("change", function (e) {
+      var f = e.target.files && e.target.files[0]; if (!f) return;
+      var st = document.getElementById("bpStatus"); st.textContent = "ქავერი იტვირთება…";
+      STORE.uploadFile(f).then(function (up) {
+        document.getElementById("bpCover").value = up.url;
+        var pv = document.getElementById("bpCoverPrev"); pv.src = up.url; pv.hidden = false;
+        st.textContent = "ქავერი აიტვირთა ✓";
+      }).catch(function (err) { st.textContent = "შეცდომა: " + (err && err.message || err); });
+    });
+    document.getElementById("bpSave").addEventListener("click", savePost);
+  }
+  function savePost() {
+    var st = document.getElementById("bpStatus");
+    var id = document.getElementById("blogEditor").getAttribute("data-id");
+    var title = document.getElementById("bpTitle").value.trim();
+    var slug = document.getElementById("bpSlug").value.trim() || slugify(title);
+    if (title.length < 2) { st.textContent = "სათაური სავალდებულოა."; return; }
+    if (!slug) { st.textContent = "Slug სავალდებულოა (გამოიყენეთ ლათინური ან ქართული)."; return; }
+    var row = {
+      slug: slug, title: title,
+      excerpt: document.getElementById("bpExcerpt").value.trim(),
+      cover_url: document.getElementById("bpCover").value.trim(),
+      body_html: document.getElementById("bpBody").value,
+      published: document.getElementById("bpPublished").checked
+    };
+    st.textContent = "ინახება…";
+    var q = id ? sb.from("blog_posts").update(row).eq("id", id) : sb.from("blog_posts").insert(row);
+    q.then(function (res) {
+      if (res.error) { st.textContent = "შეცდომა: " + res.error.message; return; }
+      renderBlogAdmin();
+    });
+  }
+  document.getElementById("newPostBtn").addEventListener("click", function () { openEditor(null); });
+  document.getElementById("blogList").addEventListener("click", function (e) {
+    var ed = e.target.closest("[data-edit]");
+    var del = e.target.closest("[data-del]");
+    if (ed) { var p = blogPosts.filter(function (x) { return String(x.id) === ed.getAttribute("data-edit"); })[0]; if (p) openEditor(p); }
+    if (del) {
+      if (!confirm("წავშალო ეს პოსტი?")) return;
+      sb.from("blog_posts").delete().eq("id", del.getAttribute("data-del")).then(function () { renderBlogAdmin(); });
+    }
   });
 })();

@@ -59,6 +59,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg>
           სურათები
         </button>
+        <button class="side__link" data-pane="blog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><path d="M4 4h11l5 5v11a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V5a1 1 0 0 1 1-1z"/><path d="M14 4v5h5M8 13h8M8 17h5"/></svg>
+          ბლოგი
+        </button>
       </nav>
       <button class="side__logout" id="logoutBtn">გასვლა</button>
     </aside>
@@ -133,6 +137,17 @@
         </div>
         <p class="muted">დაამატეთ, გადაათრიეთ, დაალაგეთ ან წაშალეთ ფოტოები — „ჩვენს შესახებ“, გალერეის ორივე ნაწილში (საუზმე / სასტუმრო) და თითოეული ოთახის ბარათში. ცვლილება მაშინვე ინახება და ჩანს ყველა ვიზიტორთან.</p>
         <div class="content-admin" id="contentAdmin"></div>
+      </section>
+
+      <!-- BLOG -->
+      <section class="pane" id="pane-blog" hidden>
+        <div class="pane__head">
+          <h2>ბლოგი</h2>
+          <button class="abtn abtn--gold" id="newPostBtn">+ ახალი პოსტი</button>
+        </div>
+        <p class="muted">დაწერეთ სიახლეები და სტატიები. გამოქვეყნებული პოსტები მაშინვე ჩანს საიტის ბლოგზე — <a href="/blog/" target="_blank" rel="noopener">/blog</a>.</p>
+        <div class="blog-list" id="blogList"><!-- JS --></div>
+        <div class="blog-editor" id="blogEditor" hidden><!-- JS --></div>
       </section>
     </main>
   </div>

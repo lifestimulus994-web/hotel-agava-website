@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ka">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ბლოგი — სასტუმრო აგავა | თბილისი</title>
+  <meta name="description" content="სასტუმრო აგავას ბლოგი — სიახლეები, რჩევები და სტატიები თბილისში დასვენების, ღირსშესანიშნაობებისა და სასტუმროს შესახებ.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#b8935a">
+  <link rel="canonical" href="https://hotelagava.ge/blog/">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="ბლოგი — სასტუმრო აგავა">
+  <meta property="og:description" content="სიახლეები და სტატიები თბილისში დასვენების შესახებ.">
+  <meta property="og:url" content="https://hotelagava.ge/blog/">
+  <meta property="og:image" content="https://hotelagava.ge/assets/hero.jpg">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="navbar is-solid" id="navbar">
+    <div class="navbar__inner container">
+      <a href="/" class="navbar__brand" aria-label="სასტუმრო აგავა — მთავარი">
+        <img src="/assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="navbar__logo">
+        <span class="navbar__name">AGAVA</span>
+      </a>
+      <nav class="navbar__nav" aria-label="მთავარი ნავიგაცია">
+        <a href="/" class="navbar__link">მთავარი</a>
+        <a href="/#rooms" class="navbar__link">ოთახები</a>
+        <a href="/#services" class="navbar__link">სერვისები</a>
+        <a href="/blog/" class="navbar__link is-active">ბლოგი</a>
+        <a href="/#contact" class="navbar__link">კონტაქტი</a>
+      </nav>
+      <a class="btn btn--gold navbar__cta" href="/#rooms">დაჯავშნა</a>
+    </div>
+  </header>
+
+  <main class="blog-page">
+    <div class="container">
+      <header class="blog-head">
+        <p class="section-eyebrow">სიახლეები და სტატიები</p>
+        <h1 class="section-title">სასტუმრო აგავას ბლოგი</h1>
+      </header>
+      <div class="blog-grid" id="blogGrid"></div>
+    </div>
+  </main>
+
+  <script defer src="/js/config.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script defer src="/js/blog.js"></script>
+</body>
+</html>
