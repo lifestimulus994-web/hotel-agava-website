@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Блог — Отель АГАВА</title>
+  <meta name="description" content="Блог отеля Агава.">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#b8935a">
+  <link rel="canonical" href="https://hotelagava.ge/ru/blog/read/">
+  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <header class="navbar is-solid" id="navbar">
+    <div class="navbar__inner container">
+      <a href="/ru/" class="navbar__brand" aria-label="Отель Агава — главная">
+        <img src="/assets/logo.png" alt="Отель АГАВАს ლოგო" class="navbar__logo">
+        <span class="navbar__name">AGAVA</span>
+      </a>
+      <nav class="navbar__nav" aria-label="Главная навигация">
+        <a href="/ru/" class="navbar__link">Главная</a>
+        <a href="/ru/#rooms" class="navbar__link">Номера</a>
+        <a href="/ru/#services" class="navbar__link">Услуги</a>
+        <a href="/ru/blog/" class="navbar__link is-active">Блог</a>
+        <a href="/ru/#contact" class="navbar__link">Контакты</a>
+      </nav>
+      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+        <button type="button" data-lang="ka">ქარ</button>
+        <button type="button" data-lang="en">ENG</button>
+        <button type="button" data-lang="ru" class="is-active">РУС</button>
+        <button type="button" data-lang="tr">TR</button>
+      </div>
+      <a class="btn btn--gold navbar__cta" href="/ru/#rooms">Забронировать</a>
+    </div>
+  </header>
+
+  <main class="blog-page blog-page--single">
+    <div class="container container--narrow">
+      <article class="blog-article" id="blogArticle" data-noi18n=""></article>
+    </div>
+  </main>
+
+  <script defer="" src="/js/config.js"></script>
+  <script defer="" src="/js/i18n.js"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+  <script defer="" src="/js/blog.js"></script>
+
+
+</body></html>

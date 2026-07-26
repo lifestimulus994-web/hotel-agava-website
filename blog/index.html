@@ -8,6 +8,11 @@
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#b8935a">
   <link rel="canonical" href="https://hotelagava.ge/blog/">
+  <link rel="alternate" hreflang="ka" href="https://hotelagava.ge/blog/">
+  <link rel="alternate" hreflang="en" href="https://hotelagava.ge/en/blog/">
+  <link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/blog/">
+  <link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/blog/">
+  <link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/blog/">
   <meta property="og:type" content="website">
   <meta property="og:title" content="ბლოგი — სასტუმრო აგავა">
   <meta property="og:description" content="სიახლეები და სტატიები თბილისში დასვენების შესახებ.">
@@ -34,6 +39,12 @@
         <a href="/blog/" class="navbar__link is-active">ბლოგი</a>
         <a href="/#contact" class="navbar__link">კონტაქტი</a>
       </nav>
+      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+        <button type="button" data-lang="ka">ქარ</button>
+        <button type="button" data-lang="en">ENG</button>
+        <button type="button" data-lang="ru">РУС</button>
+        <button type="button" data-lang="tr">TR</button>
+      </div>
       <a class="btn btn--gold navbar__cta" href="/#rooms">დაჯავშნა</a>
     </div>
   </header>
@@ -44,11 +55,12 @@
         <p class="section-eyebrow">სიახლეები და სტატიები</p>
         <h1 class="section-title">სასტუმრო აგავას ბლოგი</h1>
       </header>
-      <div class="blog-grid" id="blogGrid"></div>
+      <div class="blog-grid" id="blogGrid" data-noi18n></div>
     </div>
   </main>
 
   <script defer src="/js/config.js"></script>
+  <script defer src="/js/i18n.js"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script defer src="/js/blog.js"></script>
 </body>

@@ -17,30 +17,45 @@
   }
   function fmtDate(s) { return (s || "").slice(0, 10); }
 
+  /* language prefix from URL path: "/en" | "/ru" | "/tr" | "" (ka) */
+  var LB = (location.pathname.match(/^\/(en|ru|tr)(?=\/)/) || [""])[0];
+  var LK = LB === "/en" ? "en" : LB === "/ru" ? "ru" : LB === "/tr" ? "tr" : "ka";
+  var UI = {
+    home:     { ka: "მთავარი", en: "Home", ru: "Главная", tr: "Ana Sayfa" },
+    blog:     { ka: "ბლოგი", en: "Blog", ru: "Блог", tr: "Blog" },
+    back:     { ka: "← ბლოგზე დაბრუნება", en: "← Back to blog", ru: "← Назад к блогу", tr: "← Bloga dön" },
+    loading:  { ka: "იტვირთება…", en: "Loading…", ru: "Загрузка…", tr: "Yükleniyor…" },
+    soon:     { ka: "მალე დაემატება სტატიები.", en: "Articles coming soon.", ru: "Скоро появятся статьи.", tr: "Yakında makaleler eklenecek." },
+    notfound: { ka: "პოსტი ვერ მოიძებნა.", en: "Post not found.", ru: "Пост не найден.", tr: "Yazı bulunamadı." },
+    more:     { ka: "ვრცლად →", en: "Read more →", ru: "Подробнее →", tr: "Devamı →" },
+    unavail:  { ka: "ბლოგი დროებით მიუწვდომელია.", en: "Blog temporarily unavailable.", ru: "Блог временно недоступен.", tr: "Blog geçici olarak kullanılamıyor." }
+  };
+  function t(k) { return UI[k][LK]; }
+
   if (!CFG.CONFIGURED || !window.supabase) {
     var host = grid || article;
-    if (host) host.innerHTML = '<p class="muted">ბლოგი დროებით მიუწვდომელია.</p>';
+    if (host) host.innerHTML = '<p class="muted">' + t("unavail") + '</p>';
     return;
   }
   var sb = window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY);
 
   /* ─── list ─── */
   if (grid) {
-    grid.innerHTML = '<p class="muted">იტვირთება…</p>';
+    grid.innerHTML = '<p class="muted">' + t("loading") + '</p>';
     sb.from("blog_posts")
       .select("slug,title,excerpt,cover_url,created_at")
       .eq("published", true)
       .order("created_at", { ascending: false })
       .then(function (res) {
         var posts = (res && res.data) || [];
-        if (!posts.length) { grid.innerHTML = '<p class="muted">მალე დაემატება სტატიები.</p>'; return; }
+        if (!posts.length) { grid.innerHTML = '<p class="muted">' + t("soon") + '</p>'; return; }
         grid.innerHTML = posts.map(function (p) {
-          return '<a class="blog-card" href="/blog/read/?slug=' + encodeURIComponent(p.slug) + '">' +
+          return '<a class="blog-card" href="' + LB + '/blog/read/?slug=' + encodeURIComponent(p.slug) + '">' +
             (p.cover_url ? '<div class="blog-card__img"><img src="' + esc(p.cover_url) + '" alt="' + esc(p.title) + '" loading="lazy"></div>' : '') +
             '<div class="blog-card__body"><time>' + fmtDate(p.created_at) + '</time>' +
             '<h2>' + esc(p.title) + '</h2>' +
             (p.excerpt ? '<p>' + esc(p.excerpt) + '</p>' : '') +
-            '<span class="blog-card__more">ვრცლად →</span></div></a>';
+            '<span class="blog-card__more">' + t("more") + '</span></div></a>';
         }).join("");
       });
   }
@@ -48,13 +63,13 @@
   /* ─── single post ─── */
   if (article) {
     var slug = new URLSearchParams(location.search).get("slug");
-    if (!slug) { article.innerHTML = '<p class="muted">პოსტი ვერ მოიძებნა.</p>'; return; }
-    article.innerHTML = '<p class="muted">იტვირთება…</p>';
+    if (!slug) { article.innerHTML = '<p class="muted">' + t("notfound") + '</p>'; return; }
+    article.innerHTML = '<p class="muted">' + t("loading") + '</p>';
     sb.from("blog_posts").select("*").eq("slug", slug).eq("published", true).limit(1)
       .then(function (res) {
         var p = res && res.data && res.data[0];
-        if (!p) { article.innerHTML = '<p class="muted">პოსტი ვერ მოიძებნა.</p>'; return; }
-        var url = "https://hotelagava.ge/blog/read/?slug=" + encodeURIComponent(slug);
+        if (!p) { article.innerHTML = '<p class="muted">' + t("notfound") + '</p>'; return; }
+        var url = "https://hotelagava.ge" + LB + "/blog/read/?slug=" + encodeURIComponent(slug);
         document.title = p.title + " — სასტუმრო აგავა";
         setMeta('meta[name="description"]', "name", "description", p.excerpt || p.title);
         setLink('link[rel="canonical"]', "canonical", url);
@@ -72,12 +87,12 @@
           mainEntityOfPage: url
         });
         article.innerHTML =
-          '<nav class="rdp-crumb"><a href="/">მთავარი</a> · <a href="/blog/">ბლოგი</a> · <span>' + esc(p.title) + '</span></nav>' +
+          '<nav class="rdp-crumb"><a href="' + (LB || "/") + '">' + t("home") + '</a> · <a href="' + LB + '/blog/">' + t("blog") + '</a> · <span>' + esc(p.title) + '</span></nav>' +
           '<h1 class="blog-article__title">' + esc(p.title) + '</h1>' +
           '<time class="blog-article__date">' + fmtDate(p.created_at) + '</time>' +
           (p.cover_url ? '<img class="blog-article__cover" src="' + esc(p.cover_url) + '" alt="' + esc(p.title) + '">' : '') +
           '<div class="blog-article__body">' + p.body_html + '</div>' +
-          '<a class="rdp-back" href="/blog/">← ბლოგზე დაბრუნება</a>';
+          '<a class="rdp-back" href="' + LB + '/blog/">' + t("back") + '</a>';
       });
   }
 

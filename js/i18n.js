@@ -60,6 +60,8 @@
     "სერვისები": "Hizmetler",
     "გალერეა": "Galeri",
     "ბლოგი": "Blog",
+    "სასტუმრო აგავას ბლოგი": "Otel Agava Blog",
+    "სიახლეები და სტატიები": "Haberler ve makaleler",
     "კონტაქტი": "İletişim",
 
     /* hero */
@@ -315,6 +317,8 @@
     "სერვისები": ["Services", "Услуги"],
     "გალერეა": ["Gallery", "Галерея"],
     "ბლოგი": ["Blog", "Блог"],
+    "სასტუმრო აგავას ბლოგი": ["Hotel Agava Blog", "Блог отеля Агава"],
+    "სიახლეები და სტატიები": ["News & articles", "Новости и статьи"],
     "კონტაქტი": ["Contact", "Контакты"],
 
     /* hero */
@@ -621,16 +625,22 @@
 
   var ATTRS = ["placeholder", "aria-label", "title", "alt"];
 
+  /* subtrees marked [data-noi18n] are skipped (e.g. admin-authored blog content) */
+  function noTr(el) { return !!(el && el.closest && el.closest("[data-noi18n]")); }
+
   function translateTree(root) {
     if (root.nodeType === 3) { /* text node */
+      if (noTr(root.parentElement)) return;
       var t = translateText(root.nodeValue);
       if (t !== root.nodeValue) root.nodeValue = t;
       return;
     }
     if (root.nodeType !== 1) return;
+    if (noTr(root)) return;
     var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null, false);
     var node;
     while ((node = walker.nextNode())) {
+      if (noTr(node.parentElement)) continue;
       var v = translateText(node.nodeValue);
       if (v !== node.nodeValue) node.nodeValue = v;
     }
@@ -649,6 +659,7 @@
     new MutationObserver(function (muts) {
       muts.forEach(function (m) {
         if (m.type === "characterData") {
+          if (noTr(m.target.parentElement)) return;
           var v = translateText(m.target.nodeValue);
           if (v !== m.target.nodeValue) m.target.nodeValue = v;
         } else {
