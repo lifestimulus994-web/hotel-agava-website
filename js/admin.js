@@ -377,6 +377,7 @@
       if (targetPane) targetPane.hidden = false;
       if (btn.getAttribute("data-pane") === "content") renderContentAdmin();
       if (btn.getAttribute("data-pane") === "blog") renderBlogAdmin();
+      if (btn.getAttribute("data-pane") === "seo") renderSeo();
     });
   });
 
@@ -903,4 +904,100 @@
       sb.from("blog_posts").delete().eq("id", del.getAttribute("data-del")).then(function () { renderBlogAdmin(); });
     }
   });
+
+  /* ═══ SEO (per-page meta, RankMath-lite) ═══ */
+  var SEO_STATIC = [
+    { path: "/", label: "მთავარი (Home)" },
+    { path: "/blog/", label: "ბლოგი" }
+  ];
+  function seoPages() {
+    var rooms = (ROOM_TYPES || []).map(function (rt) {
+      return { path: "/rooms/" + rt.slug + "/", label: "ოთახი — " + rt.name };
+    });
+    return SEO_STATIC.concat(rooms);
+  }
+  function renderSeo() {
+    var sel = document.getElementById("seoPage");
+    sel.innerHTML = seoPages().map(function (p) {
+      return '<option value="' + esc(p.path) + '">' + esc(p.label) + " — " + esc(p.path) + "</option>";
+    }).join("");
+    sel.onchange = function () { loadSeoForm(sel.value); };
+    if (sel.value) loadSeoForm(sel.value);
+  }
+  function loadSeoForm(path) {
+    var host = document.getElementById("seoEditor");
+    host.innerHTML = "<p class='muted'>იტვირთება…</p>";
+    sb.from("seo_meta").select("*").eq("path", path).limit(1).then(function (res) {
+      var m = (res.data && res.data[0]) || { path: path, title: "", description: "", og_image: "", robots: "index, follow", focus_keyword: "" };
+      host.innerHTML =
+        '<div class="seo-form">' +
+          '<label>Title (SEO სათაური)<input id="seoTitle" type="text" value="' + esc(m.title) + '" maxlength="70"></label>' +
+          '<div class="seo-meter" id="seoTitleMeter"></div>' +
+          '<label>Meta Description<textarea id="seoDesc" rows="3" maxlength="220">' + esc(m.description) + '</textarea></label>' +
+          '<div class="seo-meter" id="seoDescMeter"></div>' +
+          '<label>Focus Keyword<input id="seoKw" type="text" value="' + esc(m.focus_keyword) + '" placeholder="მაგ.: სასტუმრო თბილისში"></label>' +
+          '<div class="seo-cover">' +
+            '<label class="content-upload-btn abtn abtn--sm"><input id="seoOgFile" type="file" accept="image/*" hidden>OG სურათის ატვირთვა</label>' +
+            '<input id="seoOg" type="text" value="' + esc(m.og_image) + '" placeholder="OG image URL (არასავალდებულო)">' +
+          '</div>' +
+          '<label>Robots<select id="seoRobots">' +
+            ["index, follow", "noindex, follow", "index, nofollow", "noindex, nofollow"].map(function (r) { return "<option" + (m.robots === r ? " selected" : "") + ">" + r + "</option>"; }).join("") +
+          '</select></label>' +
+          '<div class="seo-preview" id="seoPreview"></div>' +
+          '<ul class="seo-checks" id="seoChecks"></ul>' +
+          '<p class="content-status" id="seoStatus"></p>' +
+          '<div class="blog-form__actions"><button class="abtn abtn--gold" id="seoSave">შენახვა</button></div>' +
+        '</div>';
+      ["seoTitle", "seoDesc", "seoKw"].forEach(function (id) { document.getElementById(id).addEventListener("input", seoUpdatePreview); });
+      document.getElementById("seoOgFile").addEventListener("change", function (e) {
+        var f = e.target.files && e.target.files[0]; if (!f) return;
+        var st = document.getElementById("seoStatus"); st.textContent = "იტვირთება…";
+        STORE.uploadFile(f).then(function (up) { document.getElementById("seoOg").value = up.url; st.textContent = "აიტვირთა ✓"; })
+          .catch(function (err) { st.textContent = "შეცდომა: " + (err && err.message || err); });
+      });
+      document.getElementById("seoSave").addEventListener("click", function () { saveSeo(path); });
+      seoUpdatePreview();
+    });
+  }
+  function seoUpdatePreview() {
+    var title = document.getElementById("seoTitle").value.trim();
+    var desc = document.getElementById("seoDesc").value.trim();
+    var kw = document.getElementById("seoKw").value.trim().toLowerCase();
+    var path = document.getElementById("seoPage").value;
+    document.getElementById("seoPreview").innerHTML =
+      '<div class="serp"><div class="serp__url">hotelagava.ge' + esc(path) + '</div>' +
+      '<div class="serp__title">' + esc(title || "(სათაური არ არის)") + '</div>' +
+      '<div class="serp__desc">' + esc(desc || "(აღწერა არ არის)") + '</div></div>';
+    document.getElementById("seoTitleMeter").innerHTML = seoMeter(title.length, 15, 60);
+    document.getElementById("seoDescMeter").innerHTML = seoMeter(desc.length, 70, 160);
+    var checks = [];
+    checks.push(seoChk(title.length >= 15 && title.length <= 60, "Title 15–60 სიმბოლო (" + title.length + ")"));
+    checks.push(seoChk(desc.length >= 70 && desc.length <= 160, "Description 70–160 სიმბოლო (" + desc.length + ")"));
+    if (kw) {
+      checks.push(seoChk(title.toLowerCase().indexOf(kw) >= 0, "Focus keyword Title-ში"));
+      checks.push(seoChk(desc.toLowerCase().indexOf(kw) >= 0, "Focus keyword Description-ში"));
+    }
+    document.getElementById("seoChecks").innerHTML = checks.join("");
+  }
+  function seoMeter(len, min, max) {
+    var cls = (len >= min && len <= max) ? "ok" : (len > max ? "over" : "low");
+    return '<span class="seo-bar seo-bar--' + cls + '"></span> ' + len + ' სიმბოლო (რეკ.: ' + min + "–" + max + ")";
+  }
+  function seoChk(pass, text) { return '<li class="' + (pass ? "is-ok" : "is-bad") + '">' + (pass ? "✓" : "✕") + " " + esc(text) + "</li>"; }
+  function saveSeo(path) {
+    var st = document.getElementById("seoStatus");
+    var row = {
+      path: path,
+      title: document.getElementById("seoTitle").value.trim(),
+      description: document.getElementById("seoDesc").value.trim(),
+      og_image: document.getElementById("seoOg").value.trim(),
+      robots: document.getElementById("seoRobots").value,
+      focus_keyword: document.getElementById("seoKw").value.trim()
+    };
+    st.textContent = "ინახება…";
+    sb.from("seo_meta").upsert(row, { onConflict: "path" }).then(function (res) {
+      if (res.error) { st.textContent = "შეცდომა: " + res.error.message; return; }
+      st.textContent = "შენახულია ✓ — მოქმედებს ქართულ გვერდზე";
+    });
+  }
 })();
