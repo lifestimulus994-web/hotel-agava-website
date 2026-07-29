@@ -1752,3 +1752,17 @@ body.modal-open { overflow: hidden; }
 .blog-article__body li { margin-bottom: 8px; }
 @media (max-width: 860px) { .blog-grid { grid-template-columns: 1fr; } .blog-page { padding: 100px 0 60px; } }
 @media (min-width: 561px) and (max-width: 860px) { .blog-grid { grid-template-columns: repeat(2, 1fr); } }
+
+/* ═══════════ SERVICE LANDING PAGE (/services/<slug>/) ═══════════ */
+.service-page { padding: 130px 0 80px; background: var(--cream); min-height: 100vh; text-align: center; }
+.service-page .rdp-crumb { text-align: left; }
+.svc-icon { width: 76px; height: 76px; margin: 24px auto 18px; color: var(--gold); background: var(--gold-pale); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+.svc-icon svg { width: 38px; height: 38px; }
+.svc-title { font-family: var(--font-head); font-size: clamp(1.7rem, 4vw, 2.4rem); color: var(--ink); margin-bottom: 16px; }
+.svc-desc { color: var(--ink-soft); line-height: 1.85; font-size: 1.08rem; max-width: 620px; margin: 0 auto 30px; }
+.service-page .rdp-actions { justify-content: center; }
+.service-page .rdp-back { display: inline-block; margin-top: 24px; }
+
+/* homepage service card "read more" link */
+.service__more { display: inline-block; margin-top: 8px; color: var(--gold); font-weight: 600; font-size: .88rem; text-decoration: none; }
+.service__more:hover { text-decoration: underline; }
