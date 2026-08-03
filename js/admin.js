@@ -548,16 +548,18 @@
     sel.value = selected || "";
   }
 
-  function openEdit(b) {
+  function openEdit(b, prefill) {
+    prefill = prefill || {};
     document.getElementById("editTitle").textContent = b ? "ჯავშნის რედაქტირება" : "ახალი ჯავშანი";
     document.getElementById("ebId").value = b ? b.id : "";
     document.getElementById("ebName").value = b ? b.guest_name : "";
     document.getElementById("ebPhone").value = b ? b.guest_phone : "";
-    var rtId = b ? b.room_type_id : (ROOM_TYPES[0] ? ROOM_TYPES[0].id : "");
+    var rtId = b ? b.room_type_id
+      : (prefill.room_type_id || (ROOM_TYPES[0] ? ROOM_TYPES[0].id : ""));
     document.getElementById("ebRoom").value = rtId;
     document.getElementById("ebGuests").value = b ? b.guests : 2;
-    document.getElementById("ebIn").value = b ? b.check_in : todayISO();
-    document.getElementById("ebOut").value = b ? b.check_out : "";
+    document.getElementById("ebIn").value = b ? b.check_in : (prefill.check_in || todayISO());
+    document.getElementById("ebOut").value = b ? b.check_out : (prefill.check_out || "");
     document.getElementById("ebStatus").value = b ? b.status : "confirmed";
     document.getElementById("ebPrice").value = b && b.total_price != null ? Number(b.total_price) : "";
     document.getElementById("ebComment").value = b ? (b.comment || "") : "";
@@ -583,36 +585,50 @@
     var co = document.getElementById("ebOut").value;
     if (!ci || !co || co <= ci) { st.textContent = "შეამოწმე თარიღები."; st.className = "amodal__status is-error"; return; }
 
-    var payload = {
-      guest_name: document.getElementById("ebName").value.trim(),
-      guest_phone: document.getElementById("ebPhone").value.trim(),
-      room_type_id: parseInt(document.getElementById("ebRoom").value, 10),
-      guests: parseInt(document.getElementById("ebGuests").value, 10) || 2,
-      check_in: ci,
-      check_out: co,
-      status: document.getElementById("ebStatus").value,
-      comment: document.getElementById("ebComment").value.trim() || null,
-      room_no: document.getElementById("ebRoomNo").value || null,
-      breakfast: document.getElementById("ebBreakfast").checked
-    };
     var priceVal = document.getElementById("ebPrice").value;
-    payload.total_price = priceVal === "" ? null : Number(priceVal);
 
     st.textContent = "ინახება…";
     st.className = "amodal__status";
 
-    var q = id
-      ? sb.from("bookings").update(payload).eq("id", id)
-      : sb.from("bookings").insert(Object.assign({ booking_number: "", source: "admin" }, payload));
-
-    q.then(function (res) {
-      if (res.error) { st.textContent = "შეცდომა: " + res.error.message; st.className = "amodal__status is-error"; return; }
+    /* RPC ამოწმებს მარაგს და ოთახის ნომრის კონფლიქტს — overbooking ვერ გაივლის */
+    sb.rpc("admin_save_booking", {
+      p_id:           id || null,
+      p_room_type_id: parseInt(document.getElementById("ebRoom").value, 10),
+      p_in:           ci,
+      p_out:          co,
+      p_guests:       parseInt(document.getElementById("ebGuests").value, 10) || 2,
+      p_name:         document.getElementById("ebName").value.trim(),
+      p_phone:        document.getElementById("ebPhone").value.trim(),
+      p_status:       document.getElementById("ebStatus").value,
+      p_price:        priceVal === "" ? null : Number(priceVal),
+      p_comment:      document.getElementById("ebComment").value.trim() || null,
+      p_room_no:      document.getElementById("ebRoomNo").value || null,
+      p_breakfast:    document.getElementById("ebBreakfast").checked,
+      p_source:       "admin"
+    }).then(function (res) {
+      if (res.error) {
+        st.textContent = bookingErrorKa(res.error.message);
+        st.className = "amodal__status is-error";
+        return;
+      }
       st.textContent = "შენახულია ✓";
       st.className = "amodal__status is-ok";
       setTimeout(function () { editModal.hidden = true; }, 500);
       refreshAll();
     });
   });
+
+  function bookingErrorKa(msg) {
+    msg = String(msg || "");
+    var full = msg.match(/no availability on (\d{4}-\d{2}-\d{2})/);
+    if (full) return "ამ ტიპის თავისუფალი ოთახი აღარ არის — " + fmtKa(full[1]) + " სავსეა.";
+    var busy = msg.match(/room (.+?) busy \((.+?)\)/);
+    if (busy) return "ოთახი #" + busy[1] + " ამ თარიღებზე დაკავებულია (" + busy[2] + ") — აირჩიე სხვა ნომერი.";
+    if (/invalid date range/.test(msg)) return "თარიღები არასწორია.";
+    if (/invalid name/.test(msg)) return "შეავსე სახელი და გვარი.";
+    if (/invalid phone/.test(msg)) return "შეავსე ტელეფონი.";
+    return "შეცდომა: " + msg;
+  }
 
   /* ═══ CALENDAR ═══ */
   var calCursor = new Date();
@@ -629,7 +645,7 @@
     document.getElementById("calLabel").textContent = KA_MONTHS[m] + " " + y;
     document.getElementById("calDetail").hidden = true;
 
-    Promise.all([
+    return Promise.all([
       sb.from("bookings").select("*").in("status", ["pending", "confirmed"]).lt("check_in", mEnd).gt("check_out", mStart),
       sb.from("blocked_dates").select("*").gte("date", mStart).lt("date", mEnd),
       sb.from("price_overrides").select("*").gte("date", mStart).lt("date", mEnd)
@@ -653,17 +669,21 @@
           }).length;
           var block = blocks.find(function (bl) { return bl.room_type_id === rt.id && bl.date === dayIso; });
           var po = prices.find(function (p) { return p.room_type_id === rt.id && p.date === dayIso; });
-          var free = rt.total_rooms - booked - (block ? block.rooms_blocked : 0);
+          var blk = block ? block.rooms_blocked : 0;
+          var free = Math.max(rt.total_rooms - booked - blk, 0);
 
           var cls, txt;
           if (dayIso < t) { cls = "c-past"; txt = booked || ""; }
-          else if (block && free <= 0 && !booked) { cls = "c-block"; txt = "✕"; }
+          else if (blk && free <= 0 && !booked) { cls = "c-block"; txt = "✕"; }
           else if (free <= 0) { cls = "c-full"; txt = booked; }
-          else if (booked > 0 || block) { cls = "c-part"; txt = free; }
+          else if (booked > 0 || blk) { cls = "c-part"; txt = free; }
           else { cls = "c-free"; txt = free; }
 
+          var tip = rt.name + " · " + dayIso + " — თავისუფალი " + free + "/" + rt.total_rooms +
+            (booked ? " · ჯავშანი " + booked : "") + (blk ? " · ბლოკი " + blk : "");
+
           row += '<td class="day ' + cls + (po ? " has-price" : "") + (dayIso === t ? " today" : "") +
-            '" data-day="' + dayIso + '" data-rt="' + rt.id + '" title="' + esc(rt.name) + " · " + dayIso + '">' + txt + "</td>";
+            '" data-day="' + dayIso + '" data-rt="' + rt.id + '" title="' + esc(tip) + '">' + txt + "</td>";
         }
         return "<tr>" + row + "</tr>";
       }).join("");
@@ -687,34 +707,85 @@
     });
     var block = data.blocks.find(function (bl) { return bl.room_type_id === rtId && bl.date === dayIso; });
     var po = data.prices.find(function (p) { return p.room_type_id === rtId && p.date === dayIso; });
+    var blocked = block ? block.rooms_blocked : 0;
+    var free = Math.max(rt.total_rooms - dayBookings.length - blocked, 0);
 
     var el = document.getElementById("calDetail");
     el.hidden = false;
     el.innerHTML =
       "<h4>" + esc(rt.name) + " — " + fmtKa(dayIso) + "</h4>" +
+      '<p class="cal-detail__sum">სულ ' + rt.total_rooms + " · დაკავებული " + dayBookings.length +
+        " · დაბლოკილი " + blocked + ' · <strong>თავისუფალი ' + free + "</strong></p>" +
       (dayBookings.length
         ? "<ul>" + dayBookings.map(function (b) {
             return "<li><strong>" + esc(b.booking_number) + "</strong> · " + esc(b.guest_name) + " · " +
-              esc(b.guest_phone) + " · " + fmtKa(b.check_in) + "→" + fmtKa(b.check_out) + " " + statusBadge(b.status) + "</li>";
+              esc(b.guest_phone) + " · " + fmtKa(b.check_in) + "→" + fmtKa(b.check_out) +
+              (b.room_no ? " · #" + esc(b.room_no) : "") + " " + statusBadge(b.status) + "</li>";
           }).join("") + "</ul>"
         : '<p class="muted" style="font-size:13px">ამ დღეს ჯავშანი არ არის.</p>') +
+
       '<div class="cal-detail__actions">' +
-        '<button class="abtn abtn--sm" id="cdBlock">' + (block ? "ბლოკის მოხსნა" : "დღის დაბლოკვა") + "</button>" +
+        '<button class="abtn abtn--gold abtn--sm" id="cdWalkin">+ სტუმარი (ადგილზე მოსული)</button>' +
+        '<span class="muted" style="font-size:12px">ადგილზე მოსული სტუმარი ჯავშნად შეიყვანე — არა ბლოკად.</span>' +
+      "</div>" +
+
+      '<div class="cal-block">' +
+        '<div class="cal-block__title">ბლოკი — რემონტი / ტექნიკური სამუშაო' +
+          (blocked ? ' <span class="cal-block__now">ახლა დაბლოკილია ' + blocked + " ოთახი" +
+            (block && block.reason ? " · " + esc(block.reason) : "") + "</span>" : "") +
+        "</div>" +
+        '<div class="cal-block__row">' +
+          '<label>დან<input type="date" id="cdFrom" value="' + dayIso + '"></label>' +
+          '<label>მდე (ჩათვლით)<input type="date" id="cdTo" value="' + dayIso + '"></label>' +
+          '<label>ოთახი<input type="number" id="cdRooms" min="1" max="' + rt.total_rooms + '" value="1"></label>' +
+          '<label class="cal-block__reason">მიზეზი<input type="text" id="cdReason" placeholder="მაგ.: რემონტი"></label>' +
+        "</div>" +
+        '<div class="cal-detail__actions">' +
+          '<button class="abtn abtn--sm" id="cdBlock">დაბლოკვა</button>' +
+          '<button class="abtn abtn--sm abtn--danger" id="cdUnblock">ბლოკის მოხსნა (დიაპაზონზე)</button>' +
+          '<span class="amodal__status" id="cdStatus"></span>' +
+        "</div>" +
+      "</div>" +
+
+      '<div class="cal-detail__actions">' +
         '<input type="number" id="cdPrice" min="0" placeholder="ფასი ₾" value="' + (po ? Number(po.price) : "") + '">' +
         '<button class="abtn abtn--sm" id="cdSetPrice">ფასის შენახვა</button>' +
         (po ? '<button class="abtn abtn--sm abtn--danger" id="cdDelPrice">სპეც. ფასის წაშლა</button>' : "") +
         '<span class="muted" style="font-size:12px">საბაზო: ' + Number(rt.base_price) + " ₾</span>" +
       "</div>";
 
-    document.getElementById("cdBlock").onclick = function () {
-      var q = block
-        ? sb.from("blocked_dates").delete().eq("id", block.id)
-        : sb.from("blocked_dates").insert({ room_type_id: rtId, date: dayIso, rooms_blocked: rt.total_rooms, reason: "admin" });
-      q.then(function (res) {
-        if (res.error) alert("შეცდომა: " + res.error.message);
-        renderCalendar();
-      });
+    document.getElementById("cdWalkin").onclick = function () {
+      var next = new Date(dayIso + "T00:00:00");
+      next.setDate(next.getDate() + 1);
+      openEdit(null, { room_type_id: rtId, check_in: dayIso, check_out: iso(next) });
     };
+
+    function blockRange(remove) {
+      var st = document.getElementById("cdStatus");
+      var from = document.getElementById("cdFrom").value;
+      var to = document.getElementById("cdTo").value;
+      var rooms = parseInt(document.getElementById("cdRooms").value, 10) || 1;
+      if (!from || !to || to < from) {
+        st.textContent = "შეამოწმე დიაპაზონი."; st.className = "amodal__status is-error"; return;
+      }
+      st.textContent = "ინახება…"; st.className = "amodal__status";
+      var call = remove
+        ? sb.rpc("admin_unblock_range", { p_room_type_id: rtId, p_from: from, p_to: to, p_rooms: null })
+        : sb.rpc("admin_block_range", {
+            p_room_type_id: rtId, p_from: from, p_to: to, p_rooms: rooms,
+            p_reason: document.getElementById("cdReason").value.trim() || null
+          });
+      call.then(function (res) {
+        if (res.error) {
+          st.textContent = "შეცდომა: " + res.error.message;
+          st.className = "amodal__status is-error";
+          return;
+        }
+        renderCalendar().then(function () { showDayDetail(dayIso, rtId); });
+      });
+    }
+    document.getElementById("cdBlock").onclick = function () { blockRange(false); };
+    document.getElementById("cdUnblock").onclick = function () { blockRange(true); };
     document.getElementById("cdSetPrice").onclick = function () {
       var v = document.getElementById("cdPrice").value;
       if (v === "" || Number(v) < 0) return;

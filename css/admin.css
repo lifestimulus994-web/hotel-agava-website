@@ -314,6 +314,30 @@ input:focus, select:focus, textarea:focus {
 .cal-detail ul { list-style: none; }
 .cal-detail li { font-size: 13px; padding: 6px 0; border-bottom: 1px dashed #EDE7DA; }
 .cal-detail li:last-child { border-bottom: none; }
+.cal-detail__sum { font-size: 13px; color: #7A7263; margin-bottom: 10px; }
+
+.cal-block {
+  margin-top: 16px;
+  padding: 14px 16px;
+  background: #F7F4ED;
+  border: 1px dashed #DCD4C4;
+  border-radius: 10px;
+}
+.cal-block__title { font-size: 13px; font-weight: 700; margin-bottom: 10px; }
+.cal-block__now { font-weight: 500; color: #8A6A2A; }
+.cal-block__row { display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end; }
+.cal-block__row label {
+  display: flex; flex-direction: column; gap: 4px;
+  font-size: 12px; color: #7A7263;
+}
+.cal-block__row input { width: 150px; }
+.cal-block__row input[type="number"] { width: 90px; }
+.cal-block__reason { flex: 1 1 180px; }
+.cal-block__reason input { width: 100%; }
+@media (max-width: 640px) {
+  .cal-block__row input { width: 100%; }
+  .cal-block__row label { flex: 1 1 100%; }
+}
 
 /* ─── ROOMS ADMIN ─── */
 .rooms-admin { display: grid; gap: 14px; }
