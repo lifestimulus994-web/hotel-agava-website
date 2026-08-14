@@ -1,12 +1,12 @@
 /* Google Analytics 4 — Hotel Agava */
 (function () {
-  var ID = "G-GR7R326P6F";
+  var IDS = ["G-GR7R326P6F", "G-79172LYKGT"];
   var s = document.createElement("script");
   s.async = true;
-  s.src = "https://www.googletagmanager.com/gtag/js?id=" + ID;
+  s.src = "https://www.googletagmanager.com/gtag/js?id=" + IDS[0];
   document.head.appendChild(s);
   window.dataLayer = window.dataLayer || [];
   window.gtag = function () { dataLayer.push(arguments); };
   gtag("js", new Date());
-  gtag("config", ID);
+  IDS.forEach(function (id) { gtag("config", id); });
 })();
