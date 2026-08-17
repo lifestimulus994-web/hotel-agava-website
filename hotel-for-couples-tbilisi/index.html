@@ -22,6 +22,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
+  <style>
+    /* These pages have no hero — the navbar sits on a cream background from
+       the top, so it must render solid immediately. Inlined on purpose:
+       /css/* and /js/* are cached for 7 days, and a returning visitor with a
+       stale copy would otherwise see white nav links on cream. */
+    .navbar { background: rgba(250,247,241,.96); box-shadow: var(--shadow-sm); padding-block: 6px; }
+    .navbar__logo { width: 44px; height: 44px; filter: none; }
+    .navbar__name { background-image: linear-gradient(180deg,#C9A050 0%,#A6812F 55%,#8A6A24 100%); filter: none; }
+    .navbar__link { color: var(--ink-soft); }
+    .navbar__link:hover, .navbar__link.is-active { color: var(--ink); }
+    .lang-switch { border-color: var(--line); }
+    .lang-switch button { color: var(--muted); }
+    .lang-switch button:hover { color: var(--ink); }
+    .lang-switch button.is-active { color: #FFF; }
+    .navbar__burger span { background: var(--ink); }
+    .lp-outro { margin-top: 64px; }
+    @media (max-width: 640px) { .lp-outro { margin-top: 44px; } }
+  </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","name":"სასტუმრო წყვილისთვის თბილისში","description":"დაგეგმეთ კომფორტული დასვენება ორისთვის Hotel Agava-ში — მყუდრო ნომრები, ჯაკუზიანი ლუქსები, გამორჩეული ინტერიერი და პირდაპირი დაჯავშნა.","url":"https://hotelagava.ge/hotel-for-couples-tbilisi/","inLanguage":"ka","about":{"@type":"Hotel","name":"სასტუმრო აგავა","url":"https://hotelagava.ge/","address":{"@type":"PostalAddress","streetAddress":"აკაკი ბელიაშვილის ქუჩა 161","addressLocality":"თბილისი","addressRegion":"დიღომი","addressCountry":"GE"},"telephone":"+995597121212"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"მთავარი","item":"https://hotelagava.ge/"},{"@type":"ListItem","position":2,"name":"წყვილისთვის","item":"https://hotelagava.ge/hotel-for-couples-tbilisi/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"რამდენი ჯაკუზიანი ნომერია სასტუმროში?","acceptedAnswer":{"@type":"Answer","text":"ორი — ლუქსი ჯაკუზით და სუპერ ლუქსი ჯაკუზით. ორივე ორ სტუმარზეა და ჯაკუზი თავად ნომერშია."}},{"@type":"Question","name":"შესაძლებელია თუ არა ნომრის მორთვა განსაკუთრებული თარიღისთვის?","acceptedAnswer":{"@type":"Answer","text":"სპეციალურ პაკეტს წინასწარ არ ვთავაზობთ, მაგრამ სურვილი ჯავშნისას მიუთითეთ კომენტარში ან დაგვირეკეთ — შესაძლებლობის ფარგლებში მოვაწყობთ."}},{"@type":"Question","name":"გვიანი გასვლა შესაძლებელია?","acceptedAnswer":{"@type":"Answer","text":"გასვლა 12:00-მდეა. გვიანი გასვლა შესაძლებელია წინასწარი შეთანხმებით, იმ დღეს ნომრის დატვირთვის მიხედვით."}},{"@type":"Question","name":"შედის თუ არა საუზმე ნომრის ფასში?","acceptedAnswer":{"@type":"Answer","text":"საუზმე ნომრის ფასში არ შედის — მას დამატებით შეუკვეთავთ. მიუთითეთ ჯავშნის კომენტარში ან შეუთანხმდით რეცეფციას ადგილზე."}}]}</script>
