@@ -12,7 +12,7 @@
       name: "სტანდარტული ოთახი — 2 სტუმარზე",
       badge: "სტანდარტი",
       price: 120,
-      images: ["assets/room-standard-2.jpg","assets/room-standard-3.jpg","assets/room-standard-4.jpg","assets/room-standard-5.jpg","assets/room-standard-1.jpg"],
+      images: ["assets/room-standard-2.webp","assets/room-standard-3.webp","assets/room-standard-4.webp","assets/room-standard-5.webp","assets/room-standard-1.webp"],
       alt: "სტანდარტული ოთახი ცის ჭერით",
       count: "7 ოთახი",
       specs: [
@@ -33,7 +33,7 @@
       name: "ლუქსი — 2 სტუმარზე",
       badge: "ლუქსი",
       price: 120,
-      images: ["assets/room-lux-1.jpg","assets/room-lux-2.jpg","assets/room-lux-3.jpg","assets/room-lux-4.jpg"],
+      images: ["assets/room-lux-1.webp","assets/room-lux-2.webp","assets/room-lux-3.webp","assets/room-lux-4.webp"],
       alt: "ლუქსი ოთახი ბაროკოს სტილში, ცის ჭერით",
       count: "5 ოთახი",
       specs: [
@@ -54,7 +54,7 @@
       name: "სუპერლუქსი — 2 სტუმარზე",
       badge: "სუპერლუქსი",
       price: 120,
-      images: ["assets/room-superlux-1.jpg","assets/room-superlux-2.jpg","assets/room-superlux-3.jpg"],
+      images: ["assets/room-superlux-1.webp","assets/room-superlux-2.webp","assets/room-superlux-3.webp"],
       alt: "სუპერლუქსი ბაროკოს სტილის ინტერიერით",
       count: "1 ნომერი",
       specs: [
@@ -75,7 +75,7 @@
       name: "საოჯახო ოთახი — 3 სტუმარზე",
       badge: "საოჯახო",
       price: 150,
-      images: ["assets/room-family3-2.jpg","assets/room-family3-3.jpg","assets/room-family3-4.jpg","assets/room-family3-1.jpg"],
+      images: ["assets/room-family3-2.webp","assets/room-family3-3.webp","assets/room-family3-4.webp","assets/room-family3-1.webp"],
       alt: "საოჯახო ოთახი სამ სტუმარზე",
       count: "3 ოთახი",
       specs: [
@@ -96,7 +96,7 @@
       name: "საოჯახო ოთახი — 4 სტუმარზე",
       badge: "საოჯახო",
       price: 200,
-      images: ["assets/room-family4-1.jpg"],
+      images: ["assets/room-family4-1.webp"],
       alt: "საოჯახო ოთახი ოთხ სტუმარზე",
       count: "2 ოთახი",
       specs: [
@@ -117,7 +117,7 @@
       name: "ორ ოთახიანი ლუქსი — 5 სტუმარზე",
       badge: "ლუქსი",
       price: 200,
-      images: ["assets/room-twobedlux-1.jpg","assets/room-twobedlux-2.jpg","assets/room-twobedlux-3.jpg","assets/room-twobedlux-4.jpg"],
+      images: ["assets/room-twobedlux-1.webp","assets/room-twobedlux-2.webp","assets/room-twobedlux-3.webp","assets/room-twobedlux-4.webp"],
       alt: "ორ ოთახიანი ლუქსი ცის ჭერით",
       count: "1 ნომერი",
       specs: [
@@ -138,7 +138,7 @@
       name: "ლუქსი ჯაკუზით — 2 სტუმარზე",
       badge: "ლუქსი",
       price: 300,
-      images: ["assets/room-jacuzzi-suite-1.jpg","assets/room-jacuzzi-suite-2.jpg","assets/room-jacuzzi-suite-3.jpg"],
+      images: ["assets/room-jacuzzi-suite-1.webp","assets/room-jacuzzi-suite-2.webp","assets/room-jacuzzi-suite-3.webp"],
       alt: "ლუქსი ჯაკუზით ქალაქის ხედით",
       count: "1 ნომერი",
       specs: [
@@ -161,7 +161,7 @@
       badge: "VIP ლუქსი",
       price: 300,
       seasonal: true,
-      images: ["assets/room-jacuzzi-3.jpg","assets/room-jacuzzi-1.jpg","assets/room-jacuzzi-2.jpg","assets/room-jacuzzi-4.jpg"],
+      images: ["assets/room-jacuzzi-3.webp","assets/room-jacuzzi-1.webp","assets/room-jacuzzi-2.webp","assets/room-jacuzzi-4.webp"],
       alt: "სუპერ ლუქსი ჯაკუზით, ოქროსფერი ინტერიერი",
       count: "1 ნომერი",
       specs: [

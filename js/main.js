@@ -68,20 +68,20 @@
      Fallback per-section: DEFAULT_CONTENT (used before load, offline, or empty). */
   var DEFAULT_CONTENT = {
     about: [
-      { url: "assets/exterior-2.jpg", alt: "სასტუმრო აგავას ნათელი ლობი", caption: "" },
-      { url: "assets/exterior-1.jpg", alt: "სასტუმრო აგავას შენობა ღამით", caption: "" }
+      { url: "assets/exterior-2.webp", alt: "სასტუმრო აგავას ნათელი ლობი", caption: "" },
+      { url: "assets/exterior-1.webp", alt: "სასტუმრო აგავას შენობა ღამით", caption: "" }
     ],
     rooms: [
-      { url: "assets/room-jacuzzi-1.jpg", alt: "ოთახის ლუქსური ინტერიერი", caption: "" },
-      { url: "assets/room-lux-2.jpg", alt: "ლუქსი ცის ჭერით", caption: "" },
-      { url: "assets/room-standard-2.jpg", alt: "სტანდარტული ოთახი", caption: "" }
+      { url: "assets/room-jacuzzi-1.webp", alt: "ოთახის ლუქსური ინტერიერი", caption: "" },
+      { url: "assets/room-lux-2.webp", alt: "ლუქსი ცის ჭერით", caption: "" },
+      { url: "assets/room-standard-2.webp", alt: "სტანდარტული ოთახი", caption: "" }
     ],
     gallery_breakfast: [
-      { url: "assets/room-lux-2.jpg", alt: "საუზმე", caption: "საუზმე" }
+      { url: "assets/room-lux-2.webp", alt: "საუზმე", caption: "საუზმე" }
     ],
     gallery_hotel: [
-      { url: "assets/room-superlux-2.jpg", alt: "ლუქსი", caption: "სასტუმრო" },
-      { url: "assets/exterior-1.jpg", alt: "სასტუმრო", caption: "ჩვენი შენობა" }
+      { url: "assets/room-superlux-2.webp", alt: "ლუქსი", caption: "სასტუმრო" },
+      { url: "assets/exterior-1.webp", alt: "სასტუმრო", caption: "ჩვენი შენობა" }
     ]
   };
 
@@ -248,7 +248,7 @@
     var ctaTile = document.createElement("article");
     ctaTile.className = "room-tile room-tile--cta reveal" + (skipAnim ? " is-visible" : "");
     ctaTile.innerHTML =
-      '<img src="/assets/logo.png" alt="" aria-hidden="true">' +
+      '<img src="/assets/logo.webp" alt="" aria-hidden="true">' +
       "<h3>ვერ იპოვეთ სასურველი ოთახი?</h3>" +
       "<p>დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.</p>" +
       '<button class="btn btn--gold" data-open-booking>დაგვიკავშირდით</button>';
