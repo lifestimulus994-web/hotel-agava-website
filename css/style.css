@@ -1766,3 +1766,7 @@ body.modal-open { overflow: hidden; }
 /* homepage service card "read more" link */
 .service__more { display: inline-block; margin-top: 8px; color: var(--gold); font-weight: 600; font-size: .88rem; text-decoration: none; }
 .service__more:hover { text-decoration: underline; }
+
+/* landing pages — closing CTA needs air after the white FAQ block */
+.service-page .lp-outro { margin-top: 64px; }
+@media (max-width: 640px) { .service-page .lp-outro { margin-top: 44px; } }
