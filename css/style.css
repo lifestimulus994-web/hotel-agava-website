@@ -68,7 +68,12 @@ body {
   color: var(--ink);
 }
 
-img { max-width: 100%; display: block; }
+/* height:auto is required now that every <img> carries intrinsic width/height
+   attributes — without it, a rule that sets only width (.footer__logo,
+   .cta__logo) lets the HTML height through and distorts the image.
+   Rules with an explicit height (.gallery__item img, .rdp-thumb img …) are
+   more specific and keep winning. */
+img { max-width: 100%; display: block; height: auto; }
 
 a { color: inherit; text-decoration: none; }
 
