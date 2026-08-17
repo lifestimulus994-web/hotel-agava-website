@@ -328,7 +328,13 @@
       }
     });
   }, { threshold: 0.6 });
-  counters.forEach(function (el) { counterObserver.observe(el); });
+  /* The HTML ships the real figure so crawlers and no-JS visitors read
+     "21 rooms", not "0". Zero it only here, once we know the animation
+     will actually run. */
+  counters.forEach(function (el) {
+    if (!prefersReducedMotion) el.textContent = "0";
+    counterObserver.observe(el);
+  });
 
   /* ─── Review bars fill ─── */
   var reviewBars = document.querySelectorAll(".review-bar__fill");
