@@ -21,8 +21,11 @@
 
   /* ─── Navbar: solid on scroll ─── */
   var navbar = document.getElementById("navbar");
+  /* Pages without a hero have a light background from the top, so the
+     transparent navbar would render white-on-cream. Lock those solid. */
+  var alwaysSolid = !document.getElementById("hero");
   function onScrollNav() {
-    navbar.classList.toggle("is-solid", window.scrollY > 40);
+    navbar.classList.toggle("is-solid", alwaysSolid || window.scrollY > 40);
   }
   window.addEventListener("scroll", onScrollNav, { passive: true });
   onScrollNav();
