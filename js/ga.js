@@ -1,8 +1,8 @@
 /* Google Analytics 4 — Hotel Agava */
 (function () {
-  /* One gtag.js load, one config call per property — the standard way to
-     send the same hits to several GA4 properties. */
-  var IDS = ["G-GR7R326P6F", "G-79172LYKGT", "G-1580LL6MH4"];
+  /* Array kept so a second property can be added back with one entry —
+     gtag.js loads once and every id in here gets its own config call. */
+  var IDS = ["G-79172LYKGT"];
   var s = document.createElement("script");
   s.async = true;
   s.src = "https://www.googletagmanager.com/gtag/js?id=" + IDS[0];
