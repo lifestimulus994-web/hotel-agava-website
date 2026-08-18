@@ -73,6 +73,9 @@
         document.title = p.title + " — სასტუმრო აგავა";
         setMeta('meta[name="description"]', "name", "description", p.excerpt || p.title);
         setLink('link[rel="canonical"]', "canonical", url);
+        /* the template ships noindex so the empty shell never gets indexed;
+           a real post overrides it */
+        setMeta('meta[name="robots"]', "name", "robots", "index, follow");
         setMeta('meta[property="og:title"]', "property", "og:title", p.title);
         setMeta('meta[property="og:description"]', "property", "og:description", p.excerpt || p.title);
         setMeta('meta[property="og:type"]', "property", "og:type", "article");

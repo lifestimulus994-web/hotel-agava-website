@@ -1,6 +1,12 @@
 User-agent: *
 Allow: /
+
+# The admin panel and the guest booking-management page. Both are served
+# without the .html extension — /admin.html 307s to /admin — so blocking
+# only the .html form left the real URLs crawlable.
+Disallow: /admin
 Disallow: /admin.html
+Disallow: /manage
 Disallow: /manage.html
 
 Sitemap: https://hotelagava.ge/sitemap.xml
