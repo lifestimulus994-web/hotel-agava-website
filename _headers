@@ -3,6 +3,12 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
+# The sitemap's browser stylesheet. X-Content-Type-Options: nosniff below
+# means Chrome refuses to apply it unless the type is declared exactly.
+/sitemap.xsl
+  Content-Type: text/xsl; charset=utf-8
+  Cache-Control: public, max-age=3600
+
 /css/*
   Cache-Control: public, max-age=604800
 
