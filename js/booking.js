@@ -380,6 +380,11 @@
         return;
       }
       var b = res.data;
+      if (window.agavaTrack) window.agavaTrack("booking_submit", {
+        method: "wizard", room_slug: state.chosen.slug,
+        nights: state.chosen.nights, guests: state.guests,
+        value: state.chosen.total, currency: "GEL"
+      });
       document.getElementById("bwNumber").textContent = b.booking_number;
       renderSummary("bwSuccessSummary");
       var mUrl = showManageLink("bwManage", "bwManageLink", b.manage_token);
@@ -563,6 +568,10 @@
           : "შეცდომა — სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.");
         return;
       }
+      if (window.agavaTrack) window.agavaTrack("booking_submit", {
+        method: "quick", room_slug: slug,
+        nights: nightsBetween(ci, co), guests: guests
+      });
       status.textContent = "";
       qbForm.reset();
       document.getElementById("qbTotal").hidden = true;
