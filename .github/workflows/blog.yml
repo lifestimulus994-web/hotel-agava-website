@@ -1,0 +1,47 @@
+# Publishing a post is a checkbox in /admin, which writes to Supabase.
+# Supabase is not the website, so this turns each published post into a
+# real page in the repo — Googlebot never runs the JavaScript that would
+# otherwise be the only thing rendering them.
+name: Publish blog posts
+
+on:
+  schedule:
+    - cron: "17 * * * *"      # hourly; GitHub cron is best-effort
+  workflow_dispatch:           # "Run workflow" publishes immediately
+
+permissions:
+  contents: write
+
+concurrency:
+  group: publish-blog
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0       # gen_sitemap reads git history for lastmod
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Build post pages from Supabase
+        run: python scripts/build_blog.py
+
+      - name: Rebuild sitemap
+        run: python scripts/gen_sitemap.py
+
+      - name: Commit if anything changed
+        run: |
+          if [ -z "$(git status --porcelain)" ]; then
+            echo "No published-post changes — nothing to commit."
+            exit 0
+          fi
+          git config user.name  "agava-blog-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "blog: rebuild published post pages"
+          git push

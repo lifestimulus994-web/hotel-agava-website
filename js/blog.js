@@ -50,7 +50,7 @@
         var posts = (res && res.data) || [];
         if (!posts.length) { grid.innerHTML = '<p class="muted">' + t("soon") + '</p>'; return; }
         grid.innerHTML = posts.map(function (p) {
-          return '<a class="blog-card" href="' + LB + '/blog/read/?slug=' + encodeURIComponent(p.slug) + '">' +
+          return '<a class="blog-card" href="/blog/' + encodeURIComponent(p.slug) + '/">' +
             (p.cover_url ? '<div class="blog-card__img"><img src="' + esc(p.cover_url) + '" alt="' + esc(p.title) + '" loading="lazy"></div>' : '') +
             '<div class="blog-card__body"><time>' + fmtDate(p.created_at) + '</time>' +
             '<h2>' + esc(p.title) + '</h2>' +
@@ -69,7 +69,8 @@
       .then(function (res) {
         var p = res && res.data && res.data[0];
         if (!p) { article.innerHTML = '<p class="muted">' + t("notfound") + '</p>'; return; }
-        var url = "https://hotelagava.ge" + LB + "/blog/read/?slug=" + encodeURIComponent(slug);
+        /* the static page built by scripts/build_blog.py is the real one */
+        var url = "https://hotelagava.ge/blog/" + encodeURIComponent(slug) + "/";
         document.title = p.title + " — სასტუმრო აგავა";
         setMeta('meta[name="description"]', "name", "description", p.excerpt || p.title);
         setLink('link[rel="canonical"]', "canonical", url);
