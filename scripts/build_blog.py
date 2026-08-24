@@ -18,7 +18,7 @@ import json, os, re, sys, html, urllib.request, shutil, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://hotelagava.ge"
-VER = "2026082402"
+VER = "2026082403"
 MARK = "<!-- generated:blog-post -->"
 GRID_START, GRID_END = "<!-- blog-cards:start -->", "<!-- blog-cards:end -->"
 
@@ -49,6 +49,71 @@ def safe_slug(s):
 
 def day(ts):
     return (ts or "")[:10]
+
+
+BLOCK_TAG = re.compile(r"<(p|h[1-6]|ul|ol|div|blockquote|figure|table)\b", re.I)
+INLINE = [
+    (re.compile(r"!\[([^\]]*)\]\((https?://[^\s)]+)\)"),
+     lambda m: f'<img src="{html.escape(m.group(2), True)}" alt="{html.escape(m.group(1), True)}" loading="lazy">'),
+    (re.compile(r"\[([^\]]+)\]\((https?://[^\s)]+)\)"),
+     lambda m: f'<a href="{html.escape(m.group(2), True)}">{m.group(1)}</a>'),
+    (re.compile(r"\*\*(.+?)\*\*"), lambda m: f"<strong>{m.group(1)}</strong>"),
+    (re.compile(r"(?<![\w*])\*(?!\s)(.+?)(?<!\s)\*(?![\w*])"), lambda m: f"<em>{m.group(1)}</em>"),
+]
+
+
+def rich(text):
+    """Let the author write plain text and still get a formatted article.
+
+    The admin panel's body field is a bare textarea, so anything pasted
+    from Word, Notes or a chat window arrives as plain text — and HTML
+    collapses newlines, which turned a finished article into one
+    unbroken wall. Blank lines become paragraphs, `##` becomes a
+    heading, `-` becomes a list, and **bold**, *italic*, [links](url)
+    and ![images](url) work as written.
+
+    Bodies that already contain block-level HTML are passed through
+    untouched, so posts written as HTML keep behaving exactly as before.
+    """
+    text = (text or "").replace("\r\n", "\n").replace("\r", "\n").strip()
+    if not text or BLOCK_TAG.search(text):
+        return text
+
+    def inline(s):
+        s = html.escape(s, quote=False)
+        for pat, fn in INLINE:
+            s = pat.sub(fn, s)
+        return s
+
+    out, lines, i = [], text.split("\n"), 0
+    while i < len(lines):
+        ln = lines[i].strip()
+        if not ln:
+            i += 1
+            continue
+        m = re.match(r"^(#{2,3})\s+(.*)$", ln)
+        if m:
+            tag = "h2" if len(m.group(1)) == 2 else "h3"
+            out.append(f"<{tag}>{inline(m.group(2))}</{tag}>")
+            i += 1
+            continue
+        m = re.match(r"^(?:[-*•]|\d+[.)])\s+", ln)
+        if m:
+            ordered = bool(re.match(r"^\d+[.)]\s+", ln))
+            items = []
+            while i < len(lines) and re.match(r"^(?:[-*•]|\d+[.)])\s+", lines[i].strip()):
+                items.append(re.sub(r"^(?:[-*•]|\d+[.)])\s+", "", lines[i].strip()))
+                i += 1
+            tag = "ol" if ordered else "ul"
+            out.append(f"<{tag}>" + "".join(f"<li>{inline(x)}</li>" for x in items) + f"</{tag}>")
+            continue
+        para = []
+        while i < len(lines) and lines[i].strip() and not re.match(
+                r"^(#{2,3}\s|[-*•]\s|\d+[.)]\s)", lines[i].strip()):
+            para.append(lines[i].strip())
+            i += 1
+        out.append("<p>" + "<br>".join(inline(x) for x in para) + "</p>")
+    return "".join(out)
 
 
 def page(p):
@@ -140,7 +205,7 @@ def page(p):
       </nav>
       <h1 class="blog-article__title">{E(title)}</h1>
       <time class="blog-article__date" datetime="{E(created)}">{day(created)}</time>{cover_img}
-      <div class="blog-article__body">{p.get("body_html") or ""}</div>
+      <div class="blog-article__body">{rich(p.get("body_html"))}</div>
       <a class="rdp-back" href="/blog/">← ბლოგზე დაბრუნება</a>
     </div>
   </main>

@@ -915,7 +915,7 @@
         '<label>სათაური<input id="bpTitle" type="text" value="' + esc(p.title) + '"></label>' +
         '<label>Slug (URL მისამართი)<input id="bpSlug" type="text" value="' + esc(p.slug) + '" placeholder="ავტომატურად შეივსება სათაურიდან"></label>' +
         '<label>მოკლე აღწერა<textarea id="bpExcerpt" rows="2">' + esc(p.excerpt) + '</textarea></label>' +
-        '<label>ტექსტი (HTML ნებადართულია: &lt;p&gt; &lt;h2&gt; &lt;b&gt; &lt;a&gt; &lt;img&gt; …)<textarea id="bpBody" rows="12">' + esc(p.body_html) + '</textarea></label>' +
+        '<label>ტექსტი — ჩვეულებრივ დაწერეთ. ცარიელი ხაზი = ახალი აბზაცი · ## სათაური · - სია · **მუქი** · [ტექსტი](ბმული)<textarea id="bpBody" rows="14">' + esc(p.body_html) + '</textarea></label>' +
         '<div class="blog-cover">' +
           '<label class="content-upload-btn abtn abtn--sm"><input id="bpCoverFile" type="file" accept="image/*" hidden>ქავერის ატვირთვა</label>' +
           '<input id="bpCover" type="text" value="' + esc(p.cover_url) + '" placeholder="ქავერის URL">' +
