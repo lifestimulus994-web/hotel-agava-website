@@ -1158,7 +1158,7 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
 
 .footer__grid {
   display: grid;
-  grid-template-columns: 1.4fr 1fr 1fr;
+  grid-template-columns: 1.3fr 1fr 1fr 1.1fr;
   gap: 48px;
   padding-block: 64px 48px;
 }
@@ -1304,6 +1304,8 @@ body.modal-open { overflow: hidden; }
 
 /* ═══════════ RESPONSIVE ═══════════ */
 @media (max-width: 1024px) {
+  .footer__grid { grid-template-columns: 1fr 1fr; gap: 40px; }
+
   .features__grid { grid-template-columns: repeat(2, 1fr); }
   .services__grid { grid-template-columns: repeat(2, 1fr); }
   .about__grid { gap: 44px; }
