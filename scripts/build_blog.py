@@ -18,7 +18,7 @@ import json, os, re, sys, html, urllib.request, shutil, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://hotelagava.ge"
-VER = "2026082403"
+VER = "2026082404"
 MARK = "<!-- generated:blog-post -->"
 GRID_START, GRID_END = "<!-- blog-cards:start -->", "<!-- blog-cards:end -->"
 

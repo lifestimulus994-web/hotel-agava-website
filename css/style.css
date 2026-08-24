@@ -40,6 +40,7 @@
   --ink-soft:    #4A4136;
   --muted:       #7A7060;
   --white:       #FFFFFF;
+  --surface:     #FFFFFF;   /* room tiles referenced this but it was never declared */
   --line:        #E4DCCC;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
