@@ -1,0 +1,24 @@
+# The site is hand-edited HTML across four languages, so one slip lands in
+# sixty files. This runs the same checks on every push, so a broken
+# canonical or a price that disagrees with rooms-data is caught here
+# rather than by Google a week later.
+name: Validate site
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"        # rooms-data.js is read with node
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: python scripts/validate.py
