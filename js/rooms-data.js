@@ -12,7 +12,7 @@
       name: "სტანდარტული ოთახი — 2 სტუმარზე",
       badge: "სტანდარტი",
       price: 120,
-      images: ["assets/room-standard-2.webp","assets/room-standard-3.webp","assets/room-standard-4.webp","assets/room-standard-5.webp","assets/room-standard-1.webp"],
+      images: ["assets/agava-standard.webp","assets/room-standard-2.webp","assets/room-standard-3.webp","assets/room-standard-4.webp","assets/room-standard-5.webp","assets/room-standard-1.webp"],
       alt: "სტანდარტული ოთახი ცის ჭერით",
       count: "7 ოთახი",
       specs: [
@@ -32,8 +32,8 @@
       slug: "lux",
       name: "ლუქსი — 2 სტუმარზე",
       badge: "ლუქსი",
-      price: 120,
-      images: ["assets/room-lux-1.webp","assets/room-lux-2.webp","assets/room-lux-3.webp","assets/room-lux-4.webp"],
+      price: 250,
+      images: ["assets/agava-lux.webp","assets/room-lux-1.webp","assets/room-lux-2.webp","assets/room-lux-3.webp","assets/room-lux-4.webp"],
       alt: "ლუქსი ოთახი ბაროკოს სტილში, ცის ჭერით",
       count: "5 ოთახი",
       specs: [
@@ -53,8 +53,8 @@
       slug: "superlux",
       name: "სუპერლუქსი — 2 სტუმარზე",
       badge: "სუპერლუქსი",
-      price: 120,
-      images: ["assets/room-superlux-1.webp","assets/room-superlux-2.webp","assets/room-superlux-3.webp"],
+      price: 300,
+      images: ["assets/agava-superlux.webp","assets/room-superlux-1.webp","assets/room-superlux-2.webp","assets/room-superlux-3.webp"],
       alt: "სუპერლუქსი ბაროკოს სტილის ინტერიერით",
       count: "1 ნომერი",
       specs: [
@@ -75,7 +75,7 @@
       name: "საოჯახო ოთახი — 3 სტუმარზე",
       badge: "საოჯახო",
       price: 150,
-      images: ["assets/room-family3-2.webp","assets/room-family3-3.webp","assets/room-family3-4.webp","assets/room-family3-1.webp"],
+      images: ["assets/agava-family3.webp","assets/room-family3-2.webp","assets/room-family3-3.webp","assets/room-family3-4.webp","assets/room-family3-1.webp"],
       alt: "საოჯახო ოთახი სამ სტუმარზე",
       count: "3 ოთახი",
       specs: [
@@ -95,8 +95,8 @@
       slug: "family4",
       name: "საოჯახო ოთახი — 4 სტუმარზე",
       badge: "საოჯახო",
-      price: 200,
-      images: ["assets/room-family4-1.webp"],
+      price: 250,
+      images: ["assets/agava-family4.webp","assets/room-family4-1.webp"],
       alt: "საოჯახო ოთახი ოთხ სტუმარზე",
       count: "2 ოთახი",
       specs: [
@@ -159,9 +159,9 @@
       slug: "jacuzzi",
       name: "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე",
       badge: "VIP ლუქსი",
-      price: 300,
+      price: 400,
       seasonal: true,
-      images: ["assets/room-jacuzzi-3.webp","assets/room-jacuzzi-1.webp","assets/room-jacuzzi-2.webp","assets/room-jacuzzi-4.webp"],
+      images: ["assets/agava-jacuzzi.webp","assets/room-jacuzzi-3.webp","assets/room-jacuzzi-1.webp","assets/room-jacuzzi-2.webp","assets/room-jacuzzi-4.webp"],
       alt: "სუპერ ლუქსი ჯაკუზით, ოქროსფერი ინტერიერი",
       count: "1 ნომერი",
       specs: [
