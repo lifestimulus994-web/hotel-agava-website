@@ -99,6 +99,22 @@ def check_structure(f, h, indexed=True):
             fail(f, f"<{tag}> დაუბალანსებელია: {o} გახსნილი, {c} დახურული")
 
 
+# ── 5b. cache-busting and LCP ────────────────────────────────────────────
+def check_delivery(f, h):
+    """_headers caches /css/* and /js/* for seven days, so an asset linked
+    without ?v= keeps serving the stale copy long after a fix ships. And
+    the first content image is the LCP candidate — lazy-loading it tells
+    the browser to defer the very thing the score is waiting for."""
+    for m in re.findall(r'(?:href|src)="(/(?:css|js)/[a-z-]+\.(?:css|js))"', h):
+        fail(f, f"ქეშის ვერსია აკლია: {m}")
+    imgs = [t for t in re.findall(r"<img[^>]*>", h) if "logo" not in t]
+    if imgs and 'loading="lazy"' in imgs[0]:
+        fail(f, "პირველი სურათი lazy-ითაა — LCP ყოვნდება")
+    for t in imgs:
+        if 'fetchpriority="high"' in t and 'loading="lazy"' in t:
+            fail(f, "სურათს ერთდროულად აქვს fetchpriority=high და loading=lazy")
+
+
 # ── 6. title and description are present and sane ────────────────────────
 def check_meta(f, h):
     t = re.search(r"<title>(.*?)</title>", h, re.S)
@@ -151,6 +167,7 @@ def main():
         indexed = not re.search(r'name="robots"[^>]*noindex', h)
         check_jsonld(f, h); check_canonical(f, h); check_hreflang(f, h)
         check_assets(f, h); check_structure(f, h, indexed); check_meta(f, h)
+        check_delivery(f, h)
         (indexable if indexed else noindexed).add(url_of(f))
         versions.update(re.findall(r"\?v=(\d+)", h))
     check_prices()

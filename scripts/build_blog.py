@@ -144,8 +144,10 @@ def page(p):
         {"@type": "ListItem", "position": 2, "name": "ბლოგი", "item": SITE + "/blog/"},
         {"@type": "ListItem", "position": 3, "name": title, "item": url}]}
 
+    # the cover is the largest thing above the fold on a post page, so it
+    # is the LCP element — it gets priority, never lazy
     cover_img = (f'\n      <img class="blog-article__cover" src="{E(cover)}" alt="{E(title)}"'
-                 f' loading="lazy">' if p.get("cover_url") else "")
+                 f' fetchpriority="high">' if p.get("cover_url") else "")
 
     return f'''<!DOCTYPE html>
 <html lang="ka">
