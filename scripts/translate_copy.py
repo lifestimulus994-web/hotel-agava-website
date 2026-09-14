@@ -32,8 +32,10 @@ CONTACT = {"ru": "Контакты и адрес", "en": "Contact and address", 
 FAQ_TITLE = {"ru": "Часто задаваемые вопросы", "en": "Frequently asked questions",
              "tr": "Sıkça sorulan sorular"}
 # a figure the Georgian writes as digits may be a word in translation
-NUM_WORDS = {"ru": {"24": r"[Кк]руглосуточн"}, "en": {"24": r"24/7|round-the-clock"},
+NUM_WORDS = {"ru": {"24": r"[Кк]руглосуточн"}, "en": {"24": r"round-the-clock"},
              "tr": {"24": r"24 saat"}}
+# notation that carries a digit the Georgian doesn't write: "24/7" is still just 24
+NUM_NOTATION = {"en": [(r"24/7", "24")], "tr": [(r"7/24", "24")]}
 
 
 def parse(path):
@@ -82,7 +84,10 @@ def compare(key, lang, ka_secs, ka_faq, tr):
     alias = NUM_WORDS.get(lang, {})
 
     def nums(src, dst, where):
-        a, b = set(re.findall(r"\d+", text(src))), set(re.findall(r"\d+", text(dst)))
+        dst_t = text(dst)
+        for pat, rep in NUM_NOTATION.get(lang, []):
+            dst_t = re.sub(pat, rep, dst_t)
+        a, b = set(re.findall(r"\d+", text(src))), set(re.findall(r"\d+", dst_t))
         missing = {n for n in a - b if not (n in alias and re.search(alias[n], dst))}
         extra = {n for n in b - a if n not in alias}
         if missing or extra:
