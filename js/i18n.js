@@ -81,7 +81,7 @@
     /* stats */
     "სასტუმროს მაჩვენებლები": "Otel göstergeleri",
     "კომფორტული ნომერი": "Konforlu oda",
-    "შეფასება Booking.com-ზე": "Booking.com puanı",
+    "შეფასება Google-ზე": "Google puanı",
     "სტუმრის შეფასება": "Misafir değerlendirmesi",
     "მომსახურება": "Hizmet",
 
@@ -129,7 +129,7 @@
     "რას ამბობენ სტუმრები": "Misafirler ne diyor",
     "სტუმრების შეფასებები": "Misafir Değerlendirmeleri",
     "შესანიშნავი": "Mükemmel",
-    "94 შეფასება · Booking.com": "94 değerlendirme · Booking.com",
+    "5 ქულიდან · 355 შეფასება · Google": "5 üzerinden · 355 değerlendirme · Google",
     "პერსონალი": "Personel",
     "სისუფთავე": "Temizlik",
     "კომფორტი": "Konfor",
@@ -341,7 +341,7 @@
     /* stats */
     "სასტუმროს მაჩვენებლები": ["Hotel highlights", "Показатели отеля"],
     "კომფორტული ნომერი": ["Comfortable rooms", "Комфортных номеров"],
-    "შეფასება Booking.com-ზე": ["Booking.com rating", "Оценка на Booking.com"],
+    "შეფასება Google-ზე": ["Google rating", "Оценка в Google"],
     "სტუმრის შეფასება": ["Guest reviews", "Отзывов гостей"],
     "მომსახურება": ["Service", "Сервис"],
 
@@ -395,7 +395,7 @@
     "რას ამბობენ სტუმრები": ["What guests say", "Что говорят гости"],
     "სტუმრების შეფასებები": ["Guest Reviews", "Отзывы гостей"],
     "შესანიშნავი": ["Excellent", "Превосходно"],
-    "94 შეფასება · Booking.com": ["94 reviews · Booking.com", "94 отзыва · Booking.com"],
+    "5 ქულიდან · 355 შეფასება · Google": ["out of 5 · 355 reviews · Google", "из 5 · 355 отзывов · Google"],
     "პერსონალი": ["Staff", "Персонал"],
     "სისუფთავე": ["Cleanliness", "Чистота"],
     "კომფორტი": ["Comfort", "Комфорт"],
