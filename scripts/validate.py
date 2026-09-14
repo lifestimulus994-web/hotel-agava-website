@@ -115,6 +115,33 @@ def check_delivery(f, h):
             fail(f, "სურათს ერთდროულად აქვს fetchpriority=high და loading=lazy")
 
 
+# ── 5c. translated pages speak their own language where Google reads ─────
+GEORGIAN = re.compile(r"[Ⴀ-ჿ]")
+
+def check_language(f, h):
+    """The en/ru/tr homepages once shipped a half-translated description —
+    "Hotel AGAVA თბილისში — კომფორტული Rooms & Suites" — which is the snippet
+    Google shows. The Georgian hotel name in schema is deliberate; the
+    search snippet, social cards and image alts are not the place for it."""
+    if not re.match(r"^(en|ru|tr)/", f):
+        return
+    head = h[:h.find("<body")] if "<body" in h else h
+    tags = re.findall(r"<title>(.*?)</title>", head, re.S)
+    tags += re.findall(r'<meta (?:name|property)="(?:description|keywords|og:[a-z:]+|twitter:[a-z]+)" content="([^"]*)"', head)
+    tags += re.findall(r'<img[^>]*\balt="([^"]*)"', h)
+    for t in tags:
+        if GEORGIAN.search(t):
+            fail(f, f"ქართული ტექსტი თარგმნილ გვერდზე: {t[:70]}")
+
+
+# ── 5d. facts the owner confirmed ───────────────────────────────────────
+def check_facts(f, h):
+    """The hotel takes cash only. Schema once said "Cash, Credit Card"."""
+    for v in re.findall(r'"paymentAccepted":\s*"([^"]*)"', h):
+        if re.search(r"card|карт|kart|ბარათ", v, re.I):
+            fail(f, f"paymentAccepted ბარათს ახსენებს — სასტუმრო მხოლოდ ნაღდს იღებს: {v}")
+
+
 # ── 6. title and description are present and sane ────────────────────────
 def check_meta(f, h):
     t = re.search(r"<title>(.*?)</title>", h, re.S)
@@ -167,7 +194,7 @@ def main():
         indexed = not re.search(r'name="robots"[^>]*noindex', h)
         check_jsonld(f, h); check_canonical(f, h); check_hreflang(f, h)
         check_assets(f, h); check_structure(f, h, indexed); check_meta(f, h)
-        check_delivery(f, h)
+        check_delivery(f, h); check_language(f, h); check_facts(f, h)
         (indexable if indexed else noindexed).add(url_of(f))
         versions.update(re.findall(r"\?v=(\d+)", h))
     check_prices()
