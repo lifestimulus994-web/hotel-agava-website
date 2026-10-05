@@ -45,6 +45,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://hotelagava.ge/ru/rooms/","url":"https://hotelagava.ge/ru/rooms/","inLanguage":"ru","dateModified":"2026-10-02","isPartOf":{"@type":"WebSite","url":"https://hotelagava.ge/"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hotelagava.ge/ru/"},{"@type":"ListItem","position":2,"name":"Номера","item":"https://hotelagava.ge/ru/rooms/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Сколько номеров в отеле?","acceptedAnswer":{"@type":"Answer","text":"В отеле Агава 21 номер — стандартные, люксы и суперлюксы, два номера с джакузи и семейные комнаты на 3–5 гостей."}},{"@type":"Question","name":"Какой номер самый большой?","acceptedAnswer":{"@type":"Answer","text":"Двухкомнатный люкс: он рассчитан на пятерых и состоит из двух отдельных комнат. Для двоих самый просторный — суперлюкс."}},{"@type":"Question","name":"Что входит в стоимость номера?","acceptedAnswer":{"@type":"Answer","text":"В стоимость входят проживание, кондиционер, бесплатный Wi-Fi, собственная ванная и ежедневная уборка. Завтрак не входит в стоимость номера — его заказывают отдельно. Укажите это в комментарии к брони или договоритесь на ресепшене по приезде."}},{"@type":"Question","name":"Во сколько заезд и выезд?","acceptedAnswer":{"@type":"Answer","text":"Заезд с 13:00, выезд до 12:00. Ранний заезд или поздний выезд возможны по предварительной договорённости, при наличии свободных номеров."}},{"@type":"Question","name":"Как происходит оплата?","acceptedAnswer":{"@type":"Answer","text":"Оплата на месте, в отеле — только наличными; карты не принимаются. Предоплата за онлайн-бронь не требуется."}},{"@type":"Question","name":"Можно ли курить?","acceptedAnswer":{"@type":"Answer","text":"В номерах курить нельзя. Курить можно во дворе, в крытой части. Штрафа нет."}},{"@type":"Question","name":"Можно ли поставить дополнительную кровать?","acceptedAnswer":{"@type":"Answer","text":"Нет. Ни дополнительная кровать, ни детская кроватка не ставятся ни в один номер. Выбирайте номер по количеству гостей — есть номера на трёх, четырёх и пятерых."}},{"@type":"Question","name":"Нужно ли платить за детей отдельно?","acceptedAnswer":{"@type":"Answer","text":"Нет. Цена указана за номер, а не за человека — важно лишь, чтобы количество гостей не превышало вместимость номера. Завтрак заказывается отдельно, 30 ₾ с гостя."}}],"about":{"@id":"https://hotelagava.ge/#hotel"}}</script>
+  <link rel="preconnect" href="https://bkrkrwwyedtujkwlxkzp.supabase.co" crossorigin>
 </head>
 <body>
   <header class="navbar is-solid" id="navbar">
@@ -210,7 +211,7 @@
       <div class="rooms__grid">
           <article class="room-tile" data-room-slug="standard">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="Стандартный номер — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-standard-480w.webp 480w, /assets/agava-standard-800w.webp 800w, /assets/agava-standard.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="Стандартный номер — 2 гостя — Наши номера" loading="lazy">
               <span class="room-tile__badge">Стандарт</span>
             </div>
             <div class="room-tile__body">
@@ -227,7 +228,7 @@
           </article>
           <article class="room-tile" data-room-slug="lux">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="Люкс — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="Люкс — 2 гостя — Наши номера" loading="lazy">
               <span class="room-tile__badge">Люкс</span>
             </div>
             <div class="room-tile__body">
@@ -244,7 +245,7 @@
           </article>
           <article class="room-tile" data-room-slug="superlux">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="Суперлюкс — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-superlux-480w.webp 480w, /assets/agava-superlux-800w.webp 800w, /assets/agava-superlux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="Суперлюкс — 2 гостя — Наши номера" loading="lazy">
               <span class="room-tile__badge">Суперлюкс</span>
             </div>
             <div class="room-tile__body">
@@ -261,7 +262,7 @@
           </article>
           <article class="room-tile" data-room-slug="family3">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-family3.webp" alt="Семейный номер — 3 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-family3-480w.webp 480w, /assets/agava-family3-800w.webp 800w, /assets/agava-family3.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-family3.webp" alt="Семейный номер — 3 гостя — Наши номера" loading="lazy">
               <span class="room-tile__badge">Семейный</span>
             </div>
             <div class="room-tile__body">
@@ -278,7 +279,7 @@
           </article>
           <article class="room-tile" data-room-slug="family4">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-family4.webp" alt="Семейный номер — 4 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-family4-480w.webp 480w, /assets/agava-family4-800w.webp 800w, /assets/agava-family4.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-family4.webp" alt="Семейный номер — 4 гостя — Наши номера" loading="lazy">
               <span class="room-tile__badge">Семейный</span>
             </div>
             <div class="room-tile__body">
@@ -295,7 +296,7 @@
           </article>
           <article class="room-tile" data-room-slug="twobedlux">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/room-twobedlux-1.webp" alt="Двухкомнатный люкс — 5 гостей — Наши номера" loading="lazy">
+              <img srcset="/assets/room-twobedlux-1-480w.webp 480w, /assets/room-twobedlux-1-800w.webp 800w, /assets/room-twobedlux-1.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/room-twobedlux-1.webp" alt="Двухкомнатный люкс — 5 гостей — Наши номера" loading="lazy">
               <span class="room-tile__badge">Люкс</span>
             </div>
             <div class="room-tile__body">
@@ -312,7 +313,7 @@
           </article>
           <article class="room-tile" data-room-slug="jacuzzi-suite">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/room-jacuzzi-suite-1.webp" alt="Люкс с джакузи — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/room-jacuzzi-suite-1-480w.webp 480w, /assets/room-jacuzzi-suite-1-800w.webp 800w, /assets/room-jacuzzi-suite-1.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/room-jacuzzi-suite-1.webp" alt="Люкс с джакузи — 2 гостя — Наши номера" loading="lazy">
               <span class="room-tile__badge">Люкс</span>
             </div>
             <div class="room-tile__body">
@@ -329,7 +330,7 @@
           </article>
           <article class="room-tile" data-room-slug="jacuzzi">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-jacuzzi.webp" alt="Суперлюкс с джакузи — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-jacuzzi-480w.webp 480w, /assets/agava-jacuzzi-800w.webp 800w, /assets/agava-jacuzzi.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-jacuzzi.webp" alt="Суперлюкс с джакузи — 2 гостя — Наши номера" loading="lazy">
               <span class="room-tile__badge">VIP Люкс</span>
             </div>
             <div class="room-tile__body">

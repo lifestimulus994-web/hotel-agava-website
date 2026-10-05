@@ -46,6 +46,7 @@
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://hotelagava.ge/rooms/","url":"https://hotelagava.ge/rooms/","inLanguage":"ka","dateModified":"2026-10-02","isPartOf":{"@type":"WebSite","url":"https://hotelagava.ge/"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"მთავარი","item":"https://hotelagava.ge/"},{"@type":"ListItem","position":2,"name":"ოთახები","item":"https://hotelagava.ge/rooms/"}]}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"რამდენი ნომერია სასტუმროში?","acceptedAnswer":{"@type":"Answer","text":"სასტუმრო აგავაში 21 ნომერია — სტანდარტული ოთახები, ლუქსები, სუპერლუქსები, ორი ჯაკუზიანი ლუქსი და საოჯახო ნომრები 3–5 სტუმარზე."}},{"@type":"Question","name":"რომელი ნომერია ყველაზე დიდი?","acceptedAnswer":{"@type":"Answer","text":"ორ ოთახიანი ლუქსი, რომელიც 5 სტუმარს იტევს და ორი ცალკე ოთახისგან შედგება. ორისთვის ყველაზე ფართო კი სუპერლუქსია."}},{"@type":"Question","name":"რა შედის ნომრის ფასში?","acceptedAnswer":{"@type":"Answer","text":"ნომრის ფასში შედის განთავსება, კონდიციონერი, უფასო Wi-Fi, საკუთარი აბაზანა და ყოველდღიური დალაგება. საუზმე ნომრის ფასში არ შედის — მას დამატებით შეუკვეთავთ. მიუთითეთ ჯავშნის კომენტარში ან შეუთანხმდით რეცეფციას ადგილზე."}},{"@type":"Question","name":"რომელ საათზეა შესვლა და გასვლა?","acceptedAnswer":{"@type":"Answer","text":"შესვლა 13:00-დან, გასვლა 12:00-მდე. ადრეული შესვლა ან გვიანი გასვლა შესაძლებელია წინასწარი შეთანხმებით, ხელმისაწვდომობის მიხედვით."}},{"@type":"Question","name":"როგორ ხდება გადახდა?","acceptedAnswer":{"@type":"Answer","text":"გადახდა ხდება ადგილზე, სასტუმროში — მხოლოდ ნაღდი ანგარიშსწორებით — ბარათს არ ვიღებთ. ონლაინ ჯავშნისთვის წინასწარი გადახდა საჭირო არ არის."}},{"@type":"Question","name":"მოწევა შეიძლება?","acceptedAnswer":{"@type":"Answer","text":"ნომრებში მოწევა იკრძალება. მოსაწევად ეზოში, გადახურულ ნაწილში, ჩამოსვლა შეგიძლიათ. ჯარიმა არ არის."}},{"@type":"Question","name":"დამატებითი საწოლის დადგმა შესაძლებელია?","acceptedAnswer":{"@type":"Answer","text":"არა. დამატებითი საწოლი და საბავშვო აკვანი არცერთ ნომერში არ ემატება. ნომერი სტუმრების რაოდენობის მიხედვით აირჩიეთ — გვაქვს ნომრები სამ, ოთხ და ხუთ სტუმარზე."}},{"@type":"Question","name":"ბავშვებზე ცალკე უნდა გადავიხადო?","acceptedAnswer":{"@type":"Answer","text":"არა. ფასი ნომერზეა და არა ერთ ადამიანზე — მნიშვნელოვანია მხოლოდ ის, რომ სტუმრების რაოდენობა ნომრის ტევადობას არ აღემატებოდეს. საუზმე ცალკე უკვეთება, 30 ₾ ერთ სტუმარზე."}}],"about":{"@id":"https://hotelagava.ge/#hotel"}}</script>
+  <link rel="preconnect" href="https://bkrkrwwyedtujkwlxkzp.supabase.co" crossorigin>
 </head>
 <body>
   <header class="navbar is-solid" id="navbar">
@@ -211,7 +212,7 @@
       <div class="rooms__grid">
           <article class="room-tile" data-room-slug="standard">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="სტანდარტული ოთახი — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/agava-standard-480w.webp 480w, /assets/agava-standard-800w.webp 800w, /assets/agava-standard.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="სტანდარტული ოთახი — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">სტანდარტი</span>
             </div>
             <div class="room-tile__body">
@@ -228,7 +229,7 @@
           </article>
           <article class="room-tile" data-room-slug="lux">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="ლუქსი — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="ლუქსი — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">ლუქსი</span>
             </div>
             <div class="room-tile__body">
@@ -245,7 +246,7 @@
           </article>
           <article class="room-tile" data-room-slug="superlux">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="სუპერლუქსი — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/agava-superlux-480w.webp 480w, /assets/agava-superlux-800w.webp 800w, /assets/agava-superlux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="სუპერლუქსი — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">სუპერლუქსი</span>
             </div>
             <div class="room-tile__body">
@@ -262,7 +263,7 @@
           </article>
           <article class="room-tile" data-room-slug="family3">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-family3.webp" alt="საოჯახო ოთახი — 3 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/agava-family3-480w.webp 480w, /assets/agava-family3-800w.webp 800w, /assets/agava-family3.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-family3.webp" alt="საოჯახო ოთახი — 3 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">საოჯახო</span>
             </div>
             <div class="room-tile__body">
@@ -279,7 +280,7 @@
           </article>
           <article class="room-tile" data-room-slug="family4">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-family4.webp" alt="საოჯახო ოთახი — 4 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/agava-family4-480w.webp 480w, /assets/agava-family4-800w.webp 800w, /assets/agava-family4.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-family4.webp" alt="საოჯახო ოთახი — 4 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">საოჯახო</span>
             </div>
             <div class="room-tile__body">
@@ -296,7 +297,7 @@
           </article>
           <article class="room-tile" data-room-slug="twobedlux">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/room-twobedlux-1.webp" alt="ორ ოთახიანი ლუქსი — 5 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/room-twobedlux-1-480w.webp 480w, /assets/room-twobedlux-1-800w.webp 800w, /assets/room-twobedlux-1.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/room-twobedlux-1.webp" alt="ორ ოთახიანი ლუქსი — 5 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">ლუქსი</span>
             </div>
             <div class="room-tile__body">
@@ -313,7 +314,7 @@
           </article>
           <article class="room-tile" data-room-slug="jacuzzi-suite">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/room-jacuzzi-suite-1.webp" alt="ლუქსი ჯაკუზით — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/room-jacuzzi-suite-1-480w.webp 480w, /assets/room-jacuzzi-suite-1-800w.webp 800w, /assets/room-jacuzzi-suite-1.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/room-jacuzzi-suite-1.webp" alt="ლუქსი ჯაკუზით — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">ლუქსი</span>
             </div>
             <div class="room-tile__body">
@@ -330,7 +331,7 @@
           </article>
           <article class="room-tile" data-room-slug="jacuzzi">
             <div class="room-tile__media room-slider">
-              <img class="room-slider__img is-active" src="/assets/agava-jacuzzi.webp" alt="სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
+              <img srcset="/assets/agava-jacuzzi-480w.webp 480w, /assets/agava-jacuzzi-800w.webp 800w, /assets/agava-jacuzzi.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-jacuzzi.webp" alt="სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე — ჩვენი ნომრები" loading="lazy">
               <span class="room-tile__badge">VIP ლუქსი</span>
             </div>
             <div class="room-tile__body">
