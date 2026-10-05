@@ -15,6 +15,7 @@ require(path.join(ROOT, 'js', 'rooms-data.js'));
 const ROOMS = window.AGAVA_ROOMS_DATA;
 const MARK = 'rooms-compare';
 const CHECK = process.argv.includes('--check');
+const FORCE = process.argv.includes('--force');   // rewrite a block that is already there
 
 const NAME = {
   standard:        { ka: 'სტანდარტული ნომერი', en: 'Standard room', ru: 'Стандартный номер', tr: 'Standart oda' },
@@ -75,7 +76,10 @@ let done = 0, skipped = 0;
 for (const lang of ['ka', 'en', 'ru', 'tr']) {
   const f = (lang === 'ka' ? '' : lang + '/') + 'rooms/index.html';
   let h = fs.readFileSync(f, 'utf8');
-  if (h.includes(MARK)) { skipped++; continue; }
+  if (h.includes(MARK)) {
+    if (!FORCE) { skipped++; continue; }
+    h = h.replace(/\n?      <div class="rooms-compare"[\s\S]*?<\/div>\n/, '');
+  }
   const head = `<h2 class="section-title">${HEAD[lang]}</h2>`;
   const at = h.indexOf(head);
   if (at < 0) { console.log('  ⚠️  heading not found in', f); continue; }

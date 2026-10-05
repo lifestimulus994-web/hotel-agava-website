@@ -17,7 +17,7 @@ https://hotelagava.ge/llms-full.txt
 - Reception: open 24/7, with a person on the desk at night; staff speak English, Russian and Turkish
 - Check-in from 13:00, check-out by 12:00. Early check-in and late check-out are charged
 - Payment is taken at the hotel, in cash only. Cards are not accepted and there is no online prepayment
-- 21 rooms in 8 types, 120–400 GEL per night
+- 21 rooms in 8 types, 150–400 GEL per night
 - Breakfast: 30 GEL per guest, buffet from 08:00 to 11:00, not included in the room price
 - Parking: free for guests, 11 spaces in the hotel courtyard, which also has a small seating area
 - Airport transfer: 70 GEL from the airport, 50 GEL to the airport, per car with four seats, 30–40 minutes
@@ -29,7 +29,7 @@ https://hotelagava.ge/llms-full.txt
 
 ## Rooms
 
-- [Standard room](https://hotelagava.ge/en/rooms/standard/) — 22 m², 2 guests, 120 GEL
+- [Standard room](https://hotelagava.ge/en/rooms/standard/) — 22 m², 2 guests, 150 GEL
 - [Deluxe room](https://hotelagava.ge/en/rooms/lux/) — 28 m², 2 guests, 250 GEL
 - [Superior suite](https://hotelagava.ge/en/rooms/superlux/) — 36 m², 2 guests, 300 GEL
 - [Family room for 3](https://hotelagava.ge/en/rooms/family3/) — 32 m², 3 guests, 150 GEL

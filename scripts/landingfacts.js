@@ -14,6 +14,7 @@ require(path.join(ROOT, 'js', 'rooms-data.js'));
 const R = Object.fromEntries(window.AGAVA_ROOMS_DATA.map(r => [r.slug, r]));
 const MARK = 'landing-quickfacts';
 const CHECK = process.argv.includes('--check');
+const FORCE = process.argv.includes('--force');   // rewrite a block that is already there
 const P = s => R[s].price;
 
 const T = {
@@ -112,7 +113,10 @@ for (const key of Object.keys(PAGES)) {
     const f = (lang === 'ka' ? '' : lang + '/') + (key === 'home' ? '' : key + '/') + 'index.html';
     if (!fs.existsSync(f)) { console.log('  ⚠️  missing', f); continue; }
     let h = fs.readFileSync(f, 'utf8');
-    if (h.includes(MARK)) { skipped++; continue; }
+    if (h.includes(MARK)) {
+      if (!FORCE) { skipped++; continue; }
+      h = h.replace(/\n?      <div class="landing-quickfacts"[\s\S]*?<\/ul>\n      <\/div>\n/, '');
+    }
     const at = h.indexOf('<!-- landing-article -->');
     const at2 = at >= 0 ? at : h.indexOf('<section class="landing-article"');
     if (at2 < 0) { console.log('  ⚠️  no landing article in', f); continue; }

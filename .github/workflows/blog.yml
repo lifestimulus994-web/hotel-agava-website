@@ -33,6 +33,11 @@ jobs:
 
       # The date each page shows comes from that file's last commit, so it
       # refreshes itself here rather than being typed by hand.
+      # The hotel edits prices in the admin panel; the static pages, the
+      # schema and the AI files follow from here.
+      - name: Sync prices from the database
+        run: node scripts/syncprices.js
+
       - name: Refresh the "updated" dates
         run: node scripts/freshness.js
 

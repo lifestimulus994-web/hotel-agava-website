@@ -11,7 +11,7 @@
       slug: "standard",
       name: "სტანდარტული ოთახი — 2 სტუმარზე",
       badge: "სტანდარტი",
-      price: 120,
+      price: 150,
       images: ["assets/agava-standard.webp","assets/room-standard-2.webp","assets/room-standard-3.webp","assets/room-standard-4.webp","assets/room-standard-5.webp","assets/room-standard-1.webp"],
       alt: "სტანდარტული ოთახი ცის ჭერით",
       count: "7 ოთახი",

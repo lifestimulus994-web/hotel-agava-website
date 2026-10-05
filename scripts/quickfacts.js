@@ -19,6 +19,7 @@ require(path.join(ROOT, 'js', 'rooms-data.js'));
 const ROOMS = window.AGAVA_ROOMS_DATA;
 const MARK = 'room-quickfacts';
 const CHECK = process.argv.includes('--check');
+const FORCE = process.argv.includes('--force');   // rewrite a block that is already there
 
 const L = {
   ka: { head: 'მოკლედ', size: 'ფართობი და სტუმრები', price: 'ფასი', inRoom: 'ნომერში',
@@ -97,7 +98,10 @@ for (const room of ROOMS) {
     const f = (lang === 'ka' ? '' : lang + '/') + `rooms/${room.slug}/index.html`;
     if (!fs.existsSync(f)) continue;
     let h = fs.readFileSync(f, 'utf8');
-    if (h.includes(MARK)) { skipped++; continue; }
+    if (h.includes(MARK)) {
+      if (!FORCE) { skipped++; continue; }
+      h = h.replace(/\n?  <div class="container container--narrow room-quickfacts"[\s\S]*?<\/div>\n  <\/div>\n/, '');
+    }
     const am = amenitiesOf(h);
     if (!am || !am.length) { console.log(`  ⚠️  ${f}: amenities list not found`); continue; }
     const at = h.indexOf('<article class="container container--narrow room-article');
