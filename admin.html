@@ -67,6 +67,10 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
           SEO
         </button>
+        <button class="side__link" data-pane="account">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" width="18" height="18"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v1"/></svg>
+          ანგარიში
+        </button>
       </nav>
       <button class="side__logout" id="logoutBtn">გასვლა</button>
     </aside>
@@ -166,6 +170,24 @@
           </label>
         </div>
         <div class="seo-editor" id="seoEditor"><!-- JS --></div>
+      </section>
+      <!-- ANGARISHI -->
+      <section class="pane" id="pane-account" hidden>
+        <div class="pane__head">
+          <h2>ანგარიში</h2>
+        </div>
+        <p class="muted">შესული ხართ როგორც <strong id="accEmail">—</strong></p>
+        <form class="acc-form" id="passForm" style="max-width:420px;margin-top:18px">
+          <label style="display:block;margin-bottom:12px">ახალი პაროლი
+            <input type="password" id="passNew" autocomplete="new-password" minlength="8" required>
+          </label>
+          <label style="display:block;margin-bottom:12px">გაიმეორეთ პაროლი
+            <input type="password" id="passNew2" autocomplete="new-password" minlength="8" required>
+          </label>
+          <button class="abtn abtn--gold" type="submit">პაროლის შეცვლა</button>
+          <p class="muted" id="passStatus" style="margin-top:10px"></p>
+        </form>
+        <p class="muted" style="margin-top:18px;max-width:560px">პაროლი მინიმუმ 8 სიმბოლო უნდა იყოს. შეცვლის შემდეგ სხვა მოწყობილობებზე გახსნილი სესიები აქტიური რჩება — თუ გსურთ მათი გათიშვა, გამოდით და თავიდან შედით.</p>
       </section>
     </main>
   </div>

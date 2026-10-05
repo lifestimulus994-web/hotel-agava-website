@@ -335,6 +335,24 @@
     });
   });
 
+
+  /* ═══ ANGARISHI — password ═══ */
+  document.getElementById("passForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+    var st = document.getElementById("passStatus");
+    var a = document.getElementById("passNew").value;
+    var b = document.getElementById("passNew2").value;
+    if (a.length < 8) { st.textContent = "პაროლი მინიმუმ 8 სიმბოლო უნდა იყოს."; return; }
+    if (a !== b) { st.textContent = "პაროლები არ ემთხვევა."; return; }
+    st.textContent = "იცვლება…";
+    sb.auth.updateUser({ password: a }).then(function (res) {
+      if (res.error) { st.textContent = "შეცდომა: " + res.error.message; return; }
+      document.getElementById("passNew").value = "";
+      document.getElementById("passNew2").value = "";
+      st.textContent = "პაროლი შეიცვალა ✓";
+    });
+  });
+
   document.getElementById("logoutBtn").addEventListener("click", function () {
     sb.auth.signOut().then(function () { location.reload(); });
   });
@@ -342,6 +360,10 @@
   function enterApp() {
     loginView.hidden = true;
     appView.hidden = false;
+    sb.auth.getUser().then(function (r) {
+      var el = document.getElementById("accEmail");
+      if (el && r.data && r.data.user) el.textContent = r.data.user.email;
+    });
     loadRoomTypes().then(function () {
       loadDashboard();
       loadBookings();
