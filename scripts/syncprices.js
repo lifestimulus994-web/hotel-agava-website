@@ -59,6 +59,28 @@ const LOCAL = window.AGAVA_ROOMS_DATA;
     cp.execSync(`node scripts/${s}`, { stdio: 'inherit' });
   }
 
+
+  /* the room's own page states its price three more times: the headline
+     figure, the Offer in schema, and the HotelRoom offer on /rooms/ */
+  for (const d of diffs) {
+    for (const lang of ['', 'en/', 'ru/', 'tr/']) {
+      const f = `${lang}rooms/${d.slug}/index.html`;
+      if (!fs.existsSync(f)) continue;
+      let h = fs.readFileSync(f, 'utf8');
+      h = h.replace(new RegExp(`(<p class="rdp-price">)${d.from}( ₾)`), `$1${d.to}$2`);
+      h = h.replace(new RegExp(`("price":)${d.from}\\b`, 'g'), `$1${d.to}`);
+      fs.writeFileSync(f, h);
+    }
+    for (const lang of ['', 'en/', 'ru/', 'tr/']) {
+      const f = `${lang}rooms/index.html`;
+      let h = fs.readFileSync(f, 'utf8');
+      const re = new RegExp(`(data-room-slug="${d.slug}"[\\s\\S]{0,1200}?)${d.from}( ₾)`);
+      h = h.replace(re, `$1${d.to}$2`);
+      const ld = new RegExp(`("name":"[^"]*"[^}]*"offers":\\{"@type":"Offer","price":)${d.from}\\b`, 'g');
+      fs.writeFileSync(f, h.replace(ld, `$1${d.to}`));
+    }
+  }
+
   /* prose and FAQ answers are written by hand; they cannot be regenerated */
   const stale = [];
   const files = [];

@@ -32,9 +32,9 @@ https://hotelagava.ge/llms-full.txt
 - [Standard room](https://hotelagava.ge/en/rooms/standard/) — 22 m², 2 guests, 150 GEL
 - [Deluxe room](https://hotelagava.ge/en/rooms/lux/) — 28 m², 2 guests, 250 GEL
 - [Superior suite](https://hotelagava.ge/en/rooms/superlux/) — 36 m², 2 guests, 300 GEL
-- [Family room for 3](https://hotelagava.ge/en/rooms/family3/) — 32 m², 3 guests, 150 GEL
-- [Family room for 4](https://hotelagava.ge/en/rooms/family4/) — 38 m², 4 guests, 250 GEL
-- [Two-room suite](https://hotelagava.ge/en/rooms/twobedlux/) — 45 m², 5 guests, two separate rooms, 200 GEL
+- [Family room for 3](https://hotelagava.ge/en/rooms/family3/) — 32 m², 3 guests, 170 GEL
+- [Family room for 4](https://hotelagava.ge/en/rooms/family4/) — 38 m², 4 guests, 200 GEL
+- [Two-room suite](https://hotelagava.ge/en/rooms/twobedlux/) — 45 m², 5 guests, two separate rooms, 350 GEL
 - [Jacuzzi Suite](https://hotelagava.ge/en/rooms/jacuzzi-suite/) — 30 m², 2 guests, private jacuzzi, city view, 300 GEL
 - [Super suite with jacuzzi](https://hotelagava.ge/en/rooms/jacuzzi/) — 2 guests, private jacuzzi, King bed, 400 GEL
 
