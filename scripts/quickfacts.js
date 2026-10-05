@@ -85,7 +85,7 @@ function box(lang, room, amenities) {
     `      <p style="margin:0 0 8px;font-weight:600;letter-spacing:.02em">${t.head}</p>\n` +
     `      <ul style="margin:0;padding-left:18px;line-height:1.85">\n` +
     li('size', sizeLine) +
-    li('price', `${room.price} ${t.night} · ${t.bf}`) +
+    li('price', `<span data-price="${room.slug}">${room.price}</span> ${t.night} · ${t.bf}`) +
     li('inRoom', amenities.join(' · ')) +
     li('hotel', [count, t.house].filter(Boolean).join(' · ')) +
     li('rules', t.rulesTxt) +

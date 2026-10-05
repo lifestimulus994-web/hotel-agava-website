@@ -81,6 +81,42 @@ const LOCAL = window.AGAVA_ROOMS_DATA;
     }
   }
 
+
+  /* the sentences that state a price in words, on that room's own page */
+  const PHRASES = [
+    ['', p => [`ღირს ${p} ₾`]],
+    ['en/', p => [`costs ${p} GEL`]],
+    ['ru/', p => [`стоит ${p} ₾`]],
+    ['tr/', p => [`gecelik ${p} ₾`]],
+  ];
+  for (const d of diffs) {
+    for (const [lang, make] of PHRASES) {
+      const f = `${lang}rooms/${d.slug}/index.html`;
+      if (!fs.existsSync(f)) continue;
+      let h = fs.readFileSync(f, 'utf8');
+      const from = make(d.from), to = make(d.to);
+      from.forEach((pat, i) => { h = h.split(pat).join(to[i]); });
+      fs.writeFileSync(f, h);
+    }
+  }
+
+  /* the hotel's price range, in schema and in the AI index */
+  const prices = LOCAL.map(r => r.price);
+  const lo = Math.min(...prices), hi = Math.max(...prices);
+  for (const f of ['index.html', 'en/index.html', 'ru/index.html', 'tr/index.html']) {
+    let h = fs.readFileSync(f, 'utf8');
+    h = h.replace(/"priceRange":"\d+₾–\d+₾"/, `"priceRange":"${lo}₾–${hi}₾"`);
+    fs.writeFileSync(f, h);
+  }
+  {
+    let t = fs.readFileSync('llms.txt', 'utf8');
+    t = t.replace(/\d+–\d+ GEL per night/, `${lo}–${hi} GEL per night`);
+    for (const r of LOCAL) {
+      t = t.replace(new RegExp(`(rooms/${r.slug}/\\)[^\n]*?)\\d+ GEL`), `$1${r.price} GEL`);
+    }
+    fs.writeFileSync('llms.txt', t);
+  }
+
   /* prose and FAQ answers are written by hand; they cannot be regenerated */
   const stale = [];
   const files = [];

@@ -56,7 +56,7 @@ function table(lang) {
       `            <td>${size ? size + ' ' + UNIT[lang] : '—'}</td>\n` +
       `            <td>${guests}</td>\n` +
       `            <td>${bed}</td>\n` +
-      `            <td><strong>${r.price} ₾</strong></td>\n` +
+      `            <td><strong><span data-price="${r.slug}">${r.price}</span> ₾</strong></td>\n` +
       `          </tr>\n`;
   }).join('');
   return `\n      <div class="${MARK}" style="margin:8px 0 40px;overflow-x:auto">\n` +
