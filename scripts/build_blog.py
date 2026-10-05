@@ -22,8 +22,8 @@ VER = "2026091002"
 MARK = "<!-- generated:blog-post -->"
 GRID_START, GRID_END = "<!-- blog-cards:start -->", "<!-- blog-cards:end -->"
 
-SUPABASE_URL = "https://bamyxkxxjphqodbnxxzc.supabase.co"
-SUPABASE_KEY = "sb_publishable_zx8qt0lwZvYvMn0jyjJ7nA_XCiQsCwm"
+SUPABASE_URL = "https://bkrkrwwyedtujkwlxkzp.supabase.co"
+SUPABASE_KEY = "sb_publishable_VyFX3-jE4LHuplyKkHoKVw_gRUUCyuk"
 
 HOTEL = "სასტუმრო აგავა"
 E = lambda s: html.escape(str(s or ""), quote=True)
