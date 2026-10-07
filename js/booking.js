@@ -192,13 +192,13 @@
   function initBreakfastUI() {
     var opt = document.getElementById("bwBreakfastOpt");
     if (!breakfastEnabled()) {
-      if (opt) opt.hidden = true;
+      if (opt) { opt.hidden = true; opt.style.display = "none"; }
       state.breakfast = false;
       var off = document.getElementById("bwBreakfast");
       if (off) off.checked = false;
       return;
     }
-    if (opt) opt.hidden = false;
+    if (opt) { opt.hidden = false; opt.style.display = ""; }
     var priceEl = document.getElementById("bwBreakfastPrice");
     var menuEl = document.getElementById("bwBreakfastMenu");
     var cb = document.getElementById("bwBreakfast");

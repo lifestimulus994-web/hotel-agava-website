@@ -1511,6 +1511,10 @@ body.modal-open { overflow: hidden; }
 .manage-link a { font-size: 13px; color: var(--gold); font-weight: 600; word-break: break-all; }
 
 /* ─── Breakfast add-on (wizard step 3) ─── */
+/* display:flex and friends outrank the browser's rule for [hidden],
+   which is how the breakfast option kept showing after it was switched off */
+[hidden] { display: none !important; }
+
 .breakfast-opt {
   display: flex;
   gap: 12px;
