@@ -173,6 +173,13 @@
   var stepsBar = document.getElementById("wizardSteps");
   var state = { checkIn: null, checkOut: null, guests: 2, avail: null, chosen: null, preferSlug: null, breakfast: false };
 
+  /* the hotel decides in the admin panel whether a guest may add breakfast;
+     off unless app_settings says otherwise, so a missing setting never
+     offers something the kitchen is not serving */
+  function breakfastEnabled() {
+    var s = window.AGAVA_STORE;
+    return s ? String(s.setting("breakfast_enabled", "0")) === "1" : false;
+  }
   function breakfastPrice() {
     var s = window.AGAVA_STORE;
     var v = s ? Number(s.setting("breakfast_price", 30)) : 30;
@@ -183,6 +190,15 @@
     return s ? String(s.setting("breakfast_menu", "")) : "";
   }
   function initBreakfastUI() {
+    var opt = document.getElementById("bwBreakfastOpt");
+    if (!breakfastEnabled()) {
+      if (opt) opt.hidden = true;
+      state.breakfast = false;
+      var off = document.getElementById("bwBreakfast");
+      if (off) off.checked = false;
+      return;
+    }
+    if (opt) opt.hidden = false;
     var priceEl = document.getElementById("bwBreakfastPrice");
     var menuEl = document.getElementById("bwBreakfastMenu");
     var cb = document.getElementById("bwBreakfast");
@@ -193,7 +209,7 @@
   (function () {
     var cb = document.getElementById("bwBreakfast");
     if (cb) cb.addEventListener("change", function () {
-      state.breakfast = cb.checked;
+      state.breakfast = breakfastEnabled() && cb.checked;
       renderSummary("bwSummary");
     });
   })();
@@ -321,7 +337,7 @@
 
   function renderSummary(elId) {
     var c = state.chosen;
-    var bfCost = state.breakfast ? breakfastPrice() * state.guests * c.nights : 0;
+    var bfCost = (state.breakfast && breakfastEnabled()) ? breakfastPrice() * state.guests * c.nights : 0;
     var total = c.total + bfCost;
     document.getElementById(elId).innerHTML =
       '<div class="bw-summary__room">' + esc(c.name) + "</div>" +

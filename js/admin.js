@@ -867,12 +867,17 @@
     if (!host || !STORE) return;
     var price = STORE.setting("breakfast_price", "30");
     var menu = STORE.setting("breakfast_menu", "");
+    var on = String(STORE.setting("breakfast_enabled", "0")) === "1";
     host.innerHTML =
       '<div class="bset__head"><strong>საუზმის პარამეტრები</strong>' +
         '<button class="abtn abtn--gold abtn--sm" id="bsetSave">შენახვა</button>' +
         '<span class="content-status" id="bsetStatus"></span>' +
       '</div>' +
       '<div class="bset__grid">' +
+        '<div class="bset__fld bset__fld--wide"><label style="display:flex;align-items:center;gap:10px;cursor:pointer">' +
+          '<input type="checkbox" id="bsetEnabled"' + (on ? ' checked' : '') + ' style="width:auto;margin:0">' +
+          '<span>სტუმარს შეეძლოს საუზმის არჩევა ჯავშნისას</span></label>' +
+          '<span class="muted" style="font-size:13px">გამორთულზე ჯავშნის ფანჯარაში საუზმის ველი საერთოდ არ ჩანს.</span></div>' +
         '<div class="bset__fld"><label>ფასი ₾ (თითო სტუმარზე / ღამეზე)</label>' +
           '<input type="number" min="0" id="bsetPrice" value="' + esc(price) + '"></div>' +
         '<div class="bset__fld bset__fld--wide"><label>საუზმის მენიუ (ჩანს ჯავშნის დროს)</label>' +
@@ -889,7 +894,8 @@
     status.className = "content-status";
     Promise.all([
       STORE.setSetting("breakfast_price", String(Number(price) || 0)),
-      STORE.setSetting("breakfast_menu", menu)
+      STORE.setSetting("breakfast_menu", menu),
+      STORE.setSetting("breakfast_enabled", document.getElementById("bsetEnabled").checked ? "1" : "0")
     ]).then(function () {
       status.textContent = "შენახულია ✓";
       status.className = "content-status is-ok";
