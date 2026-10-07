@@ -28,22 +28,23 @@
     return t.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
   }
 
-  /* "150 ₾" → "150 ₾", or "150 ₾" struck through next to "120" when the
-     room is on sale. The original wording is kept on the element the
-     first time round, so running twice never nests the markup. */
+  /* The price sits in markup like <p>150 ₾<span>/ღამე</span></p>, so the
+     figure is swapped in place and the rest of the element is left alone:
+     rewriting the whole contents would strip the /ღამე wrapper and the
+     smaller type that goes with it. The regex skips anything inside a tag,
+     so an attribute that happens to hold digits is never touched. The
+     original is kept on the element, so running twice never nests. */
+  var FIRST_NUMBER = /(^|>)([^<]*?)(\d+)/;
+
   function money(el, base, sale) {
     if (!el) return;
-    if (!el.hasAttribute("data-price-tpl")) el.setAttribute("data-price-tpl", el.textContent);
+    if (!el.hasAttribute("data-price-tpl")) el.setAttribute("data-price-tpl", el.innerHTML);
     var tpl = el.getAttribute("data-price-tpl");
-    if (!/\d/.test(tpl)) return;
-    if (sale) {
-      el.innerHTML = esc(tpl).replace(
-        /\d+/,
-        '<s class="price-was">' + base + '</s> <span class="price-now">' + sale + "</span>"
-      );
-    } else {
-      el.textContent = tpl.replace(/\d+/, base);
-    }
+    if (!FIRST_NUMBER.test(tpl)) return;
+    var shown = sale
+      ? '<s class="price-was">' + base + '</s> <span class="price-now">' + sale + "</span>"
+      : String(base);
+    el.innerHTML = tpl.replace(FIRST_NUMBER, "$1$2" + shown);
   }
 
   function apply(rows) {
