@@ -1806,13 +1806,27 @@ body.modal-open { overflow: hidden; }
 /* ── Discounted rooms (js/prices.js) ─────────────────────────────────────
    The hotel switches a sale on per room in the admin panel. The database
    charges the reduced figure, so the page has to show both: what the room
-   normally costs, struck through, and what the guest will actually pay. */
+   normally costs, struck through and stepped down, and what the guest
+   will actually pay, at the full size the price always had.
+
+   .room-tile__price span and .rdp-price span shrink the "/ღამე" that
+   follows the number — and they would shrink the new price with it, since
+   that is a span too. The rules below are written one level deeper so
+   they win without !important. */
 .price-was {
+  font-family: inherit;
   text-decoration: line-through;
-  opacity: .5;
+  opacity: .45;
   font-weight: 400;
-  font-size: .72em;
-  margin-right: 4px;
+  font-size: .6em;
+  margin-right: 6px;
 }
-.price-now { color: var(--gold, #d4af6a); font-weight: 700; }
-.room-tile.is-on-sale .room-tile__price { letter-spacing: 0; }
+.room-tile__price .price-now,
+.rdp-price .price-now,
+.price-now {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: var(--gold);
+  margin-left: 0;
+}
