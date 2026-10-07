@@ -1782,3 +1782,22 @@ body.modal-open { overflow: hidden; }
 /* landing pages — closing CTA needs air after the white FAQ block */
 .service-page .lp-outro { margin-top: 64px; }
 @media (max-width: 640px) { .service-page .lp-outro { margin-top: 44px; } }
+
+/* ── Answer-first blocks (scripts/geoblocks.js) ──────────────────────────
+   A GEO audit found the room facts buried mid-paragraph, where a model
+   reading the page cannot lift them out. These lists carry the same facts
+   above the prose; prices inside them are refreshed by js/prices.js. */
+.geo-answer { margin: 0 0 26px; }
+.geo-answer__lead { margin-bottom: 10px; }
+.geo-answer__list {
+  margin: 0;
+  padding-left: 20px;
+  color: var(--ink-soft);
+  line-height: 1.85;
+}
+.geo-answer__list li { margin-bottom: 6px; }
+.geo-answer__list a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.geo-answer__list a:hover { color: var(--gold); }
+
+/* The guest quotes name their author in a <cite>, which browsers italicise. */
+.review-quote__name { font-style: normal; }

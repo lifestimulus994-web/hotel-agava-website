@@ -55,7 +55,7 @@ const LOCAL = window.AGAVA_ROOMS_DATA;
   }
   fs.writeFileSync('js/rooms-data.js', data);
 
-  for (const s of ['quickfacts.js --force', 'roomstable.js --force', 'landingfacts.js --force', 'llmsfull.js']) {
+  for (const s of ['quickfacts.js --force', 'roomstable.js --force', 'landingfacts.js --force', 'geoblocks.js --force', 'llmsfull.js']) {
     cp.execSync(`node scripts/${s}`, { stdio: 'inherit' });
   }
 
