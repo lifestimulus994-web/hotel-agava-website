@@ -225,7 +225,11 @@
         "</div>" +
         '<div class="room-tile__body">' +
           '<div class="room-tile__meta">' +
-            '<p class="room-tile__price">' + room.price + ' ₾<span>/ღამე</span></p>' +
+            '<p class="room-tile__price">' +
+              (room.salePrice
+                ? '<s class="price-was">' + room.price + '</s> <span class="price-now">' + room.salePrice + '</span>'
+                : room.price) +
+              ' ₾<span>/ღამე</span></p>' +
             '<span class="room-tile__count">' + room.count + "</span>" +
           "</div>" +
           '<h3 class="room-tile__title">' + room.name + "</h3>" +

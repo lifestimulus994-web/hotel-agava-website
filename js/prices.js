@@ -78,8 +78,46 @@
       headers: { apikey: CFG.SUPABASE_ANON_KEY, Authorization: "Bearer " + CFG.SUPABASE_ANON_KEY }
     })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
-      .then(apply)
+      .then(received)
       .catch(function () { if (onFail) onFail(); });
+  }
+
+  /* The room grid on the homepage is not in the HTML: js/main.js draws it
+     from window.AGAVA_ROOMS_DATA, and that can happen either side of this
+     fetch. So write the figures back into that array for the tiles drawn
+     after us, and watch briefly for tiles drawn before the data lands. */
+  function seed(rows) {
+    var data = window.AGAVA_ROOMS_DATA;
+    if (!data || !data.length) return;
+    rows.forEach(function (rt) {
+      var base = Number(rt.base_price);
+      if (!base) return;
+      var sale = rt.sale_active && rt.sale_price != null ? Number(rt.sale_price) : 0;
+      if (!(sale > 0) || sale >= base) sale = 0;
+      for (var i = 0; i < data.length; i++) {
+        if (data[i].slug !== rt.slug) continue;
+        data[i].price = base;
+        data[i].salePrice = sale;
+      }
+    });
+  }
+
+  function watchForTiles(rows) {
+    if (!window.MutationObserver) return;
+    var seen = 0;
+    var obs = new MutationObserver(function () {
+      var n = document.querySelectorAll("[data-room-slug]").length;
+      if (n && n !== seen) { seen = n; apply(rows); }
+    });
+    obs.observe(document.documentElement, { childList: true, subtree: true });
+    setTimeout(function () { obs.disconnect(); }, 10000);
+  }
+
+  function received(rows) {
+    if (!rows || !rows.length) return;
+    seed(rows);
+    apply(rows);
+    watchForTiles(rows);
   }
 
   /* sql/sale.sql may not have been applied yet, in which case asking for
