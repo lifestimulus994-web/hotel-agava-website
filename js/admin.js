@@ -829,9 +829,11 @@
       return '<div class="room-row" data-rt="' + rt.id + '">' +
         '<div class="room-row__name">' + esc(rt.name) + "<small>" + esc(rt.bed_type || "") + " · " + (rt.room_size || "—") + " მ²</small></div>" +
         '<div><label>ფასი ₾/ღამე</label><input type="number" min="0" class="rr-price" value="' + Number(rt.base_price) + '"></div>' +
+        '<div><label>სააქციო ფასი ₾</label><input type="number" min="0" class="rr-sale" placeholder="—" value="' + (rt.sale_price == null ? "" : Number(rt.sale_price)) + '"></div>' +
         '<div><label>ოთახების რაოდ.</label><input type="number" min="0" class="rr-total" value="' + rt.total_rooms + '"></div>' +
         '<div><label>მაქს. სტუმარი</label><input type="number" min="1" class="rr-guests" value="' + rt.max_guests + '"></div>' +
         '<div class="room-row__nums"><label>ოთახის ნომრები (მძიმით)</label><input type="text" class="rr-nums" placeholder="მაგ.: 410, 411" value="' + esc((rt.room_numbers || []).join(", ")) + '"></div>' +
+        '<label class="switch"><input type="checkbox" class="rr-sale-on"' + (rt.sale_active ? " checked" : "") + "> ფასდაკლება</label>" +
         '<label class="switch"><input type="checkbox" class="rr-visible"' + (rt.visible ? " checked" : "") + "> საიტზე ჩანს</label>" +
         '<button class="abtn abtn--gold abtn--sm rr-save">შენახვა</button>' +
       "</div>";
@@ -848,17 +850,48 @@
     var nums = numsInput
       ? numsInput.value.split(/[,\s]+/).map(function (s) { return s.trim(); }).filter(Boolean)
       : [];
-    sb.from("room_types").update({
-      base_price: Number(row.querySelector(".rr-price").value),
+    var base = Number(row.querySelector(".rr-price").value);
+    var saleEl = row.querySelector(".rr-sale");
+    var saleOnEl = row.querySelector(".rr-sale-on");
+    var sale = saleEl && saleEl.value !== "" ? Number(saleEl.value) : null;
+    var saleOn = !!(saleOnEl && saleOnEl.checked);
+
+    /* A sale switched on with no figure, or one above the normal price,
+       would show the guest a nonsense discount. Refuse it here rather
+       than let it reach the site. */
+    if (saleOn && (sale === null || !(sale > 0) || sale >= base)) {
+      btn.textContent = "სააქციო ფასი ნაკლები უნდა იყოს";
+      setTimeout(function () { btn.textContent = "შენახვა"; }, 2400);
+      return;
+    }
+
+    var payload = {
+      base_price: base,
       total_rooms: parseInt(row.querySelector(".rr-total").value, 10),
       max_guests: parseInt(row.querySelector(".rr-guests").value, 10) || 1,
       room_numbers: nums,
-      visible: row.querySelector(".rr-visible").checked
-    }).eq("id", id).then(function (res) {
-      btn.textContent = res.error ? "შეცდომა" : "შენახულია ✓";
-      setTimeout(function () { btn.textContent = "შენახვა"; }, 1400);
-      loadRoomTypes().then(renderCalendar);
-    });
+      visible: row.querySelector(".rr-visible").checked,
+      sale_price: sale,
+      sale_active: saleOn
+    };
+
+    /* sql/sale.sql may not have been run yet. Rather than lose the whole
+       edit, save everything the database does know about and say so. */
+    var needsSql = false;
+    function save(body, allowRetry) {
+      sb.from("room_types").update(body).eq("id", id).then(function (res) {
+        var msg = (res.error && res.error.message) || "";
+        if (res.error && allowRetry && /sale_(price|active)/.test(msg)) {
+          delete body.sale_price; delete body.sale_active;
+          needsSql = true;
+          return save(body, false);
+        }
+        btn.textContent = res.error ? "შეცდომა" : (needsSql ? "sql/sale.sql გაუშვი" : "შენახულია ✓");
+        setTimeout(function () { btn.textContent = "შენახვა"; }, needsSql ? 2800 : 1400);
+        loadRoomTypes().then(renderCalendar);
+      });
+    }
+    save(payload, true);
   });
 
   /* ═══ BREAKFAST SETTINGS (price + menu) ═══ */

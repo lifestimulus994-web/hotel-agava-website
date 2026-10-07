@@ -343,7 +343,8 @@ input:focus, select:focus, textarea:focus {
 .rooms-admin { display: grid; gap: 14px; }
 .room-row {
   display: grid;
-  grid-template-columns: 1fr auto auto auto minmax(140px, 1fr) auto auto;
+  /* name · price · sale · rooms · guests · numbers · sale switch · visible · save */
+  grid-template-columns: 1fr auto auto auto auto minmax(140px, 1fr) auto auto auto;
   gap: 16px;
   align-items: center;
   background: rgba(255,255,255,.95);
@@ -557,3 +558,13 @@ input:focus, select:focus, textarea:focus {
 .seo-checks { list-style: none; padding: 0; margin: 0; display: flex; flex-direction: column; gap: 6px; font-size: .88rem; }
 .seo-checks .is-ok { color: #1c7a3e; }
 .seo-checks .is-bad { color: #b23b3b; }
+
+
+/* ── Sale price (sql/sale.sql) ───────────────────────────────────────── */
+.room-row .rr-sale { width: 110px; }
+.room-row .rr-sale-on:checked { accent-color: #c0392b; }
+
+@media (max-width: 1200px) {
+  .room-row { grid-template-columns: 1fr auto auto auto; }
+  .room-row__nums { grid-column: 1 / -1; }
+}

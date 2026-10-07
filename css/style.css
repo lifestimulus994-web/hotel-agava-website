@@ -1801,3 +1801,17 @@ body.modal-open { overflow: hidden; }
 
 /* The guest quotes name their author in a <cite>, which browsers italicise. */
 .review-quote__name { font-style: normal; }
+
+
+/* ── Discounted rooms (js/prices.js) ─────────────────────────────────────
+   The hotel switches a sale on per room in the admin panel. The database
+   charges the reduced figure, so the page has to show both: what the room
+   normally costs, struck through, and what the guest will actually pay. */
+.price-was {
+  text-decoration: line-through;
+  opacity: .55;
+  font-weight: 400;
+  margin-right: 2px;
+}
+.price-now { color: var(--gold, #d4af6a); font-weight: 700; }
+.room-tile.is-on-sale .room-tile__price { letter-spacing: 0; }
