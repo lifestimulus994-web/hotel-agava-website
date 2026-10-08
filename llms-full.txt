@@ -1,6 +1,6 @@
 # Hotel Agava — full reference
 
-> Every fact the site states about the hotel, generated from the English pages on 2026-10-07.
+> Every fact the site states about the hotel, generated from the English pages on 2026-10-08.
 > Georgian: https://hotelagava.ge/ · Russian: /ru/ · Turkish: /tr/
 > Prices are in Georgian lari (GEL, ₾) and are per room per night unless noted.
 
