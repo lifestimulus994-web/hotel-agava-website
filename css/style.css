@@ -1830,3 +1830,45 @@ body.modal-open { overflow: hidden; }
   color: var(--gold);
   margin-left: 0;
 }
+
+/* ── Rooms on sale, on /offers/ (scripts/salesblock.js) ──────────────────
+   Built from room_types each hour: a room the hotel switches off drops out
+   of the table, and when nothing is on sale the whole block is removed. */
+.sales-block {
+  border: 1px solid rgba(212, 175, 106, .4);
+  background: rgba(212, 175, 106, .07);
+  border-radius: 14px;
+  padding: 24px 26px 20px;
+  margin: 30px 0;
+}
+.sales-block .section-title { margin: 2px 0 10px; }
+.sales-block .svc-desc { max-width: none; margin: 0 0 18px; }
+.sales-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 15.5px;
+}
+.sales-table th {
+  text-align: left;
+  font-weight: 600;
+  padding: 8px 12px 8px 0;
+  border-bottom: 1px solid rgba(212, 175, 106, .45);
+  white-space: nowrap;
+}
+.sales-table td {
+  padding: 11px 12px 11px 0;
+  border-bottom: 1px solid rgba(212, 175, 106, .18);
+  vertical-align: baseline;
+}
+.sales-table tr:last-child td { border-bottom: 0; }
+.sales-table s { opacity: .5; }
+.sales-table strong { color: var(--gold); font-size: 1.1em; }
+.sales-table a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+.sales-table a:hover { color: var(--gold); }
+.svc-note { color: var(--ink-soft); font-size: 14px; margin: 16px 0 0; }
+
+@media (max-width: 640px) {
+  .sales-block { padding: 18px 16px 14px; }
+  .sales-table { font-size: 14px; }
+  .sales-table th:nth-child(2), .sales-table td:nth-child(2) { display: none; }
+}
