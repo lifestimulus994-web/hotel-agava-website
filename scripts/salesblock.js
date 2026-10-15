@@ -10,6 +10,9 @@
  * rather than left standing empty — an offers page advertising no offers is
  * worse than one that simply lists the prices.
  *
+ * Switched on or off from the admin panel; syncprices.js rebuilds this
+ * hourly, so the table trails the database by at most an hour.
+ *
  * Room names come from each language's own room page, so a rename there
  * carries over without touching this file. Figures are static: syncprices.js
  * runs this hourly, so they trail the database by at most an hour, the same
