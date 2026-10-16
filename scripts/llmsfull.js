@@ -11,13 +11,15 @@
 const fs = require('fs'), path = require('path');
 const ROOT = path.dirname(__dirname);
 process.chdir(ROOT);
-const txt = s => s.replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
+/* a room on sale shows its usual price struck through; the AI file states
+   only what the guest pays */
+const txt = s => s.replace(/<s class="price-was">\d+<\/s>\s*/g, '').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&nbsp;/g, ' ').replace(/\s+/g, ' ').trim();
 
 const pages = [];
 (function walk(d) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
     if (e.name === '.git') continue;
-    const p = path.join(d, e.name);
+    const p = path.join(d, e.name).split(path.sep).join('/');
     if (e.isDirectory()) walk(p);
     else if (e.name === 'index.html' && /^en\//.test(p.replace(/^\.\//, ''))) pages.push(p.replace(/^\.\//, ''));
   }

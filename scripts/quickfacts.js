@@ -100,7 +100,7 @@ for (const room of ROOMS) {
     let h = fs.readFileSync(f, 'utf8');
     if (h.includes(MARK)) {
       if (!FORCE) { skipped++; continue; }
-      h = h.replace(/\n?  <div class="container container--narrow room-quickfacts"[\s\S]*?<\/div>\n  <\/div>\n/, '');
+      h = h.replace(/\r?\n?  <div class="container container--narrow room-quickfacts"[\s\S]*?<\/div>\r?\n  <\/div>\r?\n/g, '');
     }
     const am = amenitiesOf(h);
     if (!am || !am.length) { console.log(`  ⚠️  ${f}: amenities list not found`); continue; }
