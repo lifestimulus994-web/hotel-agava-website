@@ -222,9 +222,13 @@ def page(p):
 '''
 
 
-def card(p):
+def card(p, first=False):
     slug, title = p["slug"], p["title"]
-    img = (f'<div class="blog-card__img"><img src="{E(p["cover_url"])}" alt="{E(title)}" loading="lazy"></div>'
+    # the first card's cover is the list page's LCP image: lazy-loading it
+    # delays the score, and validate.py refuses the commit — which is how
+    # the first published post never reached the site
+    load = 'fetchpriority="high"' if first else 'loading="lazy"'
+    img = (f'<div class="blog-card__img"><img src="{E(p["cover_url"])}" alt="{E(title)}" {load}></div>'
            if p.get("cover_url") else "")
     ex = f'<p>{E(p["excerpt"])}</p>' if p.get("excerpt") else ""
     return (f'<a class="blog-card" href="/blog/{slug}/">{img}'
@@ -238,7 +242,7 @@ def write_list(posts):
     blog.js still replaces the grid at runtime; Googlebot sees this first."""
     f = os.path.join(ROOT, "blog", "index.html")
     s = open(f, encoding="utf-8").read()
-    inner = "".join(card(p) for p in posts) or \
+    inner = "".join(card(p, i == 0) for i, p in enumerate(posts)) or \
             '<p class="muted">მალე დაემატება სტატიები.</p>'
     block = f'{GRID_START}{inner}{GRID_END}'
     if GRID_START in s:
