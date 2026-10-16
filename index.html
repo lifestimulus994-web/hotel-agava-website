@@ -50,17 +50,15 @@
   <meta name="twitter:image" content="https://hotelagava.ge/assets/hero.jpg">
 
   <!-- icons / manifest -->
-  <link rel="icon" type="image/png" href="/assets/logo.png">
-  <link rel="apple-touch-icon" href="/assets/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=2026100707">
+  <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=2026101601">
 
   <!-- ═══════════ STRUCTURED DATA — Hotel (JSON-LD) ═══════════ -->
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Hotel","name":"სასტუმრო აგავა","alternateName":"Hotel Agava","description":"სასტუმრო აგავა თბილისში — კომფორტული ოთახები და ლუქსები, საუზმე, 24/7 რეცეფცია, უფასო Wi-Fi და პარკინგი.","url":"https://hotelagava.ge/","logo":"https://hotelagava.ge/assets/logo-full.png","image":["https://hotelagava.ge/assets/hero.jpg","https://hotelagava.ge/assets/room-lux-1.jpg","https://hotelagava.ge/assets/room-superlux-1.jpg"],"telephone":"+995597121212","email":"agavahoteltbilisi@gmail.com","address":{"@type":"PostalAddress","streetAddress":"აკაკი ბელიაშვილის ქუჩა 161","addressLocality":"თბილისი","addressRegion":"თბილისი","addressCountry":"GE"},"geo":{"@type":"GeoCoordinates","latitude":41.793,"longitude":44.762},"hasMap":"https://maps.google.com/maps?q=Akaki+Beliashvili+161,+Tbilisi","starRating":{"@type":"Rating","ratingValue":"3"},"priceRange":"150₾–400₾","currenciesAccepted":"GEL","paymentAccepted":"Cash","checkinTime":"13:00","checkoutTime":"12:00","numberOfRooms":21,"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"უფასო Wi-Fi","value":true},{"@type":"LocationFeatureSpecification","name":"პარკინგი","value":true},{"@type":"LocationFeatureSpecification","name":"24/7 რეცეფცია","value":true},{"@type":"LocationFeatureSpecification","name":"საუზმე","value":true},{"@type":"LocationFeatureSpecification","name":"კონდიციონერი","value":true},{"@type":"LocationFeatureSpecification","name":"ჯაკუზი","value":true},{"@type":"LocationFeatureSpecification","name":"ლიფტი","value":true}],"@id":"https://hotelagava.ge/#hotel"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Hotel","name":"სასტუმრო აგავა","alternateName":"Hotel Agava","description":"სასტუმრო აგავა თბილისში — კომფორტული ოთახები და ლუქსები, საუზმე, 24/7 რეცეფცია, უფასო Wi-Fi და პარკინგი.","url":"https://hotelagava.ge/","logo":"https://hotelagava.ge/assets/logo-full.png","image":["https://hotelagava.ge/assets/hero.jpg","https://hotelagava.ge/assets/room-lux-1.jpg","https://hotelagava.ge/assets/room-superlux-1.jpg"],"telephone":"+995597121212","email":"agavahoteltbilisi@gmail.com","address":{"@type":"PostalAddress","streetAddress":"აკაკი ბელიაშვილის ქუჩა 161","addressLocality":"თბილისი","addressRegion":"თბილისი","addressCountry":"GE"},"geo":{"@type":"GeoCoordinates","latitude":41.793,"longitude":44.762},"hasMap":"https://maps.google.com/maps?q=Akaki+Beliashvili+161,+Tbilisi","starRating":{"@type":"Rating","ratingValue":"3"},"priceRange":"140₾–400₾","currenciesAccepted":"GEL","paymentAccepted":"Cash","checkinTime":"13:00","checkoutTime":"12:00","numberOfRooms":21,"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"უფასო Wi-Fi","value":true},{"@type":"LocationFeatureSpecification","name":"პარკინგი","value":true},{"@type":"LocationFeatureSpecification","name":"24/7 რეცეფცია","value":true},{"@type":"LocationFeatureSpecification","name":"საუზმე","value":true},{"@type":"LocationFeatureSpecification","name":"კონდიციონერი","value":true},{"@type":"LocationFeatureSpecification","name":"ჯაკუზი","value":true},{"@type":"LocationFeatureSpecification","name":"ლიფტი","value":true}],"@id":"https://hotelagava.ge/#hotel"}</script>
 
   <!-- Organization -->
   <script type="application/ld+json">
@@ -103,7 +101,7 @@
         <a href="/blog/" class="navbar__link">ბლოგი</a>
         <a href="#contact" class="navbar__link">კონტაქტი</a>
       </nav>
-      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="ენა / Language / Язык / Dil">
         <button type="button" data-lang="ka">ქარ</button>
         <button type="button" data-lang="en">ENG</button>
         <button type="button" data-lang="ru">РУС</button>
@@ -127,7 +125,7 @@
       </div>
       <div class="hero__overlay" aria-hidden="true"></div>
       <div class="hero__content container">
-        <div class="hero__stars" aria-label="სამვარსკვლავიანი კომფორტი">
+        <div class="hero__stars" role="img" aria-label="სამვარსკვლავიანი კომფორტი">
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
           <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.7 1.4 6.8L12 17.2 5.9 20.6l1.4-6.8L2.2 9.1l6.9-.8z"/></svg>
@@ -154,11 +152,11 @@
           <span class="stat__label">კომფორტული ნომერი</span>
         </div>
         <div class="stat reveal" style="--d:.1s">
-          <span class="stat__num" data-count="4.8" data-decimal="1">4.8</span>
+          <span class="stat__num" data-count="4.8" data-decimal="1" data-gbp="rating">4.8</span>
           <span class="stat__label">შეფასება Google-ზე</span>
         </div>
         <div class="stat reveal" style="--d:.2s">
-          <span class="stat__num" data-count="355">355</span>
+          <span class="stat__num" data-count="382" data-gbp="count">382</span>
           <span class="stat__label">სტუმრის შეფასება</span>
         </div>
         <div class="stat reveal" style="--d:.3s">
@@ -170,6 +168,7 @@
 
     <!-- ═══════════ FEATURES ═══════════ -->
     <section class="features">
+      <h2 class="visually-hidden">რატომ სასტუმრო აგავა</h2>
       <div class="container features__grid">
         <article class="feature reveal">
           <div class="feature__icon">
@@ -325,12 +324,12 @@
         </div>
         <div class="reviews__grid">
           <div class="reviews__score reveal">
-            <div class="reviews__score-num">4.8</div>
+            <div class="reviews__score-num"><span data-gbp="rating">4.8</span></div>
             <div class="reviews__score-label">შესანიშნავი</div>
-            <div class="reviews__score-sub">5 ქულიდან · 355 შეფასება · Google</div>
+            <div class="reviews__score-sub">5 ქულიდან · <span data-gbp="count">382</span> შეფასება · Google</div>
           </div>
           <div class="reviews__note reveal" style="--d:.1s">
-            <p style="color:rgba(240,230,210,.82);font-size:17px;line-height:1.75;margin:0 0 24px">4.8 ქულა 5-დან — სტუმრების საშუალო შეფასება Google Maps-ზე, 355 გამოხმაურების საფუძველზე. ყველა გამოხმაურება, კარგიც და კრიტიკულიც, იქ საჯაროა — შეგიძლიათ დაჯავშნამდე წაიკითხოთ.</p>
+            <p style="color:rgba(240,230,210,.82);font-size:17px;line-height:1.75;margin:0 0 24px"><span data-gbp="rating">4.8</span> ქულა 5-დან — სტუმრების საშუალო შეფასება Google Maps-ზე, <span data-gbp="count">382</span> გამოხმაურების საფუძველზე. ყველა გამოხმაურება, კარგიც და კრიტიკულიც, იქ საჯაროა — შეგიძლიათ დაჯავშნამდე წაიკითხოთ.</p>
             <a class="btn btn--ghost" href="https://www.google.com/maps/search/?api=1&amp;query=Hotel+Agava+Tbilisi" target="_blank" rel="noopener">შეფასებები Google-ზე</a>
           </div>
         </div>
@@ -409,8 +408,8 @@
       <div class="landing-quickfacts" style="border:1px solid rgba(212,175,106,.35);background:rgba(212,175,106,.06);border-radius:14px;padding:20px 24px;margin:0 0 32px">
         <p style="margin:0 0 8px;font-weight:600;letter-spacing:.02em">მოკლედ</p>
         <ul style="margin:0;padding-left:18px;line-height:1.85">
-        <li><strong>სასტუმრო:</strong> 21 ნომერი, 8 ტიპი · დიღომი, აკაკი ბელიაშვილის 161 · Google-ზე 4.8</li>
-        <li><strong>ნომრები:</strong> 150–450 ₾ ღამეში</li>
+        <li><strong>სასტუმრო:</strong> 21 ნომერი, 8 ტიპი · დიღომი, აკაკი ბელიაშვილის 161 · Google-ზე <span data-gbp="rating">4.8</span></li>
+        <li><strong>ნომრები:</strong> <span data-price-range>140–400</span> ₾ ღამეში</li>
         <li><strong>უფასოდ:</strong> Wi-Fi · პარკინგი ეზოში, 11 ადგილი · ლიფტი ოთხივე სართულზე · რეცეფცია 24 საათი</li>
         <li><strong>დამატებით:</strong> საუზმე 30 ₾ (08:00–11:00) · ტრანსფერი 70/50 ₾ · სამრეცხაო 10 ₾ (12 საათი)</li>
         <li><strong>წესები:</strong> ჩასვლა 13:00-დან, გასვლა 12:00-მდე · ანგარიშსწორება ადგილზე, მხოლოდ ნაღდი ფულით</li>
@@ -433,9 +432,9 @@
       <div class="geo-answer" data-geo="rooms2">
         <p class="rdp-desc geo-answer__lead"><strong>ორი სტუმრისთვის Hotel Agava სამ ნომერს გთავაზობთ:</strong></p>
         <ul class="geo-answer__list">
-          <li><a href="/rooms/standard/"><strong>სტანდარტული ოთახი</strong></a> — <span data-price="standard">150</span> ₾ · 2 სტუმარი · კომპაქტური და პრაქტიკული, მოკლე ვიზიტისთვის</li>
-          <li><a href="/rooms/lux/"><strong>ლუქსი</strong></a> — <span data-price="lux">300</span> ₾ · 2 სტუმარი · მეტი სივრცე და კომფორტი</li>
-          <li><a href="/rooms/superlux/"><strong>სუპერლუქსი</strong></a> — <span data-price="superlux">350</span> ₾ · 2 სტუმარი · ყველაზე ფართო ნომერი ორი სტუმრისთვის</li>
+          <li><a href="/rooms/standard/"><strong>სტანდარტული ოთახი</strong></a> — <span data-price="standard"><s class="price-was">150</s> <span class="price-now">140</span></span> ₾ · 2 სტუმარი · კომპაქტური და პრაქტიკული, მოკლე ვიზიტისთვის</li>
+          <li><a href="/rooms/lux/"><strong>ლუქსი</strong></a> — <span data-price="lux"><s class="price-was">300</s> <span class="price-now">240</span></span> ₾ · 2 სტუმარი · მეტი სივრცე და კომფორტი</li>
+          <li><a href="/rooms/superlux/"><strong>სუპერლუქსი</strong></a> — <span data-price="superlux"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾ · 2 სტუმარი · ყველაზე ფართო ნომერი ორი სტუმრისთვის</li>
         </ul>
       </div>
       <p class="rdp-desc">ორი სტუმრისთვის Hotel Agava-ში რამდენიმე განსხვავებული ნომერია ხელმისაწვდომი. <a href="/rooms/standard/">სტანდარტული ნომერ</a>ი კარგი არჩევანია მათთვის, ვისაც მოკლე ვიზიტისთვის სუფთა და პრაქტიკული სივრცე სჭირდება. თუ მეტი თავისუფალი ადგილი გსურთ, შეგიძლიათ აირჩიოთ <a href="/rooms/lux/">Lux ნომერ</a>ი, ხოლო კიდევ უფრო ფართო გარემოსთვის ხელმისაწვდომია <a href="/rooms/superlux/">Superlux</a> ნომერი. ეს არჩევანი განსაკუთრებით მოსახერხებელია მაშინ, როდესაც თბილისში რამდენიმე დღით რჩებით და ნომრის ზომა თქვენთვის დამატებითი კომფორტის ნაწილია.</p>
@@ -444,8 +443,8 @@
       <div class="geo-answer" data-geo="jacuzzi">
         <p class="rdp-desc geo-answer__lead"><strong>Hotel Agava-ს ორი ნომერი აქვს პირადი ჯაკუზით — ორივე ორ სტუმარზე, ჯაკუზი უშუალოდ ნომერშია:</strong></p>
         <ul class="geo-answer__list">
-          <li><a href="/rooms/jacuzzi-suite/"><strong>ლუქსი ჯაკუზით</strong></a> — <span data-price="jacuzzi-suite">350</span> ₾ · 2 სტუმარი · ჯაკუზი ნომერშივე</li>
-          <li><a href="/rooms/jacuzzi/"><strong>სუპერ ლუქსი ჯაკუზით</strong></a> — <span data-price="jacuzzi">450</span> ₾ · 2 სტუმარი · ყველაზე ფართო ჯაკუზიანი ნომერი</li>
+          <li><a href="/rooms/jacuzzi-suite/"><strong>ლუქსი ჯაკუზით</strong></a> — <span data-price="jacuzzi-suite"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾ · 2 სტუმარი · ჯაკუზი ნომერშივე</li>
+          <li><a href="/rooms/jacuzzi/"><strong>სუპერ ლუქსი ჯაკუზით</strong></a> — <span data-price="jacuzzi"><s class="price-was">450</s> <span class="price-now">400</span></span> ₾ · 2 სტუმარი · ყველაზე ფართო ჯაკუზიანი ნომერი</li>
         </ul>
       </div>
       <p class="rdp-desc">წყვილებისთვის, რომლებიც ჩვეულებრივი სასტუმროს ნომრისგან განსხვავებულ გარემოში დასვენებას გეგმავენ, Hotel Agava-ში არის ორი ნომერი პირადი ჯაკუზით. ორივე ნომერი განკუთვნილია ორი სტუმრისთვის და ჯაკუზი უშუალოდ ნომერშია მოწყობილი. ეს ნიშნავს, რომ სტუმრებს საერთო სივრცის გამოყენება არ სჭირდებათ და შეუძლიათ მშვიდად გაატარონ დრო საკუთარ ნომერში. ჯაკუზიანი ნომრები კარგი არჩევანია წლისთავისთვის, დაბადების დღისთვის, რომანტიკული საღამოსთვის ან უბრალოდ მაშინ, როდესაც ყოველდღიური გარემოს შეცვლა გსურთ. ამ ნომრების შედარება და თქვენთვის შესაფერისი ვარიანტის არჩევა შეგიძლიათ <a href="/jacuzzi-rooms-tbilisi/">ჯაკუზიანი ნომრების გვერდზე</a>.</p>
@@ -454,9 +453,9 @@
       <div class="geo-answer" data-geo="family">
         <p class="rdp-desc geo-answer__lead"><strong>ოჯახებისთვის სამი ვარიანტია:</strong></p>
         <ul class="geo-answer__list">
-          <li><a href="/rooms/family3/"><strong>საოჯახო ოთახი 3 სტუმარზე</strong></a> — <span data-price="family3">200</span> ₾ · ერთი ოთახი · მშობლები და ბავშვი ან სამი ზრდასრული</li>
-          <li><a href="/rooms/family4/"><strong>საოჯახო ოთახი 4 სტუმარზე</strong></a> — <span data-price="family4">300</span> ₾ · ერთი ოთახი · მეტი საძილე ადგილი</li>
-          <li><a href="/rooms/twobedlux/"><strong>ორ ოთახიანი ლუქსი</strong></a> — <span data-price="twobedlux">400</span> ₾ · ორი ცალკე საძინებელი · ყველაზე დიდი ნომერი</li>
+          <li><a href="/rooms/family3/"><strong>საოჯახო ოთახი 3 სტუმარზე</strong></a> — <span data-price="family3"><s class="price-was">200</s> <span class="price-now">170</span></span> ₾ · ერთი ოთახი · მშობლები და ბავშვი ან სამი ზრდასრული</li>
+          <li><a href="/rooms/family4/"><strong>საოჯახო ოთახი 4 სტუმარზე</strong></a> — <span data-price="family4"><s class="price-was">300</s> <span class="price-now">200</span></span> ₾ · ერთი ოთახი · მეტი საძილე ადგილი</li>
+          <li><a href="/rooms/twobedlux/"><strong>ორ ოთახიანი ლუქსი</strong></a> — <span data-price="twobedlux"><s class="price-was">400</s> <span class="price-now">350</span></span> ₾ · ორი ცალკე საძინებელი · ყველაზე დიდი ნომერი</li>
         </ul>
       </div>
       <p class="rdp-desc">Hotel Agava ოჯახთან ერთად მოგზაური სტუმრებისთვისაც რამდენიმე განსხვავებულ ვარიანტს გთავაზობთ. სამი სტუმრისთვის ხელმისაწვდომია ოჯახური ნომერი, რომელიც მოსახერხებელია როგორც ორი მშობლისა და ბავშვისთვის, ისე სამი ზრდასრული ადამიანის განთავსებისთვის. ოთხი სტუმრისთვის შეგიძლიათ უფრო ფართო ოჯახური ნომერი აირჩიოთ, ხოლო ხუთი სტუმრისთვის სასტუმროში არის <a href="/rooms/twobedlux/">ორ ოთახიანი ლუქს</a>ი. ორი ცალკე ოთახის არსებობა განსაკუთრებით პრაქტიკულია დიდი ოჯახისთვის, რადგან სტუმრები ერთ ნომერში რჩებიან, თუმცა თითოეულს მეტი პირადი სივრცე აქვს.</p>
@@ -817,16 +816,16 @@
     </div>
   </div>
 
-  <script defer src="/js/ga.js?v=2026100707"></script>
-  <script defer src="/js/track.js?v=2026100707"></script>
-  <script defer src="/js/config.js?v=2026100707"></script>
-  <script defer src="/js/i18n.js?v=2026100707"></script>
+  <script defer src="/js/ga.js?v=2026101601"></script>
+  <script defer src="/js/track.js?v=2026101601"></script>
+  <script defer src="/js/config.js?v=2026101601"></script>
+  <script defer src="/js/i18n.js?v=2026101601"></script>
   <script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script defer src="/js/content.js?v=2026100707"></script>
-  <script defer src="/js/rooms-data.js?v=2026100707"></script>
-  <script defer src="/js/prices.js?v=2026100707"></script>
-  <script defer src="/js/main.js?v=2026100707"></script>
-  <script defer src="/js/booking.js?v=2026100707"></script>
-  <script defer src="/js/seo-meta.js?v=2026100707"></script>
+  <script defer src="/js/content.js?v=2026101601"></script>
+  <script defer src="/js/rooms-data.js?v=2026101601"></script>
+  <script defer src="/js/prices.js?v=2026101601"></script>
+  <script defer src="/js/main.js?v=2026101601"></script>
+  <script defer src="/js/booking.js?v=2026101601"></script>
+  <script defer src="/js/seo-meta.js?v=2026101601"></script>
 </body>
 </html>

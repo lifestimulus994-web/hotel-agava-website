@@ -15,18 +15,19 @@ const R = Object.fromEntries(window.AGAVA_ROOMS_DATA.map(r => [r.slug, r]));
 const MARK = 'landing-quickfacts';
 const CHECK = process.argv.includes('--check');
 const FORCE = process.argv.includes('--force');   // rewrite a block that is already there
-const P = s => R[s].price;
+/* applyprices.js fills these spans, struck-through usual price and all */
+const P = s => `<span data-price="${s}">${R[s].price}</span>`;
 
 const T = {
   ka: {
     head: 'მოკლედ', cur: '₾',
     hotel: 'სასტუმრო', rooms: 'ნომრები', free: 'უფასოდ', paid: 'დამატებით', rules: 'წესები', not: 'რა არ არის',
-    hotelTxt: '21 ნომერი, 8 ტიპი · დიღომი, აკაკი ბელიაშვილის 161 · Google-ზე 4.8',
+    hotelTxt: '21 ნომერი, 8 ტიპი · დიღომი, აკაკი ბელიაშვილის 161 · Google-ზე <span data-gbp="rating">4.8</span>',
     freeTxt: 'Wi-Fi · პარკინგი ეზოში, 11 ადგილი · ლიფტი ოთხივე სართულზე · რეცეფცია 24 საათი',
     paidTxt: `საუზმე 30 ₾ (08:00–11:00) · ტრანსფერი ${'70'}/50 ₾ · სამრეცხაო 10 ₾ (12 საათი)`,
     rulesTxt: 'ჩასვლა 13:00-დან, გასვლა 12:00-მდე · ანგარიშსწორება ადგილზე, მხოლოდ ნაღდი ფულით',
     notTxt: 'რესტორანი, აუზი, სპა, სავარჯიშო და საკონფერენციო დარბაზი, ბარგის ოთახი, ვალუტის გადაცვლა',
-    range: (a, b) => `${a}–${b} ₾ ღამეში`,
+    range: r => `${r} ₾ ღამეში`,
     two: () => `სტანდარტული ${P('standard')} ₾ · ლუქსი ${P('lux')} ₾ · სუპერლუქსი ${P('superlux')} ₾`,
     fam: () => `3 სტუმარი — 32 მ², ${P('family3')} ₾ · 4 სტუმარი — 38 მ², ${P('family4')} ₾ · 5 სტუმარი — 45 მ², ორი ოთახი, ${P('twobedlux')} ₾`,
     jac: () => `სუპერ ლუქსი ჯაკუზით — King საწოლი, ${P('jacuzzi')} ₾ · ლუქსი ჯაკუზით — 30 მ², ქალაქის ხედით, ${P('jacuzzi-suite')} ₾`,
@@ -37,12 +38,12 @@ const T = {
   en: {
     head: 'In short', cur: 'GEL',
     hotel: 'The hotel', rooms: 'Rooms', free: 'Free', paid: 'Paid extras', rules: 'House rules', not: 'What there is not',
-    hotelTxt: '21 rooms in 8 types · Dighomi, 161 Akaki Beliashvili St · 4.8 on Google',
+    hotelTxt: '21 rooms in 8 types · Dighomi, 161 Akaki Beliashvili St · <span data-gbp="rating">4.8</span> on Google',
     freeTxt: 'Wi-Fi · parking in the courtyard, 11 spaces · a lift to all four floors · reception open 24 hours',
     paidTxt: 'breakfast 30 GEL (08:00–11:00) · transfer 70/50 GEL · laundry 10 GEL (12 hours)',
     rulesTxt: 'check-in from 13:00, check-out by 12:00 · payment on site, in cash only',
     notTxt: 'no restaurant, pool, spa, gym, conference room, luggage room or currency exchange',
-    range: (a, b) => `${a}–${b} GEL per night`,
+    range: r => `${r} GEL per night`,
     two: () => `standard ${P('standard')} GEL · deluxe ${P('lux')} GEL · superior ${P('superlux')} GEL`,
     fam: () => `3 guests — 32 m², ${P('family3')} GEL · 4 guests — 38 m², ${P('family4')} GEL · 5 guests — 45 m², two rooms, ${P('twobedlux')} GEL`,
     jac: () => `super suite with jacuzzi — King bed, ${P('jacuzzi')} GEL · jacuzzi suite — 30 m², city view, ${P('jacuzzi-suite')} GEL`,
@@ -53,12 +54,12 @@ const T = {
   ru: {
     head: 'Коротко', cur: '₾',
     hotel: 'Отель', rooms: 'Номера', free: 'Бесплатно', paid: 'За отдельную плату', rules: 'Правила', not: 'Чего нет',
-    hotelTxt: '21 номер, 8 типов · Дигоми, ул. Акакия Белиашвили, 161 · 4.8 в Google',
+    hotelTxt: '21 номер, 8 типов · Дигоми, ул. Акакия Белиашвили, 161 · <span data-gbp="rating">4.8</span> в Google',
     freeTxt: 'Wi-Fi · парковка во дворе, 11 мест · лифт на все четыре этажа · ресепшен 24 часа',
     paidTxt: 'завтрак 30 ₾ (08:00–11:00) · трансфер 70/50 ₾ · прачечная 10 ₾ (12 часов)',
     rulesTxt: 'заезд с 13:00, выезд до 12:00 · оплата на месте, только наличными',
     notTxt: 'нет ресторана, бассейна, спа, спортзала, конференц-зала, камеры хранения и обмена валюты',
-    range: (a, b) => `${a}–${b} ₾ за ночь`,
+    range: r => `${r} ₾ за ночь`,
     two: () => `стандартный ${P('standard')} ₾ · люкс ${P('lux')} ₾ · суперлюкс ${P('superlux')} ₾`,
     fam: () => `3 гостя — 32 м², ${P('family3')} ₾ · 4 гостя — 38 м², ${P('family4')} ₾ · 5 гостей — 45 м², две комнаты, ${P('twobedlux')} ₾`,
     jac: () => `суперлюкс с джакузи — кровать King, ${P('jacuzzi')} ₾ · люкс с джакузи — 30 м², вид на город, ${P('jacuzzi-suite')} ₾`,
@@ -69,12 +70,12 @@ const T = {
   tr: {
     head: 'Kısaca', cur: '₾',
     hotel: 'Otel', rooms: 'Odalar', free: 'Ücretsiz', paid: 'Ek ücretli', rules: 'Kurallar', not: 'Otelde olmayanlar',
-    hotelTxt: '21 oda, 8 tip · Dighomi, Akaki Beliaşvili Cad. 161 · Google’da 4.8',
+    hotelTxt: '21 oda, 8 tip · Dighomi, Akaki Beliaşvili Cad. 161 · Google’da <span data-gbp="rating">4.8</span>',
     freeTxt: 'Wi-Fi · avluda otopark, 11 araçlık yer · dört kata hizmet veren asansör · 24 saat resepsiyon',
     paidTxt: 'kahvaltı 30 ₾ (08:00–11:00) · transfer 70/50 ₾ · çamaşır 10 ₾ (12 saat)',
     rulesTxt: "giriş 13:00'ten itibaren, çıkış 12:00'ye kadar · ödeme otelde, yalnızca nakit",
     notTxt: 'restoran, havuz, spa, spor salonu, konferans salonu, bagaj odası ve döviz bozdurma yok',
-    range: (a, b) => `gecelik ${a}–${b} ₾`,
+    range: r => `gecelik ${r} ₾`,
     two: () => `standart ${P('standard')} ₾ · lüks ${P('lux')} ₾ · süper lüks ${P('superlux')} ₾`,
     fam: () => `3 misafir — 32 m², ${P('family3')} ₾ · 4 misafir — 38 m², ${P('family4')} ₾ · 5 misafir — 45 m², iki oda, ${P('twobedlux')} ₾`,
     jac: () => `jakuzili süper süit — King yatak, ${P('jacuzzi')} ₾ · jakuzili lüks oda — 30 m², şehir manzaralı, ${P('jacuzzi-suite')} ₾`,
@@ -84,18 +85,19 @@ const T = {
   },
 };
 
-const prices = window.AGAVA_ROOMS_DATA.map(r => r.price);
-const LOW = Math.min(...prices), HIGH = Math.max(...prices);
+/* the range a guest can actually book at: sale prices where a sale is on */
+const prices = window.AGAVA_ROOMS_DATA.map(r => (r.salePrice > 0 && r.salePrice < r.price ? r.salePrice : r.price));
+const RANGE = `<span data-price-range>${Math.min(...prices)}–${Math.max(...prices)}</span>`;
 
 /* which lines each page gets */
 const PAGES = {
-  'home':                      t => [[t.hotel, t.hotelTxt], [t.rooms, t.range(LOW, HIGH)], [t.free, t.freeTxt], [t.paid, t.paidTxt], [t.rules, t.rulesTxt]],
+  'home':                      t => [[t.hotel, t.hotelTxt], [t.rooms, t.range(RANGE)], [t.free, t.freeTxt], [t.paid, t.paidTxt], [t.rules, t.rulesTxt]],
   'business-hotel-tbilisi':    t => [[t.rooms, t.two()], [t.free, t.freeTxt], [t.paid, t.paidTxt], [t.rules, t.rulesTxt], [t.not, t.notTxt]],
   'family-hotel-tbilisi':      t => [[t.rooms, t.fam()], [t.free, t.freeTxt], [t.paid, t.paidTxt], [t.rules, t.rulesTxt]],
   'jacuzzi-rooms-tbilisi':     t => [[t.rooms, t.jac()], [t.hotel, t.jacNote], [t.free, t.freeTxt], [t.rules, t.rulesTxt], [t.not, t.notTxt]],
   'hotel-for-couples-tbilisi': t => [[t.rooms, `${t.two()} · ${t.jac()}`], [t.free, t.freeTxt], [t.paid, t.paidTxt], [t.rules, t.rulesTxt]],
   'amenities':                 t => [[t.free, t.freeTxt], [t.paid, t.paidTxt], [t.rules, t.rulesTxt], [t.not, t.notTxt]],
-  'offers':                    t => [[t.rooms, t.range(LOW, HIGH)], [t.free, t.freeTxt], [t.paid, t.paidTxt], [t.hotel, t.book], [t.rules, t.rulesTxt]],
+  'offers':                    t => [[t.rooms, t.range(RANGE)], [t.free, t.freeTxt], [t.paid, t.paidTxt], [t.hotel, t.book], [t.rules, t.rulesTxt]],
 };
 
 function box(lang, key) {
@@ -115,7 +117,7 @@ for (const key of Object.keys(PAGES)) {
     let h = fs.readFileSync(f, 'utf8');
     if (h.includes(MARK)) {
       if (!FORCE) { skipped++; continue; }
-      h = h.replace(/\n?      <div class="landing-quickfacts"[\s\S]*?<\/ul>\n      <\/div>\n/, '');
+      h = h.replace(/\r?\n?      <div class="landing-quickfacts"[\s\S]*?<\/ul>\r?\n      <\/div>\r?\n/g, '');
     }
     const at = h.indexOf('<!-- landing-article -->');
     const at2 = at >= 0 ? at : h.indexOf('<section class="landing-article"');

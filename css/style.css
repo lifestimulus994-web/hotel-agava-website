@@ -3,26 +3,55 @@
    Local DejaVu Sans (full Georgian coverage)
    ═══════════════════════════════════════════ */
 
+/* Subset to the scripts the site is written in (Latin incl. Turkish,
+   Cyrillic, Georgian + Mtavruli, the punctuation and arrows it uses) and
+   served as WOFF2: ~28 KB a face instead of ~700 KB of TTF. Anything
+   outside the range falls through to the system font without a download. */
 @font-face {
   font-family: "DejaVu Sans";
-  src: url("../assets/fonts/DejaVuSans.ttf") format("truetype");
+  src: url("../assets/fonts/DejaVuSans.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-007E, U+00A0-017F, U+0400-04FF, U+10A0-10FF, U+1C90-1CBF, U+2010-203A, U+20AC, U+2116, U+2122, U+2190-2194, U+2212, U+2248, U+2264-2265, U+25B2-25C0, U+2605, U+270E-2715;
 }
 @font-face {
   font-family: "DejaVu Sans";
-  src: url("../assets/fonts/DejaVuSans-Bold.ttf") format("truetype");
+  src: url("../assets/fonts/DejaVuSans-Bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
   font-display: swap;
+  unicode-range: U+0020-007E, U+00A0-017F, U+0400-04FF, U+10A0-10FF, U+1C90-1CBF, U+2010-203A, U+20AC, U+2116, U+2122, U+2190-2194, U+2212, U+2248, U+2264-2265, U+25B2-25C0, U+2605, U+270E-2715;
 }
 @font-face {
   font-family: "DejaVu Sans";
-  src: url("../assets/fonts/DejaVuSans-Oblique.ttf") format("truetype");
+  src: url("../assets/fonts/DejaVuSans-Oblique.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
+  unicode-range: U+0020-007E, U+00A0-017F, U+0400-04FF, U+10A0-10FF, U+1C90-1CBF, U+2010-203A, U+20AC, U+2116, U+2122, U+2190-2194, U+2212, U+2248, U+2264-2265, U+25B2-25C0, U+2605, U+270E-2715;
+}
+/* The "AGAVA" wordmark is the only Cinzel text on the site, so the face
+   carries just A, G and V (1 KB) and is served from here, not Google Fonts. */
+@font-face {
+  font-family: "Cinzel";
+  src: url("../assets/fonts/cinzel-700-agava.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+  unicode-range: U+41, U+47, U+56;
+}
+
+/* read by screen readers and search engines, not drawn — keeps the
+   heading outline in order where the design shows no title */
+.visually-hidden {
+  position: absolute !important;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 :root {
@@ -1385,6 +1414,13 @@ body.modal-open { overflow: hidden; }
   input:not([type="checkbox"]):not([type="radio"]),
   select,
   textarea { font-size: 16px; }
+}
+
+/* Below ~380px the four language buttons and the burger leave no room for
+   the wordmark, which slid under the switcher. The leaf logo stays; the
+   name is in its alt text and the page title. */
+@media (max-width: 380px) {
+  .navbar__name { display: none; }
 }
 
 /* ═══════════ ROOM TILE ACTIONS ═══════════ */

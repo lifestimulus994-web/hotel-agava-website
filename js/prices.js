@@ -47,30 +47,48 @@
     el.innerHTML = tpl.replace(FIRST_NUMBER, "$1$2" + shown);
   }
 
+  /* Untagged markup (the homepage grid main.js draws) still goes through
+     money(); anything that already holds a data-price span is left to it. */
+  function untagged(el) {
+    return el && !el.querySelector("[data-price]") ? el : null;
+  }
+
   function apply(rows) {
     if (!rows || !rows.length) return;
     var own = slugFromPath();
+    var paid = [];
     rows.forEach(function (rt) {
       var base = Number(rt.base_price);
       if (!base) return;
       var sale = rt.sale_active && rt.sale_price != null ? Number(rt.sale_price) : 0;
       if (!(sale > 0) || sale >= base) sale = 0;
+      if (rt.visible !== false) paid.push(sale || base);
 
       /* room cards on /rooms/ and the homepage grid */
       var tile = document.querySelector('[data-room-slug="' + rt.slug + '"]');
       if (tile) {
-        money(tile.querySelector(".room-tile__price"), base, sale);
-        if (sale) tile.classList.add("is-on-sale");
+        money(untagged(tile.querySelector(".room-tile__price")), base, sale);
+        tile.classList.toggle("is-on-sale", !!sale);
         if (rt.visible === false) tile.style.display = "none";
       }
-      /* the comparison table, the facts box — anything tagged by slug */
+      /* every figure tagged by slug holds nothing but the figure, as
+         scripts/applyprices.js writes it — so it is rewritten whole */
       Array.prototype.forEach.call(
         document.querySelectorAll('[data-price="' + rt.slug + '"]'),
-        function (el) { money(el, base, sale); }
+        function (el) {
+          el.innerHTML = sale
+            ? '<s class="price-was">' + base + '</s> <span class="price-now">' + sale + "</span>"
+            : String(base);
+        }
       );
       /* the headline figure on this room's own page */
-      if (own === rt.slug) money(document.querySelector(".rdp-price"), base, sale);
+      if (own === rt.slug) money(untagged(document.querySelector(".rdp-price")), base, sale);
     });
+    if (paid.length) {
+      Array.prototype.forEach.call(document.querySelectorAll("[data-price-range]"), function (el) {
+        el.textContent = Math.min.apply(null, paid) + "–" + Math.max.apply(null, paid);
+      });
+    }
   }
 
   function load(columns, onFail) {

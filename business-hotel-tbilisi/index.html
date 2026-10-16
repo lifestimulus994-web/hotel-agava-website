@@ -19,12 +19,10 @@
   <meta property="og:url" content="https://hotelagava.ge/business-hotel-tbilisi/">
   <meta property="og:image" content="https://hotelagava.ge/assets/agava-superlux.jpg">
   <meta property="og:locale" content="ka_GE">
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=2026100707">
+  <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=2026101601">
   <style>
     /* No hero on these pages — the navbar sits on cream from the top, so it
        must render solid immediately. Inlined because /css/* and /js/* are
@@ -50,7 +48,7 @@
   <header class="navbar is-solid" id="navbar">
     <div class="navbar__inner container">
       <a href="/" class="navbar__brand" aria-label="სასტუმრო აგავა — მთავარი">
-        <img width="256" height="256" src="/assets/logo.png" alt="სასტუმრო აგავა — მთავარი" class="navbar__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="სასტუმრო აგავა — მთავარი" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
       <nav class="navbar__nav" aria-label="მთავარი ნავიგაცია">
@@ -60,7 +58,7 @@
         <a href="/blog/" class="navbar__link">ბლოგი</a>
         <a href="/#contact" class="navbar__link">კონტაქტი</a>
       </nav>
-      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="ენა / Language / Язык / Dil">
         <button type="button" data-lang="ka">ქარ</button>
         <button type="button" data-lang="en">ENG</button>
         <button type="button" data-lang="ru">РУС</button>
@@ -132,7 +130,7 @@
       <div class="landing-quickfacts" style="border:1px solid rgba(212,175,106,.35);background:rgba(212,175,106,.06);border-radius:14px;padding:20px 24px;margin:0 0 32px">
         <p style="margin:0 0 8px;font-weight:600;letter-spacing:.02em">მოკლედ</p>
         <ul style="margin:0;padding-left:18px;line-height:1.85">
-        <li><strong>ნომრები:</strong> სტანდარტული 150 ₾ · ლუქსი 300 ₾ · სუპერლუქსი 350 ₾</li>
+        <li><strong>ნომრები:</strong> სტანდარტული <span data-price="standard"><s class="price-was">150</s> <span class="price-now">140</span></span> ₾ · ლუქსი <span data-price="lux"><s class="price-was">300</s> <span class="price-now">240</span></span> ₾ · სუპერლუქსი <span data-price="superlux"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</li>
         <li><strong>უფასოდ:</strong> Wi-Fi · პარკინგი ეზოში, 11 ადგილი · ლიფტი ოთხივე სართულზე · რეცეფცია 24 საათი</li>
         <li><strong>დამატებით:</strong> საუზმე 30 ₾ (08:00–11:00) · ტრანსფერი 70/50 ₾ · სამრეცხაო 10 ₾ (12 საათი)</li>
         <li><strong>წესები:</strong> ჩასვლა 13:00-დან, გასვლა 12:00-მდე · ანგარიშსწორება ადგილზე, მხოლოდ ნაღდი ფულით</li>
@@ -234,7 +232,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img width="256" height="256" src="/assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
         <p>კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა.</p>
       </div>
       <nav class="footer__nav" aria-label="ქვედა ნავიგაცია">
@@ -263,9 +261,9 @@
     </div>
   </footer>
 
-  <script defer src="/js/ga.js?v=2026100707"></script>
-  <script defer src="/js/config.js?v=2026100707"></script>
+  <script defer src="/js/ga.js?v=2026101601"></script>
+  <script defer src="/js/config.js?v=2026101601"></script>
   <script defer src="/js/i18n.js"></script>
-  <script defer src="/js/main.js?v=2026100707"></script>
+  <script defer src="/js/main.js?v=2026101601"></script>
 </body>
 </html>

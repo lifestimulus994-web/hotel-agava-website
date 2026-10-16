@@ -14,7 +14,8 @@ Run it before committing:
 
 Exit code is 1 if anything failed, so it also works in CI.
 """
-import glob, json, os, re, subprocess, sys, collections
+import glob, html, json, os, re, subprocess, sys, collections
+from html.parser import HTMLParser
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://hotelagava.ge"
@@ -31,11 +32,50 @@ def pages():
     for f in sorted(glob.glob("**/*.html", recursive=True)):
         if ".git" in f or os.path.basename(f) in SKIP:
             continue
-        yield f, open(f, encoding="utf-8", errors="ignore").read()
+        yield f.replace(os.sep, "/"), open(f, encoding="utf-8", errors="ignore").read()
 
 
 def url_of(f):
     return SITE + "/" + re.sub(r"index\.html$", "", f)
+
+
+# ── 0. <head> holds only tags ────────────────────────────────────────────
+class HeadText(HTMLParser):
+    """A browser closes <head> at the first stray character. One extra ">"
+    after a meta description did that on 27 pages: canonical, hreflang and
+    robots all landed in <body>, where Google ignores them."""
+    RAW = {"script", "style", "title", "noscript"}
+
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.in_head = self.done = False
+        self.raw = 0
+        self.stray = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag == "head":
+            self.in_head = True
+        elif tag == "body":
+            self.done = True
+        if tag in self.RAW:
+            self.raw += 1
+
+    def handle_endtag(self, tag):
+        if tag == "head":
+            self.done = True
+        if tag in self.RAW:
+            self.raw = max(0, self.raw - 1)
+
+    def handle_data(self, data):
+        if self.in_head and not self.done and not self.raw and data.strip():
+            self.stray.append(data.strip()[:40])
+
+
+def check_head(f, h):
+    p = HeadText()
+    p.feed(h)
+    for s in p.stray:
+        fail(f, f"ტექსტი <head>-ში — Google აქ head-ს დახურავს: «{s}»")
 
 
 def unescape_ld(s):
@@ -155,24 +195,106 @@ def check_meta(f, h):
 
 
 # ── 7. room prices agree with the single source of truth ─────────────────
-def check_prices():
+def load_rooms():
     try:
         raw = subprocess.run(
             ["node", "-e", "global.window={};require('./js/rooms-data.js');"
                            "console.log(JSON.stringify(window.AGAVA_ROOMS_DATA))"],
             capture_output=True, text=True, check=True).stdout
     except Exception as e:
-        return fail("js/rooms-data.js", f"ვერ წავიკითხე: {e}")
-    for r in json.loads(raw):
-        for L in ("",) + LANGS:
-            f = os.path.join(L, "rooms", r["slug"], "index.html")
-            if not os.path.exists(f):
-                continue
-            h = open(f, encoding="utf-8").read()
-            shown = set(re.findall(r">(\d+)\s*₾", h)) | set(re.findall(r'"price":\s*(\d+)', h))
-            wrong = {p for p in shown if int(p) != r["price"]}
-            if wrong:
-                fail(f, f"ფასი არ ემთხვევა rooms-data-ს ({r['price']} ₾): ნაპოვნია {sorted(wrong)}")
+        fail("js/rooms-data.js", f"ვერ წავიკითხე: {e}")
+        return {}
+    return {r["slug"]: r for r in json.loads(raw)}
+
+
+def pays(r):
+    s = r.get("salePrice") or 0
+    return s if 0 < s < r["price"] else r["price"]
+
+
+def figure(r):
+    if pays(r) == r["price"]:
+        return str(r["price"])
+    return f'<s class="price-was">{r["price"]}</s> <span class="price-now">{pays(r)}</span>'
+
+
+FIG = r'(?:<s class="price-was">\d+</s> <span class="price-now">\d+</span>|\d+)'
+LOOSE_PRICE = re.compile(r"(?<![\d.–/-])[1-9]\d\d\s*(?:₾|GEL|лари|ლარ|lari)")
+
+
+def check_prices(f, h, rooms):
+    """Every room price is a <span data-price> that scripts/applyprices.js
+    writes. A figure typed straight into the prose is how the Turkish page
+    came to say 120 for a 150 room — so one outside a span is an error."""
+    if not rooms:
+        return
+    for slug, inner in re.findall(rf'<span data-price="([a-z0-9-]+)">({FIG})</span>', h):
+        r = rooms.get(slug)
+        if not r:
+            fail(f, f"უცნობი ნომერი: data-price=\"{slug}\"")
+        elif inner != figure(r):
+            fail(f, f"{slug}: ნაჩვენებია «{re.sub('<[^>]+>', ' ', inner).strip()}», rooms-data-ში {figure(r)}")
+    rest = re.sub(rf'<span data-price="[a-z0-9-]+">{FIG}</span>', "", h)
+    rest = re.sub(r'<section class="sales-block"[\s\S]*?</section>', "", rest)
+    rest = re.sub(r"<script[\s\S]*?</script>", "", rest)
+    for m in LOOSE_PRICE.finditer(rest):
+        fail(f, f"ფასი data-price-ის გარეშე: «{rest[max(0, m.start() - 40):m.end()].strip()}»")
+
+    lo = min(pays(r) for r in rooms.values())
+    hi = max(pays(r) for r in rooms.values())
+    for a, b in re.findall(r"<span data-price-range>(\d+)–(\d+)</span>", h):
+        if (int(a), int(b)) != (lo, hi):
+            fail(f, f"ფასების დიაპაზონი {a}–{b}, უნდა იყოს {lo}–{hi}")
+    for a, b in re.findall(r'"priceRange":"(\d+)₾–(\d+)₾"', h):
+        if (int(a), int(b)) != (lo, hi):
+            fail(f, f"priceRange {a}–{b}, უნდა იყოს {lo}–{hi}")
+    for slug, p in re.findall(r'"url":"https://hotelagava\.ge/(?:[a-z]{2}/)?rooms/([a-z0-9-]+)/"[^{}]*?(?:\{[^{}]*\}[^{}]*?)*?"@type":"Offer","price":(\d+)', h):
+        if slug in rooms and int(p) != pays(rooms[slug]):
+            fail(f, f"{slug}: schema-ს Offer {p}, სტუმარი იხდის {pays(rooms[slug])}")
+
+
+# ── 7c. one Google rating, stated the same everywhere ────────────────────
+GBP = collections.defaultdict(set)
+
+def collect_rating(f, h):
+    """scripts/syncrating.js writes these from the admin panel; a figure
+    that differs from the rest was typed by hand and will go stale."""
+    for kind, v in re.findall(r'<span data-gbp="(rating|count)">([\d.]+)</span>', h):
+        GBP[kind].add((v, f))
+    for a, b in re.findall(r'data-count="(\d+)" data-gbp="count">(\d+)<', h):
+        GBP["count"].update({(a, f), (b, f)})
+    for a, b in re.findall(r'data-count="([\d.]+)" data-decimal="1" data-gbp="rating">([\d.]+)<', h):
+        GBP["rating"].update({(a, f), (b, f)})
+
+
+def check_rating():
+    for kind, seen in GBP.items():
+        values = {v for v, _ in seen}
+        if len(values) > 1:
+            fail("Google", f"{kind}: სხვადასხვა მნიშვნელობა — {sorted(values)}")
+
+
+# ── 7b. FAQ schema says what the visible FAQ says ────────────────────────
+def plain(s):
+    s = re.sub(r'<s class="price-was">\d+</s>\s*', "", s)
+    return re.sub(r"\s+", " ", html.unescape(re.sub(r"<[^>]+>", "", s))).strip()
+
+
+def check_faq(f, h):
+    visible = {plain(q): plain(a) for q, a in re.findall(r"<summary>(.*?)</summary>\s*<p>(.*?)</p>", h, re.S)}
+    for block in re.findall(r'<script type="application/ld\+json"[^>]*>(.*?)</script>', h, re.S):
+        if '"FAQPage"' not in block:
+            continue
+        try:
+            data = json.loads(unescape_ld(block))
+        except Exception:
+            continue
+        for q in data.get("mainEntity", []):
+            v = visible.get(q.get("name"))
+            if v is None:
+                fail(f, f"FAQ schema-ს კითხვა გვერდზე არ ჩანს: {q.get('name', '')[:50]}")
+            elif v != plain(q["acceptedAnswer"]["text"]):
+                fail(f, f"FAQ schema-ს პასუხი განსხვავდება ხილულისგან: {q['name'][:50]}")
 
 
 # ── 8. sitemap lists every indexable page and nothing noindexed ──────────
@@ -189,15 +311,18 @@ def check_sitemap(indexable, noindexed):
 def main():
     indexable, noindexed, seen = set(), set(), 0
     versions = collections.Counter()
+    rooms = load_rooms()
     for f, h in pages():
         seen += 1
         indexed = not re.search(r'name="robots"[^>]*noindex', h)
+        check_head(f, h)
         check_jsonld(f, h); check_canonical(f, h); check_hreflang(f, h)
         check_assets(f, h); check_structure(f, h, indexed); check_meta(f, h)
         check_delivery(f, h); check_language(f, h); check_facts(f, h)
+        check_prices(f, h, rooms); check_faq(f, h); collect_rating(f, h)
         (indexable if indexed else noindexed).add(url_of(f))
         versions.update(re.findall(r"\?v=(\d+)", h))
-    check_prices()
+    check_rating()
     check_sitemap(indexable, noindexed)
 
     if len(versions) > 1:

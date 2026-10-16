@@ -19,12 +19,10 @@
   <meta property="og:url" content="https://hotelagava.ge/hotel-dighomi-tbilisi/">
   <meta property="og:image" content="https://hotelagava.ge/assets/exterior-1.jpg">
   <meta property="og:locale" content="ka_GE">
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=2026100707">
+  <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=2026101601">
   <style>
     /* These pages have no hero — the navbar sits on a cream background from
        the top, so it must render solid immediately. Inlined on purpose:
@@ -51,7 +49,7 @@
   <header class="navbar is-solid" id="navbar">
     <div class="navbar__inner container">
       <a href="/" class="navbar__brand" aria-label="სასტუმრო აგავა — მთავარი">
-        <img width="256" height="256" src="/assets/logo.png" alt="სასტუმრო აგავა — მთავარი" class="navbar__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="სასტუმრო აგავა — მთავარი" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
       <nav class="navbar__nav" aria-label="მთავარი ნავიგაცია">
@@ -61,7 +59,7 @@
         <a href="/blog/" class="navbar__link">ბლოგი</a>
         <a href="/#contact" class="navbar__link">კონტაქტი</a>
       </nav>
-      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="ენა / Language / Язык / Dil">
         <button type="button" data-lang="ka">ქარ</button>
         <button type="button" data-lang="en">ENG</button>
         <button type="button" data-lang="ru">РУС</button>
@@ -145,7 +143,7 @@
       <p class="rdp-desc">ქალაქის ცენტრამდე მანქანით დაახლოებით 20–30 წუთია, საგზაო მოძრაობის მიხედვით.</p>
 
       <h2 class="section-title">ნომრები და ლუქსები</h2>
-      <p class="rdp-desc">სასტუმროში 21 ნომერია, Google-ზე შეფასება <strong>4.8</strong> (355 გამოხმაურება). სრული ჩამონათვალი — <a href="/rooms/">ოთახების გვერდზე</a>:</p>
+      <p class="rdp-desc">სასტუმროში 21 ნომერია, Google-ზე შეფასება <strong><span data-gbp="rating">4.8</span></strong> (<span data-gbp="count">382</span> გამოხმაურება). სრული ჩამონათვალი — <a href="/rooms/">ოთახების გვერდზე</a>:</p>
       <ul class="about__list">
         <li><a href="/rooms/standard/">სტანდარტული ნომერი</a> · <a href="/rooms/lux/">ლუქსი</a> · <a href="/rooms/superlux/">სუპერლუქსი</a> — 2 სტუმარზე</li>
         <li><a href="/jacuzzi-rooms-tbilisi/">ნომრები ჯაკუზით</a> — 2 სტუმარზე, ორი ვარიანტი</li>
@@ -242,7 +240,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img width="256" height="256" src="/assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
         <p>კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა.</p>
       </div>
       <nav class="footer__nav" aria-label="ქვედა ნავიგაცია">
@@ -271,9 +269,9 @@
     </div>
   </footer>
 
-  <script defer src="/js/ga.js?v=2026100707"></script>
-  <script defer src="/js/config.js?v=2026100707"></script>
+  <script defer src="/js/ga.js?v=2026101601"></script>
+  <script defer src="/js/config.js?v=2026101601"></script>
   <script defer src="/js/i18n.js"></script>
-  <script defer src="/js/main.js?v=2026100707"></script>
+  <script defer src="/js/main.js?v=2026101601"></script>
 </body>
 </html>

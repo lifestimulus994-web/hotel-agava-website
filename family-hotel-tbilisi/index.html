@@ -19,12 +19,10 @@
   <meta property="og:url" content="https://hotelagava.ge/family-hotel-tbilisi/">
   <meta property="og:image" content="https://hotelagava.ge/assets/agava-family3.jpg">
   <meta property="og:locale" content="ka_GE">
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=2026100707">
+  <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=2026101601">
   <style>
     /* These pages have no hero — the navbar sits on a cream background from
        the top, so it must render solid immediately. Inlined on purpose:
@@ -51,7 +49,7 @@
   <header class="navbar is-solid" id="navbar">
     <div class="navbar__inner container">
       <a href="/" class="navbar__brand" aria-label="სასტუმრო აგავა — მთავარი">
-        <img width="256" height="256" src="/assets/logo.png" alt="სასტუმრო აგავა — მთავარი" class="navbar__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="სასტუმრო აგავა — მთავარი" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
       <nav class="navbar__nav" aria-label="მთავარი ნავიგაცია">
@@ -61,7 +59,7 @@
         <a href="/blog/" class="navbar__link">ბლოგი</a>
         <a href="/#contact" class="navbar__link">კონტაქტი</a>
       </nav>
-      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="ენა / Language / Язык / Dil">
         <button type="button" data-lang="ka">ქარ</button>
         <button type="button" data-lang="en">ENG</button>
         <button type="button" data-lang="ru">РУС</button>
@@ -133,7 +131,7 @@
       <div class="landing-quickfacts" style="border:1px solid rgba(212,175,106,.35);background:rgba(212,175,106,.06);border-radius:14px;padding:20px 24px;margin:0 0 32px">
         <p style="margin:0 0 8px;font-weight:600;letter-spacing:.02em">მოკლედ</p>
         <ul style="margin:0;padding-left:18px;line-height:1.85">
-        <li><strong>ნომრები:</strong> 3 სტუმარი — 32 მ², 200 ₾ · 4 სტუმარი — 38 მ², 300 ₾ · 5 სტუმარი — 45 მ², ორი ოთახი, 400 ₾</li>
+        <li><strong>ნომრები:</strong> 3 სტუმარი — 32 მ², <span data-price="family3"><s class="price-was">200</s> <span class="price-now">170</span></span> ₾ · 4 სტუმარი — 38 მ², <span data-price="family4"><s class="price-was">300</s> <span class="price-now">200</span></span> ₾ · 5 სტუმარი — 45 მ², ორი ოთახი, <span data-price="twobedlux"><s class="price-was">400</s> <span class="price-now">350</span></span> ₾</li>
         <li><strong>უფასოდ:</strong> Wi-Fi · პარკინგი ეზოში, 11 ადგილი · ლიფტი ოთხივე სართულზე · რეცეფცია 24 საათი</li>
         <li><strong>დამატებით:</strong> საუზმე 30 ₾ (08:00–11:00) · ტრანსფერი 70/50 ₾ · სამრეცხაო 10 ₾ (12 საათი)</li>
         <li><strong>წესები:</strong> ჩასვლა 13:00-დან, გასვლა 12:00-მდე · ანგარიშსწორება ადგილზე, მხოლოდ ნაღდი ფულით</li>
@@ -200,7 +198,7 @@
           </details>
           <details class="faq__item">
             <summary>დამატებითი საწოლის დამატება შესაძლებელია?</summary>
-            <p>არა. დამატებითი საწოლი და საბავშვო აკვანი არცერთ ნომერში არ ემატება. ნომერი სტუმრების რაოდენობის მიხედვით აირჩიეთ — გვაქვს ნომრები სამ, ოთხ და ხუთ სტუმარზე.დამატება
+            <p>არა. დამატებითი საწოლი და საბავშვო აკვანი არცერთ ნომერში არ ემატება. ნომერი სტუმრების რაოდენობის მიხედვით აირჩიეთ — გვაქვს ნომრები სამ, ოთხ და ხუთ სტუმარზე.</p>
           </details>
                   <details class="faq__item">
             <summary>ბავშვებზე ცალკე უნდა გადავიხადო?</summary>
@@ -223,7 +221,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img width="256" height="256" src="/assets/logo.png" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="სასტუმრო აგავას ლოგო" class="footer__logo">
         <p>კომფორტი, ელეგანტურობა და ქართული სტუმართმოყვარეობა.</p>
       </div>
       <nav class="footer__nav" aria-label="ქვედა ნავიგაცია">
@@ -252,9 +250,9 @@
     </div>
   </footer>
 
-  <script defer src="/js/ga.js?v=2026100707"></script>
-  <script defer src="/js/config.js?v=2026100707"></script>
+  <script defer src="/js/ga.js?v=2026101601"></script>
+  <script defer src="/js/config.js?v=2026101601"></script>
   <script defer src="/js/i18n.js"></script>
-  <script defer src="/js/main.js?v=2026100707"></script>
+  <script defer src="/js/main.js?v=2026101601"></script>
 </body>
 </html>

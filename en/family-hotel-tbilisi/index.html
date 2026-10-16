@@ -19,12 +19,10 @@
   <meta property="og:url" content="https://hotelagava.ge/en/family-hotel-tbilisi/">
   <meta property="og:image" content="https://hotelagava.ge/assets/agava-family3.jpg">
   <meta property="og:locale" content="en_US">
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=2026100707">
+  <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=2026101601">
   <style>
     /* No hero on these pages — the navbar sits on cream from the top, so it
        must render solid immediately. Inlined because /css/* and /js/* are
@@ -50,7 +48,7 @@
   <header class="navbar is-solid" id="navbar">
     <div class="navbar__inner container">
       <a href="/en/" class="navbar__brand" aria-label="Hotel Agava — home">
-        <img width="256" height="256" src="/assets/logo.png" alt="Hotel Agava — home" class="navbar__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="Hotel Agava — home" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
       <nav class="navbar__nav" aria-label="Main navigation">
@@ -60,7 +58,7 @@
         <a href="/en/blog/" class="navbar__link">Blog</a>
         <a href="/en/#contact" class="navbar__link">Contact</a>
       </nav>
-      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="ენა / Language / Язык / Dil">
         <button type="button" data-lang="ka">ქარ</button>
         <button type="button" data-lang="en">ENG</button>
         <button type="button" data-lang="ru">РУС</button>
@@ -132,7 +130,7 @@
       <div class="landing-quickfacts" style="border:1px solid rgba(212,175,106,.35);background:rgba(212,175,106,.06);border-radius:14px;padding:20px 24px;margin:0 0 32px">
         <p style="margin:0 0 8px;font-weight:600;letter-spacing:.02em">In short</p>
         <ul style="margin:0;padding-left:18px;line-height:1.85">
-        <li><strong>Rooms:</strong> 3 guests — 32 m², 200 GEL · 4 guests — 38 m², 300 GEL · 5 guests — 45 m², two rooms, 400 GEL</li>
+        <li><strong>Rooms:</strong> 3 guests — 32 m², <span data-price="family3"><s class="price-was">200</s> <span class="price-now">170</span></span> GEL · 4 guests — 38 m², <span data-price="family4"><s class="price-was">300</s> <span class="price-now">200</span></span> GEL · 5 guests — 45 m², two rooms, <span data-price="twobedlux"><s class="price-was">400</s> <span class="price-now">350</span></span> GEL</li>
         <li><strong>Free:</strong> Wi-Fi · parking in the courtyard, 11 spaces · a lift to all four floors · reception open 24 hours</li>
         <li><strong>Paid extras:</strong> breakfast 30 GEL (08:00–11:00) · transfer 70/50 GEL · laundry 10 GEL (12 hours)</li>
         <li><strong>House rules:</strong> check-in from 13:00, check-out by 12:00 · payment on site, in cash only</li>
@@ -222,7 +220,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img width="256" height="256" src="/assets/logo.png" alt="Hotel Agava logo" class="footer__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="Hotel Agava logo" class="footer__logo">
         <p>Comfort, elegance and Georgian hospitality.</p>
       </div>
       <nav class="footer__nav" aria-label="Footer navigation">
@@ -251,9 +249,9 @@
     </div>
   </footer>
 
-  <script defer src="/js/ga.js?v=2026100707"></script>
-  <script defer src="/js/config.js?v=2026100707"></script>
+  <script defer src="/js/ga.js?v=2026101601"></script>
+  <script defer src="/js/config.js?v=2026101601"></script>
   <script defer src="/js/i18n.js"></script>
-  <script defer src="/js/main.js?v=2026100707"></script>
+  <script defer src="/js/main.js?v=2026101601"></script>
 </body>
 </html>

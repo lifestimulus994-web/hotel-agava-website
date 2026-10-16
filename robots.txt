@@ -19,5 +19,10 @@ User-agent: Claude-SearchBot
 User-agent: Google-Extended
 User-agent: Applebot-Extended
 Allow: /
+# a crawler obeys only its own group, so the * rules above do not reach these
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /manage
+Disallow: /manage.html
 
 Sitemap: https://hotelagava.ge/sitemap.xml

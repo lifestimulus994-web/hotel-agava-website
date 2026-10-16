@@ -36,6 +36,11 @@ jobs:
       - name: Sync prices from the database
         run: node scripts/syncprices.js
 
+      # The Google rating and review count are typed once in the admin
+      # panel (Rooms → Google შეფასება); every page follows from here.
+      - name: Sync the Google rating from the database
+        run: node scripts/syncrating.js
+
       # The date each page shows comes from that file's last commit, so it
       # refreshes itself here rather than being typed by hand.
       - name: Refresh the "updated" dates

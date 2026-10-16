@@ -78,7 +78,7 @@ for (const lang of ['ka', 'en', 'ru', 'tr']) {
   let h = fs.readFileSync(f, 'utf8');
   if (h.includes(MARK)) {
     if (!FORCE) { skipped++; continue; }
-    h = h.replace(/\n?      <div class="rooms-compare"[\s\S]*?<\/div>\n/, '');
+    h = h.replace(/\r?\n?      <div class="rooms-compare"[\s\S]*?<\/div>\r?\n/g, '');
   }
   const head = `<h2 class="section-title">${HEAD[lang]}</h2>`;
   const at = h.indexOf(head);

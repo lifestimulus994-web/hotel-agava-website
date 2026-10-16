@@ -4,6 +4,8 @@
    and at build time by scripts/build-rooms.mjs to prerender
    /rooms/<slug>/ landing pages in every language.
    `desc` = SEO prose per language; `amenities` = dict-translatable tokens.
+   `price` / `salePrice` mirror room_types (base_price, and sale_price while
+   the sale is on, else 0) — scripts/syncprices.js keeps them in step.
    ═══════════════════════════════════════════ */
 (function () {
   window.AGAVA_ROOMS_DATA = [
@@ -12,6 +14,7 @@
       name: "სტანდარტული ოთახი — 2 სტუმარზე",
       badge: "სტანდარტი",
       price: 150,
+      salePrice: 140,
       images: ["assets/agava-standard.webp","assets/room-standard-2.webp","assets/room-standard-3.webp","assets/room-standard-4.webp","assets/room-standard-5.webp","assets/room-standard-1.webp"],
       alt: "სტანდარტული ოთახი ცის ჭერით",
       count: "7 ოთახი",
@@ -33,6 +36,7 @@
       name: "ლუქსი — 2 სტუმარზე",
       badge: "ლუქსი",
       price: 300,
+      salePrice: 240,
       images: ["assets/agava-lux.webp","assets/room-lux-1.webp","assets/room-lux-2.webp","assets/room-lux-3.webp","assets/room-lux-4.webp"],
       alt: "ლუქსი ოთახი ბაროკოს სტილში, ცის ჭერით",
       count: "5 ოთახი",
@@ -54,6 +58,7 @@
       name: "სუპერლუქსი — 2 სტუმარზე",
       badge: "სუპერლუქსი",
       price: 350,
+      salePrice: 300,
       images: ["assets/agava-superlux.webp","assets/room-superlux-1.webp","assets/room-superlux-2.webp","assets/room-superlux-3.webp"],
       alt: "სუპერლუქსი ბაროკოს სტილის ინტერიერით",
       count: "1 ნომერი",
@@ -75,6 +80,7 @@
       name: "საოჯახო ოთახი — 3 სტუმარზე",
       badge: "საოჯახო",
       price: 200,
+      salePrice: 170,
       images: ["assets/agava-family3.webp","assets/room-family3-2.webp","assets/room-family3-3.webp","assets/room-family3-4.webp","assets/room-family3-1.webp"],
       alt: "საოჯახო ოთახი სამ სტუმარზე",
       count: "3 ოთახი",
@@ -96,6 +102,7 @@
       name: "საოჯახო ოთახი — 4 სტუმარზე",
       badge: "საოჯახო",
       price: 300,
+      salePrice: 200,
       images: ["assets/agava-family4.webp","assets/room-family4-1.webp"],
       alt: "საოჯახო ოთახი ოთხ სტუმარზე",
       count: "2 ოთახი",
@@ -117,6 +124,7 @@
       name: "ორ ოთახიანი ლუქსი — 5 სტუმარზე",
       badge: "ლუქსი",
       price: 400,
+      salePrice: 350,
       images: ["assets/room-twobedlux-1.webp","assets/room-twobedlux-2.webp","assets/room-twobedlux-3.webp","assets/room-twobedlux-4.webp"],
       alt: "ორ ოთახიანი ლუქსი ცის ჭერით",
       count: "1 ნომერი",
@@ -138,6 +146,7 @@
       name: "ლუქსი ჯაკუზით — 2 სტუმარზე",
       badge: "ლუქსი",
       price: 350,
+      salePrice: 300,
       images: ["assets/room-jacuzzi-suite-1.webp","assets/room-jacuzzi-suite-2.webp","assets/room-jacuzzi-suite-3.webp"],
       alt: "ლუქსი ჯაკუზით ქალაქის ხედით",
       count: "1 ნომერი",
@@ -160,6 +169,7 @@
       name: "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე",
       badge: "VIP ლუქსი",
       price: 450,
+      salePrice: 400,
       seasonal: true,
       images: ["assets/agava-jacuzzi.webp","assets/room-jacuzzi-3.webp","assets/room-jacuzzi-1.webp","assets/room-jacuzzi-2.webp","assets/room-jacuzzi-4.webp"],
       alt: "სუპერ ლუქსი ჯაკუზით, ოქროსფერი ინტერიერი",
