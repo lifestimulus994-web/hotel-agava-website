@@ -1416,6 +1416,13 @@ body.modal-open { overflow: hidden; }
   textarea { font-size: 16px; }
 }
 
+/* Below ~380px the four language buttons and the burger leave no room for
+   the wordmark, which slid under the switcher. The leaf logo stays; the
+   name is in its alt text and the page title. */
+@media (max-width: 380px) {
+  .navbar__name { display: none; }
+}
+
 /* ═══════════ ROOM TILE ACTIONS ═══════════ */
 .room-tile__actions {
   display: grid;
