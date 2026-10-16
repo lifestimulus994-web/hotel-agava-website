@@ -190,11 +190,11 @@ def page(p):
         <a href="/blog/" class="navbar__link is-active">ბლოგი</a>
         <a href="/#contact" class="navbar__link">კონტაქტი</a>
       </nav>
-      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
-        <button type="button" data-lang="ka">ქარ</button>
-        <button type="button" data-lang="en">ENG</button>
-        <button type="button" data-lang="ru">РУС</button>
-        <button type="button" data-lang="tr">TR</button>
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="ენა / Language / Язык / Dil">
+        <a href="/blog/" hreflang="ka" lang="ka" data-lang="ka">ქარ</a>
+        <a href="/en/blog/" hreflang="en" lang="en" data-lang="en">ENG</a>
+        <a href="/ru/blog/" hreflang="ru" lang="ru" data-lang="ru">РУС</a>
+        <a href="/tr/blog/" hreflang="tr" lang="tr" data-lang="tr">TR</a>
       </div>
       <a class="btn btn--gold navbar__cta" href="/rooms/">დაჯავშნა</a>
     </div>

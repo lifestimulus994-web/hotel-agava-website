@@ -159,7 +159,7 @@
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "ჯაკუზი", "აბაზანა", "ქალაქის ხედი"],
       desc: {
         ka: "ლუქსი ჯაკუზით — რომანტიკული 30 მ² ოთახი პირადი ჯაკუზით, დიდი ორმაგი საწოლითა და ქალაქის ხედით. განსაკუთრებული დასვენება წყვილებისთვის სასტუმრო აგავაში, თბილისში.",
-        en: "King room with spa bath — a romantic 30 m² with a private jacuzzi, a large double bed and a city view. A special getaway for couples at Hotel Agava, Tbilisi.",
+        en: "Jacuzzi suite — a romantic 30 m² with a private jacuzzi, a large double bed and a city view. A special getaway for couples at Hotel Agava, Tbilisi.",
         ru: "Люкс с джакузи — романтичные 30 м² с личным джакузи, большой двуспальной кроватью и видом на город. Особый отдых для пар в отеле Агава, Тбилиси.",
         tr: "Jakuzili kral odası — özel jakuzi, geniş çift kişilik yatak ve şehir manzaralı romantik 30 m². Tiflis'teki Otel Agava'da çiftler için özel bir kaçamak."
       }

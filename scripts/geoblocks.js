@@ -109,7 +109,7 @@ const LANGS = {
       h2: 'Rooms with a private jacuzzi',
       lead: 'Hotel Agava has two rooms with a private jacuzzi — both for two guests, with the jacuzzi inside the room:',
       items: [
-        ['jacuzzi-suite', 'King Room with Spa Bath', '2 guests · jacuzzi inside the room'],
+        ['jacuzzi-suite', 'Jacuzzi Suite', '2 guests · jacuzzi inside the room'],
         ['jacuzzi', 'Super Suite with Jacuzzi', '2 guests · the largest room with a jacuzzi'],
       ],
     },

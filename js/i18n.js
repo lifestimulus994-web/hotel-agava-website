@@ -22,6 +22,9 @@
   document.addEventListener("click", function (e) {
     var b = e.target.closest("[data-lang]");
     if (!b) return;
+    /* the switcher is real links now, each to that page's own translation
+       (so Google can follow them too); only a bare button is routed here */
+    if (b.tagName === "A" && b.getAttribute("href")) return;
     e.preventDefault();
     var L = b.getAttribute("data-lang");
     var rest = location.pathname.replace(/^\/(en|ru|tr)(?=\/|$)/, "");
@@ -523,10 +526,10 @@
     "საოჯახო ოთახი — 3 სტუმარზე": ["Family Room — 3 guests", "Семейный номер — 3 гостя"],
     "საოჯახო ოთახი — 4 სტუმარზე": ["Family Room — 4 guests", "Семейный номер — 4 гостя"],
     "ორ ოთახიანი ლუქსი — 5 სტუმარზე": ["Two-Room Suite — 5 guests", "Двухкомнатный люкс — 5 гостей"],
-    "ლუქსი ჯაკუზით — 2 სტუმარზე": ["King Room with Spa Bath — 2 guests", "Люкс с джакузи — 2 гостя"],
+    "ლუქსი ჯაკუზით — 2 სტუმარზე": ["Jacuzzi Suite — 2 guests", "Люкс с джакузи — 2 гостя"],
     "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე": ["Super Suite with Jacuzzi — 2 guests", "Суперлюкс с джакузи — 2 гостя"],
     "ორ ოთახიანი ლუქსი": ["Two-Room Suite", "Двухкомнатный люкс"],
-    "ლუქსი ჯაკუზით": ["King Room with Spa Bath", "Люкс с джакузи"],
+    "ლუქსი ჯაკუზით": ["Jacuzzi Suite", "Люкс с джакузи"],
     "სუპერ ლუქსი ჯაკუზით": ["Super Suite with Jacuzzi", "Суперлюкс с джакузи"],
     "სუპერლუქსი": ["Superior", "Суперлюкс"],
     "სუპერ ლუქსი": ["Super Suite", "Суперлюкс"],
