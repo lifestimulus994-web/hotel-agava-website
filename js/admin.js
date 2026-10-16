@@ -374,6 +374,7 @@
     }).then(function () {
       renderContentAdmin();
       renderBreakfastSettings();
+      renderRatingSettings();
     });
   }
 
@@ -929,6 +930,54 @@
       STORE.setSetting("breakfast_price", String(Number(price) || 0)),
       STORE.setSetting("breakfast_menu", menu),
       STORE.setSetting("breakfast_enabled", document.getElementById("bsetEnabled").checked ? "1" : "0")
+    ]).then(function () {
+      status.textContent = "შენახულია ✓";
+      status.className = "content-status is-ok";
+    }).catch(function (err) {
+      status.textContent = "შეცდომა: " + (err && err.message || err);
+      status.className = "content-status is-error";
+    });
+  });
+
+  /* ═══ GOOGLE RATING ═══
+     The site states the Google rating and review count in about sixty
+     places across four languages. They are typed here once; the hourly
+     GitHub job (scripts/syncrating.js) writes them into every page. */
+  function renderRatingSettings() {
+    var host = document.getElementById("gbpSettings");
+    if (!host || !STORE) return;
+    var rating = STORE.setting("google_rating", "");
+    var count = STORE.setting("google_reviews", "");
+    host.innerHTML =
+      '<div class="bset__head"><strong>Google შეფასება</strong>' +
+        '<button class="abtn abtn--gold abtn--sm" id="gbpSave">შენახვა</button>' +
+        '<span class="content-status" id="gbpStatus"></span>' +
+      '</div>' +
+      '<div class="bset__grid">' +
+        '<div class="bset__fld"><label>შეფასება (მაგ. 4.8)</label>' +
+          '<input type="number" min="1" max="5" step="0.1" id="gbpRating" value="' + esc(rating) + '"></div>' +
+        '<div class="bset__fld"><label>შეფასებების რაოდენობა</label>' +
+          '<input type="number" min="0" step="1" id="gbpCount" value="' + esc(count) + '"></div>' +
+        '<div class="bset__fld bset__fld--wide"><span class="muted" style="font-size:13px">' +
+          'ციფრები Google Maps-იდან. საიტზე ყველა გვერდზე საათის განმავლობაში განახლდება.</span></div>' +
+      '</div>';
+  }
+
+  document.getElementById("gbpSettings").addEventListener("click", function (e) {
+    if (!e.target.closest("#gbpSave")) return;
+    var status = document.getElementById("gbpStatus");
+    var rating = Number(String(document.getElementById("gbpRating").value).replace(",", "."));
+    var count = Number(document.getElementById("gbpCount").value);
+    if (!(rating >= 1 && rating <= 5) || !(count >= 0) || count % 1) {
+      status.textContent = "შეფასება 1–5, რაოდენობა — მთელი რიცხვი";
+      status.className = "content-status is-error";
+      return;
+    }
+    status.textContent = "ინახება…";
+    status.className = "content-status";
+    Promise.all([
+      STORE.setSetting("google_rating", rating.toFixed(1)),
+      STORE.setSetting("google_reviews", String(count))
     ]).then(function () {
       status.textContent = "შენახულია ✓";
       status.className = "content-status is-ok";

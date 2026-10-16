@@ -22,7 +22,7 @@ const T = {
   ka: {
     head: 'მოკლედ', cur: '₾',
     hotel: 'სასტუმრო', rooms: 'ნომრები', free: 'უფასოდ', paid: 'დამატებით', rules: 'წესები', not: 'რა არ არის',
-    hotelTxt: '21 ნომერი, 8 ტიპი · დიღომი, აკაკი ბელიაშვილის 161 · Google-ზე 4.8',
+    hotelTxt: '21 ნომერი, 8 ტიპი · დიღომი, აკაკი ბელიაშვილის 161 · Google-ზე <span data-gbp="rating">4.8</span>',
     freeTxt: 'Wi-Fi · პარკინგი ეზოში, 11 ადგილი · ლიფტი ოთხივე სართულზე · რეცეფცია 24 საათი',
     paidTxt: `საუზმე 30 ₾ (08:00–11:00) · ტრანსფერი ${'70'}/50 ₾ · სამრეცხაო 10 ₾ (12 საათი)`,
     rulesTxt: 'ჩასვლა 13:00-დან, გასვლა 12:00-მდე · ანგარიშსწორება ადგილზე, მხოლოდ ნაღდი ფულით',
@@ -38,7 +38,7 @@ const T = {
   en: {
     head: 'In short', cur: 'GEL',
     hotel: 'The hotel', rooms: 'Rooms', free: 'Free', paid: 'Paid extras', rules: 'House rules', not: 'What there is not',
-    hotelTxt: '21 rooms in 8 types · Dighomi, 161 Akaki Beliashvili St · 4.8 on Google',
+    hotelTxt: '21 rooms in 8 types · Dighomi, 161 Akaki Beliashvili St · <span data-gbp="rating">4.8</span> on Google',
     freeTxt: 'Wi-Fi · parking in the courtyard, 11 spaces · a lift to all four floors · reception open 24 hours',
     paidTxt: 'breakfast 30 GEL (08:00–11:00) · transfer 70/50 GEL · laundry 10 GEL (12 hours)',
     rulesTxt: 'check-in from 13:00, check-out by 12:00 · payment on site, in cash only',
@@ -54,7 +54,7 @@ const T = {
   ru: {
     head: 'Коротко', cur: '₾',
     hotel: 'Отель', rooms: 'Номера', free: 'Бесплатно', paid: 'За отдельную плату', rules: 'Правила', not: 'Чего нет',
-    hotelTxt: '21 номер, 8 типов · Дигоми, ул. Акакия Белиашвили, 161 · 4.8 в Google',
+    hotelTxt: '21 номер, 8 типов · Дигоми, ул. Акакия Белиашвили, 161 · <span data-gbp="rating">4.8</span> в Google',
     freeTxt: 'Wi-Fi · парковка во дворе, 11 мест · лифт на все четыре этажа · ресепшен 24 часа',
     paidTxt: 'завтрак 30 ₾ (08:00–11:00) · трансфер 70/50 ₾ · прачечная 10 ₾ (12 часов)',
     rulesTxt: 'заезд с 13:00, выезд до 12:00 · оплата на месте, только наличными',
@@ -70,7 +70,7 @@ const T = {
   tr: {
     head: 'Kısaca', cur: '₾',
     hotel: 'Otel', rooms: 'Odalar', free: 'Ücretsiz', paid: 'Ek ücretli', rules: 'Kurallar', not: 'Otelde olmayanlar',
-    hotelTxt: '21 oda, 8 tip · Dighomi, Akaki Beliaşvili Cad. 161 · Google’da 4.8',
+    hotelTxt: '21 oda, 8 tip · Dighomi, Akaki Beliaşvili Cad. 161 · Google’da <span data-gbp="rating">4.8</span>',
     freeTxt: 'Wi-Fi · avluda otopark, 11 araçlık yer · dört kata hizmet veren asansör · 24 saat resepsiyon',
     paidTxt: 'kahvaltı 30 ₾ (08:00–11:00) · transfer 70/50 ₾ · çamaşır 10 ₾ (12 saat)',
     rulesTxt: "giriş 13:00'ten itibaren, çıkış 12:00'ye kadar · ödeme otelde, yalnızca nakit",

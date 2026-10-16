@@ -253,6 +253,25 @@ def check_prices(f, h, rooms):
             fail(f, f"{slug}: schema-ს Offer {p}, სტუმარი იხდის {pays(rooms[slug])}")
 
 
+# ── 7c. one Google rating, stated the same everywhere ────────────────────
+GBP = collections.defaultdict(set)
+
+def collect_rating(f, h):
+    """scripts/syncrating.js writes these from the admin panel; a figure
+    that differs from the rest was typed by hand and will go stale."""
+    for kind, v in re.findall(r'<span data-gbp="(rating|count)">([\d.]+)</span>', h):
+        GBP[kind].add((v, f))
+    for a, b in re.findall(r'data-count="(\d+)" data-gbp="count">(\d+)<', h):
+        GBP["count"].update({(a, f), (b, f)})
+
+
+def check_rating():
+    for kind, seen in GBP.items():
+        values = {v for v, _ in seen}
+        if len(values) > 1:
+            fail("Google", f"{kind}: სხვადასხვა მნიშვნელობა — {sorted(values)}")
+
+
 # ── 7b. FAQ schema says what the visible FAQ says ────────────────────────
 def plain(s):
     s = re.sub(r'<s class="price-was">\d+</s>\s*', "", s)
@@ -298,9 +317,10 @@ def main():
         check_jsonld(f, h); check_canonical(f, h); check_hreflang(f, h)
         check_assets(f, h); check_structure(f, h, indexed); check_meta(f, h)
         check_delivery(f, h); check_language(f, h); check_facts(f, h)
-        check_prices(f, h, rooms); check_faq(f, h)
+        check_prices(f, h, rooms); check_faq(f, h); collect_rating(f, h)
         (indexable if indexed else noindexed).add(url_of(f))
         versions.update(re.findall(r"\?v=(\d+)", h))
+    check_rating()
     check_sitemap(indexable, noindexed)
 
     if len(versions) > 1:
