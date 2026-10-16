@@ -263,6 +263,8 @@ def collect_rating(f, h):
         GBP[kind].add((v, f))
     for a, b in re.findall(r'data-count="(\d+)" data-gbp="count">(\d+)<', h):
         GBP["count"].update({(a, f), (b, f)})
+    for a, b in re.findall(r'data-count="([\d.]+)" data-decimal="1" data-gbp="rating">([\d.]+)<', h):
+        GBP["rating"].update({(a, f), (b, f)})
 
 
 def check_rating():

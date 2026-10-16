@@ -18,7 +18,9 @@ import json, os, re, sys, html, urllib.request, shutil, datetime
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://hotelagava.ge"
-VER = "2026091002"
+# the cache-busting version every other page uses — a post built with its
+# own would fail validate.py's one-version rule and keep stale CSS/JS
+VER = re.search(r"\?v=(\d+)", open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()).group(1)
 MARK = "<!-- generated:blog-post -->"
 GRID_START, GRID_END = "<!-- blog-cards:start -->", "<!-- blog-cards:end -->"
 
@@ -167,11 +169,9 @@ def page(p):
   <meta property="og:image" content="{E(cover)}">
   <meta property="og:locale" content="ka_GE">
   <meta property="article:published_time" content="{E(created)}">
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/style.css?v={VER}">
   <script type="application/ld+json">{J(ld_post)}</script>
   <script type="application/ld+json">{J(ld_crumb)}</script>

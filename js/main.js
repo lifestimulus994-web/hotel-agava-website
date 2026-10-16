@@ -85,6 +85,25 @@
     ]
   };
 
+  /* Photos picked in the admin panel are stored as the original JPG
+     (100–340 KB each), but every photo in /assets also exists as WebP at
+     480, 800 and full width — the names scripts/srcsets.js uses. Offer the
+     browser those; a phone then takes a ~40 KB file instead of the JPG.
+     Should a variant ever be missing, the error handler below drops the
+     srcset and the original loads instead. */
+  function imgAttrs(u, sizes) {
+    var src = assetURL(u);
+    var m = /^\/assets\/(.+?)(?:-\d+w)?\.(?:jpe?g|png|webp)$/i.exec(src);
+    if (!m) return 'src="' + src + '"';
+    var b = "/assets/" + m[1];
+    return 'src="' + src + '" srcset="' + b + "-480w.webp 480w, " + b + "-800w.webp 800w, " + b +
+      '.webp 1600w" sizes="' + sizes + '"';
+  }
+  document.addEventListener("error", function (e) {
+    var t = e.target;
+    if (t && t.tagName === "IMG" && t.hasAttribute("srcset")) t.removeAttribute("srcset");
+  }, true);
+
   function sectionItems(key) {
     var store = window.AGAVA_STORE;
     /* once the DB fetch succeeded it is authoritative — an empty section
@@ -97,7 +116,7 @@
     var aboutHost = document.getElementById("aboutPhotos");
     if (aboutHost) {
       aboutHost.innerHTML = sectionItems("about").map(function (item, index) {
-        return '<figure class="about__photo' + (index === 0 ? " about__photo--1" : " about__photo--2") + '"><img src="' + assetURL(item.url) + '" alt="' + (item.alt || "") + '" loading="lazy"></figure>';
+        return '<figure class="about__photo' + (index === 0 ? " about__photo--1" : " about__photo--2") + '"><img ' + imgAttrs(item.url, "(max-width: 900px) 92vw, 40vw") + ' alt="' + (item.alt || "") + '" loading="lazy" decoding="async"></figure>';
       }).join("");
     }
 
@@ -112,7 +131,7 @@
       }
       if (group) group.style.display = "";
       host.innerHTML = items.map(function (item, index) {
-        return '<figure class="gallery__item' + (index % 2 === 0 ? " gallery__item--wide" : "") + ' reveal is-visible"><img src="' + assetURL(item.url) + '" alt="' + (item.alt || "") + '" loading="lazy"><figcaption>' + (item.caption || "") + '</figcaption></figure>';
+        return '<figure class="gallery__item' + (index % 2 === 0 ? " gallery__item--wide" : "") + ' reveal is-visible"><img ' + imgAttrs(item.url, "(max-width: 700px) 92vw, 50vw") + ' alt="' + (item.alt || "") + '" loading="lazy" decoding="async"><figcaption>' + (item.caption || "") + '</figcaption></figure>';
       }).join("");
     }
 
@@ -142,9 +161,12 @@
   function sliderHTML(room) {
     var multi = room.images.length > 1;
     var html = '<div class="room-slider__track">' +
+      /* the grid sits below the hero, so even the first photo of each card
+         waits for the scroll — eight eager JPGs were competing with the
+         hero image, which is what the LCP score measures */
       room.images.map(function (src, idx) {
-        return '<img src="' + assetURL(src) + '" alt="' + room.alt + '"' +
-          (idx === 0 ? "" : ' loading="lazy" decoding="async"') +
+        return '<img ' + imgAttrs(src, "(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 380px") +
+          ' alt="' + room.alt + '" loading="lazy" decoding="async"' +
           ' class="room-slider__img' + (idx === 0 ? " is-active" : "") + '">';
       }).join("") +
       "</div>";

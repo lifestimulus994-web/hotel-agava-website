@@ -19,12 +19,10 @@
   <meta property="og:url" content="https://hotelagava.ge/tr/jacuzzi-rooms-tbilisi/">
   <meta property="og:image" content="https://hotelagava.ge/assets/agava-jacuzzi.jpg">
   <meta property="og:locale" content="tr_TR">
-  <link rel="icon" type="image/png" href="/assets/logo.png">
+  <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/style.css?v=2026100707">
+  <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="/css/style.css?v=2026101601">
   <style>
     /* No hero on these pages — the navbar sits on cream from the top, so it
        must render solid immediately. Inlined because /css/* and /js/* are
@@ -50,7 +48,7 @@
   <header class="navbar is-solid" id="navbar">
     <div class="navbar__inner container">
       <a href="/tr/" class="navbar__brand" aria-label="Otel Agava — ana sayfa">
-        <img width="256" height="256" src="/assets/logo.png" alt="Otel Agava — ana sayfa" class="navbar__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="Otel Agava — ana sayfa" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
       <nav class="navbar__nav" aria-label="Ana navigasyon">
@@ -60,7 +58,7 @@
         <a href="/tr/blog/" class="navbar__link">Blog</a>
         <a href="/tr/#contact" class="navbar__link">İletişim</a>
       </nav>
-      <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
+      <div class="lang-switch" id="langSwitch" role="group" aria-label="ენა / Language / Язык / Dil">
         <button type="button" data-lang="ka">ქარ</button>
         <button type="button" data-lang="en">ENG</button>
         <button type="button" data-lang="ru">РУС</button>
@@ -226,7 +224,7 @@
   <footer class="footer">
     <div class="container footer__grid">
       <div class="footer__brand">
-        <img width="256" height="256" src="/assets/logo.png" alt="Otel Agava logosu" class="footer__logo">
+        <img width="256" height="256" src="/assets/logo.webp" alt="Otel Agava logosu" class="footer__logo">
         <p>Konfor, zarafet ve Gürcü misafirperverliği.</p>
       </div>
       <nav class="footer__nav" aria-label="Alt navigasyon">
@@ -255,9 +253,9 @@
     </div>
   </footer>
 
-  <script defer src="/js/ga.js?v=2026100707"></script>
-  <script defer src="/js/config.js?v=2026100707"></script>
+  <script defer src="/js/ga.js?v=2026101601"></script>
+  <script defer src="/js/config.js?v=2026101601"></script>
   <script defer src="/js/i18n.js"></script>
-  <script defer src="/js/main.js?v=2026100707"></script>
+  <script defer src="/js/main.js?v=2026101601"></script>
 </body>
 </html>

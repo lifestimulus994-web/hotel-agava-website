@@ -83,7 +83,8 @@ const ARGS = process.argv.slice(2).filter(a => !a.startsWith('--'));
     let h = before
       .replace(/(<span data-gbp="rating">)[\d.]+(<\/span>)/g, `$1${R}$2`)
       .replace(/(<span data-gbp="count">)\d+(<\/span>)/g, `$1${C}$2`)
-      .replace(/(data-count=")\d+(" data-gbp="count">)\d+(<\/span>)/g, `$1${C}$2${C}$3`);
+      .replace(/(data-count=")\d+(" data-gbp="count">)\d+(<\/span>)/g, `$1${C}$2${C}$3`)
+      .replace(/(data-count=")[\d.]+(" data-decimal="1" data-gbp="rating">)[\d.]+(<\/span>)/g, `$1${R}$2${R}$3`);
     if (/(^|[\\/])ru[\\/]/.test(f)) {
       h = h.replace(/(<span data-gbp="count">(\d+)<\/span>\s*)(отзыв(?:ов|ам|а|у)?)(?![а-я])/g,
         (m, head, n, word) => head + ruNoun(Number(n), word));
