@@ -39,6 +39,13 @@
     .navbar__burger span { background: var(--ink); }
     .lp-outro { margin-top: 64px; }
     @media (max-width: 640px) { .lp-outro { margin-top: 44px; } }
+    /* Let guests choose a room before reading the supporting information. */
+    .rooms-page { padding-top: 100px; }
+    .rooms-page > .container > .svc-title { font-size: clamp(28px, 3.5vw, 40px); margin-bottom: 0; }
+    .rooms-page > .rooms { padding-top: 28px; padding-bottom: 56px; }
+    .rooms-page .rooms__head { margin-bottom: 24px; }
+    .rooms-page .rooms__head .section-title { font-size: 28px; }
+    .rooms-page .rooms-intro { padding-top: 56px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://hotelagava.ge/ru/rooms/","url":"https://hotelagava.ge/ru/rooms/","inLanguage":"ru","dateModified":"2026-10-16","isPartOf":{"@type":"WebSite","url":"https://hotelagava.ge/"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Главная","item":"https://hotelagava.ge/ru/"},{"@type":"ListItem","position":2,"name":"Номера","item":"https://hotelagava.ge/ru/rooms/"}]}</script>
@@ -69,7 +76,7 @@
     </div>
   </header>
 
-  <main class="service-page">
+  <main class="service-page rooms-page">
     <div class="container container--narrow">
       <nav class="rdp-crumb" aria-label="breadcrumb">
         <a href="/ru/">Главная</a> ·
@@ -77,54 +84,8 @@
       </nav>
 
       <h1 class="svc-title">Комфортные номера отеля в Тбилиси</h1>
-      <p class="svc-desc">В отеле Агава <strong>21 номер</strong> — от стандартных двухместных до люксов с джакузи и семейных комнат на пятерых. В каждом номере кондиционер, бесплатный Wi-Fi и собственная ванная. Оценка отеля в Google — <strong><span data-gbp="rating">4.8</span></strong> (<span data-gbp="count">382</span> отзыва).</p>
 
-      <img fetchpriority="high" src="/assets/agava-lux.jpg" srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 800px) 100vw, 760px" alt="Люкс с потолком-небом в отеле Агава, Тбилиси" width="1600" height="1200" style="border-radius:14px;margin:28px 0">
-
-      <div class="rdp-actions">
-        <a class="btn btn--gold" href="/ru/rooms/">Забронировать номер</a>
-        <a class="btn btn--dark" href="https://wa.me/995597121212" target="_blank" rel="noopener">Напишите нам в WhatsApp</a>
-      </div>
     </div>
-
-    <section class="features">
-      <div class="container">
-        <div class="faq__head">
-          <p class="section-eyebrow">В каждом номере</p>
-          <h2 class="section-title">Что входит в номер</h2>
-        </div>
-        <div class="features__grid">
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 16h20"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></svg></div>
-            <div>
-              <h3>Кровать и мебель</h3>
-              <p>Удобная кровать, кондиционер и рабочая поверхность. Ежедневная уборка включена.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2.7 6.6 8.1a7.6 7.6 0 1 0 10.8 0z"/></svg></div>
-            <div>
-              <h3>Собственная ванная</h3>
-              <p>В каждом номере своя ванная с горячей водой и набором принадлежностей.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></div>
-            <div>
-              <h3>Бесплатный Wi-Fi</h3>
-              <p>Стабильный интернет в номерах и в общих зонах — хватает и для удалённой работы.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div>
-              <h3>Ресепшен 24/7</h3>
-              <p>Заселение в любое время суток. Предупредите о позднем приезде — вас дождутся.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
 <!-- rooms-catalogue -->
     <section class="rooms">
@@ -133,83 +94,10 @@
           <p class="section-eyebrow">8 типов · 21 номер</p>
           <h2 class="section-title">Наши номера</h2>
         </div>
-        <div class="rooms-compare" style="margin:8px 0 40px;overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;font-size:15.5px">
-          <caption style="text-align:left;padding:0 0 12px;color:var(--ink-soft)">Сравнение номеров — площадь, гости и цена</caption>
-          <thead>
-            <tr style="text-align:left;border-bottom:1px solid rgba(212,175,106,.45)">
-              <th style="padding:10px 12px 10px 0">Номер</th>
-              <th style="padding:10px 12px">Площадь</th>
-              <th style="padding:10px 12px">Гости</th>
-              <th style="padding:10px 12px">Кровати</th>
-              <th style="padding:10px 0 10px 12px">Цена за ночь</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><a href="/ru/rooms/standard/">Стандартный номер</a></td>
-            <td>22 м²</td>
-            <td>2</td>
-            <td>1 кровать</td>
-            <td><strong><span data-price="standard"><s class="price-was">150</s> <span class="price-now">140</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/ru/rooms/lux/">Люкс</a></td>
-            <td>28 м²</td>
-            <td>2</td>
-            <td>1 кровать King</td>
-            <td><strong><span data-price="lux"><s class="price-was">300</s> <span class="price-now">240</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/ru/rooms/superlux/">Суперлюкс</a></td>
-            <td>36 м²</td>
-            <td>2</td>
-            <td>1 кровать King</td>
-            <td><strong><span data-price="superlux"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/ru/rooms/family3/">Семейный — 3 гостя</a></td>
-            <td>32 м²</td>
-            <td>3</td>
-            <td>2 кровати</td>
-            <td><strong><span data-price="family3"><s class="price-was">200</s> <span class="price-now">170</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/ru/rooms/family4/">Семейный — 4 гостя</a></td>
-            <td>38 м²</td>
-            <td>4</td>
-            <td>2 кровати</td>
-            <td><strong><span data-price="family4"><s class="price-was">300</s> <span class="price-now">200</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/ru/rooms/twobedlux/">Двухкомнатный люкс</a></td>
-            <td>45 м²</td>
-            <td>5</td>
-            <td>2 комнаты, 3 кровати</td>
-            <td><strong><span data-price="twobedlux"><s class="price-was">400</s> <span class="price-now">350</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/ru/rooms/jacuzzi-suite/">Люкс с джакузи</a></td>
-            <td>30 м²</td>
-            <td>2</td>
-            <td>1 большая двуспальная кровать</td>
-            <td><strong><span data-price="jacuzzi-suite"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/ru/rooms/jacuzzi/">Суперлюкс с джакузи</a></td>
-            <td>—</td>
-            <td>2</td>
-            <td>1 кровать King</td>
-            <td><strong><span data-price="jacuzzi"><s class="price-was">450</s> <span class="price-now">400</span></span> ₾</strong></td>
-          </tr>
-          </tbody>
-        </table>
-        <p style="margin:12px 0 0;font-size:14px;color:var(--ink-soft)">Цена за номер за ночь. Завтрак не входит — 30 ₾ с гостя.</p>
-      </div>
-      <div class="rooms__grid">
+        <div class="rooms__grid">
           <article class="room-tile" data-room-slug="standard">
             <div class="room-tile__media room-slider">
-              <img srcset="/assets/agava-standard-480w.webp 480w, /assets/agava-standard-800w.webp 800w, /assets/agava-standard.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="Стандартный номер — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-standard-480w.webp 480w, /assets/agava-standard-800w.webp 800w, /assets/agava-standard.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="Стандартный номер — 2 гостя — Наши номера" loading="eager" fetchpriority="high">
               <span class="room-tile__badge">Стандарт</span>
             </div>
             <div class="room-tile__body">
@@ -226,7 +114,7 @@
           </article>
           <article class="room-tile" data-room-slug="lux">
             <div class="room-tile__media room-slider">
-              <img srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="Люкс — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="Люкс — 2 гостя — Наши номера" loading="eager">
               <span class="room-tile__badge">Люкс</span>
             </div>
             <div class="room-tile__body">
@@ -243,7 +131,7 @@
           </article>
           <article class="room-tile" data-room-slug="superlux">
             <div class="room-tile__media room-slider">
-              <img srcset="/assets/agava-superlux-480w.webp 480w, /assets/agava-superlux-800w.webp 800w, /assets/agava-superlux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="Суперлюкс — 2 гостя — Наши номера" loading="lazy">
+              <img srcset="/assets/agava-superlux-480w.webp 480w, /assets/agava-superlux-800w.webp 800w, /assets/agava-superlux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="Суперлюкс — 2 гостя — Наши номера" loading="eager">
               <span class="room-tile__badge">Суперлюкс</span>
             </div>
             <div class="room-tile__body">
@@ -344,9 +232,134 @@
             </div>
           </article>
         </div>
+      <!-- rooms-comparison -->
+      <div class="rooms-compare" style="margin:48px 0 0;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:15.5px">
+          <caption style="text-align:left;padding:0 0 12px;color:var(--ink-soft)">Сравнение номеров — площадь, гости и цена</caption>
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid rgba(212,175,106,.45)">
+              <th style="padding:10px 12px 10px 0">Номер</th>
+              <th style="padding:10px 12px">Площадь</th>
+              <th style="padding:10px 12px">Гости</th>
+              <th style="padding:10px 12px">Кровати</th>
+              <th style="padding:10px 0 10px 12px">Цена за ночь</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><a href="/ru/rooms/standard/">Стандартный номер</a></td>
+            <td>22 м²</td>
+            <td>2</td>
+            <td>1 кровать</td>
+            <td><strong><span data-price="standard"><s class="price-was">150</s> <span class="price-now">140</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/ru/rooms/lux/">Люкс</a></td>
+            <td>28 м²</td>
+            <td>2</td>
+            <td>1 кровать King</td>
+            <td><strong><span data-price="lux"><s class="price-was">300</s> <span class="price-now">240</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/ru/rooms/superlux/">Суперлюкс</a></td>
+            <td>36 м²</td>
+            <td>2</td>
+            <td>1 кровать King</td>
+            <td><strong><span data-price="superlux"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/ru/rooms/family3/">Семейный — 3 гостя</a></td>
+            <td>32 м²</td>
+            <td>3</td>
+            <td>2 кровати</td>
+            <td><strong><span data-price="family3"><s class="price-was">200</s> <span class="price-now">170</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/ru/rooms/family4/">Семейный — 4 гостя</a></td>
+            <td>38 м²</td>
+            <td>4</td>
+            <td>2 кровати</td>
+            <td><strong><span data-price="family4"><s class="price-was">300</s> <span class="price-now">200</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/ru/rooms/twobedlux/">Двухкомнатный люкс</a></td>
+            <td>45 м²</td>
+            <td>5</td>
+            <td>2 комнаты, 3 кровати</td>
+            <td><strong><span data-price="twobedlux"><s class="price-was">400</s> <span class="price-now">350</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/ru/rooms/jacuzzi-suite/">Люкс с джакузи</a></td>
+            <td>30 м²</td>
+            <td>2</td>
+            <td>1 большая двуспальная кровать</td>
+            <td><strong><span data-price="jacuzzi-suite"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/ru/rooms/jacuzzi/">Суперлюкс с джакузи</a></td>
+            <td>—</td>
+            <td>2</td>
+            <td>1 кровать King</td>
+            <td><strong><span data-price="jacuzzi"><s class="price-was">450</s> <span class="price-now">400</span></span> ₾</strong></td>
+          </tr>
+          </tbody>
+        </table>
+        <p style="margin:12px 0 0;font-size:14px;color:var(--ink-soft)">Цена за номер за ночь. Завтрак не входит — 30 ₾ с гостя.</p>
       </div>
+            </div>
     </section>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Наши номера","numberOfItems":8,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"HotelRoom","name":"Стандартный номер — 2 гостя","url":"https://hotelagava.ge/ru/rooms/standard/","image":"https://hotelagava.ge/assets/agava-standard.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":140,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":2,"item":{"@type":"HotelRoom","name":"Люкс — 2 гостя","url":"https://hotelagava.ge/ru/rooms/lux/","image":"https://hotelagava.ge/assets/agava-lux.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":240,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":3,"item":{"@type":"HotelRoom","name":"Суперлюкс — 2 гостя","url":"https://hotelagava.ge/ru/rooms/superlux/","image":"https://hotelagava.ge/assets/agava-superlux.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":300,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":4,"item":{"@type":"HotelRoom","name":"Семейный номер — 3 гостя","url":"https://hotelagava.ge/ru/rooms/family3/","image":"https://hotelagava.ge/assets/agava-family3.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"3"},"offers":{"@type":"Offer","price":170,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":5,"item":{"@type":"HotelRoom","name":"Семейный номер — 4 гостя","url":"https://hotelagava.ge/ru/rooms/family4/","image":"https://hotelagava.ge/assets/agava-family4.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"4"},"offers":{"@type":"Offer","price":200,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":6,"item":{"@type":"HotelRoom","name":"Двухкомнатный люкс — 5 гостей","url":"https://hotelagava.ge/ru/rooms/twobedlux/","image":"https://hotelagava.ge/assets/room-twobedlux-1.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"5"},"offers":{"@type":"Offer","price":350,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":7,"item":{"@type":"HotelRoom","name":"Люкс с джакузи — 2 гостя","url":"https://hotelagava.ge/ru/rooms/jacuzzi-suite/","image":"https://hotelagava.ge/assets/room-jacuzzi-suite-1.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":300,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":8,"item":{"@type":"HotelRoom","name":"Суперлюкс с джакузи — 2 гостя","url":"https://hotelagava.ge/ru/rooms/jacuzzi/","image":"https://hotelagava.ge/assets/agava-jacuzzi.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":400,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}}]}</script>
+
+    <div class="container container--narrow rooms-intro">
+      <p class="svc-desc">В отеле Агава <strong>21 номер</strong> — от стандартных двухместных до люксов с джакузи и семейных комнат на пятерых. В каждом номере кондиционер, бесплатный Wi-Fi и собственная ванная. Оценка отеля в Google — <strong><span data-gbp="rating">4.8</span></strong> (<span data-gbp="count">382</span> отзыва).</p>
+
+      <img loading="lazy" decoding="async" src="/assets/agava-lux.jpg" srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 800px) 100vw, 760px" alt="Люкс с потолком-небом в отеле Агава, Тбилиси" width="1600" height="1200" style="border-radius:14px;margin:28px 0">
+
+      <div class="rdp-actions">
+        <a class="btn btn--gold" href="/ru/rooms/">Забронировать номер</a>
+        <a class="btn btn--dark" href="https://wa.me/995597121212" target="_blank" rel="noopener">Напишите нам в WhatsApp</a>
+      </div>
+    </div>
+
+    <section class="features">
+      <div class="container">
+        <div class="faq__head">
+          <p class="section-eyebrow">В каждом номере</p>
+          <h2 class="section-title">Что входит в номер</h2>
+        </div>
+        <div class="features__grid">
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 16h20"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></svg></div>
+            <div>
+              <h3>Кровать и мебель</h3>
+              <p>Удобная кровать, кондиционер и рабочая поверхность. Ежедневная уборка включена.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2.7 6.6 8.1a7.6 7.6 0 1 0 10.8 0z"/></svg></div>
+            <div>
+              <h3>Собственная ванная</h3>
+              <p>В каждом номере своя ванная с горячей водой и набором принадлежностей.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></div>
+            <div>
+              <h3>Бесплатный Wi-Fi</h3>
+              <p>Стабильный интернет в номерах и в общих зонах — хватает и для удалённой работы.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div>
+              <h3>Ресепшен 24/7</h3>
+              <p>Заселение в любое время суток. Предупредите о позднем приезде — вас дождутся.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
 
     <div class="container container--narrow">
       <h2 class="section-title">Номера для двоих</h2>

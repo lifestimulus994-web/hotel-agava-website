@@ -39,6 +39,13 @@
     .navbar__burger span { background: var(--ink); }
     .lp-outro { margin-top: 64px; }
     @media (max-width: 640px) { .lp-outro { margin-top: 44px; } }
+    /* Let guests choose a room before reading the supporting information. */
+    .rooms-page { padding-top: 100px; }
+    .rooms-page > .container > .svc-title { font-size: clamp(28px, 3.5vw, 40px); margin-bottom: 0; }
+    .rooms-page > .rooms { padding-top: 28px; padding-bottom: 56px; }
+    .rooms-page .rooms__head { margin-bottom: 24px; }
+    .rooms-page .rooms__head .section-title { font-size: 28px; }
+    .rooms-page .rooms-intro { padding-top: 56px; }
   </style>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"https://hotelagava.ge/en/rooms/","url":"https://hotelagava.ge/en/rooms/","inLanguage":"en","dateModified":"2026-10-16","isPartOf":{"@type":"WebSite","url":"https://hotelagava.ge/"}}</script>
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://hotelagava.ge/en/"},{"@type":"ListItem","position":2,"name":"Rooms","item":"https://hotelagava.ge/en/rooms/"}]}</script>
@@ -69,7 +76,7 @@
     </div>
   </header>
 
-  <main class="service-page">
+  <main class="service-page rooms-page">
     <div class="container container--narrow">
       <nav class="rdp-crumb" aria-label="breadcrumb">
         <a href="/en/">Home</a> ·
@@ -77,54 +84,8 @@
       </nav>
 
       <h1 class="svc-title">Comfortable hotel rooms in Tbilisi</h1>
-      <p class="svc-desc">Hotel Agava has <strong>21 rooms</strong> — from standard doubles to jacuzzi suites and family rooms sleeping up to five. Every room has air conditioning, free Wi-Fi and a private bathroom. The hotel is rated <strong><span data-gbp="rating">4.8</span></strong> on Google (<span data-gbp="count">382</span> reviews).</p>
 
-      <img fetchpriority="high" src="/assets/agava-lux.jpg" srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 800px) 100vw, 760px" alt="Lux room with a sky ceiling at Hotel Agava, Tbilisi" width="1600" height="1200" style="border-radius:14px;margin:28px 0">
-
-      <div class="rdp-actions">
-        <a class="btn btn--gold" href="/en/rooms/">Book a room</a>
-        <a class="btn btn--dark" href="https://wa.me/995597121212" target="_blank" rel="noopener">Message us on WhatsApp</a>
-      </div>
     </div>
-
-    <section class="features">
-      <div class="container">
-        <div class="faq__head">
-          <p class="section-eyebrow">In every room</p>
-          <h2 class="section-title">What the room includes</h2>
-        </div>
-        <div class="features__grid">
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 16h20"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></svg></div>
-            <div>
-              <h3>Bed and furnishings</h3>
-              <p>A comfortable bed, air conditioning and a work surface. Daily housekeeping is included.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2.7 6.6 8.1a7.6 7.6 0 1 0 10.8 0z"/></svg></div>
-            <div>
-              <h3>Private bathroom</h3>
-              <p>Every room has its own bathroom with hot water and a set of toiletries.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></div>
-            <div>
-              <h3>Free Wi-Fi</h3>
-              <p>Stable internet in every room and throughout the common areas — good enough to work from.</p>
-            </div>
-          </article>
-          <article class="feature">
-            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
-            <div>
-              <h3>24/7 reception</h3>
-              <p>Check in at any hour. Tell us in advance if you are arriving late and we will wait up.</p>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
 
 <!-- rooms-catalogue -->
     <section class="rooms">
@@ -133,83 +94,10 @@
           <p class="section-eyebrow">8 types · 21 rooms</p>
           <h2 class="section-title">Our rooms</h2>
         </div>
-        <div class="rooms-compare" style="margin:8px 0 40px;overflow-x:auto">
-        <table style="width:100%;border-collapse:collapse;font-size:15.5px">
-          <caption style="text-align:left;padding:0 0 12px;color:var(--ink-soft)">Rooms compared — size, guests and price</caption>
-          <thead>
-            <tr style="text-align:left;border-bottom:1px solid rgba(212,175,106,.45)">
-              <th style="padding:10px 12px 10px 0">Room</th>
-              <th style="padding:10px 12px">Size</th>
-              <th style="padding:10px 12px">Guests</th>
-              <th style="padding:10px 12px">Beds</th>
-              <th style="padding:10px 0 10px 12px">Price per night</th>
-            </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td><a href="/en/rooms/standard/">Standard room</a></td>
-            <td>22 m²</td>
-            <td>2</td>
-            <td>1 bed</td>
-            <td><strong><span data-price="standard"><s class="price-was">150</s> <span class="price-now">140</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/en/rooms/lux/">Deluxe room</a></td>
-            <td>28 m²</td>
-            <td>2</td>
-            <td>1 King bed</td>
-            <td><strong><span data-price="lux"><s class="price-was">300</s> <span class="price-now">240</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/en/rooms/superlux/">Superior suite</a></td>
-            <td>36 m²</td>
-            <td>2</td>
-            <td>1 King bed</td>
-            <td><strong><span data-price="superlux"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/en/rooms/family3/">Family room — 3 guests</a></td>
-            <td>32 m²</td>
-            <td>3</td>
-            <td>2 beds</td>
-            <td><strong><span data-price="family3"><s class="price-was">200</s> <span class="price-now">170</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/en/rooms/family4/">Family room — 4 guests</a></td>
-            <td>38 m²</td>
-            <td>4</td>
-            <td>2 beds</td>
-            <td><strong><span data-price="family4"><s class="price-was">300</s> <span class="price-now">200</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/en/rooms/twobedlux/">Two-room suite</a></td>
-            <td>45 m²</td>
-            <td>5</td>
-            <td>2 rooms, 3 beds</td>
-            <td><strong><span data-price="twobedlux"><s class="price-was">400</s> <span class="price-now">350</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/en/rooms/jacuzzi-suite/">Jacuzzi suite</a></td>
-            <td>30 m²</td>
-            <td>2</td>
-            <td>1 large double bed</td>
-            <td><strong><span data-price="jacuzzi-suite"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
-          </tr>
-          <tr>
-            <td><a href="/en/rooms/jacuzzi/">Super suite with jacuzzi</a></td>
-            <td>—</td>
-            <td>2</td>
-            <td>1 King bed</td>
-            <td><strong><span data-price="jacuzzi"><s class="price-was">450</s> <span class="price-now">400</span></span> ₾</strong></td>
-          </tr>
-          </tbody>
-        </table>
-        <p style="margin:12px 0 0;font-size:14px;color:var(--ink-soft)">The price is per room, per night. Breakfast is not included — 30 GEL per guest.</p>
-      </div>
-      <div class="rooms__grid">
+        <div class="rooms__grid">
           <article class="room-tile" data-room-slug="standard">
             <div class="room-tile__media room-slider">
-              <img srcset="/assets/agava-standard-480w.webp 480w, /assets/agava-standard-800w.webp 800w, /assets/agava-standard.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="Standard room — 2 guests — Our rooms" loading="lazy">
+              <img srcset="/assets/agava-standard-480w.webp 480w, /assets/agava-standard-800w.webp 800w, /assets/agava-standard.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-standard.webp" alt="Standard room — 2 guests — Our rooms" loading="eager" fetchpriority="high">
               <span class="room-tile__badge">Standard</span>
             </div>
             <div class="room-tile__body">
@@ -226,7 +114,7 @@
           </article>
           <article class="room-tile" data-room-slug="lux">
             <div class="room-tile__media room-slider">
-              <img srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="Lux — 2 guests — Our rooms" loading="lazy">
+              <img srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-lux.webp" alt="Lux — 2 guests — Our rooms" loading="eager">
               <span class="room-tile__badge">Lux</span>
             </div>
             <div class="room-tile__body">
@@ -243,7 +131,7 @@
           </article>
           <article class="room-tile" data-room-slug="superlux">
             <div class="room-tile__media room-slider">
-              <img srcset="/assets/agava-superlux-480w.webp 480w, /assets/agava-superlux-800w.webp 800w, /assets/agava-superlux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="Superlux — 2 guests — Our rooms" loading="lazy">
+              <img srcset="/assets/agava-superlux-480w.webp 480w, /assets/agava-superlux-800w.webp 800w, /assets/agava-superlux.webp 1600w" sizes="(max-width: 860px) 100vw, 420px" class="room-slider__img is-active" src="/assets/agava-superlux.webp" alt="Superlux — 2 guests — Our rooms" loading="eager">
               <span class="room-tile__badge">Superlux</span>
             </div>
             <div class="room-tile__body">
@@ -344,9 +232,134 @@
             </div>
           </article>
         </div>
+      <!-- rooms-comparison -->
+      <div class="rooms-compare" style="margin:48px 0 0;overflow-x:auto">
+        <table style="width:100%;border-collapse:collapse;font-size:15.5px">
+          <caption style="text-align:left;padding:0 0 12px;color:var(--ink-soft)">Rooms compared — size, guests and price</caption>
+          <thead>
+            <tr style="text-align:left;border-bottom:1px solid rgba(212,175,106,.45)">
+              <th style="padding:10px 12px 10px 0">Room</th>
+              <th style="padding:10px 12px">Size</th>
+              <th style="padding:10px 12px">Guests</th>
+              <th style="padding:10px 12px">Beds</th>
+              <th style="padding:10px 0 10px 12px">Price per night</th>
+            </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><a href="/en/rooms/standard/">Standard room</a></td>
+            <td>22 m²</td>
+            <td>2</td>
+            <td>1 bed</td>
+            <td><strong><span data-price="standard"><s class="price-was">150</s> <span class="price-now">140</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/en/rooms/lux/">Deluxe room</a></td>
+            <td>28 m²</td>
+            <td>2</td>
+            <td>1 King bed</td>
+            <td><strong><span data-price="lux"><s class="price-was">300</s> <span class="price-now">240</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/en/rooms/superlux/">Superior suite</a></td>
+            <td>36 m²</td>
+            <td>2</td>
+            <td>1 King bed</td>
+            <td><strong><span data-price="superlux"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/en/rooms/family3/">Family room — 3 guests</a></td>
+            <td>32 m²</td>
+            <td>3</td>
+            <td>2 beds</td>
+            <td><strong><span data-price="family3"><s class="price-was">200</s> <span class="price-now">170</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/en/rooms/family4/">Family room — 4 guests</a></td>
+            <td>38 m²</td>
+            <td>4</td>
+            <td>2 beds</td>
+            <td><strong><span data-price="family4"><s class="price-was">300</s> <span class="price-now">200</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/en/rooms/twobedlux/">Two-room suite</a></td>
+            <td>45 m²</td>
+            <td>5</td>
+            <td>2 rooms, 3 beds</td>
+            <td><strong><span data-price="twobedlux"><s class="price-was">400</s> <span class="price-now">350</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/en/rooms/jacuzzi-suite/">Jacuzzi suite</a></td>
+            <td>30 m²</td>
+            <td>2</td>
+            <td>1 large double bed</td>
+            <td><strong><span data-price="jacuzzi-suite"><s class="price-was">350</s> <span class="price-now">300</span></span> ₾</strong></td>
+          </tr>
+          <tr>
+            <td><a href="/en/rooms/jacuzzi/">Super suite with jacuzzi</a></td>
+            <td>—</td>
+            <td>2</td>
+            <td>1 King bed</td>
+            <td><strong><span data-price="jacuzzi"><s class="price-was">450</s> <span class="price-now">400</span></span> ₾</strong></td>
+          </tr>
+          </tbody>
+        </table>
+        <p style="margin:12px 0 0;font-size:14px;color:var(--ink-soft)">The price is per room, per night. Breakfast is not included — 30 GEL per guest.</p>
       </div>
+            </div>
     </section>
     <script type="application/ld+json">{"@context":"https://schema.org","@type":"ItemList","name":"Our rooms","numberOfItems":8,"itemListElement":[{"@type":"ListItem","position":1,"item":{"@type":"HotelRoom","name":"Standard room — 2 guests","url":"https://hotelagava.ge/en/rooms/standard/","image":"https://hotelagava.ge/assets/agava-standard.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":140,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":2,"item":{"@type":"HotelRoom","name":"Lux — 2 guests","url":"https://hotelagava.ge/en/rooms/lux/","image":"https://hotelagava.ge/assets/agava-lux.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":240,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":3,"item":{"@type":"HotelRoom","name":"Superlux — 2 guests","url":"https://hotelagava.ge/en/rooms/superlux/","image":"https://hotelagava.ge/assets/agava-superlux.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":300,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":4,"item":{"@type":"HotelRoom","name":"Family room — 3 guests","url":"https://hotelagava.ge/en/rooms/family3/","image":"https://hotelagava.ge/assets/agava-family3.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"3"},"offers":{"@type":"Offer","price":170,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":5,"item":{"@type":"HotelRoom","name":"Family room — 4 guests","url":"https://hotelagava.ge/en/rooms/family4/","image":"https://hotelagava.ge/assets/agava-family4.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"4"},"offers":{"@type":"Offer","price":200,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":6,"item":{"@type":"HotelRoom","name":"Two-bedroom suite — 5 guests","url":"https://hotelagava.ge/en/rooms/twobedlux/","image":"https://hotelagava.ge/assets/room-twobedlux-1.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"5"},"offers":{"@type":"Offer","price":350,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":7,"item":{"@type":"HotelRoom","name":"Lux with jacuzzi — 2 guests","url":"https://hotelagava.ge/en/rooms/jacuzzi-suite/","image":"https://hotelagava.ge/assets/room-jacuzzi-suite-1.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":300,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}},{"@type":"ListItem","position":8,"item":{"@type":"HotelRoom","name":"Super lux with jacuzzi — 2 guests","url":"https://hotelagava.ge/en/rooms/jacuzzi/","image":"https://hotelagava.ge/assets/agava-jacuzzi.webp","occupancy":{"@type":"QuantitativeValue","maxValue":"2"},"offers":{"@type":"Offer","price":400,"priceCurrency":"GEL","availability":"https://schema.org/InStock"}}}]}</script>
+
+    <div class="container container--narrow rooms-intro">
+      <p class="svc-desc">Hotel Agava has <strong>21 rooms</strong> — from standard doubles to jacuzzi suites and family rooms sleeping up to five. Every room has air conditioning, free Wi-Fi and a private bathroom. The hotel is rated <strong><span data-gbp="rating">4.8</span></strong> on Google (<span data-gbp="count">382</span> reviews).</p>
+
+      <img loading="lazy" decoding="async" src="/assets/agava-lux.jpg" srcset="/assets/agava-lux-480w.webp 480w, /assets/agava-lux-800w.webp 800w, /assets/agava-lux.webp 1600w" sizes="(max-width: 800px) 100vw, 760px" alt="Lux room with a sky ceiling at Hotel Agava, Tbilisi" width="1600" height="1200" style="border-radius:14px;margin:28px 0">
+
+      <div class="rdp-actions">
+        <a class="btn btn--gold" href="/en/rooms/">Book a room</a>
+        <a class="btn btn--dark" href="https://wa.me/995597121212" target="_blank" rel="noopener">Message us on WhatsApp</a>
+      </div>
+    </div>
+
+    <section class="features">
+      <div class="container">
+        <div class="faq__head">
+          <p class="section-eyebrow">In every room</p>
+          <h2 class="section-title">What the room includes</h2>
+        </div>
+        <div class="features__grid">
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M2 20v-8a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v8"/><path d="M2 16h20"/><path d="M6 10V7a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v3"/></svg></div>
+            <div>
+              <h3>Bed and furnishings</h3>
+              <p>A comfortable bed, air conditioning and a work surface. Daily housekeeping is included.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M12 2.7 6.6 8.1a7.6 7.6 0 1 0 10.8 0z"/></svg></div>
+            <div>
+              <h3>Private bathroom</h3>
+              <p>Every room has its own bathroom with hot water and a set of toiletries.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M5 12.55a11 11 0 0 1 14.08 0"/><path d="M1.42 9a16 16 0 0 1 21.16 0"/><path d="M8.53 16.11a6 6 0 0 1 6.95 0"/><circle cx="12" cy="20" r="1"/></svg></div>
+            <div>
+              <h3>Free Wi-Fi</h3>
+              <p>Stable internet in every room and throughout the common areas — good enough to work from.</p>
+            </div>
+          </article>
+          <article class="feature">
+            <div class="feature__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></div>
+            <div>
+              <h3>24/7 reception</h3>
+              <p>Check in at any hour. Tell us in advance if you are arriving late and we will wait up.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
 
     <div class="container container--narrow">
       <h2 class="section-title">Rooms for two guests</h2>

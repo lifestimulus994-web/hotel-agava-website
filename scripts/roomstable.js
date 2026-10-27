@@ -59,7 +59,7 @@ function table(lang) {
       `            <td><strong><span data-price="${r.slug}">${r.price}</span> ₾</strong></td>\n` +
       `          </tr>\n`;
   }).join('');
-  return `\n      <div class="${MARK}" style="margin:8px 0 40px;overflow-x:auto">\n` +
+  return `\n      <div class="${MARK}" style="margin:48px 0 0;overflow-x:auto">\n` +
     `        <table style="width:100%;border-collapse:collapse;font-size:15.5px">\n` +
     `          <caption style="text-align:left;padding:0 0 12px;color:var(--ink-soft)">${t.cap}</caption>\n` +
     `          <thead>\n            <tr style="text-align:left;border-bottom:1px solid rgba(212,175,106,.45)">\n` +
@@ -85,7 +85,11 @@ for (const lang of ['ka', 'en', 'ru', 'tr']) {
   if (at < 0) { console.log('  ⚠️  heading not found in', f); continue; }
   const grid = h.indexOf('<div class="rooms__grid">', at);
   if (grid < 0) { console.log('  ⚠️  room grid not found in', f); continue; }
-  if (!CHECK) fs.writeFileSync(f, h.slice(0, grid) + table(lang).trimStart() + '      ' + h.slice(grid));
+  // Preserve the cards-first layout when prices regenerate the comparison.
+  const marker = '<!-- rooms-comparison -->';
+  const comparison = h.indexOf(marker, grid);
+  const insertAt = comparison >= 0 ? comparison + marker.length : grid;
+  if (!CHECK) fs.writeFileSync(f, h.slice(0, insertAt) + '\n      ' + table(lang).trimStart() + '      ' + h.slice(insertAt));
   done++;
 }
 console.log(`  ${CHECK ? 'იქნებოდა' : 'დაემატა'}: ${done} გვერდი · გამოტოვებული: ${skipped}`);
