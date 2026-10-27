@@ -49,9 +49,9 @@
       .then(function (res) {
         var posts = (res && res.data) || [];
         if (!posts.length) { grid.innerHTML = '<p class="muted">' + t("soon") + '</p>'; return; }
-        grid.innerHTML = posts.map(function (p) {
+        grid.innerHTML = posts.map(function (p, i) {
           return '<a class="blog-card" href="/blog/' + encodeURIComponent(p.slug) + '/">' +
-            (p.cover_url ? '<div class="blog-card__img"><img src="' + esc(p.cover_url) + '" alt="' + esc(p.title) + '" loading="lazy"></div>' : '') +
+            (p.cover_url ? '<div class="blog-card__img"><img src="' + esc(p.cover_url) + '" alt="' + esc(p.title) + '" ' + (i === 0 ? 'loading="eager" fetchpriority="high"' : 'loading="lazy"') + '></div>' : '') +
             '<div class="blog-card__body"><time>' + fmtDate(p.created_at) + '</time>' +
             '<h2>' + esc(p.title) + '</h2>' +
             (p.excerpt ? '<p>' + esc(p.excerpt) + '</p>' : '') +
