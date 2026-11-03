@@ -38,6 +38,15 @@ language sql stable security definer set search_path = public as $$
 $$;
 grant execute on function is_admin() to authenticated;
 
+-- Legacy names are not derived from the first two letters of each table.
+-- Leaving a permissive policy active defeats the admin-only policy (OR).
+drop policy if exists rt_admin_all on public.room_types;
+drop policy if exists bk_admin_all on public.bookings;
+drop policy if exists bd_admin_all on public.blocked_dates;
+drop policy if exists po_admin_all on public.price_overrides;
+drop policy if exists as_admin_all on public.app_settings;
+drop policy if exists bp_admin_all on public.blog_posts;
+
 -- ცხრილების წესები: "ნებისმიერი დარეგისტრირებული" → "მხოლოდ ადმინი"
 do $$
 declare t text;

@@ -1,3 +1,6 @@
+-- Requires security.sql and sale.sql. Applies no prices by itself.
+begin;
+
 -- ═══════════════════════════════════════════════════════════
 -- HOTEL AGAVA — ფასდაკლება თარიღების დიაპაზონზე
 -- გაუშვი Supabase → SQL Editor → New query → Run.
@@ -24,23 +27,32 @@ create or replace function admin_set_price_range(
   p_percent int default null
 )
 returns int
-language plpgsql as $$
+language plpgsql security invoker set search_path = public as $$
 declare
   v_rows int;
 begin
+  if not public.is_admin() then
+    raise exception 'administrator required' using errcode = '42501';
+  end if;
   if p_room_type_ids is null or array_length(p_room_type_ids, 1) is null then
     raise exception 'ნომრის ტიპი არ არის არჩეული';
   end if;
-  if p_from is null or p_to is null or p_to < p_from then
+  if exists (
+    select 1 from unnest(p_room_type_ids) chosen(room_id)
+    where chosen.room_id is null or not exists (select 1 from public.room_types rt where rt.id = chosen.room_id)
+  ) then
+    raise exception 'invalid room type';
+  end if;
+  if p_from is null or p_to is null or not isfinite(p_from) or not isfinite(p_to) or p_to < p_from then
     raise exception 'თარიღების დიაპაზონი არასწორია';
   end if;
-  if (p_to - p_from) > 365 then
-    raise exception 'დიაპაზონი ძალიან გრძელია (მაქსიმუმ ერთი წელი)';
+  if (p_to - p_from) > 364 then
+    raise exception 'დიაპაზონი ძალიან გრძელია (მაქსიმუმ 365 დღე)';
   end if;
   if (p_price is null) = (p_percent is null) then
     raise exception 'მიუთითე ან ფასი, ან პროცენტი — ერთ-ერთი';
   end if;
-  if p_price is not null and p_price < 0 then
+  if p_price is not null and (p_price < 0 or p_price::text in ('NaN', 'Infinity', '-Infinity')) then
     raise exception 'ფასი უარყოფითი ვერ იქნება';
   end if;
   if p_percent is not null and (p_percent < 1 or p_percent > 90) then
@@ -73,17 +85,29 @@ create or replace function admin_clear_price_range(
   p_to date
 )
 returns int
-language plpgsql as $$
+language plpgsql security invoker set search_path = public as $$
 declare
   v_rows int;
 begin
+  if not public.is_admin() then
+    raise exception 'administrator required' using errcode = '42501';
+  end if;
   if p_room_type_ids is null or array_length(p_room_type_ids, 1) is null then
     raise exception 'ნომრის ტიპი არ არის არჩეული';
   end if;
-  if p_from is null or p_to is null or p_to < p_from then
+  if exists (
+    select 1 from unnest(p_room_type_ids) chosen(room_id)
+    where chosen.room_id is null or not exists (select 1 from public.room_types rt where rt.id = chosen.room_id)
+  ) then
+    raise exception 'invalid room type';
+  end if;
+  if p_from is null or p_to is null or not isfinite(p_from) or not isfinite(p_to) or p_to < p_from then
     raise exception 'თარიღების დიაპაზონი არასწორია';
   end if;
 
+  if (p_to - p_from) > 364 then
+    raise exception 'დიაპაზონი ძალიან გრძელია (მაქსიმუმ 365 დღე)';
+  end if;
   delete from price_overrides
   where room_type_id = any(p_room_type_ids)
     and date between p_from and p_to;
@@ -97,7 +121,9 @@ end $$;
 -- security definer განზრახ არ არის: ფუნქცია გამომძახებლის
 -- უფლებებით მუშაობს, ანუ price_overrides-ის RLS ძალაშია და
 -- ჩაწერა მხოლოდ ადმინს შეუძლია.
-revoke execute on function admin_set_price_range(int[], date, date, numeric, int) from anon;
-revoke execute on function admin_clear_price_range(int[], date, date) from anon;
+revoke execute on function admin_set_price_range(int[], date, date, numeric, int) from public, anon;
+revoke execute on function admin_clear_price_range(int[], date, date) from public, anon;
 grant  execute on function admin_set_price_range(int[], date, date, numeric, int) to authenticated;
 grant  execute on function admin_clear_price_range(int[], date, date) to authenticated;
+
+commit;

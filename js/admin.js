@@ -704,7 +704,7 @@
           else { cls = "c-free"; txt = free; }
 
           var tip = rt.name + " · " + dayIso + " — თავისუფალი " + free + "/" + rt.total_rooms +
-            (booked ? " · ჯავშანი " + booked : "") + (blk ? " · ბლოკი " + blk : "");
+            (booked ? " · ჯავშანი " + booked : "") + (blk ? " · ბლოკი " + blk : "") + (po ? " · სპეც. ფასი " + Number(po.price) + " ₾" : "");
 
           row += '<td class="day ' + cls + (po ? " has-price" : "") + (dayIso === t ? " today" : "") +
             '" data-day="' + dayIso + '" data-rt="' + rt.id + '" title="' + esc(tip) + '">' + txt + "</td>";
@@ -832,7 +832,7 @@
      აქ იგივე ცხრილი დიაპაზონით ივსება. */
   function prSelectedRooms() {
     return Array.prototype.slice
-      .call(document.querySelectorAll("#prRooms input:checked"))
+      .call(document.querySelectorAll("#prRooms input[value]:checked"))
       .map(function (el) { return parseInt(el.value, 10); });
   }
 
@@ -853,6 +853,13 @@
           function (el) { el.checked = on; });
       });
     }
+    host.onchange = function () {
+      var boxes = Array.prototype.slice.call(host.querySelectorAll('input[value]'));
+      var selected = boxes.filter(function (box) { return box.checked; }).length;
+      var all = document.getElementById("prAll");
+      all.checked = selected === boxes.length;
+      all.indeterminate = selected > 0 && selected < boxes.length;
+    };
     renderPriceCurrent(prices || []);
   }
 
@@ -895,7 +902,9 @@
       }).join("") + "</ul>";
   }
 
+  var prBusy = false;
   function prRun(clear) {
+    if (prBusy) return;
     var st = document.getElementById("prStatus");
     var ids = prSelectedRooms();
     var from = document.getElementById("prFrom").value;
@@ -909,25 +918,40 @@
     if (!clear && !pct && !price) return fail("მიუთითე პროცენტი ან ფასი.");
     if (!clear && pct && price) return fail("ან პროცენტი, ან ფასი — ორივე არა.");
 
+    var days = (Date.parse(to + "T00:00:00Z") - Date.parse(from + "T00:00:00Z")) / 86400000 + 1;
+    if (!Number.isInteger(days) || days < 1 || days > 365) return fail("აირჩიე მაქსიმუმ 365 დღე, ორივე თარიღის ჩათვლით.");
+    if (!clear && pct && (!Number.isInteger(Number(pct)) || Number(pct) < 1 || Number(pct) > 90)) return fail("პროცენტი უნდა იყოს მთელი რიცხვი 1-დან 90-მდე.");
+    if (!clear && price && (!Number.isFinite(Number(price)) || Number(price) < 0)) return fail("ფასი უნდა იყოს ნული ან დადებითი რიცხვი.");
+    prBusy = true;
+    document.getElementById("prSet").disabled = true;
+    document.getElementById("prClear").disabled = true;
     st.textContent = "ინახება…"; st.className = "amodal__status";
     var call = clear
       ? sb.rpc("admin_clear_price_range", { p_room_type_ids: ids, p_from: from, p_to: to })
       : sb.rpc("admin_set_price_range", {
           p_room_type_ids: ids, p_from: from, p_to: to,
           p_price: price ? Number(price) : null,
-          p_percent: pct ? parseInt(pct, 10) : null
+          p_percent: pct ? Number(pct) : null
         });
 
     call.then(function (res) {
       if (res.error) {
-        fail(/function|schema cache/i.test(res.error.message || "")
-          ? "sql/pricerange.sql ჯერ არ არის გაშვებული"
+        fail(res.error.code === "PGRST202" || res.error.code === "42883"
+          ? "თარიღობრივი ფასების ფუნქცია ჯერ არ არის გააქტიურებული. მიმართე საიტის ადმინისტრატორს."
           : res.error.message);
         return;
       }
       st.textContent = (clear ? "მოიხსნა: " : "დაყენდა: ") + (res.data || 0) + " ჩანაწერი ✓";
       st.className = "amodal__status";
-      renderCalendar();
+      calCursor = new Date(from + "T12:00:00");
+      calCursor.setDate(1);
+      return renderCalendar();
+    }).catch(function () {
+      fail("ოპერაციის შედეგი ვერ დადასტურდა. განაახლე კალენდარი და გადაამოწმე ფასები ხელახლა ცდამდე.");
+    }).finally(function () {
+      prBusy = false;
+      document.getElementById("prSet").disabled = false;
+      document.getElementById("prClear").disabled = false;
     });
   }
 

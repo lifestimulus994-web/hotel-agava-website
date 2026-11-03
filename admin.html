@@ -121,15 +121,15 @@
           <p class="pr-hint">აირჩიე ნომრები და დღეები — ფასი ამ დღეებზე შეიცვლება. მოხსნის შემდეგ ყველაფერი ძველ ფასს უბრუნდება.</p>
           <div class="pr-rooms" id="prRooms"><!-- JS --></div>
           <div class="pr-row">
-            <div><label>დან</label><input type="date" id="prFrom"></div>
-            <div><label>მდე</label><input type="date" id="prTo"></div>
-            <div><label>ფასდაკლება %</label><input type="number" id="prPercent" min="1" max="90" placeholder="მაგ. 20"></div>
-            <div><label>ან ზუსტი ფასი ₾</label><input type="number" id="prPrice" min="0" placeholder="მაგ. 240"></div>
+            <div><label for="prFrom">პირველი ღამე</label><input type="date" id="prFrom"></div>
+            <div><label for="prTo">ბოლო ღამე (ჩათვლით)</label><input type="date" id="prTo"></div>
+            <div><label for="prPercent">ფასდაკლება %</label><input type="number" id="prPercent" step="1" min="1" max="90" placeholder="მაგ. 20"></div>
+            <div><label for="prPrice">ან ზუსტი ფასი ₾</label><input type="number" id="prPrice" step="0.01" min="0" placeholder="მაგ. 240"></div>
           </div>
           <div class="pr-actions">
             <button class="abtn abtn--gold" id="prSet">დაყენება</button>
             <button class="abtn abtn--danger" id="prClear">მოხსნა</button>
-            <span class="amodal__status" id="prStatus"></span>
+            <span class="amodal__status" id="prStatus" role="status" aria-live="polite"></span>
           </div>
           <div class="pr-current" id="prCurrent"><!-- JS --></div>
         </div>
@@ -255,6 +255,6 @@
   <script src="js/config.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
   <script src="js/content.js"></script>
-  <script src="js/admin.js?v=5"></script>
+  <script src="js/admin.js?v=pricing-20261103"></script>
 </body>
 </html>
