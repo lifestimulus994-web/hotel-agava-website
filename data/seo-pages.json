@@ -11,10 +11,10 @@
     },
     "has_alternates": true,
     "applied": {
-      "title": "სასტუმროს სერვისები თბილისში | Hotel Agava",
+      "title": "სასტუმროს სერვისები თბილისში, დიღომში | Hotel Agava",
       "description": "Hotel Agava-ს სერვისები: უფასო დაცული პარკინგი, Wi-Fi, საუზმე შვედური მაგიდით, აეროპორტის ტრანსფერი, სამრეცხაო, ლიფტი და 24/7 რეცეფცია. დიღომი, თბილისი.",
       "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
-      "robots": "index, follow, max-image-preview:large"
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
     }
   },
   {
