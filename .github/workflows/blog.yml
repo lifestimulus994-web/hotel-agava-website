@@ -1,7 +1,7 @@
 # Publishing a post is a checkbox in /admin, which writes to Supabase.
 # Supabase is not the website, so this turns each published post into a
-# real page in the repo — Googlebot never runs the JavaScript that would
-# otherwise be the only thing rendering them.
+# real page in the repo with content available before JavaScript runs.
+# Cloudflare production publication is a separate deployment step.
 name: Publish blog posts
 
 on:
@@ -40,6 +40,9 @@ jobs:
       # panel (Rooms → Google შეფასება); every page follows from here.
       - name: Sync the Google rating from the database
         run: node scripts/syncrating.js
+
+      - name: Bake SEO metadata for all four languages
+        run: python scripts/syncseo.py
 
       # The date each page shows comes from that file's last commit, so it
       # refreshes itself here rather than being typed by hand.

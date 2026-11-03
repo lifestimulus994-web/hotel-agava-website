@@ -1,0 +1,1838 @@
+[
+  {
+    "path": "/amenities/",
+    "lang": "ka",
+    "label": "სასტუმროს სერვისები თბილისში | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმროს სერვისები თბილისში | Hotel Agava",
+      "description": "Hotel Agava-ს სერვისები: უფასო დაცული პარკინგი, Wi-Fi, საუზმე შვედური მაგიდით, აეროპორტის ტრანსფერი, სამრეცხაო, ლიფტი და 24/7 რეცეფცია. დიღომი, თბილისი.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმროს სერვისები თბილისში | Hotel Agava",
+      "description": "Hotel Agava-ს სერვისები: უფასო დაცული პარკინგი, Wi-Fi, საუზმე შვედური მაგიდით, აეროპორტის ტრანსფერი, სამრეცხაო, ლიფტი და 24/7 რეცეფცია. დიღომი, თბილისი.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/blog/business-trip-hotel-tbilisi/",
+    "lang": "ka",
+    "label": "როგორ ავირჩიოთ სასტუმრო თბილისში სამუშაო მოგზაურობისას — სასტუმრო აგავა",
+    "defaults": {
+      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში სამუშაო მოგზაურობისას — სასტუმრო აგავა",
+      "description": "როგორ შევარჩიოთ სასტუმრო თბილისში საქმიანი ვიზიტისთვის: მდებარეობა, Wi-Fi, მშვიდი ნომერი, პარკინგი, 24/7 რეცეფცია და აეროპორტის ტრანსფერი.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": false,
+    "applied": {
+      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში სამუშაო მოგზაურობისას — სასტუმრო აგავა",
+      "description": "როგორ შევარჩიოთ სასტუმრო თბილისში საქმიანი ვიზიტისთვის: მდებარეობა, Wi-Fi, მშვიდი ნომერი, პარკინგი, 24/7 რეცეფცია და აეროპორტის ტრანსფერი.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/blog/hotel-tbilisi-with-parking-car-travel/",
+    "lang": "ka",
+    "label": "როგორ ავირჩიოთ სასტუმრო თბილისში მანქანით მოგზაურობისას — სასტუმრო აგავა",
+    "defaults": {
+      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში მანქანით მოგზაურობისას — სასტუმრო აგავა",
+      "description": "მანქანით მოგზაურობთ თბილისში? რა შეამოწმოთ სასტუმროს არჩევისას: პარკინგი ტერიტორიაზე, მდებარეობა, 24/7 რეცეფცია. სასტუმრო აგავა დიღომში — უფასო დაცული პარკინგით.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": false,
+    "applied": {
+      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში მანქანით მოგზაურობისას — სასტუმრო აგავა",
+      "description": "მანქანით მოგზაურობთ თბილისში? რა შეამოწმოთ სასტუმროს არჩევისას: პარკინგი ტერიტორიაზე, მდებარეობა, 24/7 რეცეფცია. სასტუმრო აგავა დიღომში — უფასო დაცული პარკინგით.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/blog/",
+    "lang": "ka",
+    "label": "ბლოგი — სასტუმრო აგავა | თბილისი",
+    "defaults": {
+      "title": "ბლოგი — სასტუმრო აგავა | თბილისი",
+      "description": "სასტუმრო აგავას ბლოგი — სიახლეები, რჩევები და სტატიები თბილისში დასვენების, ღირსშესანიშნაობებისა და სასტუმროს შესახებ.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "ბლოგი — სასტუმრო აგავა | თბილისი",
+      "description": "სასტუმრო აგავას ბლოგი — სიახლეები, რჩევები და სტატიები თბილისში დასვენების, ღირსშესანიშნაობებისა და სასტუმროს შესახებ.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/business-hotel-tbilisi/",
+    "lang": "ka",
+    "label": "სასტუმრო ბიზნეს მოგზაურებისთვის თბილისში | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმრო ბიზნეს მოგზაურებისთვის თბილისში | Hotel Agava",
+      "description": "Hotel Agava ბიზნეს მოგზაურებისთვის — უფასო Wi-Fi ყველა ნომერში, უფასო დაცული პარკინგი, 24/7 რეცეფცია, აეროპორტის ტრანსფერი და სამრეცხაო 12 საათში.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო ბიზნეს მოგზაურებისთვის თბილისში | Hotel Agava",
+      "description": "Hotel Agava ბიზნეს მოგზაურებისთვის — უფასო Wi-Fi ყველა ნომერში, უფასო დაცული პარკინგი, 24/7 რეცეფცია, აეროპორტის ტრანსფერი და სამრეცხაო 12 საათში.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/amenities/",
+    "lang": "en",
+    "label": "Hotel amenities in Tbilisi | Hotel Agava",
+    "defaults": {
+      "title": "Hotel amenities in Tbilisi | Hotel Agava",
+      "description": "Hotel Agava amenities: free secure parking, Wi-Fi, buffet breakfast, airport transfer, laundry, a lift to all four floors and 24/7 reception in Dighomi.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel amenities in Tbilisi | Hotel Agava",
+      "description": "Hotel Agava amenities: free secure parking, Wi-Fi, buffet breakfast, airport transfer, laundry, a lift to all four floors and 24/7 reception in Dighomi.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/blog/",
+    "lang": "en",
+    "label": "Blog — Hotel Agava | Tbilisi",
+    "defaults": {
+      "title": "Blog — Hotel Agava | Tbilisi",
+      "description": "Hotel Agava blog — news, tips and articles about holidays in Tbilisi, places to see and the hotel.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Blog — Hotel Agava | Tbilisi",
+      "description": "Hotel Agava blog — news, tips and articles about holidays in Tbilisi, places to see and the hotel.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/business-hotel-tbilisi/",
+    "lang": "en",
+    "label": "Business hotel in Tbilisi | Hotel Agava",
+    "defaults": {
+      "title": "Business hotel in Tbilisi | Hotel Agava",
+      "description": "Hotel Agava for business travellers in Tbilisi: free Wi-Fi in every room, free secure parking, 24/7 reception, airport transfer and 12-hour laundry.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Business hotel in Tbilisi | Hotel Agava",
+      "description": "Hotel Agava for business travellers in Tbilisi: free Wi-Fi in every room, free secure parking, 24/7 reception, airport transfer and 12-hour laundry.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/family-hotel-tbilisi/",
+    "lang": "en",
+    "label": "Family hotel in Tbilisi | Family rooms — Hotel Agava",
+    "defaults": {
+      "title": "Family hotel in Tbilisi | Family rooms — Hotel Agava",
+      "description": "Hotel Agava offers comfortable family rooms in Tbilisi for 3–5 guests. Secure parking, Wi-Fi, breakfast and a 24/7 reception.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Family hotel in Tbilisi | Family rooms — Hotel Agava",
+      "description": "Hotel Agava offers comfortable family rooms in Tbilisi for 3–5 guests. Secure parking, Wi-Fi, breakfast and a 24/7 reception.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/hotel-dighomi-tbilisi/",
+    "lang": "en",
+    "label": "Hotel in Dighomi, Beliashvili Street | Hotel Agava",
+    "defaults": {
+      "title": "Hotel in Dighomi, Beliashvili Street | Hotel Agava",
+      "description": "Hotel Agava — a comfortable hotel in Dighomi, at 161 Akaki Beliashvili Street. Parking, Wi-Fi, family and jacuzzi rooms, 24/7 reception.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel in Dighomi, Beliashvili Street | Hotel Agava",
+      "description": "Hotel Agava — a comfortable hotel in Dighomi, at 161 Akaki Beliashvili Street. Parking, Wi-Fi, family and jacuzzi rooms, 24/7 reception.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/hotel-for-couples-tbilisi/",
+    "lang": "en",
+    "label": "Hotel for couples in Tbilisi | Romantic rooms — Hotel Agava",
+    "defaults": {
+      "title": "Hotel for couples in Tbilisi | Romantic rooms — Hotel Agava",
+      "description": "Plan a comfortable stay for two at Hotel Agava — quiet rooms, jacuzzi suites, a distinctive interior and direct booking.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel for couples in Tbilisi | Romantic rooms — Hotel Agava",
+      "description": "Plan a comfortable stay for two at Hotel Agava — quiet rooms, jacuzzi suites, a distinctive interior and direct booking.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/hotel-near-us-embassy-tbilisi/",
+    "lang": "en",
+    "label": "Hotel near the US Embassy in Tbilisi | Hotel Agava",
+    "defaults": {
+      "title": "Hotel near the US Embassy in Tbilisi | Hotel Agava",
+      "description": "Hotel Agava is roughly 800 metres from the US Embassy. Comfortable rooms, parking, Wi-Fi and a 24/7 reception — book direct.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel near the US Embassy in Tbilisi | Hotel Agava",
+      "description": "Hotel Agava is roughly 800 metres from the US Embassy. Comfortable rooms, parking, Wi-Fi and a 24/7 reception — book direct.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/",
+    "lang": "en",
+    "label": "Hotel in Tbilisi, Dighomi | Hotel Agava",
+    "defaults": {
+      "title": "Hotel in Tbilisi, Dighomi | Hotel Agava",
+      "description": "Stay at Hotel Agava in Dighomi, Tbilisi: standard and family rooms, jacuzzi suites, Wi-Fi and parking. Check availability and book directly at Beliashvili 161.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel in Tbilisi, Dighomi | Hotel Agava",
+      "description": "Stay at Hotel Agava in Dighomi, Tbilisi: standard and family rooms, jacuzzi suites, Wi-Fi and parking. Check availability and book directly at Beliashvili 161.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    }
+  },
+  {
+    "path": "/en/jacuzzi-rooms-tbilisi/",
+    "lang": "en",
+    "label": "Jacuzzi room in Tbilisi | Jacuzzi suites — Hotel Agava",
+    "defaults": {
+      "title": "Jacuzzi room in Tbilisi | Jacuzzi suites — Hotel Agava",
+      "description": "Discover the jacuzzi rooms at Hotel Agava in Tbilisi — a quiet setting, a distinctive interior and comfortable suites for two.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Jacuzzi room in Tbilisi | Jacuzzi suites — Hotel Agava",
+      "description": "Discover the jacuzzi rooms at Hotel Agava in Tbilisi — a quiet setting, a distinctive interior and comfortable suites for two.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/offers/",
+    "lang": "en",
+    "label": "Prices and offers | Hotel Agava Tbilisi",
+    "defaults": {
+      "title": "Prices and offers | Hotel Agava Tbilisi",
+      "description": "Book Hotel Agava direct with no prepayment. See what the room rate includes and what costs extra: breakfast 30 GEL, airport transfer 70/50 GEL.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Prices and offers | Hotel Agava Tbilisi",
+      "description": "Book Hotel Agava direct with no prepayment. See what the room rate includes and what costs extra: breakfast 30 GEL, airport transfer 70/50 GEL.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/family3/",
+    "lang": "en",
+    "label": "Family Room — 3 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "Family Room — 3 guests — Hotel Agava · Tbilisi",
+      "description": "Family room for 3 guests — 32 m² with two beds, air conditioning, a fridge and a bathroom. A convenient choice for families in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Family Room — 3 guests — Hotel Agava · Tbilisi",
+      "description": "Family room for 3 guests — 32 m² with two beds, air conditioning, a fridge and a bathroom. A convenient choice for families in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/family4/",
+    "lang": "en",
+    "label": "Family Room — 4 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "Family Room — 4 guests — Hotel Agava · Tbilisi",
+      "description": "Family room for 4 guests — a spacious 38 m² with two beds and every comfort. Room for the whole family at Hotel Agava, Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Family Room — 4 guests — Hotel Agava · Tbilisi",
+      "description": "Family room for 4 guests — a spacious 38 m² with two beds and every comfort. Room for the whole family at Hotel Agava, Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/",
+    "lang": "en",
+    "label": "Hotel rooms in Tbilisi | Rooms and suites — Hotel Agava",
+    "defaults": {
+      "title": "Hotel rooms in Tbilisi | Rooms and suites — Hotel Agava",
+      "description": "Explore the comfortable rooms at Hotel Agava in Tbilisi — standard, family and jacuzzi suites for 2–5 guests. See what is included and book direct.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel rooms in Tbilisi | Rooms and suites — Hotel Agava",
+      "description": "Explore the comfortable rooms at Hotel Agava in Tbilisi — standard, family and jacuzzi suites for 2–5 guests. See what is included and book direct.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/jacuzzi/",
+    "lang": "en",
+    "label": "Super Suite with Jacuzzi — 2 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "Super Suite with Jacuzzi — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Super suite with jacuzzi — a VIP room with golden interior, a King bed and a private jacuzzi. Agava's most prestigious room in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Super Suite with Jacuzzi — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Super suite with jacuzzi — a VIP room with golden interior, a King bed and a private jacuzzi. Agava's most prestigious room in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/jacuzzi-suite/",
+    "lang": "en",
+    "label": "King Room with Spa Bath — 2 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "King Room with Spa Bath — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Jacuzzi suite at Hotel Agava: a romantic 30 m² king room with a private jacuzzi, a large double bed and a city view. Made for couples in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "King Room with Spa Bath — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Jacuzzi suite at Hotel Agava: a romantic 30 m² king room with a private jacuzzi, a large double bed and a city view. Made for couples in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/lux/",
+    "lang": "en",
+    "label": "Deluxe Room — 2 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "Deluxe Room — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Deluxe room at Agava — an elegant 28 m² in baroque style with a King bed, sky ceiling, fridge and air conditioning. Refined comfort in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Deluxe Room — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Deluxe room at Agava — an elegant 28 m² in baroque style with a King bed, sky ceiling, fridge and air conditioning. Refined comfort in Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/standard/",
+    "lang": "en",
+    "label": "Standard Room — 2 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "Standard Room — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Standard room at Hotel Agava: a comfortable 22 m² for two with a sky ceiling, air conditioning, free Wi-Fi and a private bathroom. Ideal for short stays.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Standard Room — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Standard room at Hotel Agava: a comfortable 22 m² for two with a sky ceiling, air conditioning, free Wi-Fi and a private bathroom. Ideal for short stays.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/superlux/",
+    "lang": "en",
+    "label": "Superior Suite — 2 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "Superior Suite — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Superior suite — a spacious 36 m² with baroque interior, King bed and sky ceiling. Maximum comfort for two guests at Hotel Agava, Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Superior Suite — 2 guests — Hotel Agava · Tbilisi",
+      "description": "Superior suite — a spacious 36 m² with baroque interior, King bed and sky ceiling. Maximum comfort for two guests at Hotel Agava, Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/rooms/twobedlux/",
+    "lang": "en",
+    "label": "Two-Room Suite — 5 guests — Hotel Agava · Tbilisi",
+    "defaults": {
+      "title": "Two-Room Suite — 5 guests — Hotel Agava · Tbilisi",
+      "description": "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Sky ceiling, air conditioning and a fridge.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Two-Room Suite — 5 guests — Hotel Agava · Tbilisi",
+      "description": "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Sky ceiling, air conditioning and a fridge.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/services/breakfast/",
+    "lang": "en",
+    "label": "Hotel breakfast in Tbilisi | Buffet, 30 GEL — Hotel Agava",
+    "defaults": {
+      "title": "Hotel breakfast in Tbilisi | Buffet, 30 GEL — Hotel Agava",
+      "description": "Breakfast at Hotel Agava is a buffet served 08:00-11:00 for 30 GEL per guest. Eggs, cheeses, pastries, vegetables, seasonal fruit, coffee and tea.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel breakfast in Tbilisi | Buffet, 30 GEL — Hotel Agava",
+      "description": "Breakfast at Hotel Agava is a buffet served 08:00-11:00 for 30 GEL per guest. Eggs, cheeses, pastries, vegetables, seasonal fruit, coffee and tea.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/services/laundry/",
+    "lang": "en",
+    "label": "Hotel laundry in Tbilisi | 10 GEL per item — Hotel Agava",
+    "defaults": {
+      "title": "Hotel laundry in Tbilisi | 10 GEL per item — Hotel Agava",
+      "description": "Laundry at Hotel Agava — 10 GEL per item, ready in 12 hours. Drop it at reception at any hour. 161 Beliashvili St, Dighomi, Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Hotel laundry in Tbilisi | 10 GEL per item — Hotel Agava",
+      "description": "Laundry at Hotel Agava — 10 GEL per item, ready in 12 hours. Drop it at reception at any hour. 161 Beliashvili St, Dighomi, Tbilisi.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/services/parking/",
+    "lang": "en",
+    "label": "Free hotel parking in Tbilisi | Dighomi — Hotel Agava",
+    "defaults": {
+      "title": "Free hotel parking in Tbilisi | Dighomi — Hotel Agava",
+      "description": "Hotel Agava has 11 parking spaces in its own yard, free for hotel guests, with cameras and night security. Open 24 hours. 161 Beliashvili St, Dighomi.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Free hotel parking in Tbilisi | Dighomi — Hotel Agava",
+      "description": "Hotel Agava has 11 parking spaces in its own yard, free for hotel guests, with cameras and night security. Open 24 hours. 161 Beliashvili St, Dighomi.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/services/reception/",
+    "lang": "en",
+    "label": "24/7 reception | Hotel Agava Tbilisi",
+    "defaults": {
+      "title": "24/7 reception | Hotel Agava Tbilisi",
+      "description": "Reception at Hotel Agava is staffed 24 hours — a real person overnight, not a bell. Check-in from 13:00, check-out by 12:00.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "24/7 reception | Hotel Agava Tbilisi",
+      "description": "Reception at Hotel Agava is staffed 24 hours — a real person overnight, not a bell. Check-in from 13:00, check-out by 12:00.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/services/transfer/",
+    "lang": "en",
+    "label": "Tbilisi airport transfer | 70 GEL pickup — Hotel Agava",
+    "defaults": {
+      "title": "Tbilisi airport transfer | 70 GEL pickup — Hotel Agava",
+      "description": "Transfer between Tbilisi airport and Hotel Agava — 70 GEL on arrival, 50 GEL to the airport. Price is per car, up to four people.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tbilisi airport transfer | 70 GEL pickup — Hotel Agava",
+      "description": "Transfer between Tbilisi airport and Hotel Agava — 70 GEL on arrival, 50 GEL to the airport. Price is per car, up to four people.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/services/wifi/",
+    "lang": "en",
+    "label": "Free Wi-Fi in the hotel | Every room — Hotel Agava Tbilisi",
+    "defaults": {
+      "title": "Free Wi-Fi in the hotel | Every room — Hotel Agava Tbilisi",
+      "description": "Free Wi-Fi at Hotel Agava — in every room and all common areas, with no extra charge, no time limit and no device limit. Password at reception.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Free Wi-Fi in the hotel | Every room — Hotel Agava Tbilisi",
+      "description": "Free Wi-Fi at Hotel Agava — in every room and all common areas, with no extra charge, no time limit and no device limit. Password at reception.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/family-hotel-tbilisi/",
+    "lang": "ka",
+    "label": "სასტუმრო ოჯახისთვის თბილისში | საოჯახო ნომრები — Hotel Agava",
+    "defaults": {
+      "title": "სასტუმრო ოჯახისთვის თბილისში | საოჯახო ნომრები — Hotel Agava",
+      "description": "Hotel Agava გთავაზობთ კომფორტულ საოჯახო ნომრებს თბილისში 3–5 სტუმრისთვის. დაცული პარკინგი, Wi-Fi, საუზმე და 24/7 რეცეფცია.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო ოჯახისთვის თბილისში | საოჯახო ნომრები — Hotel Agava",
+      "description": "Hotel Agava გთავაზობთ კომფორტულ საოჯახო ნომრებს თბილისში 3–5 სტუმრისთვის. დაცული პარკინგი, Wi-Fi, საუზმე და 24/7 რეცეფცია.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/hotel-dighomi-tbilisi/",
+    "lang": "ka",
+    "label": "სასტუმრო დიღომში, ბელიაშვილის ქუჩაზე | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმრო დიღომში, ბელიაშვილის ქუჩაზე | Hotel Agava",
+      "description": "Hotel Agava — კომფორტული სასტუმრო დიღომში, აკაკი ბელიაშვილის 161-ში. პარკინგი, Wi-Fi, საოჯახო და ჯაკუზიანი ნომრები, 24/7 რეცეფცია.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო დიღომში, ბელიაშვილის ქუჩაზე | Hotel Agava",
+      "description": "Hotel Agava — კომფორტული სასტუმრო დიღომში, აკაკი ბელიაშვილის 161-ში. პარკინგი, Wi-Fi, საოჯახო და ჯაკუზიანი ნომრები, 24/7 რეცეფცია.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/hotel-for-couples-tbilisi/",
+    "lang": "ka",
+    "label": "სასტუმრო წყვილისთვის თბილისში | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმრო წყვილისთვის თბილისში | Hotel Agava",
+      "description": "დაგეგმეთ კომფორტული დასვენება ორისთვის Hotel Agava-ში — მყუდრო ნომრები, ჯაკუზიანი ლუქსები, გამორჩეული ინტერიერი და პირდაპირი დაჯავშნა.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო წყვილისთვის თბილისში | Hotel Agava",
+      "description": "დაგეგმეთ კომფორტული დასვენება ორისთვის Hotel Agava-ში — მყუდრო ნომრები, ჯაკუზიანი ლუქსები, გამორჩეული ინტერიერი და პირდაპირი დაჯავშნა.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/hotel-near-us-embassy-tbilisi/",
+    "lang": "ka",
+    "label": "სასტუმრო ამერიკის საელჩოსთან თბილისში | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმრო ამერიკის საელჩოსთან თბილისში | Hotel Agava",
+      "description": "Hotel Agava მდებარეობს აშშ-ის საელჩოდან დაახლოებით 800 მეტრში. კომფორტული ნომრები, პარკინგი, Wi-Fi და 24/7 რეცეფცია — დაჯავშნეთ პირდაპირ.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო ამერიკის საელჩოსთან თბილისში | Hotel Agava",
+      "description": "Hotel Agava მდებარეობს აშშ-ის საელჩოდან დაახლოებით 800 მეტრში. კომფორტული ნომრები, პარკინგი, Wi-Fi და 24/7 რეცეფცია — დაჯავშნეთ პირდაპირ.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/",
+    "lang": "ka",
+    "label": "სასტუმრო თბილისში, დიღომში | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმრო თბილისში, დიღომში | Hotel Agava",
+      "description": "სასტუმრო აგავა დიღომში, ბელიაშვილის 161-ზე — სტანდარტული და საოჯახო ნომრები, ლუქსი ჯაკუზით, Wi-Fi და პარკინგი. შეარჩიეთ თარიღები და დაჯავშნეთ პირდაპირ.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო თბილისში, დიღომში | Hotel Agava",
+      "description": "სასტუმრო აგავა დიღომში, ბელიაშვილის 161-ზე — სტანდარტული და საოჯახო ნომრები, ლუქსი ჯაკუზით, Wi-Fi და პარკინგი. შეარჩიეთ თარიღები და დაჯავშნეთ პირდაპირ.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    }
+  },
+  {
+    "path": "/jacuzzi-rooms-tbilisi/",
+    "lang": "ka",
+    "label": "სასტუმრო ჯაკუზით თბილისში — ნომრები | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმრო ჯაკუზით თბილისში — ნომრები | Hotel Agava",
+      "description": "აღმოაჩინეთ Hotel Agava-ს ჯაკუზიანი ნომრები თბილისში — მყუდრო გარემო, გამორჩეული ინტერიერი და კომფორტული ლუქსები ორისთვის.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო ჯაკუზით თბილისში — ნომრები | Hotel Agava",
+      "description": "აღმოაჩინეთ Hotel Agava-ს ჯაკუზიანი ნომრები თბილისში — მყუდრო გარემო, გამორჩეული ინტერიერი და კომფორტული ლუქსები ორისთვის.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/offers/",
+    "lang": "ka",
+    "label": "ფასები და შეთავაზებები | სასტუმრო აგავა, თბილისი",
+    "defaults": {
+      "title": "ფასები და შეთავაზებები | სასტუმრო აგავა, თბილისი",
+      "description": "დაჯავშნეთ Hotel Agava პირდაპირ, წინასწარი გადახდის გარეშე. ნახეთ, რა შედის ნომრის ფასში და რა ფასდება ცალკე: საუზმე 30 ₾, ტრანსფერი 70/50 ₾.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "ფასები და შეთავაზებები | სასტუმრო აგავა, თბილისი",
+      "description": "დაჯავშნეთ Hotel Agava პირდაპირ, წინასწარი გადახდის გარეშე. ნახეთ, რა შედის ნომრის ფასში და რა ფასდება ცალკე: საუზმე 30 ₾, ტრანსფერი 70/50 ₾.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/family3/",
+    "lang": "ka",
+    "label": "საოჯახო ოთახი — 3 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "საოჯახო ოთახი — 3 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "საოჯახო ოთახი 3 სტუმარზე — 32 მ², ორი საწოლი, კონდიციონერი, მაცივარი და აბაზანა. მოსახერხებელი არჩევანი ოჯახებისთვის თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "საოჯახო ოთახი — 3 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "საოჯახო ოთახი 3 სტუმარზე — 32 მ², ორი საწოლი, კონდიციონერი, მაცივარი და აბაზანა. მოსახერხებელი არჩევანი ოჯახებისთვის თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/family4/",
+    "lang": "ka",
+    "label": "საოჯახო ოთახი — 4 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "საოჯახო ოთახი — 4 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "საოჯახო ოთახი 4 სტუმარზე — ვრცელი 38 მ², ორი საწოლი და ყველა კომფორტი. სივრცე მთელი ოჯახისთვის სასტუმრო აგავაში, თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "საოჯახო ოთახი — 4 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "საოჯახო ოთახი 4 სტუმარზე — ვრცელი 38 მ², ორი საწოლი და ყველა კომფორტი. სივრცე მთელი ოჯახისთვის სასტუმრო აგავაში, თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/",
+    "lang": "ka",
+    "label": "სასტუმროს ნომრები თბილისში | Hotel Agava",
+    "defaults": {
+      "title": "სასტუმროს ნომრები თბილისში | Hotel Agava",
+      "description": "აღმოაჩინეთ Hotel Agava-ს კომფორტული ნომრები თბილისში — სტანდარტული, საოჯახო და ჯაკუზიანი ლუქსები 2–5 სტუმრისთვის. ნახეთ პირობები და დაჯავშნეთ.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმროს ნომრები თბილისში | Hotel Agava",
+      "description": "აღმოაჩინეთ Hotel Agava-ს კომფორტული ნომრები თბილისში — სტანდარტული, საოჯახო და ჯაკუზიანი ლუქსები 2–5 სტუმრისთვის. ნახეთ პირობები და დაჯავშნეთ.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/jacuzzi/",
+    "lang": "ka",
+    "label": "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "სუპერ ლუქსი ჯაკუზით — VIP ოთახი ოქროსფერი ინტერიერით, King საწოლითა და პირადი ჯაკუზით. აგავას ყველაზე პრესტიჟული ნომერი თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სუპერ ლუქსი ჯაკუზით — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "სუპერ ლუქსი ჯაკუზით — VIP ოთახი ოქროსფერი ინტერიერით, King საწოლითა და პირადი ჯაკუზით. აგავას ყველაზე პრესტიჟული ნომერი თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/jacuzzi-suite/",
+    "lang": "ka",
+    "label": "ლუქსი ჯაკუზით — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "ლუქსი ჯაკუზით — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "ლუქსი ჯაკუზით სასტუმრო აგავაში — რომანტიკული 30 მ² ოთახი პირადი ჯაკუზით, დიდი ორმაგი საწოლითა და ქალაქის ხედით. იდეალურია წყვილებისთვის.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "ლუქსი ჯაკუზით — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "ლუქსი ჯაკუზით სასტუმრო აგავაში — რომანტიკული 30 მ² ოთახი პირადი ჯაკუზით, დიდი ორმაგი საწოლითა და ქალაქის ხედით. იდეალურია წყვილებისთვის.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/lux/",
+    "lang": "ka",
+    "label": "ლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "ლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "ლუქსი ოთახი აგავაში — ელეგანტური 28 მ² ბაროკოს სტილში, King საწოლით, ცის ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "ლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "ლუქსი ოთახი აგავაში — ელეგანტური 28 მ² ბაროკოს სტილში, King საწოლით, ცის ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/standard/",
+    "lang": "ka",
+    "label": "სტანდარტული ოთახი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "სტანდარტული ოთახი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "სტანდარტული ოთახი სასტუმრო აგავაში — კომფორტული 22 მ² ორ სტუმარზე, ცის ჭერით, კონდიციონერით, უფასო Wi-Fi-თ და აბაზანით. მოკლე და ხანგრძლივი ვიზიტისთვის.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სტანდარტული ოთახი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "სტანდარტული ოთახი სასტუმრო აგავაში — კომფორტული 22 მ² ორ სტუმარზე, ცის ჭერით, კონდიციონერით, უფასო Wi-Fi-თ და აბაზანით. მოკლე და ხანგრძლივი ვიზიტისთვის.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/superlux/",
+    "lang": "ka",
+    "label": "სუპერლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "სუპერლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს ინტერიერით, King საწოლითა და ცის ჭერით. მაქსიმალური კომფორტი ორ სტუმარზე სასტუმრო აგავაში, თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სუპერლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს ინტერიერით, King საწოლითა და ცის ჭერით. მაქსიმალური კომფორტი ორ სტუმარზე სასტუმრო აგავაში, თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/rooms/twobedlux/",
+    "lang": "ka",
+    "label": "ორ ოთახიანი ლუქსი — 5 სტუმარზე — სასტუმრო აგავა · თბილისი",
+    "defaults": {
+      "title": "ორ ოთახიანი ლუქსი — 5 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "ორ ოთახიანი ლუქსი — 45 მ², ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. ცის ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ჯგუფებისთვის თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "ორ ოთახიანი ლუქსი — 5 სტუმარზე — სასტუმრო აგავა · თბილისი",
+      "description": "ორ ოთახიანი ლუქსი — 45 მ², ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. ცის ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ჯგუფებისთვის თბილისში.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/amenities/",
+    "lang": "ru",
+    "label": "Услуги отеля в Тбилиси | Hotel Agava",
+    "defaults": {
+      "title": "Услуги отеля в Тбилиси | Hotel Agava",
+      "description": "Услуги отеля Агава: бесплатная охраняемая парковка, Wi-Fi, завтрак шведский стол, трансфер из аэропорта, прачечная, лифт и ресепшен 24/7.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Услуги отеля в Тбилиси | Hotel Agava",
+      "description": "Услуги отеля Агава: бесплатная охраняемая парковка, Wi-Fi, завтрак шведский стол, трансфер из аэропорта, прачечная, лифт и ресепшен 24/7.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/blog/",
+    "lang": "ru",
+    "label": "Блог — Отель Агава | Тбилиси",
+    "defaults": {
+      "title": "Блог — Отель Агава | Тбилиси",
+      "description": "Блог отеля Агава — новости, советы и статьи об отдыхе в Тбилиси, достопримечательностях и отеле.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Блог — Отель Агава | Тбилиси",
+      "description": "Блог отеля Агава — новости, советы и статьи об отдыхе в Тбилиси, достопримечательностях и отеле.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/business-hotel-tbilisi/",
+    "lang": "ru",
+    "label": "Отель для деловых поездок в Тбилиси | Hotel Agava",
+    "defaults": {
+      "title": "Отель для деловых поездок в Тбилиси | Hotel Agava",
+      "description": "Отель Агава для деловых поездок — бесплатный Wi-Fi во всех номерах, бесплатная охраняемая парковка, ресепшен 24/7, трансфер и прачечная за 12 часов.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Отель для деловых поездок в Тбилиси | Hotel Agava",
+      "description": "Отель Агава для деловых поездок — бесплатный Wi-Fi во всех номерах, бесплатная охраняемая парковка, ресепшен 24/7, трансфер и прачечная за 12 часов.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/family-hotel-tbilisi/",
+    "lang": "ru",
+    "label": "Отель для семьи в Тбилиси | Семейные номера — Отель Агава",
+    "defaults": {
+      "title": "Отель для семьи в Тбилиси | Семейные номера — Отель Агава",
+      "description": "Отель Агава предлагает комфортные семейные номера в Тбилиси на 3–5 гостей. Охраняемая парковка, Wi-Fi, завтрак и ресепшен 24/7.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Отель для семьи в Тбилиси | Семейные номера — Отель Агава",
+      "description": "Отель Агава предлагает комфортные семейные номера в Тбилиси на 3–5 гостей. Охраняемая парковка, Wi-Fi, завтрак и ресепшен 24/7.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/hotel-dighomi-tbilisi/",
+    "lang": "ru",
+    "label": "Отель в Дигоми, на улице Белиашвили | Отель Агава",
+    "defaults": {
+      "title": "Отель в Дигоми, на улице Белиашвили | Отель Агава",
+      "description": "Отель Агава — комфортный отель в Дигоми, на улице Акакия Белиашвили, 161. Парковка, Wi-Fi, семейные номера и номера с джакузи, ресепшен 24/7.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Отель в Дигоми, на улице Белиашвили | Отель Агава",
+      "description": "Отель Агава — комфортный отель в Дигоми, на улице Акакия Белиашвили, 161. Парковка, Wi-Fi, семейные номера и номера с джакузи, ресепшен 24/7.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/hotel-for-couples-tbilisi/",
+    "lang": "ru",
+    "label": "Отель для пары в Тбилиси | Отель Агава",
+    "defaults": {
+      "title": "Отель для пары в Тбилиси | Отель Агава",
+      "description": "Спланируйте комфортный отдых вдвоём в отеле Агава — уютные номера, люксы с джакузи, выразительный интерьер и прямое бронирование.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Отель для пары в Тбилиси | Отель Агава",
+      "description": "Спланируйте комфортный отдых вдвоём в отеле Агава — уютные номера, люксы с джакузи, выразительный интерьер и прямое бронирование.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/hotel-near-us-embassy-tbilisi/",
+    "lang": "ru",
+    "label": "Отель рядом с посольством США в Тбилиси | Отель Агава",
+    "defaults": {
+      "title": "Отель рядом с посольством США в Тбилиси | Отель Агава",
+      "description": "Отель Агава находится примерно в 800 метрах от посольства США. Комфортные номера, парковка, Wi-Fi и ресепшен 24/7 — бронируйте напрямую.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Отель рядом с посольством США в Тбилиси | Отель Агава",
+      "description": "Отель Агава находится примерно в 800 метрах от посольства США. Комфортные номера, парковка, Wi-Fi и ресепшен 24/7 — бронируйте напрямую.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/",
+    "lang": "ru",
+    "label": "Отель в Тбилиси, Дигоми | Агава",
+    "defaults": {
+      "title": "Отель в Тбилиси, Дигоми | Агава",
+      "description": "Отель Агава в Дигоми, Тбилиси: стандартные и семейные номера, люксы с джакузи, Wi-Fi и парковка. Проверьте даты и бронируйте напрямую. Белиашвили, 161.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Отель в Тбилиси, Дигоми | Агава",
+      "description": "Отель Агава в Дигоми, Тбилиси: стандартные и семейные номера, люксы с джакузи, Wi-Fi и парковка. Проверьте даты и бронируйте напрямую. Белиашвили, 161.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    }
+  },
+  {
+    "path": "/ru/jacuzzi-rooms-tbilisi/",
+    "lang": "ru",
+    "label": "Номер с джакузи в Тбилиси | Люксы с джакузи — Отель Агава",
+    "defaults": {
+      "title": "Номер с джакузи в Тбилиси | Люксы с джакузи — Отель Агава",
+      "description": "Номера с джакузи в отеле Агава в Тбилиси — спокойная обстановка, выразительный интерьер и комфортные люксы для двоих.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Номер с джакузи в Тбилиси | Люксы с джакузи — Отель Агава",
+      "description": "Номера с джакузи в отеле Агава в Тбилиси — спокойная обстановка, выразительный интерьер и комфортные люксы для двоих.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/offers/",
+    "lang": "ru",
+    "label": "Цены и предложения | Отель Агава, Тбилиси",
+    "defaults": {
+      "title": "Цены и предложения | Отель Агава, Тбилиси",
+      "description": "Бронируйте отель Агава напрямую, без предоплаты. Что входит в стоимость номера и что оплачивается отдельно: завтрак 30 ₾, трансфер 70/50 ₾.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Цены и предложения | Отель Агава, Тбилиси",
+      "description": "Бронируйте отель Агава напрямую, без предоплаты. Что входит в стоимость номера и что оплачивается отдельно: завтрак 30 ₾, трансфер 70/50 ₾.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/family3/",
+    "lang": "ru",
+    "label": "Семейный номер — 3 гостя — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Семейный номер — 3 гостя — Отель Агава · Тбилиси",
+      "description": "Семейный номер на 3 гостей — 32 м², две кровати, кондиционер, холодильник и ванная. Удобный выбор для семей в Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Семейный номер — 3 гостя — Отель Агава · Тбилиси",
+      "description": "Семейный номер на 3 гостей — 32 м², две кровати, кондиционер, холодильник и ванная. Удобный выбор для семей в Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/family4/",
+    "lang": "ru",
+    "label": "Семейный номер — 4 гостя — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Семейный номер — 4 гостя — Отель Агава · Тбилиси",
+      "description": "Семейный номер на 4 гостей — просторные 38 м², две кровати и весь комфорт. Место для всей семьи в отеле Агава, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Семейный номер — 4 гостя — Отель Агава · Тбилиси",
+      "description": "Семейный номер на 4 гостей — просторные 38 м², две кровати и весь комфорт. Место для всей семьи в отеле Агава, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/",
+    "lang": "ru",
+    "label": "Номера отеля в Тбилиси | Комнаты и люксы — Отель Агава",
+    "defaults": {
+      "title": "Номера отеля в Тбилиси | Комнаты и люксы — Отель Агава",
+      "description": "Комфортные номера отеля Агава в Тбилиси — стандартные, семейные и люксы с джакузи на 2–5 гостей. Условия проживания и прямое бронирование.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Номера отеля в Тбилиси | Комнаты и люксы — Отель Агава",
+      "description": "Комфортные номера отеля Агава в Тбилиси — стандартные, семейные и люксы с джакузи на 2–5 гостей. Условия проживания и прямое бронирование.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/jacuzzi/",
+    "lang": "ru",
+    "label": "Суперлюкс с джакузи — 2 гостя — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Суперлюкс с джакузи — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Суперлюкс с джакузи — VIP-номер с золотым интерьером, кроватью King и личным джакузи. Самый престижный номер Агавы в Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Суперлюкс с джакузи — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Суперлюкс с джакузи — VIP-номер с золотым интерьером, кроватью King и личным джакузи. Самый престижный номер Агавы в Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/jacuzzi-suite/",
+    "lang": "ru",
+    "label": "Люкс с джакузи — 2 гостя — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Люкс с джакузи — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Люкс с джакузи — романтичные 30 м² с личным джакузи, большой двуспальной кроватью и видом на город. Особый отдых для пар в отеле Агава, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Люкс с джакузи — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Люкс с джакузи — романтичные 30 м² с личным джакузи, большой двуспальной кроватью и видом на город. Особый отдых для пар в отеле Агава, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/lux/",
+    "lang": "ru",
+    "label": "Люкс — 2 гостя — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Люкс — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Люкс в отеле Агава — элегантные 28 м² в стиле барокко с кроватью King, потолком-небом, холодильником и кондиционером. Изысканный комфорт в Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Люкс — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Люкс в отеле Агава — элегантные 28 м² в стиле барокко с кроватью King, потолком-небом, холодильником и кондиционером. Изысканный комфорт в Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/standard/",
+    "lang": "ru",
+    "label": "Стандартный номер — 2 гостя — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Стандартный номер — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Стандартный номер в отеле Агава — комфортные 22 м² на двоих с потолком-небом, кондиционером, бесплатным Wi-Fi и ванной. Для коротких и долгих поездок.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Стандартный номер — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Стандартный номер в отеле Агава — комфортные 22 м² на двоих с потолком-небом, кондиционером, бесплатным Wi-Fi и ванной. Для коротких и долгих поездок.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/superlux/",
+    "lang": "ru",
+    "label": "Суперлюкс — 2 гостя — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Суперлюкс — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Суперлюкс — просторные 36 м² с интерьером в стиле барокко, кроватью King и потолком-небом. Максимальный комфорт на двоих в отеле Агава, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Суперлюкс — 2 гостя — Отель Агава · Тбилиси",
+      "description": "Суперлюкс — просторные 36 м² с интерьером в стиле барокко, кроватью King и потолком-небом. Максимальный комфорт на двоих в отеле Агава, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/rooms/twobedlux/",
+    "lang": "ru",
+    "label": "Двухкомнатный люкс — 5 гостей — Отель Агава · Тбилиси",
+    "defaults": {
+      "title": "Двухкомнатный люкс — 5 гостей — Отель Агава · Тбилиси",
+      "description": "Двухкомнатный люкс — 45 м², две отдельные комнаты и три кровати до 5 гостей. Потолок-небо, кондиционер и холодильник.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Двухкомнатный люкс — 5 гостей — Отель Агава · Тбилиси",
+      "description": "Двухкомнатный люкс — 45 м², две отдельные комнаты и три кровати до 5 гостей. Потолок-небо, кондиционер и холодильник.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/services/breakfast/",
+    "lang": "ru",
+    "label": "Завтрак в отеле в Тбилиси | Шведский стол 30 ₾ — Hotel Agava",
+    "defaults": {
+      "title": "Завтрак в отеле в Тбилиси | Шведский стол 30 ₾ — Hotel Agava",
+      "description": "Завтрак в отеле Агава — шведский стол с 08:00 до 11:00, 30 ₾ с человека. Яйца, сыры, выпечка, овощи, сезонные фрукты, кофе и чай. Дигоми, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Завтрак в отеле в Тбилиси | Шведский стол 30 ₾ — Hotel Agava",
+      "description": "Завтрак в отеле Агава — шведский стол с 08:00 до 11:00, 30 ₾ с человека. Яйца, сыры, выпечка, овощи, сезонные фрукты, кофе и чай. Дигоми, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/services/laundry/",
+    "lang": "ru",
+    "label": "Прачечная в отеле в Тбилиси | 10 ₾ за вещь — Hotel Agava",
+    "defaults": {
+      "title": "Прачечная в отеле в Тбилиси | 10 ₾ за вещь — Hotel Agava",
+      "description": "Прачечная в отеле Агава — 10 ₾ за вещь, готово через 12 часов. Сдать можно на ресепшене в любое время. Ул. Белиашвили, 161, Дигоми, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Прачечная в отеле в Тбилиси | 10 ₾ за вещь — Hotel Agava",
+      "description": "Прачечная в отеле Агава — 10 ₾ за вещь, готово через 12 часов. Сдать можно на ресепшене в любое время. Ул. Белиашвили, 161, Дигоми, Тбилиси.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/services/parking/",
+    "lang": "ru",
+    "label": "Бесплатная парковка при отеле в Тбилиси | Дигоми — Hotel Agava",
+    "defaults": {
+      "title": "Бесплатная парковка при отеле в Тбилиси | Дигоми — Hotel Agava",
+      "description": "Во дворе отеля Агава 11 парковочных мест — бесплатно для гостей отеля, с камерами и ночной охраной. Въезд круглосуточно. Ул. Белиашвили, 161, Дигоми.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Бесплатная парковка при отеле в Тбилиси | Дигоми — Hotel Agava",
+      "description": "Во дворе отеля Агава 11 парковочных мест — бесплатно для гостей отеля, с камерами и ночной охраной. Въезд круглосуточно. Ул. Белиашвили, 161, Дигоми.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/services/reception/",
+    "lang": "ru",
+    "label": "Ресепшен 24/7 | Отель Агава, Тбилиси",
+    "defaults": {
+      "title": "Ресепшен 24/7 | Отель Агава, Тбилиси",
+      "description": "Ресепшен отеля Агава работает круглосуточно — ночью на стойке живой человек, а не звонок. Заезд с 13:00, выезд до 12:00.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Ресепшен 24/7 | Отель Агава, Тбилиси",
+      "description": "Ресепшен отеля Агава работает круглосуточно — ночью на стойке живой человек, а не звонок. Заезд с 13:00, выезд до 12:00.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/services/transfer/",
+    "lang": "ru",
+    "label": "Трансфер из аэропорта Тбилиси | Встреча 70 ₾ — Hotel Agava",
+    "defaults": {
+      "title": "Трансфер из аэропорта Тбилиси | Встреча 70 ₾ — Hotel Agava",
+      "description": "Трансфер между аэропортом Тбилиси и отелем Агава — 70 ₾ встреча, 50 ₾ отправление. Цена за машину, до четырёх человек. Водитель встречает в зале прилёта.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Трансфер из аэропорта Тбилиси | Встреча 70 ₾ — Hotel Agava",
+      "description": "Трансфер между аэропортом Тбилиси и отелем Агава — 70 ₾ встреча, 50 ₾ отправление. Цена за машину, до четырёх человек. Водитель встречает в зале прилёта.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/services/wifi/",
+    "lang": "ru",
+    "label": "Бесплатный Wi-Fi в отеле | Отель Агава, Тбилиси",
+    "defaults": {
+      "title": "Бесплатный Wi-Fi в отеле | Отель Агава, Тбилиси",
+      "description": "Бесплатный Wi-Fi в отеле Агава — во всех номерах и общих зонах, без доплаты, без лимита времени и без ограничения по числу устройств.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Бесплатный Wi-Fi в отеле | Отель Агава, Тбилиси",
+      "description": "Бесплатный Wi-Fi в отеле Агава — во всех номерах и общих зонах, без доплаты, без лимита времени и без ограничения по числу устройств.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/services/breakfast/",
+    "lang": "ka",
+    "label": "საუზმე სასტუმროში — შვედური მაგიდა 30 ₾ | Hotel Agava",
+    "defaults": {
+      "title": "საუზმე სასტუმროში — შვედური მაგიდა 30 ₾ | Hotel Agava",
+      "description": "საუზმე სასტუმრო აგავაში — შვედური მაგიდა 08:00-დან 11:00-მდე, 30 ₾ ერთ სტუმარზე. ყველი, კვერცხი, ცომეული, ხილი, ყავა და ჩაი. დიღომი, თბილისი.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "საუზმე სასტუმროში — შვედური მაგიდა 30 ₾ | Hotel Agava",
+      "description": "საუზმე სასტუმრო აგავაში — შვედური მაგიდა 08:00-დან 11:00-მდე, 30 ₾ ერთ სტუმარზე. ყველი, კვერცხი, ცომეული, ხილი, ყავა და ჩაი. დიღომი, თბილისი.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/services/laundry/",
+    "lang": "ka",
+    "label": "სამრეცხაო სასტუმროში — 10 ₾ ნივთზე | Hotel Agava",
+    "defaults": {
+      "title": "სამრეცხაო სასტუმროში — 10 ₾ ნივთზე | Hotel Agava",
+      "description": "სამრეცხაო სასტუმრო აგავაში — 10 ₾ ერთ ნივთზე, მზადაა 12 საათში. შეკვეთა რეცეფციაზე, ნებისმიერ საათზე. ბელიაშვილის 161, დიღომი, თბილისი.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სამრეცხაო სასტუმროში — 10 ₾ ნივთზე | Hotel Agava",
+      "description": "სამრეცხაო სასტუმრო აგავაში — 10 ₾ ერთ ნივთზე, მზადაა 12 საათში. შეკვეთა რეცეფციაზე, ნებისმიერ საათზე. ბელიაშვილის 161, დიღომი, თბილისი.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/services/parking/",
+    "lang": "ka",
+    "label": "უფასო პარკინგი სასტუმროსთან თბილისში | დიღომი — Hotel Agava",
+    "defaults": {
+      "title": "უფასო პარკინგი სასტუმროსთან თბილისში | დიღომი — Hotel Agava",
+      "description": "სასტუმრო აგავას ეზოში 11 საპარკინგე ადგილია — უფასო სასტუმროს სტუმრებისთვის, კამერებით და ღამის დაცვით. შესვლა 24 საათი, ბელიაშვილის 161, დიღომი.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "უფასო პარკინგი სასტუმროსთან თბილისში | დიღომი — Hotel Agava",
+      "description": "სასტუმრო აგავას ეზოში 11 საპარკინგე ადგილია — უფასო სასტუმროს სტუმრებისთვის, კამერებით და ღამის დაცვით. შესვლა 24 საათი, ბელიაშვილის 161, დიღომი.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/services/reception/",
+    "lang": "ka",
+    "label": "24/7 რეცეფცია სასტუმროში | Hotel Agava თბილისი",
+    "defaults": {
+      "title": "24/7 რეცეფცია სასტუმროში | Hotel Agava თბილისი",
+      "description": "სასტუმრო აგავას რეცეფცია 24 საათი მუშაობს — ღამითაც ცოცხალი ადამიანია. ჩასვლა 13:00-დან, გასვლა 12:00-ზე.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "24/7 რეცეფცია სასტუმროში | Hotel Agava თბილისი",
+      "description": "სასტუმრო აგავას რეცეფცია 24 საათი მუშაობს — ღამითაც ცოცხალი ადამიანია. ჩასვლა 13:00-დან, გასვლა 12:00-ზე.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/services/transfer/",
+    "lang": "ka",
+    "label": "აეროპორტის ტრანსფერი თბილისში | 70 ₾ დახვედრა — Hotel Agava",
+    "defaults": {
+      "title": "აეროპორტის ტრანსფერი თბილისში | 70 ₾ დახვედრა — Hotel Agava",
+      "description": "ტრანსფერი თბილისის აეროპორტიდან სასტუმრო აგავამდე — 70 ₾ დახვედრა, 50 ₾ გაგზავნა. ფასი მანქანაზე, 4 ადგილი. მძღოლი ჩამოსვლის დარბაზში გხვდებათ.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "აეროპორტის ტრანსფერი თბილისში | 70 ₾ დახვედრა — Hotel Agava",
+      "description": "ტრანსფერი თბილისის აეროპორტიდან სასტუმრო აგავამდე — 70 ₾ დახვედრა, 50 ₾ გაგზავნა. ფასი მანქანაზე, 4 ადგილი. მძღოლი ჩამოსვლის დარბაზში გხვდებათ.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/services/wifi/",
+    "lang": "ka",
+    "label": "უფასო Wi-Fi სასტუმროში თბილისში | Hotel Agava",
+    "defaults": {
+      "title": "უფასო Wi-Fi სასტუმროში თბილისში | Hotel Agava",
+      "description": "უფასო Wi-Fi სასტუმრო აგავაში — მუშაობს ყველა ნომერსა და საერთო სივრცეში, დამატებითი გადასახადის და დროის შეზღუდვის გარეშე. პაროლი რეცეფციაზე.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "უფასო Wi-Fi სასტუმროში თბილისში | Hotel Agava",
+      "description": "უფასო Wi-Fi სასტუმრო აგავაში — მუშაობს ყველა ნომერსა და საერთო სივრცეში, დამატებითი გადასახადის და დროის შეზღუდვის გარეშე. პაროლი რეცეფციაზე.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/amenities/",
+    "lang": "tr",
+    "label": "Tiflis'te otel hizmetleri | Hotel Agava",
+    "defaults": {
+      "title": "Tiflis'te otel hizmetleri | Hotel Agava",
+      "description": "Otel Agava hizmetleri: ücretsiz güvenli otopark, Wi-Fi, açık büfe kahvaltı, havalimanı transferi, çamaşırhane, dört kata çıkan asansör ve 24/7 resepsiyon.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te otel hizmetleri | Hotel Agava",
+      "description": "Otel Agava hizmetleri: ücretsiz güvenli otopark, Wi-Fi, açık büfe kahvaltı, havalimanı transferi, çamaşırhane, dört kata çıkan asansör ve 24/7 resepsiyon.",
+      "og_image": "https://hotelagava.ge/assets/exterior-3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/blog/",
+    "lang": "tr",
+    "label": "Blog — Otel Agava | Tiflis",
+    "defaults": {
+      "title": "Blog — Otel Agava | Tiflis",
+      "description": "Otel Agava blogu — Tiflis'te tatil, gezilecek yerler ve otel hakkında haberler, ipuçları ve yazılar.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Blog — Otel Agava | Tiflis",
+      "description": "Otel Agava blogu — Tiflis'te tatil, gezilecek yerler ve otel hakkında haberler, ipuçları ve yazılar.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/business-hotel-tbilisi/",
+    "lang": "tr",
+    "label": "Tiflis'te iş seyahati için otel | Hotel Agava",
+    "defaults": {
+      "title": "Tiflis'te iş seyahati için otel | Hotel Agava",
+      "description": "İş seyahatleri için Otel Agava — tüm odalarda ücretsiz Wi-Fi, ücretsiz güvenli otopark, 24/7 resepsiyon, havalimanı transferi ve 12 saatte çamaşırhane.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te iş seyahati için otel | Hotel Agava",
+      "description": "İş seyahatleri için Otel Agava — tüm odalarda ücretsiz Wi-Fi, ücretsiz güvenli otopark, 24/7 resepsiyon, havalimanı transferi ve 12 saatte çamaşırhane.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/family-hotel-tbilisi/",
+    "lang": "tr",
+    "label": "Tiflis'te aile oteli | Aile odaları — Otel Agava",
+    "defaults": {
+      "title": "Tiflis'te aile oteli | Aile odaları — Otel Agava",
+      "description": "Otel Agava Tiflis'te 3–5 kişilik konforlu aile odaları sunuyor. Güvenli otopark, Wi-Fi, kahvaltı ve 24/7 resepsiyon.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te aile oteli | Aile odaları — Otel Agava",
+      "description": "Otel Agava Tiflis'te 3–5 kişilik konforlu aile odaları sunuyor. Güvenli otopark, Wi-Fi, kahvaltı ve 24/7 resepsiyon.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/hotel-dighomi-tbilisi/",
+    "lang": "tr",
+    "label": "Dighomi'de otel, Beliaşvili Caddesi | Otel Agava",
+    "defaults": {
+      "title": "Dighomi'de otel, Beliaşvili Caddesi | Otel Agava",
+      "description": "Otel Agava — Dighomi'de, Akaki Beliaşvili Caddesi 161'de konforlu bir otel. Otopark, Wi-Fi, aile ve jakuzili odalar, 24/7 resepsiyon.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Dighomi'de otel, Beliaşvili Caddesi | Otel Agava",
+      "description": "Otel Agava — Dighomi'de, Akaki Beliaşvili Caddesi 161'de konforlu bir otel. Otopark, Wi-Fi, aile ve jakuzili odalar, 24/7 resepsiyon.",
+      "og_image": "https://hotelagava.ge/assets/exterior-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/hotel-for-couples-tbilisi/",
+    "lang": "tr",
+    "label": "Tiflis'te çiftler için otel | Romantik odalar — Otel Agava",
+    "defaults": {
+      "title": "Tiflis'te çiftler için otel | Romantik odalar — Otel Agava",
+      "description": "Otel Agava'da ikiniz için konforlu bir konaklama planlayın — sakin odalar, jakuzili süitler, özgün iç mekân ve doğrudan rezervasyon.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te çiftler için otel | Romantik odalar — Otel Agava",
+      "description": "Otel Agava'da ikiniz için konforlu bir konaklama planlayın — sakin odalar, jakuzili süitler, özgün iç mekân ve doğrudan rezervasyon.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/hotel-near-us-embassy-tbilisi/",
+    "lang": "tr",
+    "label": "Tiflis'te ABD Büyükelçiliği yakınında otel | Otel Agava",
+    "defaults": {
+      "title": "Tiflis'te ABD Büyükelçiliği yakınında otel | Otel Agava",
+      "description": "Otel Agava ABD Büyükelçiliği'ne yaklaşık 800 metre uzaklıktadır. Konforlu odalar, otopark, Wi-Fi ve 24/7 resepsiyon — doğrudan rezervasyon yapın.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te ABD Büyükelçiliği yakınında otel | Otel Agava",
+      "description": "Otel Agava ABD Büyükelçiliği'ne yaklaşık 800 metre uzaklıktadır. Konforlu odalar, otopark, Wi-Fi ve 24/7 resepsiyon — doğrudan rezervasyon yapın.",
+      "og_image": "https://hotelagava.ge/assets/exterior-2.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/",
+    "lang": "tr",
+    "label": "Tiflis Dighomi Oteli | Hotel Agava",
+    "defaults": {
+      "title": "Tiflis Dighomi Oteli | Hotel Agava",
+      "description": "Tiflis Dighomi’de Hotel Agava: standart ve aile odaları, jakuzili süitler, Wi-Fi ve otopark. Beliashvili 161’de müsaitliği kontrol edin, doğrudan rezervasyon yapın.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis Dighomi Oteli | Hotel Agava",
+      "description": "Tiflis Dighomi’de Hotel Agava: standart ve aile odaları, jakuzili süitler, Wi-Fi ve otopark. Beliashvili 161’de müsaitliği kontrol edin, doğrudan rezervasyon yapın.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1"
+    }
+  },
+  {
+    "path": "/tr/jacuzzi-rooms-tbilisi/",
+    "lang": "tr",
+    "label": "Tiflis'te jakuzili oda | Jakuzili süitler — Otel Agava",
+    "defaults": {
+      "title": "Tiflis'te jakuzili oda | Jakuzili süitler — Otel Agava",
+      "description": "Otel Agava'nın Tiflis'teki jakuzili odaları — sakin bir ortam, özgün iç mekân ve iki kişilik konforlu süitler.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te jakuzili oda | Jakuzili süitler — Otel Agava",
+      "description": "Otel Agava'nın Tiflis'teki jakuzili odaları — sakin bir ortam, özgün iç mekân ve iki kişilik konforlu süitler.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/offers/",
+    "lang": "tr",
+    "label": "Fiyatlar ve teklifler | Otel Agava, Tiflis",
+    "defaults": {
+      "title": "Fiyatlar ve teklifler | Otel Agava, Tiflis",
+      "description": "Otel Agava'yı ön ödemesiz, doğrudan rezerve edin. Oda fiyatına neyin dâhil olduğunu ve neyin ayrı ücretlendirildiğini görün: kahvaltı 30 ₾, transfer 70/50 ₾.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Fiyatlar ve teklifler | Otel Agava, Tiflis",
+      "description": "Otel Agava'yı ön ödemesiz, doğrudan rezerve edin. Oda fiyatına neyin dâhil olduğunu ve neyin ayrı ücretlendirildiğini görün: kahvaltı 30 ₾, transfer 70/50 ₾.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/family3/",
+    "lang": "tr",
+    "label": "Aile Odası — 3 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "Aile Odası — 3 misafir — Otel Agava · Tiflis",
+      "description": "3 misafir için aile odası — iki yatak, klima, buzdolabı ve banyolu 32 m². Tiflis'te aileler için kullanışlı bir seçim.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Aile Odası — 3 misafir — Otel Agava · Tiflis",
+      "description": "3 misafir için aile odası — iki yatak, klima, buzdolabı ve banyolu 32 m². Tiflis'te aileler için kullanışlı bir seçim.",
+      "og_image": "https://hotelagava.ge/assets/agava-family3.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/family4/",
+    "lang": "tr",
+    "label": "Aile Odası — 4 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "Aile Odası — 4 misafir — Otel Agava · Tiflis",
+      "description": "4 misafir için aile odası — iki yatak ve tüm konforlarıyla geniş 38 m². Tiflis'teki Otel Agava'da tüm aile için alan.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Aile Odası — 4 misafir — Otel Agava · Tiflis",
+      "description": "4 misafir için aile odası — iki yatak ve tüm konforlarıyla geniş 38 m². Tiflis'teki Otel Agava'da tüm aile için alan.",
+      "og_image": "https://hotelagava.ge/assets/agava-family4.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/",
+    "lang": "tr",
+    "label": "Tiflis'te otel odaları | Odalar ve süitler — Otel Agava",
+    "defaults": {
+      "title": "Tiflis'te otel odaları | Odalar ve süitler — Otel Agava",
+      "description": "Otel Agava'nın Tiflis'teki konforlu odaları — 2–5 kişilik standart, aile ve jakuzili süitler. Koşulları görün ve doğrudan rezervasyon yapın.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te otel odaları | Odalar ve süitler — Otel Agava",
+      "description": "Otel Agava'nın Tiflis'teki konforlu odaları — 2–5 kişilik standart, aile ve jakuzili süitler. Koşulları görün ve doğrudan rezervasyon yapın.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/jacuzzi/",
+    "lang": "tr",
+    "label": "Jakuzili Süper Süit — 2 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "Jakuzili Süper Süit — 2 misafir — Otel Agava · Tiflis",
+      "description": "Jakuzili süper süit — altın rengi iç mekân, King yatak ve özel jakuzili VIP oda. Agava'nın Tiflis'teki en prestijli odası.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Jakuzili Süper Süit — 2 misafir — Otel Agava · Tiflis",
+      "description": "Jakuzili süper süit — altın rengi iç mekân, King yatak ve özel jakuzili VIP oda. Agava'nın Tiflis'teki en prestijli odası.",
+      "og_image": "https://hotelagava.ge/assets/agava-jacuzzi.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/jacuzzi-suite/",
+    "lang": "tr",
+    "label": "Jakuzili Kral Odası — 2 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "Jakuzili Kral Odası — 2 misafir — Otel Agava · Tiflis",
+      "description": "Jakuzili kral odası — özel jakuzi, geniş çift kişilik yatak ve şehir manzaralı romantik 30 m². Tiflis'teki Otel Agava'da çiftler için özel bir kaçamak.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Jakuzili Kral Odası — 2 misafir — Otel Agava · Tiflis",
+      "description": "Jakuzili kral odası — özel jakuzi, geniş çift kişilik yatak ve şehir manzaralı romantik 30 m². Tiflis'teki Otel Agava'da çiftler için özel bir kaçamak.",
+      "og_image": "https://hotelagava.ge/assets/room-jacuzzi-suite-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/lux/",
+    "lang": "tr",
+    "label": "Lüks Oda — 2 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "Lüks Oda — 2 misafir — Otel Agava · Tiflis",
+      "description": "Agava'da lüks oda — King yatak, gökyüzü tavanı, buzdolabı ve klimalı barok tarzında zarif 28 m². Tiflis'te ince bir konfor.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Lüks Oda — 2 misafir — Otel Agava · Tiflis",
+      "description": "Agava'da lüks oda — King yatak, gökyüzü tavanı, buzdolabı ve klimalı barok tarzında zarif 28 m². Tiflis'te ince bir konfor.",
+      "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/standard/",
+    "lang": "tr",
+    "label": "Standart Oda — 2 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "Standart Oda — 2 misafir — Otel Agava · Tiflis",
+      "description": "Otel Agava'da standart oda — gökyüzü tavanı, klima, ücretsiz Wi-Fi ve banyolu, iki kişilik konforlu 22 m². Tiflis'te kısa ve uzun konaklamalar için ideal.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Standart Oda — 2 misafir — Otel Agava · Tiflis",
+      "description": "Otel Agava'da standart oda — gökyüzü tavanı, klima, ücretsiz Wi-Fi ve banyolu, iki kişilik konforlu 22 m². Tiflis'te kısa ve uzun konaklamalar için ideal.",
+      "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/superlux/",
+    "lang": "tr",
+    "label": "Süper Lüks — 2 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "Süper Lüks — 2 misafir — Otel Agava · Tiflis",
+      "description": "Süper lüks — barok iç mekân, King yatak ve gökyüzü tavanlı geniş 36 m². Tiflis'teki Otel Agava'da iki misafir için maksimum konfor.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Süper Lüks — 2 misafir — Otel Agava · Tiflis",
+      "description": "Süper lüks — barok iç mekân, King yatak ve gökyüzü tavanlı geniş 36 m². Tiflis'teki Otel Agava'da iki misafir için maksimum konfor.",
+      "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/rooms/twobedlux/",
+    "lang": "tr",
+    "label": "İki Odalı Süit — 5 misafir — Otel Agava · Tiflis",
+    "defaults": {
+      "title": "İki Odalı Süit — 5 misafir — Otel Agava · Tiflis",
+      "description": "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Gökyüzü tavanı, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "İki Odalı Süit — 5 misafir — Otel Agava · Tiflis",
+      "description": "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Gökyüzü tavanı, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim.",
+      "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/services/breakfast/",
+    "lang": "tr",
+    "label": "Tiflis'te otel kahvaltısı | Açık büfe 30 ₾ — Hotel Agava",
+    "defaults": {
+      "title": "Tiflis'te otel kahvaltısı | Açık büfe 30 ₾ — Hotel Agava",
+      "description": "Otel Agava'da kahvaltı — 08:00-11:00 arası açık büfe, kişi başı 30 ₾. Yumurta, peynirler, hamur işleri, sebze, mevsim meyveleri, kahve ve çay.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te otel kahvaltısı | Açık büfe 30 ₾ — Hotel Agava",
+      "description": "Otel Agava'da kahvaltı — 08:00-11:00 arası açık büfe, kişi başı 30 ₾. Yumurta, peynirler, hamur işleri, sebze, mevsim meyveleri, kahve ve çay.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/services/laundry/",
+    "lang": "tr",
+    "label": "Tiflis'te otel çamaşırhanesi | Parça başı 10 ₾ — Hotel Agava",
+    "defaults": {
+      "title": "Tiflis'te otel çamaşırhanesi | Parça başı 10 ₾ — Hotel Agava",
+      "description": "Otel Agava'da çamaşır yıkama — parça başı 10 ₾, 12 saatte hazır. Resepsiyona her saat teslim edebilirsiniz. Beliaşvili Cad. 161, Dighomi, Tiflis.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te otel çamaşırhanesi | Parça başı 10 ₾ — Hotel Agava",
+      "description": "Otel Agava'da çamaşır yıkama — parça başı 10 ₾, 12 saatte hazır. Resepsiyona her saat teslim edebilirsiniz. Beliaşvili Cad. 161, Dighomi, Tiflis.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/services/parking/",
+    "lang": "tr",
+    "label": "Tiflis'te otelde ücretsiz otopark | Dighomi — Hotel Agava",
+    "defaults": {
+      "title": "Tiflis'te otelde ücretsiz otopark | Dighomi — Hotel Agava",
+      "description": "Otel Agava'nın kendi bahçesinde 11 park yeri var — otel misafirlerine ücretsiz, kameralı ve gece güvenlikli. Giriş 24 saat açık. Beliaşvili Cad.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te otelde ücretsiz otopark | Dighomi — Hotel Agava",
+      "description": "Otel Agava'nın kendi bahçesinde 11 park yeri var — otel misafirlerine ücretsiz, kameralı ve gece güvenlikli. Giriş 24 saat açık. Beliaşvili Cad.",
+      "og_image": "https://hotelagava.ge/assets/agava-yard-parking.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/services/reception/",
+    "lang": "tr",
+    "label": "Tiflis'te 24/7 resepsiyon | Her saatte giriş — Hotel Agava",
+    "defaults": {
+      "title": "Tiflis'te 24/7 resepsiyon | Her saatte giriş — Hotel Agava",
+      "description": "Otel Agava'da resepsiyon 24 saat açık — gece zil değil, gerçek bir görevli. Giriş 13:00'ten, çıkış 12:00'ye kadar.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis'te 24/7 resepsiyon | Her saatte giriş — Hotel Agava",
+      "description": "Otel Agava'da resepsiyon 24 saat açık — gece zil değil, gerçek bir görevli. Giriş 13:00'ten, çıkış 12:00'ye kadar.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/services/transfer/",
+    "lang": "tr",
+    "label": "Tiflis havalimanı transferi | Karşılama 70 ₾ — Hotel Agava",
+    "defaults": {
+      "title": "Tiflis havalimanı transferi | Karşılama 70 ₾ — Hotel Agava",
+      "description": "Tiflis havalimanı ile Otel Agava arası transfer — karşılama 70 ₾, gidiş 50 ₾. Fiyat araç başına, dört kişiye kadar. Şoför sizi geliş salonunda karşılar.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis havalimanı transferi | Karşılama 70 ₾ — Hotel Agava",
+      "description": "Tiflis havalimanı ile Otel Agava arası transfer — karşılama 70 ₾, gidiş 50 ₾. Fiyat araç başına, dört kişiye kadar. Şoför sizi geliş salonunda karşılar.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/services/wifi/",
+    "lang": "tr",
+    "label": "Otelde ücretsiz Wi-Fi | Tüm odalarda — Hotel Agava Tiflis",
+    "defaults": {
+      "title": "Otelde ücretsiz Wi-Fi | Tüm odalarda — Hotel Agava Tiflis",
+      "description": "Otel Agava'da ücretsiz Wi-Fi — tüm odalarda ve ortak alanlarda çalışır; ek ücret, süre sınırı ve cihaz sınırı yoktur. Şifre resepsiyonda verilir.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Otelde ücretsiz Wi-Fi | Tüm odalarda — Hotel Agava Tiflis",
+      "description": "Otel Agava'da ücretsiz Wi-Fi — tüm odalarda ve ortak alanlarda çalışır; ek ücret, süre sınırı ve cihaz sınırı yoktur. Şifre resepsiyonda verilir.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  }
+]

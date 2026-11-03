@@ -15,6 +15,9 @@ os.chdir(ROOT)
 def git_date(path):
     """Last commit date for this file — the honest lastmod."""
     try:
+        if subprocess.run(["git", "diff", "HEAD", "--quiet", "--", path],
+                          capture_output=True, timeout=15).returncode == 1:
+            return datetime.date.today().isoformat()
         d = subprocess.run(["git", "log", "-1", "--format=%cs", "--", path],
                            capture_output=True, text=True, timeout=15).stdout.strip()
         return d or None
@@ -80,8 +83,9 @@ for key in sorted(groups, key=lambda k: (priority(k) != "1.0", k)):
     alts = "".join(
         f'    <xhtml:link rel="alternate" hreflang="{L}" href="{variants[L]["url"]}"/>\n'
         for L in LANGS if L in variants)
-    if "ka" in variants:
-        alts += f'    <xhtml:link rel="alternate" hreflang="x-default" href="{variants["ka"]["url"]}"/>\n'
+    if variants:
+        default = variants.get("ka", next(iter(variants.values())))
+        alts += f'    <xhtml:link rel="alternate" hreflang="x-default" href="{default["url"]}"/>\n'
     for L in LANGS:
         if L not in variants:
             continue

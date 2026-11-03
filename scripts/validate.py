@@ -84,7 +84,7 @@ def unescape_ld(s):
 
 # ── 1. structured data parses ────────────────────────────────────────────
 def check_jsonld(f, h):
-    for block in re.findall(r'<script type="application/ld\+json">(.*?)</script>', h, re.S):
+    for block in re.findall(r'<script\b[^>]*type="application/ld\+json"[^>]*>(.*?)</script>', h, re.S):
         try:
             json.loads(unescape_ld(block))
         except Exception as e:
@@ -105,9 +105,18 @@ def check_hreflang(f, h):
     tags = dict(re.findall(r'hreflang="([^"]+)" href="([^"]+)"', h))
     if not tags:
         return
-    for want in ("ka", "en", "ru", "tr", "x-default"):
-        if want not in tags:
-            fail(f, f"hreflang აკლია: {want}")
+    for lang_code, target in tags.items():
+        if not target.startswith(SITE + "/"):
+            fail(f, "hreflang outside site: " + target); continue
+        rel = target[len(SITE)+1:] + "index.html"
+        if not os.path.isfile(rel):
+            fail(f, "hreflang target missing: " + target); continue
+        other = open(rel, encoding="utf-8").read()
+        if re.search(r'name="robots"[^>]*noindex', other):
+            fail(f, "hreflang target is noindex: " + target)
+        back = dict(re.findall(r'hreflang="([^"]+)" href="([^"]+)"', other))
+        if back != tags:
+            fail(f, "hreflang is not reciprocal: " + target)
     lang = re.match(r"^(en|ru|tr)/", f)
     me = tags.get(lang.group(1) if lang else "ka")
     if me and me != url_of(f):
@@ -304,6 +313,8 @@ def check_sitemap(indexable, noindexed):
     listed = set(re.findall(r"<loc>([^<]+)</loc>", open("sitemap.xml", encoding="utf-8").read()))
     for u in sorted(indexable - listed):
         fail("sitemap.xml", f"აკლია: {u}")
+    for u in sorted(listed - indexable - noindexed):
+        fail("sitemap.xml", f"Unknown URL: {u}")
     for u in sorted(noindexed & listed):
         fail("sitemap.xml", f"noindex გვერდი ჩამოთვლილია: {u}")
 

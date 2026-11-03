@@ -15,9 +15,8 @@
 /js/*
   Cache-Control: public, max-age=604800
 
-# robots.txt keeps crawlers out of these, so Google never reads their meta
-# noindex; a link from anywhere could still get the bare URL listed. The
-# header travels with the response, so it holds even where crawling stops.
+# Crawlers must be allowed to fetch these URLs to observe noindex.
+# Authentication and database policies protect private data.
 /admin
   X-Robots-Tag: noindex, nofollow
 /admin.html

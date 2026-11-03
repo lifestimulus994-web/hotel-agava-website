@@ -1,22 +1,24 @@
 /* ═══════════════════════════════════════════
    HOTEL AGAVA — per-page SEO overrides (applied at runtime)
    Reads seo_meta for the current path (admin "SEO" module) and
-   patches <head>. Only ka pages (lang pages keep their baked,
-   translated meta). Baked HTML is the fallback if no override.
+   patches <head>. All four languages use their own path. The publishing workflow also
+   bakes these values into HTML for crawlers and social previews.
    ═══════════════════════════════════════════ */
 (function () {
   "use strict";
   var CFG = window.AGAVA_CONFIG || {};
-  if (!CFG.CONFIGURED || !window.supabase) return;
+  if (!CFG.CONFIGURED) return;
 
   var path = location.pathname || "/";
-  if (/^\/(en|ru|tr)(\/|$)/.test(path)) return;   // localized pages keep baked meta
   if (path.length > 1 && path.charAt(path.length - 1) !== "/") path += "/";
 
-  var sb = window.supabase.createClient(CFG.SUPABASE_URL, CFG.SUPABASE_ANON_KEY);
-  sb.from("seo_meta").select("title,description,og_image,robots").eq("path", path).limit(1)
-    .then(function (res) {
-      var m = res && res.data && res.data[0];
+  fetch(CFG.SUPABASE_URL + "/rest/v1/seo_meta?select=title,description,og_image,robots&path=eq." + encodeURIComponent(path) + "&limit=1", {
+    headers: { apikey: CFG.SUPABASE_ANON_KEY }
+  }).then(function (res) {
+    if (!res.ok) throw new Error("SEO metadata unavailable");
+    return res.json();
+  }).then(function (rows) {
+      var m = rows && rows[0];
       if (!m) return;
       if (m.title) {
         document.title = m.title;
@@ -33,7 +35,7 @@
         setMeta("name", "twitter:image", m.og_image);
       }
       if (m.robots) setMeta("name", "robots", m.robots);
-    });
+    }).catch(function () { /* The published HTML remains the fallback. */ });
 
   function setMeta(attr, val, content) {
     var el = document.querySelector('meta[' + attr + '="' + val + '"]');

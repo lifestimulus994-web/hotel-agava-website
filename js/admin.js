@@ -868,6 +868,7 @@
   function renderPriceCurrent(prices) {
     var host = document.getElementById("prCurrent");
     if (!host) return;
+    prGroups = [];
     if (!prices.length) {
       host.innerHTML = '<p class="pr-hint">ამ თვეში ფასდაკლებული დღე არ არის.</p>';
       return;
@@ -886,23 +887,63 @@
         if (prev) prev.setDate(prev.getDate() + 1);
         if (run && Number(run.price) === Number(po.price) && iso(prev) === po.date) {
           run.to = po.date;
+          run.ids.push(po.id);
         } else {
           if (run) out.push(run);
-          run = { name: rt ? rt.name : "—", from: po.date, to: po.date, price: po.price };
+          run = { name: rt ? rt.name : "—", from: po.date, to: po.date, price: po.price, ids: [po.id] };
         }
       });
       if (run) out.push(run);
     });
     out.sort(function (a, b) { return a.from < b.from ? -1 : 1; });
+    prGroups = out;
     host.innerHTML =
       '<h4 class="pr-sub">ამ თვეში დაყენებული</h4><ul class="pr-list">' +
-      out.map(function (r) {
+      out.map(function (r, index) {
         var when = r.from === r.to ? r.from : r.from + " — " + r.to;
-        return "<li><strong>" + when + "</strong> · " + esc(r.name) + " · " + Number(r.price) + " ₾</li>";
-      }).join("") + "</ul>";
+        return '<li><label class="pr-existing"><input type="checkbox" data-pr-group="' + index + '"> <span><strong>' + when + "</strong> · " + esc(r.name) + " · " + Number(r.price) + " ₾</span></label></li>";
+      }).join("") + '</ul><button class="abtn abtn--danger" id="prClearSelected" disabled>მონიშნულის მოხსნა</button>';
+    host.onchange = prUpdateSelected;
+    document.getElementById("prClearSelected").onclick = prClearSelected;
   }
 
-  var prBusy = false;
+  var prBusy = false, prGroups = [];
+  function prSelectedIds() {
+    var ids = [];
+    Array.prototype.forEach.call(document.querySelectorAll("#prCurrent input[data-pr-group]:checked"), function (box) {
+      var group = prGroups[Number(box.getAttribute("data-pr-group"))];
+      if (group) ids = ids.concat(group.ids);
+    });
+    return ids.filter(function (id, index) { return Number.isInteger(id) && ids.indexOf(id) === index; });
+  }
+  function prUpdateSelected() {
+    var button = document.getElementById("prClearSelected");
+    if (button) button.disabled = prBusy || !prSelectedIds().length;
+  }
+  function prSetBusy(busy) {
+    prBusy = busy;
+    document.getElementById("prSet").disabled = busy;
+    document.getElementById("prClear").disabled = busy;
+    prUpdateSelected();
+  }
+  function prClearSelected() {
+    if (prBusy) return;
+    var ids = prSelectedIds();
+    if (!ids.length) return;
+    var st = document.getElementById("prStatus");
+    st.textContent = "ინახება…"; st.className = "amodal__status";
+    prSetBusy(true);
+    // Delete only the record IDs shown in the checked groups; RLS still applies.
+    return sb.from("price_overrides").delete().in("id", ids).select("id").then(function (res) {
+      if (res.error) throw res.error;
+      var count = (res.data || []).length;
+      st.textContent = count ? "მოიხსნა: " + count + " ჩანაწერი ✓" : "მონიშნული ფასდაკლებები უკვე მოხსნილია.";
+      return renderCalendar();
+    }).catch(function () {
+      st.textContent = "მოხსნა ვერ დადასტურდა. განაახლე კალენდარი და გადაამოწმე მონიშნული ფასდაკლებები.";
+      st.className = "amodal__status is-error";
+    }).finally(function () { prSetBusy(false); });
+  }
   function prRun(clear) {
     if (prBusy) return;
     var st = document.getElementById("prStatus");
@@ -922,9 +963,7 @@
     if (!Number.isInteger(days) || days < 1 || days > 365) return fail("აირჩიე მაქსიმუმ 365 დღე, ორივე თარიღის ჩათვლით.");
     if (!clear && pct && (!Number.isInteger(Number(pct)) || Number(pct) < 1 || Number(pct) > 90)) return fail("პროცენტი უნდა იყოს მთელი რიცხვი 1-დან 90-მდე.");
     if (!clear && price && (!Number.isFinite(Number(price)) || Number(price) < 0)) return fail("ფასი უნდა იყოს ნული ან დადებითი რიცხვი.");
-    prBusy = true;
-    document.getElementById("prSet").disabled = true;
-    document.getElementById("prClear").disabled = true;
+    prSetBusy(true);
     st.textContent = "ინახება…"; st.className = "amodal__status";
     var call = clear
       ? sb.rpc("admin_clear_price_range", { p_room_type_ids: ids, p_from: from, p_to: to })
@@ -949,9 +988,7 @@
     }).catch(function () {
       fail("ოპერაციის შედეგი ვერ დადასტურდა. განაახლე კალენდარი და გადაამოწმე ფასები ხელახლა ცდამდე.");
     }).finally(function () {
-      prBusy = false;
-      document.getElementById("prSet").disabled = false;
-      document.getElementById("prClear").disabled = false;
+      prSetBusy(false);
     });
   }
 
@@ -1221,34 +1258,42 @@
   });
 
   /* ═══ SEO (per-page meta, RankMath-lite) ═══ */
-  var SEO_STATIC = [
-    { path: "/", label: "მთავარი (Home)" },
-    { path: "/blog/", label: "ბლოგი" }
-  ];
-  function seoPages() {
-    var rooms = (ROOM_TYPES || []).map(function (rt) {
-      return { path: "/rooms/" + rt.slug + "/", label: "ოთახი — " + rt.name };
-    });
-    return SEO_STATIC.concat(rooms);
-  }
+  var SEO_PAGES = [];
   function renderSeo() {
     var sel = document.getElementById("seoPage");
-    sel.innerHTML = seoPages().map(function (p) {
-      return '<option value="' + esc(p.path) + '">' + esc(p.label) + " — " + esc(p.path) + "</option>";
-    }).join("");
-    sel.onchange = function () { loadSeoForm(sel.value); };
-    if (sel.value) loadSeoForm(sel.value);
+    var host = document.getElementById("seoEditor");
+    host.textContent = "იტვირთება…";
+    fetch("/data/seo-pages.json", { cache: "no-store" }).then(function (res) {
+      if (!res.ok) throw new Error("გვერდების სია ვერ ჩაიტვირთა");
+      return res.json();
+    }).then(function (pages) {
+      SEO_PAGES = pages;
+      sel.innerHTML = ["ka", "en", "ru", "tr"].map(function (lang) {
+        return '<optgroup label="' + lang.toUpperCase() + '">' + pages.filter(function (p) {
+          return p.lang === lang;
+        }).map(function (p) {
+          return '<option value="' + esc(p.path) + '">' + esc(p.label) + " — " + esc(p.path) + "</option>";
+        }).join("") + "</optgroup>";
+      }).join("");
+      sel.onchange = function () { loadSeoForm(sel.value); };
+      if (sel.value) loadSeoForm(sel.value);
+    }).catch(function (err) { host.textContent = "შეცდომა: " + err.message; });
   }
   function loadSeoForm(path) {
     var host = document.getElementById("seoEditor");
     host.innerHTML = "<p class='muted'>იტვირთება…</p>";
     sb.from("seo_meta").select("*").eq("path", path).limit(1).then(function (res) {
-      var m = (res.data && res.data[0]) || { path: path, title: "", description: "", og_image: "", robots: "index, follow", focus_keyword: "" };
+      if (document.getElementById("seoPage").value !== path) return;
+      if (res.error) { host.textContent = "შეცდომა: " + res.error.message; return; }
+      var page = SEO_PAGES.find(function (p) { return p.path === path; });
+      var saved = (res.data && res.data[0]) || {};
+      var m = Object.assign({ focus_keyword: "" }, page.defaults);
+      Object.keys(saved).forEach(function (key) { if (saved[key]) m[key] = saved[key]; });
       host.innerHTML =
         '<div class="seo-form">' +
           '<label>Title (SEO სათაური)<input id="seoTitle" type="text" value="' + esc(m.title) + '" maxlength="70"></label>' +
           '<div class="seo-meter" id="seoTitleMeter"></div>' +
-          '<label>Meta Description<textarea id="seoDesc" rows="3" maxlength="220">' + esc(m.description) + '</textarea></label>' +
+          '<label>Meta Description<textarea id="seoDesc" rows="3" maxlength="200">' + esc(m.description) + '</textarea></label>' +
           '<div class="seo-meter" id="seoDescMeter"></div>' +
           '<label>Focus Keyword<input id="seoKw" type="text" value="' + esc(m.focus_keyword) + '" placeholder="მაგ.: სასტუმრო თბილისში"></label>' +
           '<div class="seo-cover">' +
@@ -1256,7 +1301,7 @@
             '<input id="seoOg" type="text" value="' + esc(m.og_image) + '" placeholder="OG image URL (არასავალდებულო)">' +
           '</div>' +
           '<label>Robots<select id="seoRobots">' +
-            ["index, follow", "noindex, follow", "index, nofollow", "noindex, nofollow"].map(function (r) { return "<option" + (m.robots === r ? " selected" : "") + ">" + r + "</option>"; }).join("") +
+            ["index, follow, max-image-preview:large, max-snippet:-1", "index, follow", "noindex, follow", "index, nofollow", "noindex, nofollow"].map(function (r) { return "<option" + (m.robots === r ? " selected" : "") + ">" + r + "</option>"; }).join("") +
           '</select></label>' +
           '<div class="seo-preview" id="seoPreview"></div>' +
           '<ul class="seo-checks" id="seoChecks"></ul>' +
@@ -1272,6 +1317,8 @@
       });
       document.getElementById("seoSave").addEventListener("click", function () { saveSeo(path); });
       seoUpdatePreview();
+    }).catch(function (err) {
+      if (document.getElementById("seoPage").value === path) host.textContent = "შეცდომა: " + err.message;
     });
   }
   function seoUpdatePreview() {
@@ -1309,10 +1356,16 @@
       robots: document.getElementById("seoRobots").value,
       focus_keyword: document.getElementById("seoKw").value.trim()
     };
+    if (row.og_image && !/^https:\/\/[^/]+/.test(row.og_image)) {
+      st.textContent = "OG სურათს HTTPS მისამართი სჭირდება"; return;
+    }
+    var button = document.getElementById("seoSave");
+    button.disabled = true;
     st.textContent = "ინახება…";
     sb.from("seo_meta").upsert(row, { onConflict: "path" }).then(function (res) {
       if (res.error) { st.textContent = "შეცდომა: " + res.error.message; return; }
-      st.textContent = "შენახულია ✓ — მოქმედებს ქართულ გვერდზე";
-    });
+      st.textContent = "შენახულია ✓ — არჩეული ენის გვერდისთვის. HTML განახლდება შემდეგი წარმატებული გამოქვეყნებისას.";
+    }).catch(function (err) { st.textContent = "შეცდომა: " + err.message; })
+      .finally(function () { button.disabled = false; });
   }
 })();
