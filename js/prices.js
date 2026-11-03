@@ -36,9 +36,20 @@
      original is kept on the element, so running twice never nests. */
   var FIRST_NUMBER = /(^|>)([^<]*?)(\d+)/;
 
+  /* js/main.js draws the homepage grid from rooms-data, which now carries
+     salePrice, and scripts/applyprices.js writes the same markup into the
+     static pages — so the figure often arrives already wrapped. Reduce it
+     back to the plain price before rewriting, or the sale gets wrapped a
+     second time and the card shows the price three times over. */
+  var SALE_MARKUP = /<s[^>]*class="[^"]*price-was[^"]*"[^>]*>(\d+)<\/s>\s*<span[^>]*class="[^"]*price-now[^"]*"[^>]*>\d+<\/span>/g;
+
+  function plain(html) {
+    return html.replace(SALE_MARKUP, "$1");
+  }
+
   function money(el, base, sale) {
     if (!el) return;
-    if (!el.hasAttribute("data-price-tpl")) el.setAttribute("data-price-tpl", el.innerHTML);
+    if (!el.hasAttribute("data-price-tpl")) el.setAttribute("data-price-tpl", plain(el.innerHTML));
     var tpl = el.getAttribute("data-price-tpl");
     if (!FIRST_NUMBER.test(tpl)) return;
     var shown = sale

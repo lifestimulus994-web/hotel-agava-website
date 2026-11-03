@@ -39,7 +39,7 @@
       salePrice: 240,
       images: ["assets/agava-lux.webp","assets/room-lux-1.webp","assets/room-lux-2.webp","assets/room-lux-3.webp","assets/room-lux-4.webp"],
       alt: "ლუქსი ოთახი ბაროკოს სტილში, ცის ჭერით",
-      count: "5 ოთახი",
+      count: "3 ოთახი",
       specs: [
         { icon: "bed", text: "1 King საწოლი" },
         { icon: "guests", text: "2 სტუმარი" },
@@ -83,7 +83,7 @@
       salePrice: 170,
       images: ["assets/agava-family3.webp","assets/room-family3-2.webp","assets/room-family3-3.webp","assets/room-family3-4.webp","assets/room-family3-1.webp"],
       alt: "საოჯახო ოთახი სამ სტუმარზე",
-      count: "3 ოთახი",
+      count: "4 ოთახი",
       specs: [
         { icon: "bed", text: "2 საწოლი" },
         { icon: "guests", text: "3 სტუმარი" },
@@ -105,7 +105,7 @@
       salePrice: 200,
       images: ["assets/agava-family4.webp","assets/room-family4-1.webp"],
       alt: "საოჯახო ოთახი ოთხ სტუმარზე",
-      count: "2 ოთახი",
+      count: "3 ოთახი",
       specs: [
         { icon: "bed", text: "2 საწოლი" },
         { icon: "guests", text: "4 სტუმარი" },

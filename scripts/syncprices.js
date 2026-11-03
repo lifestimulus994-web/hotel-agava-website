@@ -26,7 +26,7 @@ const LOCAL = window.AGAVA_ROOMS_DATA;
 /* sql/sale.sql may not have been applied yet, in which case asking for
    the sale columns is a 400 — then every room simply has no sale */
 async function load() {
-  for (const cols of ['slug,base_price,sale_price,sale_active,visible', 'slug,base_price,visible']) {
+  for (const cols of ['slug,base_price,sale_price,sale_active,visible,total_rooms', 'slug,base_price,visible,total_rooms']) {
     const r = await fetch(`${URL}/rest/v1/room_types?select=${cols}`, {
       headers: { apikey: KEY, Authorization: `Bearer ${KEY}` },
     });
@@ -52,10 +52,16 @@ async function load() {
     const base = Number(r.base_price);
     let sale = r.sale_active && r.sale_price != null ? Number(r.sale_price) : 0;
     if (!(sale > 0) || sale >= base) sale = 0;
-    return [r.slug, { price: base, salePrice: sale }];
+    return [r.slug, { price: base, salePrice: sale, rooms: Number(r.total_rooms) }];
   }));
+  /* the card's "N ოთახი" is part of what has to stay in step: the admin
+     panel raised standard from 2 to 7 while the card still said 2 */
+  const roomsOf = r => Number((String(r.count || '').match(/\d+/) || [])[0]) || 0;
   const diffs = LOCAL
-    .filter(r => db[r.slug] && (db[r.slug].price !== r.price || db[r.slug].salePrice !== (r.salePrice || 0)))
+    .filter(r => db[r.slug] && (
+      db[r.slug].price !== r.price ||
+      db[r.slug].salePrice !== (r.salePrice || 0) ||
+      db[r.slug].rooms !== roomsOf(r)))
     .map(r => ({ slug: r.slug, from: r, to: db[r.slug] }));
 
   if (!diffs.length) {
@@ -63,7 +69,9 @@ async function load() {
   } else {
     for (const d of diffs) {
       const show = p => p.salePrice ? `${p.price} → ${p.salePrice} ₾` : `${p.price} ₾`;
-      console.log(`  ⚠️  ${d.slug}: კოდში ${show(d.from)}, ბაზაში ${show(d.to)}`);
+      const rf = roomsOf(d.from), rt = d.to.rooms;
+      const note = rf !== rt ? `, ოთახი ${rf} → ${rt}` : '';
+      console.log(`  ⚠️  ${d.slug}: კოდში ${show(d.from)}, ბაზაში ${show(d.to)}${note}`);
     }
     if (CHECK) return;
 
@@ -71,8 +79,18 @@ async function load() {
     let data = fs.readFileSync('js/rooms-data.js', 'utf8');
     for (const d of diffs) {
       const re = new RegExp(`(slug:\\s*"${d.slug}"[\\s\\S]{0,400}?price:\\s*)\\d+(,\\s*salePrice:\\s*\\d+)?`);
-      if (!re.test(data)) { console.log(`  ❌ ${d.slug}: ფასი ვერ ვიპოვე rooms-data.js-ში`); continue; }
-      data = data.replace(re, `$1${d.to.price},\n      salePrice: ${d.to.salePrice}`);
+      if (re.test(data)) data = data.replace(re, `$1${d.to.price},\n      salePrice: ${d.to.salePrice}`);
+      else console.log(`  ❌ ${d.slug}: ფასი ვერ ვიპოვე rooms-data.js-ში`);
+
+      /* The card also states how many rooms of this type there are, and
+         nothing kept it in step: the admin panel raised standard from 2 to
+         7 while the card still said 2. One room reads "1 ნომერი", several
+         read "N ოთახი", as the hand-written copy did. */
+      if (d.to.rooms) {
+        const cre = new RegExp(`(slug:\\s*"${d.slug}"[\\s\\S]{0,600}?count:\\s*")[^"]*(")`);
+        const text = d.to.rooms === 1 ? '1 ნომერი' : d.to.rooms + ' ოთახი';
+        if (cre.test(data)) data = data.replace(cre, `$1${text}$2`);
+      }
     }
     fs.writeFileSync('js/rooms-data.js', data);
 
