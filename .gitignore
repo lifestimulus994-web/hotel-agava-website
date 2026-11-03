@@ -5,3 +5,9 @@ node_modules/
 
 .vercel
 .env*
+
+.public/
+.wrangler/
+
+__pycache__/
+*.py[cod]

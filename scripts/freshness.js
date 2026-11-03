@@ -37,7 +37,7 @@ function lastCommitDate(f) {
 const files = [];
 (function walk(d) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-    if (e.name === '.git' || e.name === 'node_modules') continue;
+    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'work') continue;
     const p = path.join(d, e.name);
     e.isDirectory() ? walk(p) : e.name === 'index.html' && files.push(p.replace(/^\.\//, ''));
   }

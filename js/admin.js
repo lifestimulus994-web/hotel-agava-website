@@ -1259,6 +1259,7 @@
 
   /* ═══ SEO (per-page meta, RankMath-lite) ═══ */
   var SEO_PAGES = [];
+  var stopSeoPublishCheck = function () {};
   function renderSeo() {
     var sel = document.getElementById("seoPage");
     var host = document.getElementById("seoEditor");
@@ -1280,6 +1281,7 @@
     }).catch(function (err) { host.textContent = "შეცდომა: " + err.message; });
   }
   function loadSeoForm(path) {
+    stopSeoPublishCheck();
     var host = document.getElementById("seoEditor");
     host.innerHTML = "<p class='muted'>იტვირთება…</p>";
     sb.from("seo_meta").select("*").eq("path", path).limit(1).then(function (res) {
@@ -1317,6 +1319,7 @@
       });
       document.getElementById("seoSave").addEventListener("click", function () { saveSeo(path); });
       seoUpdatePreview();
+      watchSeoPublication(path, m);
     }).catch(function (err) {
       if (document.getElementById("seoPage").value === path) host.textContent = "შეცდომა: " + err.message;
     });
@@ -1346,6 +1349,17 @@
     return '<span class="seo-bar seo-bar--' + cls + '"></span> ' + len + ' სიმბოლო (რეკ.: ' + min + "–" + max + ")";
   }
   function seoChk(pass, text) { return '<li class="' + (pass ? "is-ok" : "is-bad") + '">' + (pass ? "✓" : "✕") + " " + esc(text) + "</li>"; }
+  function watchSeoPublication(path, row) {
+    stopSeoPublishCheck();
+    var page = SEO_PAGES.find(function (p) { return p.path === path; });
+    var st = document.getElementById("seoStatus");
+    stopSeoPublishCheck = window.AGAVA_SEO_PUBLISH.watch(path, row, page.defaults, function (state) {
+      if (document.getElementById("seoPage").value !== path || !st.isConnected) return;
+      st.textContent = state === "published" ? "საიტზე გამოქვეყნებულია ✓" : state === "delayed" ?
+        "შენახულია ✓ — გამოქვეყნების დადასტურება ჯერ ვერ მივიღეთ. ხელახლა შენახვა საჭირო არ არის; სტატუსი მოგვიანებით შეამოწმეთ." :
+        "შენახულია ✓ — ავტომატურ გამოქვეყნებას ელოდება. შემოწმება ყოველ 10 წუთშია; რიგის გამო შესაძლოა მეტი დრო დასჭირდეს.";
+    });
+  }
   function saveSeo(path) {
     var st = document.getElementById("seoStatus");
     var row = {
@@ -1356,15 +1370,18 @@
       robots: document.getElementById("seoRobots").value,
       focus_keyword: document.getElementById("seoKw").value.trim()
     };
-    if (row.og_image && !/^https:\/\/[^/]+/.test(row.og_image)) {
-      st.textContent = "OG სურათს HTTPS მისამართი სჭირდება"; return;
+    if (row.og_image) {
+      try {
+        var imageUrl = new URL(row.og_image);
+        if (imageUrl.protocol !== "https:" || !imageUrl.hostname || imageUrl.username || imageUrl.password) throw new Error("invalid");
+      } catch (_) { st.textContent = "OG სურათს საჯარო HTTPS მისამართი სჭირდება"; return; }
     }
     var button = document.getElementById("seoSave");
     button.disabled = true;
     st.textContent = "ინახება…";
     sb.from("seo_meta").upsert(row, { onConflict: "path" }).then(function (res) {
       if (res.error) { st.textContent = "შეცდომა: " + res.error.message; return; }
-      st.textContent = "შენახულია ✓ — არჩეული ენის გვერდისთვის. HTML განახლდება შემდეგი წარმატებული გამოქვეყნებისას.";
+      if (document.getElementById("seoPage").value === path && st.isConnected) watchSeoPublication(path, row);
     }).catch(function (err) { st.textContent = "შეცდომა: " + err.message; })
       .finally(function () { button.disabled = false; });
   }

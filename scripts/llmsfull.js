@@ -18,7 +18,7 @@ const txt = s => s.replace(/<s class="price-was">\d+<\/s>\s*/g, '').replace(/<[^
 const pages = [];
 (function walk(d) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-    if (e.name === '.git') continue;
+    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'work') continue;
     const p = path.join(d, e.name).split(path.sep).join('/');
     if (e.isDirectory()) walk(p);
     else if (e.name === 'index.html' && /^en\//.test(p.replace(/^\.\//, ''))) pages.push(p.replace(/^\.\//, ''));

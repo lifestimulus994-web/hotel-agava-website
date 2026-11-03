@@ -49,7 +49,7 @@ const warn = [];
 
 function walk(d, out) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-    if (e.name === '.git' || e.name === 'node_modules') continue;
+    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'work') continue;
     const p = path.join(d, e.name);
     if (e.isDirectory()) walk(p, out);
     else if (e.name.endsWith('.html')) out.push(p);

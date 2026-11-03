@@ -35,7 +35,7 @@ function ruNoun(n, word) {
 
 function files(d, out) {
   for (const e of fs.readdirSync(d, { withFileTypes: true })) {
-    if (e.name === '.git' || e.name === 'node_modules') continue;
+    if (e.name.startsWith('.') || e.name === 'node_modules' || e.name === 'work') continue;
     const p = path.join(d, e.name);
     if (e.isDirectory()) files(p, out);
     else if (e.name.endsWith('.html')) out.push(p);

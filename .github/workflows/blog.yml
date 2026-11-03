@@ -1,71 +1,89 @@
-# Publishing a post is a checkbox in /admin, which writes to Supabase.
-# Supabase is not the website, so this turns each published post into a
-# real page in the repo with content available before JavaScript runs.
-# Cloudflare production publication is a separate deployment step.
-name: Publish blog posts
+# Admin saves are read from Supabase using its public, read-only API.
+# The production deployment identity is a GitHub Actions secret, never browser code.
+name: Publish site automatically
 
 on:
   schedule:
-    - cron: "17 * * * *"      # hourly; GitHub cron is best-effort
-  workflow_dispatch:           # "Run workflow" publishes immediately
+    - cron: "7,17,27,37,47,57 * * * *" # best-effort; avoids the busiest minute
+  push:
+    branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: write
 
 concurrency:
-  group: publish-blog
+  group: publish-production
   cancel-in-progress: false
 
 jobs:
-  build:
+  publish:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
         with:
-          fetch-depth: 0       # gen_sitemap reads git history for lastmod
-
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
       - uses: actions/setup-python@v5
         with:
           python-version: "3.12"
-
-      - name: Build post pages from Supabase
+      - name: Test SEO rendering and publication status
+        run: |
+          python -m unittest discover -s scripts -p "test_*.py"
+          node --test scripts/test_seo_publish.cjs
+      - name: Build published blog pages
         run: python scripts/build_blog.py
-
-      # The hotel edits prices in the admin panel; the static pages, the
-      # schema and the AI files follow from here.
-      - name: Sync prices from the database
-        run: node scripts/syncprices.js
-
-      # The Google rating and review count are typed once in the admin
-      # panel (Rooms → Google შეფასება); every page follows from here.
-      - name: Sync the Google rating from the database
-        run: node scripts/syncrating.js
-
-      - name: Bake SEO metadata for all four languages
+      - name: Sync public prices and rating
+        run: |
+          node scripts/syncprices.js
+          node scripts/syncrating.js
+      - name: Bake SEO into the initial HTML in all four languages
         run: python scripts/syncseo.py
-
-      # The date each page shows comes from that file's last commit, so it
-      # refreshes itself here rather than being typed by hand.
-      - name: Refresh the "updated" dates
-        run: node scripts/freshness.js
-
-      - name: Rebuild the AI reference file
-        run: node scripts/llmsfull.js
-
-      - name: Rebuild sitemap
-        run: python scripts/gen_sitemap.py
-
-      - name: Validate before committing
-        run: python scripts/validate.py
-
-      - name: Commit if anything changed
+      - name: Update public reference files
+        run: |
+          node scripts/freshness.js
+          node scripts/llmsfull.js
+          python scripts/gen_sitemap.py
+      - name: Validate and package only public files
+        run: |
+          python scripts/validate.py
+          python scripts/package_site.py
+      - name: Check whether production needs updating
+        id: changes
+        run: echo "needed=$(python scripts/deployment_needed.py)" >> "$GITHUB_OUTPUT"
+      - name: Require the publishing credential
+        if: steps.changes.outputs.needed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
+            echo '::error::Cloudflare publishing credential is missing. Production has not been changed.'
+            exit 1
+          fi
+      - name: Install the pinned Cloudflare CLI
+        if: steps.changes.outputs.needed == 'true'
+        run: npm ci
+      - name: Verify a preview, promote, and verify production (restore on failure)
+        if: steps.changes.outputs.needed == 'true'
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: a954a79fb6767ac99af33f832a5a107b
+          WRANGLER_SEND_METRICS: "false"
+        run: npm run deploy
+      - name: Keep generated public source in sync
         run: |
           if [ -z "$(git status --porcelain)" ]; then
-            echo "No published-post changes — nothing to commit."
+            echo 'No generated source changes.'
             exit 0
           fi
-          git config user.name  "agava-blog-bot"
+          git config user.name "agava-publish-bot"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
-          git commit -m "blog: rebuild published post pages"
-          git push
+          git commit -m "site: sync published content and SEO"
+          git push origin HEAD:main

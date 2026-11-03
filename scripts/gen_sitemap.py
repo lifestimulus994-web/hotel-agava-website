@@ -37,7 +37,7 @@ def strip_lang(f):
 # ── collect indexable pages
 pages = {}
 for f in sorted(glob.glob("**/*.html", recursive=True)):
-    if ".git" in f or f in SKIP:
+    if any(part.startswith(".") or part in ("node_modules", "work") for part in f.split(os.sep)) or f in SKIP:
         continue
     h = open(f, encoding="utf-8", errors="ignore").read()
     if re.search(r'name="robots"[^>]*noindex', h):
