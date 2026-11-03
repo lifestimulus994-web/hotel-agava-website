@@ -674,6 +674,7 @@
       sb.from("price_overrides").select("*").gte("date", mStart).lt("date", mEnd)
     ]).then(function (r) {
       var bks = r[0].data || [], blocks = r[1].data || [], prices = r[2].data || [];
+      renderPriceRange(prices);
       var t = todayISO();
 
       var head = "<tr><th></th>";
@@ -823,6 +824,115 @@
       sb.from("price_overrides").delete().eq("id", po.id).then(function () { renderCalendar(); });
     };
   }
+
+  /* ═══ PRICE RANGE — ფასდაკლება თარიღებზე (sql/pricerange.sql) ═══
+     price_overrides უკვე არსებობდა და ფასის ანგარიშშიც პირველი იყო,
+     მაგრამ ადმინში მხოლოდ თითო დღეზე, თითო ნომერზე იდებოდა — ანუ
+     ერთი კვირის აქცია რვავე ნომერზე ორმოცდაათამდე დაჭერა იყო.
+     აქ იგივე ცხრილი დიაპაზონით ივსება. */
+  function prSelectedRooms() {
+    return Array.prototype.slice
+      .call(document.querySelectorAll("#prRooms input:checked"))
+      .map(function (el) { return parseInt(el.value, 10); });
+  }
+
+  function renderPriceRange(prices) {
+    var host = document.getElementById("prRooms");
+    if (!host || !ROOM_TYPES.length) return;
+
+    if (!host.children.length) {
+      host.innerHTML =
+        '<label class="pr-room pr-room--all"><input type="checkbox" id="prAll"> ყველა</label>' +
+        ROOM_TYPES.map(function (rt) {
+          return '<label class="pr-room"><input type="checkbox" value="' + rt.id + '"> ' + esc(rt.name) + "</label>";
+        }).join("");
+      document.getElementById("prAll").addEventListener("change", function () {
+        var on = this.checked;
+        Array.prototype.forEach.call(
+          document.querySelectorAll('#prRooms input[value]'),
+          function (el) { el.checked = on; });
+      });
+    }
+    renderPriceCurrent(prices || []);
+  }
+
+  /* Consecutive days at the same price read as one offer, so they are
+     shown as a range rather than one line per night. */
+  function renderPriceCurrent(prices) {
+    var host = document.getElementById("prCurrent");
+    if (!host) return;
+    if (!prices.length) {
+      host.innerHTML = '<p class="pr-hint">ამ თვეში ფასდაკლებული დღე არ არის.</p>';
+      return;
+    }
+    var byRoom = {};
+    prices.forEach(function (po) {
+      (byRoom[po.room_type_id] = byRoom[po.room_type_id] || []).push(po);
+    });
+    var out = [];
+    Object.keys(byRoom).forEach(function (id) {
+      var rt = rtById[id];
+      var rows = byRoom[id].sort(function (a, b) { return a.date < b.date ? -1 : 1; });
+      var run = null;
+      rows.forEach(function (po) {
+        var prev = run && new Date(run.to);
+        if (prev) prev.setDate(prev.getDate() + 1);
+        if (run && Number(run.price) === Number(po.price) && iso(prev) === po.date) {
+          run.to = po.date;
+        } else {
+          if (run) out.push(run);
+          run = { name: rt ? rt.name : "—", from: po.date, to: po.date, price: po.price };
+        }
+      });
+      if (run) out.push(run);
+    });
+    out.sort(function (a, b) { return a.from < b.from ? -1 : 1; });
+    host.innerHTML =
+      '<h4 class="pr-sub">ამ თვეში დაყენებული</h4><ul class="pr-list">' +
+      out.map(function (r) {
+        var when = r.from === r.to ? r.from : r.from + " — " + r.to;
+        return "<li><strong>" + when + "</strong> · " + esc(r.name) + " · " + Number(r.price) + " ₾</li>";
+      }).join("") + "</ul>";
+  }
+
+  function prRun(clear) {
+    var st = document.getElementById("prStatus");
+    var ids = prSelectedRooms();
+    var from = document.getElementById("prFrom").value;
+    var to = document.getElementById("prTo").value;
+    var pct = document.getElementById("prPercent").value;
+    var price = document.getElementById("prPrice").value;
+
+    function fail(msg) { st.textContent = msg; st.className = "amodal__status is-error"; }
+    if (!ids.length) return fail("აირჩიე ერთი ნომერი მაინც.");
+    if (!from || !to || to < from) return fail("შეამოწმე თარიღები.");
+    if (!clear && !pct && !price) return fail("მიუთითე პროცენტი ან ფასი.");
+    if (!clear && pct && price) return fail("ან პროცენტი, ან ფასი — ორივე არა.");
+
+    st.textContent = "ინახება…"; st.className = "amodal__status";
+    var call = clear
+      ? sb.rpc("admin_clear_price_range", { p_room_type_ids: ids, p_from: from, p_to: to })
+      : sb.rpc("admin_set_price_range", {
+          p_room_type_ids: ids, p_from: from, p_to: to,
+          p_price: price ? Number(price) : null,
+          p_percent: pct ? parseInt(pct, 10) : null
+        });
+
+    call.then(function (res) {
+      if (res.error) {
+        fail(/function|schema cache/i.test(res.error.message || "")
+          ? "sql/pricerange.sql ჯერ არ არის გაშვებული"
+          : res.error.message);
+        return;
+      }
+      st.textContent = (clear ? "მოიხსნა: " : "დაყენდა: ") + (res.data || 0) + " ჩანაწერი ✓";
+      st.className = "amodal__status";
+      renderCalendar();
+    });
+  }
+
+  document.getElementById("prSet").addEventListener("click", function () { prRun(false); });
+  document.getElementById("prClear").addEventListener("click", function () { prRun(true); });
 
   /* ═══ ROOMS ADMIN ═══ */
   function renderRoomsAdmin() {

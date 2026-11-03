@@ -568,3 +568,34 @@ input:focus, select:focus, textarea:focus {
   .room-row { grid-template-columns: 1fr auto auto auto; }
   .room-row__nums { grid-column: 1 / -1; }
 }
+
+/* ── ფასდაკლება თარიღებზე (sql/pricerange.sql) ───────────────────────── */
+.price-range {
+  background: rgba(255, 255, 255, .95);
+  border: 1px solid rgba(176, 138, 60, .18);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 18px 20px;
+  margin: 0 0 18px;
+}
+.price-range .sub { margin: 0 0 6px; }
+.pr-hint { color: var(--muted); font-size: 12.5px; margin: 0 0 12px; }
+.pr-rooms { display: flex; flex-wrap: wrap; gap: 10px 16px; margin-bottom: 14px; }
+.pr-room {
+  display: flex; align-items: center; gap: 7px;
+  font-size: 13px; color: var(--ink-soft); cursor: pointer;
+}
+.pr-room input { width: auto; min-height: auto; accent-color: var(--gold); transform: scale(1.2); }
+.pr-room--all { font-weight: 600; color: var(--ink); }
+.pr-row { display: flex; flex-wrap: wrap; gap: 12px; margin-bottom: 14px; }
+.pr-row label { font-size: 11.5px; color: var(--muted); display: block; margin-bottom: 3px; }
+.pr-row input { width: 150px; }
+.pr-actions { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.pr-sub { font-size: 12.5px; color: var(--muted); margin: 16px 0 6px; font-weight: 600; }
+.pr-list { margin: 0; padding-left: 18px; font-size: 13px; color: var(--ink-soft); line-height: 1.9; }
+.pr-list strong { color: var(--ink); }
+
+@media (max-width: 720px) {
+  .pr-row input { width: 100%; }
+  .pr-row > div { flex: 1 1 100%; }
+}
