@@ -586,6 +586,9 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
   font-weight: 500;
 }
 .about__list svg { color: var(--gold); flex-shrink: 0; }
+/* Linked prose must wrap as a sentence, rather than separate flex items. */
+.about__list li:not(:has(svg)) { display: block; }
+h1, h2, h3, .footer p, .rdp-crumb { overflow-wrap: anywhere; }
 
 /* ═══════════ ROOMS ═══════════ */
 .rooms {
@@ -736,6 +739,8 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
 
 .room-tile__meta {
   display: flex;
+  flex-wrap: wrap;
+  gap: 4px 12px;
   align-items: baseline;
   justify-content: space-between;
   margin-bottom: 8px;
@@ -1129,7 +1134,7 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
   margin-bottom: 22px;
 }
 
-.field { margin-bottom: 16px; }
+.field { margin-bottom: 16px; min-width: 0; }
 
 .field-row {
   display: grid;
@@ -1150,6 +1155,8 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
 .field textarea {
   width: 100%;
   min-height: 46px;
+  min-width: 0;
+  max-width: 100%;
   padding: 11px 14px;
   font: inherit;
   font-size: 16px; /* ≥16px stops iOS Safari auto-zoom on focus */
@@ -1363,15 +1370,17 @@ body.modal-open { overflow: hidden; }
     width: min(320px, 82vw);
     background: var(--ink);
     flex-direction: column;
-    justify-content: center;
+    justify-content: safe center;
     gap: 8px;
-    padding: 40px 34px;
+    padding: 80px 24px 24px;
+    overflow-y: auto;
+    visibility: hidden;
     transform: translateX(100%);
-    transition: transform .4s var(--ease-out-expo);
+    transition: transform .4s var(--ease-out-expo), visibility .4s;
     box-shadow: -20px 0 60px rgba(0,0,0,.3);
   }
-  .navbar__nav.is-open { transform: translateX(0); }
-  .navbar__nav .navbar__link { color: var(--gold-pale) !important; font-size: 17px; padding: 14px; }
+  .navbar__nav.is-open { transform: translateX(0); visibility: visible; }
+  .navbar__nav .navbar__link { flex-shrink: 0; color: var(--gold-pale) !important; font-size: 17px; padding: 14px; }
   .navbar__burger { display: flex; }
   .navbar__cta { display: none; }
   .navbar__inner { gap: 12px; }
@@ -1739,6 +1748,16 @@ body.modal-open { overflow: hidden; }
   .wizard-steps li::before { font-size: 12px; }
   .room-tile__actions { grid-template-columns: 1fr; }
   .wa-float { right: 14px; bottom: 14px; width: 50px; height: 50px; }
+  .modal { padding: 10px; }
+  .modal__panel { padding: 44px 18px 24px; max-height: calc(100dvh - 20px); }
+  .booking-form { padding: 24px 18px; }
+  .room-tile__body { padding: 20px 18px; }
+  .rdp-actions .btn { width: 100%; }
+}
+
+/* Keep room information readable on wide phones and narrow tablets. */
+@media (max-width: 700px) {
+  .rooms__grid { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ═══════════ ROOM LANDING PAGE (/rooms/<slug>/) ═══════════ */
@@ -1965,6 +1984,6 @@ body.modal-open { overflow: hidden; }
 
 @media (max-width: 640px) {
   .sales-block { padding: 18px 16px 14px; }
-  .sales-table { font-size: 14px; }
+  .sales-table { display: block; max-width: 100%; overflow-x: auto; font-size: 14px; }
   .sales-table th:nth-child(2), .sales-table td:nth-child(2) { display: none; }
 }
