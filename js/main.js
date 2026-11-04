@@ -219,6 +219,7 @@
   }
 
   function buildRoomGrid(skipAnim) {
+    if (!roomsGrid) return; // Inner pages keep their server-rendered catalogue.
     roomsGrid.innerHTML = "";
     ROOMS.forEach(function (room, i) {
       var tile = document.createElement("article");
