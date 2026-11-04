@@ -1848,14 +1848,45 @@ body.modal-open { overflow: hidden; }
    .room-tile__price span and .rdp-price span shrink the "/ღამე" that
    follows the number — and they would shrink the new price with it, since
    that is a span too. The rules below are written one level deeper so
-   they win without !important. */
+   they win without !important.
+   The struck-through figure was set at .6em and 45% opacity, which on the
+   card's 26px price is a ~15px grey smudge: the hotel photographed the
+   live site and could see the new price and nothing legible beside it.
+   It is half of what the card is saying, so it is now sized and darkened
+   to be read at a glance. */
+/* scripts/applyprices.js wraps the figure in <span data-price="standard">,
+   and that wrapper is a span inside .room-tile__price — so the rule above
+   caught it and shrank the entire price to the 13px meant for "/ღამე".
+   On /rooms/ the ₾ beside it stayed at 26px and towered over the number
+   it belonged to. The wrapper carries no styling of its own; it is only
+   a handle for the script, so it is put back to inheriting everything. */
+.room-tile__price [data-price],
+.rdp-price [data-price] {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  margin-left: 0;
+}
+
+/* Both figures are the message, so they are sized as a pair rather than
+   one shouting over the other: the whole price steps down a little when a
+   sale is on, which lifts the struck-through figure and settles the new
+   one beside it. The gold and the line through still say which is which,
+   and ₾ follows the parent, so it never outgrows the number again.
+   Without :has() the pair simply keeps the larger size — still balanced. */
+.room-tile__price:has(.price-was) { font-size: 23px; }
+.rdp-price:has(.price-was) { font-size: 1.75rem; }
+
 .price-was {
   font-family: inherit;
   text-decoration: line-through;
-  opacity: .45;
+  text-decoration-thickness: 1.5px;
+  color: var(--muted);
+  opacity: 1;
   font-weight: 400;
-  font-size: .6em;
-  margin-right: 6px;
+  font-size: 1.06em;
+  margin-right: 9px;
 }
 .room-tile__price .price-now,
 .rdp-price .price-now,
@@ -1865,6 +1896,35 @@ body.modal-open { overflow: hidden; }
   font-weight: inherit;
   color: var(--gold);
   margin-left: 0;
+}
+
+/* ── Date-range discounts on the card (js/prices.js) ───────────────────
+   A price dropped for a stretch of dates is not the everyday price, so the
+   card never shows the figure on its own: the dates travel with it, or a
+   guest arriving outside them is quoted something they cannot have. */
+.room-tile__badge--sale {
+  top: 16px;
+  padding: 7px 14px 7px 16px;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  border-radius: 4px 0 0 4px;
+  background: #A4332B;
+  color: #FFF;
+  letter-spacing: .3px;
+  font-variant-numeric: tabular-nums;
+}
+
+.price-dates {
+  margin: -4px 0 8px;
+  font-size: 12.5px;
+  font-weight: 600;
+  color: #A4332B;
+}
+
+.rdp-price + .price-dates {
+  margin: -12px 0 18px;
+  font-size: 14px;
 }
 
 /* ── Rooms on sale, on /offers/ (scripts/salesblock.js) ──────────────────
