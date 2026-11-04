@@ -216,6 +216,7 @@ def page(p):
   <script defer src="/js/track.js?v={VER}"></script>
   <script defer src="/js/config.js?v={VER}"></script>
   <script defer src="/js/i18n.js?v={VER}"></script>
+  <script defer src="/js/navigation.js?v={VER}"></script>
   <script defer src="/js/main.js?v={VER}"></script>
 </body>
 </html>

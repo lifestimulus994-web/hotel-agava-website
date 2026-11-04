@@ -30,22 +30,7 @@
   window.addEventListener("scroll", onScrollNav, { passive: true });
   onScrollNav();
 
-  /* ─── Mobile menu ─── */
-  var burger = document.getElementById("burger");
-  var navMenu = document.getElementById("navMenu");
-  burger.addEventListener("click", function () {
-    var open = navMenu.classList.toggle("is-open");
-    burger.classList.toggle("is-open", open);
-    burger.setAttribute("aria-expanded", open ? "true" : "false");
-    burger.setAttribute("aria-label", open ? "მენიუს დახურვა" : "მენიუს გახსნა");
-  });
-  navMenu.addEventListener("click", function (e) {
-    if (e.target.classList.contains("navbar__link")) {
-      navMenu.classList.remove("is-open");
-      burger.classList.remove("is-open");
-      burger.setAttribute("aria-expanded", "false");
-    }
-  });
+  /* Mobile navigation is shared with every page in navigation.js. */
 
   /* ─── Active nav link on scroll ─── */
   var sections = ["hero", "rooms", "services", "gallery", "contact"];
@@ -381,5 +366,6 @@
   /* Booking wizard & modals live in js/booking.js */
 
   /* ─── Footer year ─── */
-  document.getElementById("year").textContent = new Date().getFullYear();
+  var year = document.getElementById("year");
+  if (year) year.textContent = new Date().getFullYear();
 })();

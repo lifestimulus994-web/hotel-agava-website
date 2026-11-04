@@ -317,6 +317,9 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
 
 .navbar__burger {
   display: none;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
   flex-direction: column;
   justify-content: center;
   gap: 5px;
@@ -336,6 +339,7 @@ html[lang="tr"] .navbar__link::after { left: 10px; right: 10px; }
 .navbar__burger.is-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
 .navbar__burger.is-open span:nth-child(2) { opacity: 0; }
 .navbar__burger.is-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.navbar .navbar__burger.is-open span { background: var(--gold-pale); }
 
 /* ═══════════ HERO ═══════════ */
 .hero {
@@ -1381,7 +1385,7 @@ body.modal-open { overflow: hidden; }
   }
   .navbar__nav.is-open { transform: translateX(0); visibility: visible; }
   .navbar__nav .navbar__link { flex-shrink: 0; color: var(--gold-pale) !important; font-size: 17px; padding: 14px; }
-  .navbar__burger { display: flex; }
+  .navbar__burger { display: flex; margin-left: auto; }
   .navbar__cta { display: none; }
   .navbar__inner { gap: 12px; }
 
@@ -1425,11 +1429,12 @@ body.modal-open { overflow: hidden; }
   textarea { font-size: 16px; }
 }
 
-/* Below ~380px the four language buttons and the burger leave no room for
+/* Below ~440px the four language buttons and the burger leave no room for
    the wordmark, which slid under the switcher. The leaf logo stays; the
    name is in its alt text and the page title. */
-@media (max-width: 380px) {
+@media (max-width: 440px) {
   .navbar__name { display: none; }
+  .navbar__inner { padding-inline: 16px; gap: 8px; }
 }
 
 /* ═══════════ ROOM TILE ACTIONS ═══════════ */

@@ -154,6 +154,8 @@ def check_delivery(f, h):
     without ?v= keeps serving the stale copy long after a fix ships. And
     the first content image is the LCP candidate — lazy-loading it tells
     the browser to defer the very thing the score is waiting for."""
+    if 'class="navbar__nav"' in h and not re.search(r'src="/?js/navigation\.js\?v=', h):
+        fail(f, "მობილური მენიუს საერთო სკრიპტი აკლია")
     for m in re.findall(r'(?:href|src)="(/(?:css|js)/[a-z-]+\.(?:css|js))"', h):
         fail(f, f"ქეშის ვერსია აკლია: {m}")
     imgs = [t for t in re.findall(r"<img[^>]*>", h) if "logo" not in t]
