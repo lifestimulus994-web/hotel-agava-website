@@ -36,7 +36,7 @@ jobs:
       - name: Test SEO rendering and publication status
         run: |
           python -m unittest discover -s scripts -p "test_*.py"
-          node --test scripts/test_seo_publish.cjs
+          node --test scripts/test_seo_publish.cjs scripts/test_prices.cjs
       - name: Build published blog pages
         run: python scripts/build_blog.py
       - name: Sync public prices and rating

@@ -112,15 +112,15 @@
   }
 
   /* What the card has to say about one room: the figure to strike through
-     and the figure to put in gold. A dated discount wins over a standing
-     sale when it is the lower of the two, because that is what
-     check_availability will charge on those nights. */
+     and the figure to put in gold. Calendar discounts take precedence
+     over standing sales, including equal or higher standing-sale prices.
+     Booking uses the same calendar → standing sale → base priority. */
   function figures(rt) {
     var base = Number(rt.base_price);
     var sale = rt.sale_active && rt.sale_price != null ? Number(rt.sale_price) : 0;
     if (!(sale > 0) || sale >= base) sale = 0;
     var d = DISCOUNTS[rt.slug];
-    var dated = d && d.price > 0 && d.price < (sale || base) ? d : null;
+    var dated = d && d.price > 0 && d.price < base && d.to >= hotelDate() ? d : null;
     return { base: base, sale: sale, show: dated ? dated.price : sale, dated: dated };
   }
 
@@ -233,7 +233,8 @@
     })
       .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
       .then(function (rows) {
-        if (!rows || !rows.length) return;
+        DISCOUNTS = {};
+        if (!Array.isArray(rows)) rows = [];
         rows.forEach(function (r) {
           var p = Number(r.price_sale);
           if (p > 0 && r.date_from) {
@@ -294,4 +295,26 @@
      the sale columns is a 400. Fall back rather than leave prices stale. */
   load(WITH_SALE, function () { load(PLAIN); });
   loadDiscounts();
+
+  // Expire the last discounted night in the hotel's timezone, including
+  // tabs left open overnight. Re-read standing prices and the next offer.
+  function hotelDate() {
+    var parts = new Intl.DateTimeFormat("en-US", {
+      timeZone: "Asia/Tbilisi", year: "numeric", month: "2-digit", day: "2-digit"
+    }).formatToParts(new Date());
+    var values = {};
+    parts.forEach(function (p) { values[p.type] = p.value; });
+    return values.year + "-" + values.month + "-" + values.day;
+  }
+  var shownDate = hotelDate();
+  function refreshDate() {
+    var today = hotelDate();
+    if (today === shownDate) return;
+    shownDate = today;
+    if (LAST_ROWS) { seed(LAST_ROWS); apply(LAST_ROWS); }
+    load(WITH_SALE, function () { load(PLAIN); });
+    loadDiscounts();
+  }
+  setInterval(refreshDate, 60000);
+  document.addEventListener("visibilitychange", refreshDate);
 })();

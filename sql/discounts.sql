@@ -60,9 +60,12 @@ as $$
            ))::int as grp
     from eff e
     join price_overrides po on po.room_type_id = e.id
-    where po.date >= current_date
-      and po.date <  current_date + interval '120 days'
-      and po.price <  e.normal_price
+    where po.date >= (now() at time zone 'Asia/Tbilisi')::date
+      and po.date <  (now() at time zone 'Asia/Tbilisi')::date + interval '120 days'
+      -- Calendar offers take priority over a standing sale. Compare only
+      -- with the base price so equal/higher-than-standing offers survive.
+      and po.price > 0
+      and po.price < e.base_price
   ),
   runs as (
     select slug, base_price, normal_price, price,
