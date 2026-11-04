@@ -180,10 +180,20 @@
         if (rt.visible === false) tile.style.display = "none";
       }
       /* every figure tagged by slug holds nothing but the figure, as
-         scripts/applyprices.js writes it — so it is rewritten whole */
+         scripts/applyprices.js writes it — so it is rewritten whole.
+
+         A dated discount goes only where its dates go, and they are put
+         beside the card price and the room's own headline. The same
+         figure dropped into a landing page's prose — "სტანდარტული ღირს
+         100 ₾" — or into the comparison table would read as the everyday
+         price to someone arriving in December, so those keep the
+         standing one. */
       Array.prototype.forEach.call(
         document.querySelectorAll('[data-price="' + rt.slug + '"]'),
-        function (el) { el.innerHTML = pair(f.base, f.show); }
+        function (el) {
+          var dated = el.closest && el.closest(".room-tile__price, .rdp-price");
+          el.innerHTML = pair(f.base, dated ? f.show : f.sale);
+        }
       );
       /* the headline figure on this room's own page */
       if (own === rt.slug) {
