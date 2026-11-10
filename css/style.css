@@ -2037,3 +2037,9 @@ body.modal-open { overflow: hidden; }
 }
 .wizard-steps li.is-active::before, .wizard-steps li.is-done::before,
 .bw-success__icon { color: var(--ink); }
+
+/* Sale figures can be below the large-text threshold on compact cards. */
+.room-tile__price, .room-tile__price .price-now,
+.rdp-price, .rdp-price .price-now, .room-detail__price, .price-now {
+  color: var(--gold-text);
+}
