@@ -1236,7 +1236,7 @@ h1, h2, h3, .footer p, .rdp-crumb { overflow-wrap: anywhere; }
 
 .footer__brand p { font-size: 14px; max-width: 300px; }
 
-.footer h4 {
+.footer h2 {
   font-family: var(--font-head);
   color: var(--gold-light);
   font-size: 16px;
