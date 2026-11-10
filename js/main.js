@@ -175,7 +175,7 @@
         '<div class="room-slider__dots">' +
           room.images.map(function (_, idx) {
             return '<button type="button" class="room-slider__dot' + (idx === 0 ? " is-active" : "") +
-              '" data-idx="' + idx + '" aria-label="ფოტო ' + (idx + 1) + '"></button>';
+              '" data-idx="' + idx + '" aria-pressed="' + (idx === 0 ? 'true' : 'false') + '" aria-label="ფოტო ' + (idx + 1) + '"></button>';
           }).join("") +
         "</div>";
     }
@@ -200,8 +200,10 @@
       });
       imgs[current].classList.remove("is-active");
       dots[current].classList.remove("is-active");
+      dots[current].setAttribute("aria-pressed", "false");
       imgs[idx].classList.add("is-active");
       dots[idx].classList.add("is-active");
+      dots[idx].setAttribute("aria-pressed", "true");
       current = idx;
     }
 
@@ -260,14 +262,14 @@
               ' ₾<span>/ღამე</span></p>' +
             '<span class="room-tile__count">' + room.count + "</span>" +
           "</div>" +
-          '<h3 class="room-tile__title">' + room.name + "</h3>" +
+          '<h3 class="room-tile__title" id="room-title-' + room.slug + '">' + room.name + "</h3>" +
           '<ul class="room-tile__specs">' +
             room.specs.map(function (s) {
               return "<li>" + (SPEC_ICONS[s.icon] || "") + "<span>" + s.text + "</span></li>";
             }).join("") +
           "</ul>" +
           '<div class="room-tile__actions">' +
-            '<a class="btn btn--dark" href="' + roomHref(room.slug) + '">ნახვა</a>' +
+            '<a class="btn btn--dark" id="room-view-' + room.slug + '" aria-labelledby="room-view-' + room.slug + ' room-title-' + room.slug + '" href="' + roomHref(room.slug) + '">ნახვა</a>' +
             '<button class="btn btn--gold" data-room="' + room.slug + '">დაჯავშნა</button>' +
           "</div>" +
         "</div>";

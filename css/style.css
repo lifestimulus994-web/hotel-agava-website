@@ -61,6 +61,7 @@
 
 :root {
   --gold:        #B08A3C;
+  --gold-text:   #795719;
   --gold-light:  #D4AF6A;
   --gold-pale:   #F0E6D2;
   --cream:       #FAF7F1;
@@ -127,7 +128,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .section-eyebrow {
   font-size: 13px;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--gold-text);
   font-weight: 600;
   margin-bottom: 14px;
 }
@@ -161,7 +162,7 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 
 .btn--gold {
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
-  color: #FFF;
+  color: var(--ink);
   box-shadow: 0 6px 20px rgba(176, 138, 60, .35);
 }
 .btn--gold:hover { box-shadow: 0 10px 28px rgba(176, 138, 60, .45); }
@@ -292,12 +293,12 @@ button { font: inherit; cursor: pointer; border: none; background: none; color: 
 .lang-switch button:hover { color: #FFF; }
 .lang-switch button.is-active {
   background: linear-gradient(135deg, var(--gold-light), var(--gold));
-  color: #FFF;
+  color: var(--ink);
 }
 .navbar.is-solid .lang-switch { border-color: var(--line); }
 .navbar.is-solid .lang-switch button { color: var(--muted); }
 .navbar.is-solid .lang-switch button:hover { color: var(--ink); }
-.navbar.is-solid .lang-switch button.is-active { color: #FFF; }
+.navbar.is-solid .lang-switch button.is-active { color: var(--ink); }
 
 /* RU/EN strings are wider — tighten navbar so centered links never collide */
 html[lang="ru"] .navbar__link,
@@ -660,8 +661,8 @@ h1, h2, h3, .footer p, .rdp-crumb { overflow-wrap: anywhere; }
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  width: 38px;
-  height: 38px;
+  width: 44px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -683,13 +684,28 @@ h1, h2, h3, .footer p, .rdp-crumb { overflow-wrap: anywhere; }
 .room-slider__dots {
   position: absolute;
   left: 50%;
-  bottom: 12px;
+  bottom: 4px;
   transform: translateX(-50%);
   display: flex;
-  gap: 6px;
+  gap: 0;
+  width: max-content;
+  max-width: 100%;
+  overflow-x: auto;
+  border-radius: 24px;
+  background: rgba(20, 16, 10, .8);
   z-index: 2;
 }
 .room-slider__dot {
+  flex: 0 0 44px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border-radius: 6px;
+  touch-action: manipulation;
+}
+.room-slider__dot::before {
+  content: "";
   width: 7px;
   height: 7px;
   border-radius: 4px;
@@ -697,9 +713,17 @@ h1, h2, h3, .footer p, .rdp-crumb { overflow-wrap: anywhere; }
   box-shadow: 0 1px 3px rgba(0,0,0,.35);
   transition: width .35s var(--ease-out-expo), background-color .3s;
 }
-.room-slider__dot.is-active {
+.room-slider__dot.is-active::before {
   width: 20px;
   background: var(--gold-light);
+}
+.room-slider__dot:focus-visible {
+  outline: 2px solid white;
+  outline-offset: -3px;
+  background: rgba(20, 16, 10, .75);
+}
+.room-slider:has(.room-slider__dots) .room-tile__badge:not(.room-tile__badge--season):not(.room-tile__badge--sale) {
+  bottom: 56px;
 }
 
 /* touch devices: arrows always visible */
@@ -731,7 +755,7 @@ h1, h2, h3, .footer p, .rdp-crumb { overflow-wrap: anywhere; }
   bottom: auto;
   top: 16px;
   background: var(--gold);
-  color: #FFF;
+  color: var(--ink);
 }
 
 .room-tile__body {
@@ -838,6 +862,7 @@ h1, h2, h3, .footer p, .rdp-crumb { overflow-wrap: anywhere; }
 }
 
 .reviews__head { text-align: center; margin-bottom: 54px; }
+.reviews__head .section-eyebrow { color: var(--gold-light); }
 .reviews__head .section-title { color: #FFF; }
 
 .reviews__grid {
@@ -2002,3 +2027,13 @@ body.modal-open { overflow: hidden; }
   }
   .hero__bg img { height: 100%; will-change: auto; }
 }
+
+/* Small gold text on pale surfaces needs a darker ink than decorative gold. */
+.bw-room__total strong, .bw-summary__total span:last-child,
+.manage-link a, .breakfast-opt__price, .bw-success__number strong,
+.qb-total strong, .qb-success strong, .blog-card__more,
+.blog-article__body a, .service__more, .sales-table strong {
+  color: var(--gold-text);
+}
+.wizard-steps li.is-active::before, .wizard-steps li.is-done::before,
+.bw-success__icon { color: var(--ink); }
