@@ -5,7 +5,7 @@
    (168 of them at the time of writing) without touching the markup, so
    new links are tracked automatically as pages are added.
 
-   booking.js calls agavaTrack("booking_submit", …) itself, because only
+   booking.js calls agavaTrackBooking after the database response, because only
    it knows whether the booking actually succeeded.
    ═══════════════════════════════════════════ */
 (function () {
@@ -21,6 +21,41 @@
     } catch (err) { /* analytics must stay silent */ }
   }
   window.agavaTrack = track;
+
+  // Use the saved total (including breakfast and calendar prices) in both forms.
+  // Booking references are only used locally for deduplication, never sent to GA.
+  var sentBookings = Object.create(null);
+  window.agavaTrackBooking = function (booking, context) {
+    if (!booking || typeof booking.booking_number !== "string" || !booking.booking_number.trim()) return;
+    context = context || {};
+    var id = booking.booking_number;
+    var key = "agava:tracked-booking:" + id;
+    if (sentBookings[id]) return;
+    try { if (sessionStorage.getItem(key)) return; } catch (err) {}
+    if (typeof window.gtag !== "function") return;
+    var params = {
+      method: context.method === "quick" ? "quick" : "wizard",
+      room_slug: context.room_slug,
+      nights: Number(booking.nights),
+      guests: Number(context.guests),
+      page_path: window.location.pathname,
+      page_lang: lang()
+    };
+    if (booking.total_price !== null && booking.total_price !== undefined &&
+        booking.total_price !== "" && isFinite(Number(booking.total_price)) && Number(booking.total_price) >= 0) {
+      params.value = Number(booking.total_price);
+      params.currency = "GEL";
+    }
+    if (!isFinite(params.nights) || params.nights < 1) delete params.nights;
+    if (!isFinite(params.guests) || params.guests < 1) delete params.guests;
+    // Explicit allowlist above excludes guest contact data and the manage token.
+    try {
+      window.gtag("event", "booking_submit", params);
+      sentBookings[id] = true;
+      try { sessionStorage.setItem(key, "1"); } catch (err) {}
+    } catch (err) { /* tracking failure must never hide a saved booking */ }
+  };
+
 
   function lang() {
     var m = window.location.pathname.match(/^\/(en|ru|tr)(\/|$)/);

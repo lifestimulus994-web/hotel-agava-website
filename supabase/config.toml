@@ -1,0 +1,3 @@
+[functions.booking-email]
+# Authenticated by the dedicated cron secret inside index.ts, not a browser JWT.
+verify_jwt = false

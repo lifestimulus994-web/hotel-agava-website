@@ -116,7 +116,7 @@
     return "https://wa.me/" + CFG.WHATSAPP + "?text=" + encodeURIComponent(text);
   }
   function manageUrl(token) {
-    try { return new URL("manage.html", location.href).href + "?t=" + token; }
+    try { return new URL("/manage.html", location.href).href + "?t=" + token; }
     catch (e) { return location.origin + "/manage.html?t=" + token; }
   }
   function showManageLink(wrapId, linkId, token) {
@@ -412,10 +412,8 @@
         return;
       }
       var b = res.data;
-      if (window.agavaTrack) window.agavaTrack("booking_submit", {
-        method: "wizard", room_slug: state.chosen.slug,
-        nights: state.chosen.nights, guests: state.guests,
-        value: state.chosen.total, currency: "GEL"
+      if (window.agavaTrackBooking) window.agavaTrackBooking(b, {
+        method: "wizard", room_slug: state.chosen.slug, guests: state.guests
       });
       document.getElementById("bwNumber").textContent = b.booking_number;
       renderSummary("bwSuccessSummary");
@@ -600,9 +598,8 @@
           : "შეცდომა — სცადეთ თავიდან ან მოგვწერეთ WhatsApp-ზე.");
         return;
       }
-      if (window.agavaTrack) window.agavaTrack("booking_submit", {
-        method: "quick", room_slug: slug,
-        nights: nightsBetween(ci, co), guests: guests
+      if (window.agavaTrackBooking) window.agavaTrackBooking(res.data, {
+        method: "quick", room_slug: slug, guests: guests
       });
       status.textContent = "";
       qbForm.reset();
