@@ -31,6 +31,8 @@
     load: load,
     reload: load,
     uploadFile: uploadFile,
+    imageURL: imageURL,
+    imageSrcset: imageSrcset,
     insertImage: insertImage,
     updateImage: updateImage,
     deleteImage: deleteImage,
@@ -99,18 +101,50 @@
     });
   }
 
-  /* ─── Storage upload → returns { url, path } ─── */
-  function uploadFile(file) {
+  // Preserve the original database URLs while serving optimized copies of
+  // the two legacy camera uploads. Admin deletion still uses the original.
+  function imageURL(url) {
+    var legacy = {
+      "1792317136180-bdjnen.jpeg": "/assets/jacuzzi-upload-39.webp",
+      "1792317136181-7wujcs.jpeg": "/assets/jacuzzi-upload-38.webp"
+    };
+    var prefix = CFG.SUPABASE_URL + "/storage/v1/object/public/site-photos/img/";
+    return url && url.indexOf(prefix) === 0 && legacy[url.slice(prefix.length)] || url;
+  }
+
+  function imageSrcset(url) {
+    var prefix = CFG.SUPABASE_URL + "/storage/v1/object/public/site-photos/img/";
+    if (!url || url.indexOf(prefix) !== 0) return "";
+    var match = /^(.*-photo)-([0-9]+)w\.webp$/.exec(url);
+    if (!match) return "";
+    var width = Number(match[2]);
+    return [480, 800].filter(function (w) { return w < width; }).concat(width)
+      .map(function (w) { return match[1] + "-" + w + "w.webp " + w + "w"; }).join(", ");
+  }
+
+  /* All admin photo entry points share this preparation/upload path. */
+  async function uploadFile(file) {
     if (!sb) return Promise.reject(new Error("supabase not configured"));
-    var name = (file && file.name) || "photo.jpg";
-    var ext = (name.split(".").pop() || "jpg").toLowerCase().replace(/[^a-z0-9]/g, "") || "jpg";
-    var path = "img/" + Date.now() + "-" + Math.random().toString(36).slice(2, 8) + "." + ext;
-    return sb.storage.from(BUCKET).upload(path, file, { cacheControl: "3600", upsert: false })
-      .then(function (res) {
+    if (!window.AGAVA_PREPARE_PHOTO) throw new Error("განაახლეთ ადმინის გვერდი და ხელახლა ატვირთეთ ფოტო.");
+    var variants = await window.AGAVA_PREPARE_PHOTO(file);
+    var base = "img/" + Date.now() + "-" + Math.random().toString(36).slice(2, 10) + "-photo";
+    var uploaded = [], path;
+    try {
+      // Publish the primary URL only after every responsive variant exists.
+      for (var variant of variants) {
+        path = base + "-" + variant.width + "w.webp";
+        var res = await sb.storage.from(BUCKET).upload(path, variant.blob, {
+          cacheControl: "31536000", contentType: "image/webp", upsert: false
+        });
         if (res.error) throw res.error;
-        var pub = sb.storage.from(BUCKET).getPublicUrl(path);
-        return { url: pub.data.publicUrl, path: path };
-      });
+        uploaded.push(path);
+      }
+      var pub = sb.storage.from(BUCKET).getPublicUrl(path);
+      return { url: pub.data.publicUrl, path: path };
+    } catch (err) {
+      if (uploaded.length) await sb.storage.from(BUCKET).remove(uploaded).catch(function () {});
+      throw err;
+    }
   }
 
   /* ─── DB CRUD ─── */
@@ -140,7 +174,12 @@
       var marker = "/" + BUCKET + "/";
       if (url && url.indexOf(marker) !== -1) {
         var path = url.split(marker)[1];
-        if (path) sb.storage.from(BUCKET).remove([path]);
+        if (path) {
+          var match = /^(.*-photo)-([0-9]+)w\.webp$/.exec(path);
+          var paths = match ? [480, 800].filter(function (w) { return w < Number(match[2]); }).concat(Number(match[2]))
+            .map(function (w) { return match[1] + "-" + w + "w.webp"; }) : [path];
+          sb.storage.from(BUCKET).remove(paths);
+        }
       }
       return true;
     });

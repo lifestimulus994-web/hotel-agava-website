@@ -1992,3 +1992,13 @@ body.modal-open { overflow: hidden; }
   .sales-table { display: block; max-width: 100%; overflow-x: auto; font-size: 14px; }
   .sales-table th:nth-child(2), .sales-table td:nth-child(2) { display: none; }
 }
+
+/* First-screen content must be painted immediately on phones. */
+@media (max-width: 900px) {
+  .hero__stars, .hero__eyebrow, .hero__title, .hero__subtitle, .hero__actions {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .hero__bg img { height: 100%; will-change: auto; }
+}

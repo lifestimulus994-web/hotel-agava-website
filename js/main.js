@@ -24,8 +24,13 @@
   /* Pages without a hero have a light background from the top, so the
      transparent navbar would render white-on-cream. Lock those solid. */
   var alwaysSolid = !document.getElementById("hero");
+  var navSolid;
   function onScrollNav() {
-    navbar.classList.toggle("is-solid", alwaysSolid || window.scrollY > 40);
+    var solid = alwaysSolid || window.scrollY > 40;
+    if (navbar && solid !== navSolid) {
+      navbar.classList.toggle("is-solid", solid);
+      navSolid = solid;
+    }
   }
   window.addEventListener("scroll", onScrollNav, { passive: true });
   onScrollNav();
@@ -77,7 +82,11 @@
      Should a variant ever be missing, the error handler below drops the
      srcset and the original loads instead. */
   function imgAttrs(u, sizes) {
+    var store = window.AGAVA_STORE;
+    if (store && store.imageURL) u = store.imageURL(u);
     var src = assetURL(u);
+    var set = store && store.imageSrcset && store.imageSrcset(src);
+    if (set) return 'src="' + src + '" srcset="' + set + '" sizes="' + sizes + '"';
     var m = /^\/assets\/(.+?)(?:-\d+w)?\.(?:jpe?g|png|webp)$/i.exec(src);
     if (!m) return 'src="' + src + '"';
     var b = "/assets/" + m[1];
@@ -150,7 +159,11 @@
          waits for the scroll — eight eager JPGs were competing with the
          hero image, which is what the LCP score measures */
       room.images.map(function (src, idx) {
-        return '<img ' + imgAttrs(src, "(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 380px") +
+        var attrs = imgAttrs(src, "(max-width: 700px) 92vw, (max-width: 1100px) 46vw, 380px");
+        // Native lazy loading still fetches overlapping, transparent slides.
+        // Only expose a slide's URLs when the visitor selects it.
+        if (idx > 0) attrs = attrs.replace(/\b(src|srcset|sizes)=/g, 'data-$1=');
+        return '<img ' + attrs +
           ' alt="' + room.alt + '" loading="lazy" decoding="async"' +
           ' class="room-slider__img' + (idx === 0 ? " is-active" : "") + '">';
       }).join("") +
@@ -178,6 +191,13 @@
     function goTo(idx) {
       idx = (idx + total) % total;
       if (idx === current) return;
+      ["sizes", "srcset", "src"].forEach(function (attr) {
+        var value = imgs[idx].getAttribute("data-" + attr);
+        if (value) {
+          imgs[idx].setAttribute(attr, value);
+          imgs[idx].removeAttribute("data-" + attr);
+        }
+      });
       imgs[current].classList.remove("is-active");
       dots[current].classList.remove("is-active");
       imgs[idx].classList.add("is-active");
@@ -213,7 +233,7 @@
       var rows = store.roomImages[room.slug];
       if (rows && rows.length) {
         room.images = rows.map(function (r) { return r.url; });
-        if (rows[0].alt) room.alt = rows[0].alt;
+        if (rows[0].alt && !/\.(jpe?g|png|webp|heic)$/i.test(rows[0].alt)) room.alt = rows[0].alt;
       }
     });
   }
@@ -260,7 +280,7 @@
     var ctaTile = document.createElement("article");
     ctaTile.className = "room-tile room-tile--cta reveal" + (skipAnim ? " is-visible" : "");
     ctaTile.innerHTML =
-      '<img src="/assets/logo.webp" alt="" aria-hidden="true">' +
+      '<img src="/assets/logo-128.webp" alt="" aria-hidden="true">' +
       "<h3>ვერ იპოვეთ სასურველი ოთახი?</h3>" +
       "<p>დაგვიკავშირდით და დაგეხმარებით საუკეთესო არჩევანში — შესვლა 13:00, გასვლა 12:00.</p>" +
       '<button class="btn btn--gold" data-open-booking>დაგვიკავშირდით</button>';
@@ -296,7 +316,7 @@
 
   /* ─── Hero parallax (transform-only, rAF-throttled) ─── */
   var heroBgImg = document.querySelector(".hero__bg img");
-  if (heroBgImg && !prefersReducedMotion) {
+  if (heroBgImg && !prefersReducedMotion && window.matchMedia("(hover: hover) and (min-width: 901px)").matches) {
     var ticking = false;
     window.addEventListener("scroll", function () {
       if (ticking) return;

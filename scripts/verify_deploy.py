@@ -25,7 +25,7 @@ def page_check(page):
 def verify():
     pages=json.loads((PUBLIC/'data/seo-pages.json').read_text())
     with ThreadPoolExecutor(max_workers=4) as pool: list(pool.map(page_check,pages))
-    for path in ('js/admin.js','js/booking.js','js/config.js','js/seo-publish.js','data/seo-pages.json','data/publish-state.json','sitemap.xml'):
+    for path in ('js/admin.js','js/booking.js','js/config.js','js/seo-publish.js','js/image-upload.js','js/content.js','js/main.js','css/style.css','data/seo-pages.json','data/publish-state.json','sitemap.xml'):
         raw,_=get('/'+path)
         if raw!=(PUBLIC/path).read_bytes():raise ValueError('Asset mismatch: '+path)
     for path in ('/admin','/manage'):

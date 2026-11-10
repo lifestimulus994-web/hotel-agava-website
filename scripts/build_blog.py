@@ -180,7 +180,7 @@ def page(p):
   <header class="navbar is-solid" id="navbar">
     <div class="navbar__inner container">
       <a href="/" class="navbar__brand" aria-label="{HOTEL} — მთავარი">
-        <img width="256" height="256" src="/assets/logo.webp" alt="{HOTEL}ს ლოგო" class="navbar__logo">
+        <img width="256" height="256" src="/assets/logo-128.webp" alt="{HOTEL}ს ლოგო" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
       <nav class="navbar__nav" aria-label="მთავარი ნავიგაცია">

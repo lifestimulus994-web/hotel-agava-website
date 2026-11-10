@@ -65,7 +65,7 @@
 
   function cardHTML(key, item) {
     return '<div class="content-card" draggable="true" data-key="' + esc(key) + '" data-id="' + item.id + '">' +
-      '<img class="content-card__img" src="' + esc(item.url) + '" alt="" loading="lazy">' +
+      '<img class="content-card__img" src="' + esc(STORE.imageURL(item.url)) + '" alt="" loading="lazy">' +
       '<div class="content-card__fields">' +
         '<input type="text" value="' + esc(item.alt || "") + '" data-id="' + item.id + '" data-field="alt" placeholder="Alt ტექსტი">' +
         '<input type="text" value="' + esc(item.caption || "") + '" data-id="' + item.id + '" data-field="caption" placeholder="კაპტიონი">' +
@@ -107,9 +107,9 @@
           '<div class="content-block__title">' + esc(block.title) + '</div>' +
           '<div class="content-block__hint">' + esc(block.hint) + '</div>' +
         '</div>' +
-        '<label class="content-upload-btn abtn abtn--sm"><input class="content-upload" type="file" accept="image/*" multiple data-key="' + esc(block.key) + '" hidden>+ ფოტოს დამატება</label>' +
+        '<label class="content-upload-btn abtn abtn--sm"><input class="content-upload" type="file" accept="image/jpeg,image/png,image/webp" multiple data-key="' + esc(block.key) + '" hidden>+ ფოტოს დამატება</label>' +
         '</div>' +
-        '<div class="content-upload-drop" data-dropzone="' + esc(block.key) + '">ჩააგდე ფოტო აქ ან დააჭირე ღილაკს ზემოთ</div>' +
+        '<div class="content-upload-drop" data-dropzone="' + esc(block.key) + '">ჩააგდე JPG, PNG ან WebP ფოტო — ზომა ავტომატურად შემცირდება</div>' +
         '<div class="content-list">' + listHTML(block.key, items) + '</div></div>';
     }).join("");
   }
@@ -118,13 +118,14 @@
     if (!STORE) return;
     var pending = Array.prototype.filter.call(files || [], function (f) { return f && f.type && f.type.indexOf("image/") === 0; });
     if (!pending.length) return;
-    setContentStatus("იტვირთება… (" + pending.length + ")");
+    setContentStatus("მუშავდება და იტვირთება… (" + pending.length + ")");
     var arr = listRef(key);
     var base = arr.length;
+    var block = contentBlocks().filter(function (b) { return b.key === key; })[0];
     /* upload in parallel; append each row to the live list as it lands */
     Promise.all(pending.map(function (file, i) {
       return STORE.uploadFile(file).then(function (up) {
-        return STORE.insertImage(key, up.url, file.name, "", base + i);
+        return STORE.insertImage(key, up.url, block ? block.title : "სასტუმრო აგავა", "", base + i);
       }).then(function (row) {
         if (row) { arr.push(row); renderBlockList(key); }
         return row;
@@ -1198,7 +1199,7 @@
         '<label>მოკლე აღწერა<textarea id="bpExcerpt" rows="2">' + esc(p.excerpt) + '</textarea></label>' +
         '<label>ტექსტი — ჩვეულებრივ დაწერეთ. ცარიელი ხაზი = ახალი აბზაცი · ## სათაური · - სია · **მუქი** · [ტექსტი](ბმული)<textarea id="bpBody" rows="14">' + esc(p.body_html) + '</textarea></label>' +
         '<div class="blog-cover">' +
-          '<label class="content-upload-btn abtn abtn--sm"><input id="bpCoverFile" type="file" accept="image/*" hidden>ქავერის ატვირთვა</label>' +
+          '<label class="content-upload-btn abtn abtn--sm"><input id="bpCoverFile" type="file" accept="image/jpeg,image/png,image/webp" hidden>ქავერის ატვირთვა</label>' +
           '<input id="bpCover" type="text" value="' + esc(p.cover_url) + '" placeholder="ქავერის URL">' +
           '<img class="blog-cover__preview" id="bpCoverPrev" src="' + esc(p.cover_url) + '"' + (p.cover_url ? '' : ' hidden') + ' alt="">' +
         '</div>' +
@@ -1299,7 +1300,7 @@
           '<div class="seo-meter" id="seoDescMeter"></div>' +
           '<label>Focus Keyword<input id="seoKw" type="text" value="' + esc(m.focus_keyword) + '" placeholder="მაგ.: სასტუმრო თბილისში"></label>' +
           '<div class="seo-cover">' +
-            '<label class="content-upload-btn abtn abtn--sm"><input id="seoOgFile" type="file" accept="image/*" hidden>OG სურათის ატვირთვა</label>' +
+            '<label class="content-upload-btn abtn abtn--sm"><input id="seoOgFile" type="file" accept="image/jpeg,image/png,image/webp" hidden>OG სურათის ატვირთვა</label>' +
             '<input id="seoOg" type="text" value="' + esc(m.og_image) + '" placeholder="OG image URL (არასავალდებულო)">' +
           '</div>' +
           '<label>Robots<select id="seoRobots">' +
