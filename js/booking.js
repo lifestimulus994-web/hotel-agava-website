@@ -47,7 +47,7 @@
   function loadRoomTypes() {
     if (!sb) return Promise.resolve();
     return sb.from("room_types")
-      .select("id,slug,name,badge,base_price,total_rooms,max_guests,bed_type,room_size,amenities,seasonal,visible,sort")
+      .select("id,slug,name,badge,base_price,sale_price,sale_active,total_rooms,max_guests,bed_type,room_size,amenities,seasonal,visible,sort")
       .order("sort").then(function (res) {
       if (res.error || !res.data) return;
       DB.loaded = true;
@@ -65,6 +65,7 @@
         }
       });
       refreshPublicViews();
+      if (qbForm) updateQbTotal();
     });
   }
 
@@ -507,6 +508,7 @@
   var qbOut = document.getElementById("qbOut");
   var qbRoom = document.getElementById("qbRoom");
   var qbGuests = document.getElementById("qbGuests");
+  var qbQuoteRequest = 0;
   qbIn.min = todayISO();
   qbOut.min = todayISO();
   qbIn.addEventListener("change", function () {
@@ -517,27 +519,71 @@
   qbOut.addEventListener("change", updateQbTotal);
   qbRoom.addEventListener("change", updateQbTotal);
 
-  function fillQbRooms() {
+  function fillQbRooms(quotes, nights) {
+    var selected = qbRoom.value;
+    var hasDates = qbIn.value && qbOut.value && qbOut.value > qbIn.value;
     qbRoom.length = 0;
     ROOMS.forEach(function (r) {
       var dbrt = DB.bySlug[r.slug];
       if (dbrt && !dbrt.visible) return;
-      var price = dbrt ? Number(dbrt.base_price) : r.price;
-      qbRoom.add(new Option(r.name + " — " + price + " ₾/ღამე", r.slug));
+      var price = null;
+      if (hasDates) {
+        var quote = quotes && quotes.filter(function (row) { return row.slug === r.slug; })[0];
+        if (quote && quote.total_price != null && isFinite(Number(quote.total_price))) {
+          price = Math.round(Number(quote.total_price) / nights * 100) / 100;
+        }
+      } else if (dbrt) {
+        price = Number(dbrt.sale_active && dbrt.sale_price != null ? dbrt.sale_price : dbrt.base_price);
+      } else if (!sb) {
+        price = r.price;
+      }
+      // Until the server answers, omit the price rather than show a base-price
+      // estimate that ignores calendar overrides or standing discounts.
+      var label = r.name + (price === null ? "" : " — " +
+        (hasDates && nights > 1 ? "საშუალოდ " : "") + price + " ₾/ღამე");
+      qbRoom.add(new Option(window.AGAVA_T ? window.AGAVA_T(label) : label, r.slug));
     });
+    if (Array.prototype.some.call(qbRoom.options, function (option) { return option.value === selected; })) {
+      qbRoom.value = selected;
+    }
   }
   fillQbRooms();
 
   function updateQbTotal() {
+    var request = ++qbQuoteRequest;
     var el = document.getElementById("qbTotal");
+    fillQbRooms();
     var slug = qbRoom.value;
     if (!qbIn.value || !qbOut.value || qbOut.value <= qbIn.value || !slug) { el.hidden = true; return; }
-    var n = nightsBetween(qbIn.value, qbOut.value);
-    var room = roomBySlug[slug];
-    var dbrt = DB.bySlug[slug];
-    var price = dbrt ? Number(dbrt.base_price) : room.price;
+    var ci = qbIn.value, co = qbOut.value;
+    var n = nightsBetween(ci, co);
     el.hidden = false;
-    el.innerHTML = n + " ღამე × " + price + " ₾ ≈ <strong>" + (n * price) + " ₾</strong>";
+    if (ci < todayISO()) { el.textContent = "წარსული თარიღი ვერ აირჩევა."; return; }
+    if (n > 30) { el.textContent = "მაქსიმუმ 30 ღამე."; return; }
+    if (!sb) {
+      el.innerHTML = n + " ღამე ≈ <strong>" + (n * roomBySlug[slug].price) + " ₾</strong>";
+      return;
+    }
+    el.textContent = "მოწმდება ხელმისაწვდომობა…";
+    // Use the same per-night calculation as create_booking: calendar price,
+    // then standing sale, then base price. Mixed-price stays use the exact sum.
+    sb.rpc("check_availability", { p_in: ci, p_out: co }).then(function (res) {
+      if (request !== qbQuoteRequest) return;
+      if (res.error || !Array.isArray(res.data)) throw new Error("quote unavailable");
+      var quote = res.data.filter(function (row) { return row.slug === slug; })[0];
+      if (!quote || Number(quote.available) < 1) {
+        el.textContent = "ამ თარიღებზე ეს ოთახი დაკავებულია — სცადეთ სხვა თარიღები.";
+        return;
+      }
+      if (quote.total_price == null || !isFinite(Number(quote.total_price)) || Number(quote.total_price) < 0) {
+        throw new Error("invalid quote");
+      }
+      fillQbRooms(res.data, n);
+      el.innerHTML = n + " ღამე · ჯამში: <strong>" + Number(quote.total_price) + " ₾</strong>";
+    }).catch(function () {
+      if (request !== qbQuoteRequest) return;
+      el.textContent = "ფასი ვერ გადამოწმდა — სცადეთ თარიღების ხელახლა არჩევა.";
+    });
   }
 
   qbForm.addEventListener("submit", function (e) {
@@ -602,7 +648,9 @@
         method: "quick", room_slug: slug, guests: guests
       });
       status.textContent = "";
+      ++qbQuoteRequest; // A pending quote must not reappear after form reset.
       qbForm.reset();
+      fillQbRooms();
       document.getElementById("qbTotal").hidden = true;
       document.getElementById("qbNumber").textContent = res.data.booking_number;
       var mUrl = showManageLink("qbManage", "qbManageLink", res.data.manage_token);
@@ -614,9 +662,4 @@
     });
   });
 
-  /* refresh quick-form room prices once DB loads */
-  var qbRefresh = setInterval(function () {
-    if (DB.loaded) { fillQbRooms(); updateQbTotal(); clearInterval(qbRefresh); }
-  }, 700);
-  setTimeout(function () { clearInterval(qbRefresh); }, 8000);
 })();

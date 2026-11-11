@@ -571,6 +571,8 @@
     "სტუმარი / ღამე": ["guest / night", "гость / ночь"],
 
     /* small tokens (keep last — longest strings above already handled) */
+    "ფასი ვერ გადამოწმდა — სცადეთ თარიღების ხელახლა არჩევა.": ["Unable to check the price — please select your dates again.", "Не удалось проверить цену — выберите даты ещё раз.", "Fiyat kontrol edilemedi — lütfen tarihleri yeniden seçin."],
+    "საშუალოდ ": ["average ", "в среднем ", "ortalama "],
     "ჯამში:": ["Total:", "Итого:"],
     "/ღამე": ["/night", "/ночь"],
     "ოთახი": ["Room", "Номер"],
