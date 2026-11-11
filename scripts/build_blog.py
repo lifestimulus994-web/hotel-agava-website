@@ -14,13 +14,14 @@ stays a checkbox in the admin panel; GitHub Actions runs this afterwards.
 
 Read-only against Supabase, one request per run.
 """
-import json, os, re, sys, html, urllib.request, shutil, datetime
+import json, os, re, sys, html, urllib.request, shutil, hashlib
+from pathlib import Path
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SITE = "https://hotelagava.ge"
 # the cache-busting version every other page uses — a post built with its
 # own would fail validate.py's one-version rule and keep stale CSS/JS
-VER = re.search(r"\?v=(\d+)", open(os.path.join(ROOT, "index.html"), encoding="utf-8").read()).group(1)
+VER = re.search(r"\?v=(\d+)", Path(ROOT, "index.html").read_text(encoding="utf-8")).group(1)
 MARK = "<!-- generated:blog-post -->"
 GRID_START, GRID_END = "<!-- blog-cards:start -->", "<!-- blog-cards:end -->"
 
@@ -118,9 +119,73 @@ def rich(text):
     return "".join(out)
 
 
-def page(p):
+UI = {
+    'ka': dict(hotel='სასტუმრო აგავა', home='მთავარი', rooms='ოთახები', services='სერვისები', blog='ბლოგი', contact='კონტაქტი', book='დაჯავშნა', nav='მთავარი ნავიგაცია', back='← ბლოგზე დაბრუნება', more='ვრცლად →', soon='მალე დაემატება სტატიები.', locale='ka_GE'),
+    'en': dict(hotel='Hotel Agava', home='Home', rooms='Rooms', services='Services', blog='Blog', contact='Contact', book='Book', nav='Main navigation', back='← Back to blog', more='Read more →', soon='Articles coming soon.', locale='en_GB'),
+    'ru': dict(hotel='Отель Агава', home='Главная', rooms='Номера', services='Услуги', blog='Блог', contact='Контакты', book='Забронировать', nav='Основная навигация', back='← Назад к блогу', more='Подробнее →', soon='Скоро появятся статьи.', locale='ru_RU'),
+    'tr': dict(hotel='Otel Agava', home='Ana Sayfa', rooms='Odalar', services='Hizmetler', blog='Blog', contact='İletişim', book='Rezervasyon', nav='Ana menü', back='← Bloga dön', more='Devamı →', soon='Yakında makaleler eklenecek.', locale='tr_TR'),
+}
+
+
+def prefix(lang):
+    return '' if lang == 'ka' else '/' + lang
+
+
+def source_digest(post):
+    # A source edit requires an editorial translation review, not stale copy.
+    value = json.dumps([post.get(k) or '' for k in ('title', 'excerpt', 'body_html')], ensure_ascii=False)
+    return hashlib.sha256(value.encode('utf-8')).hexdigest()
+
+
+def publications(posts):
+    path = os.path.join(ROOT, 'data', 'blog-translations.json')
+    editions = json.loads(Path(path).read_text(encoding='utf-8')) if os.path.exists(path) else {}
+    result = {lang: [] for lang in UI}
+    for source in posts:
+        slug = safe_slug(source.get('slug'))
+        if not slug or not (source.get('title') or '').strip():
+            continue
+        post = dict(source, slug=slug)
+        edition = editions.get(slug, {})
+        reviewed = edition.get('source_digest') == source_digest(post)
+        variants = ['ka']
+        if reviewed:
+            post['seo_title'] = edition.get('seo_title_ka')
+            for lang, translated in edition.get('translations', {}).items():
+                if lang not in UI or lang == 'ka':
+                    raise ValueError('Unsupported translation language: ' + lang)
+                body_path = os.path.join(ROOT, 'data', 'blog-translations', slug + '.' + lang + '.md')
+                body = Path(body_path).read_text(encoding='utf-8').strip()
+                if not body or not translated.get('title') or not translated.get('excerpt'):
+                    raise ValueError('Incomplete translation: ' + slug + '/' + lang)
+                result[lang].append(dict(post, **translated, body_html=body,
+                    created_at=edition['published_at'], updated_at=edition['published_at']))
+                variants.append(lang)
+        elif edition:
+            print('Translation review required after source edit: ' + slug)
+        result['ka'].append(post)
+        for lang in variants:
+            result[lang][-1]['variants'] = variants
+    # A withdrawn translation must not leave a broken link in another edition.
+    for lang, posts in result.items():
+        if lang == 'ka':
+            continue
+        available = {p['slug'] for p in posts}
+        pattern = re.compile(r'\[([^\]]+)\]\(' + re.escape(SITE + prefix(lang) + '/blog/') + r'([^/)]+)/\)')
+        for post in posts:
+            post['body_html'] = pattern.sub(
+                lambda m: m[0] if m[2] in available else m[1], post['body_html'])
+    return result
+
+
+def page(p, lang="ka"):
+    ui, base = UI[lang], prefix(lang)
     slug = p["slug"]
-    url = f"{SITE}/blog/{slug}/"
+    url = f"{SITE}{base}/blog/{slug}/"
+    seo_title = p.get("seo_title") or p["title"] + " — " + ui["hotel"]
+    alternates = "".join(f'\n  <link rel="alternate" hreflang="{L}" href="{SITE}{prefix(L)}/blog/{slug}/">' for L in p.get("variants", [lang]))
+    alternates += f'\n  <link rel="alternate" hreflang="x-default" href="{SITE}/blog/{slug}/">'
+    switcher = "".join(f'<button type="button" data-lang="{L}" data-lang-href="{prefix(L)}/blog/{slug + "/" if L in p.get("variants", [lang]) else ""}">{label}</button>' for L, label in [("ka","ქარ"),("en","ENG"),("ru","РУС"),("tr","TR")])
     title = p["title"]
     desc = (p.get("excerpt") or title).strip()
     cover = p.get("cover_url") or f"{SITE}/assets/hero.jpg"
@@ -137,13 +202,13 @@ def page(p):
     ld_post = {"@context": "https://schema.org", "@type": "BlogPosting",
                "headline": title, "description": desc, "image": cover,
                "datePublished": created, "dateModified": updated,
-               "inLanguage": "ka", "mainEntityOfPage": url,
-               "author": {"@type": "Organization", "name": HOTEL, "url": SITE + "/"},
-               "publisher": {"@type": "Organization", "name": HOTEL,
+               "inLanguage": lang, "mainEntityOfPage": url,
+               "author": {"@type": "Organization", "name": ui["hotel"], "url": SITE + "/"},
+               "publisher": {"@type": "Organization", "name": ui["hotel"],
                              "logo": {"@type": "ImageObject", "url": SITE + "/assets/logo.png"}}}
     ld_crumb = {"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
-        {"@type": "ListItem", "position": 1, "name": "მთავარი", "item": SITE + "/"},
-        {"@type": "ListItem", "position": 2, "name": "ბლოგი", "item": SITE + "/blog/"},
+        {"@type": "ListItem", "position": 1, "name": ui["home"], "item": SITE + base + "/"},
+        {"@type": "ListItem", "position": 2, "name": ui["blog"], "item": SITE + base + "/blog/"},
         {"@type": "ListItem", "position": 3, "name": title, "item": url}]}
 
     # the cover is the largest thing above the fold on a post page, so it
@@ -152,22 +217,22 @@ def page(p):
                  f' fetchpriority="high">' if p.get("cover_url") else "")
 
     return f'''<!DOCTYPE html>
-<html lang="ka">
+<html lang="{lang}">
 <head>
 {MARK}
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{E(title)} — {HOTEL}</title>
+  <title>{E(seo_title)}</title>
   <meta name="description" content="{E(desc)}">
   <meta name="robots" content="index, follow, max-image-preview:large">
   <meta name="theme-color" content="#b8935a">
-  <link rel="canonical" href="{url}">
+  <link rel="canonical" href="{url}">{alternates}
   <meta property="og:type" content="article">
   <meta property="og:title" content="{E(title)}">
   <meta property="og:description" content="{E(desc)}">
   <meta property="og:url" content="{url}">
   <meta property="og:image" content="{E(cover)}">
-  <meta property="og:locale" content="ka_GE">
+  <meta property="og:locale" content="{ui['locale']}">
   <meta property="article:published_time" content="{E(created)}">
   <link rel="icon" href="/favicon.ico" sizes="any">
   <link rel="manifest" href="/site.webmanifest">
@@ -179,36 +244,33 @@ def page(p):
 <body>
   <header class="navbar is-solid" id="navbar">
     <div class="navbar__inner container">
-      <a href="/" class="navbar__brand" aria-label="{HOTEL} — მთავარი">
-        <img width="256" height="256" src="/assets/logo-128.webp" alt="{HOTEL}ს ლოგო" class="navbar__logo">
+      <a href="{base}/" class="navbar__brand" aria-label="{ui['hotel']} — {ui['home']}">
+        <img width="256" height="256" src="/assets/logo-128.webp" alt="{ui['hotel']}" class="navbar__logo">
         <span class="navbar__name">AGAVA</span>
       </a>
-      <nav class="navbar__nav" aria-label="მთავარი ნავიგაცია">
-        <a href="/" class="navbar__link">მთავარი</a>
-        <a href="/rooms/" class="navbar__link">ოთახები</a>
-        <a href="/#services" class="navbar__link">სერვისები</a>
-        <a href="/blog/" class="navbar__link is-active">ბლოგი</a>
-        <a href="/#contact" class="navbar__link">კონტაქტი</a>
+      <nav class="navbar__nav" aria-label="{ui['nav']}">
+        <a href="{base}/" class="navbar__link">{ui['home']}</a>
+        <a href="{base}/rooms/" class="navbar__link">{ui['rooms']}</a>
+        <a href="{base}/#services" class="navbar__link">{ui['services']}</a>
+        <a href="{base}/blog/" class="navbar__link is-active">{ui['blog']}</a>
+        <a href="{base}/#contact" class="navbar__link">{ui['contact']}</a>
       </nav>
       <div class="lang-switch" id="langSwitch" aria-label="ენა / Language / Язык / Dil">
-        <button type="button" data-lang="ka">ქარ</button>
-        <button type="button" data-lang="en">ENG</button>
-        <button type="button" data-lang="ru">РУС</button>
-        <button type="button" data-lang="tr">TR</button>
+        {switcher}
       </div>
-      <a class="btn btn--gold navbar__cta" href="/rooms/">დაჯავშნა</a>
+      <a class="btn btn--gold navbar__cta" href="{base}/rooms/">{ui['book']}</a>
     </div>
   </header>
 
   <main class="blog-page">
     <div class="container container--narrow">
       <nav class="rdp-crumb" aria-label="breadcrumb">
-        <a href="/">მთავარი</a> · <a href="/blog/">ბლოგი</a> · <span>{E(title)}</span>
+        <a href="{base}/">{ui['home']}</a> · <a href="{base}/blog/">{ui['blog']}</a> · <span>{E(title)}</span>
       </nav>
       <h1 class="blog-article__title">{E(title)}</h1>
       <time class="blog-article__date" datetime="{E(created)}">{day(created)}</time>{cover_img}
       <div class="blog-article__body">{rich(p.get("body_html"))}</div>
-      <a class="rdp-back" href="/blog/">← ბლოგზე დაბრუნება</a>
+      <a class="rdp-back" href="{base}/blog/">{ui['back']}</a>
     </div>
   </main>
 
@@ -223,32 +285,35 @@ def page(p):
 '''
 
 
-def card(p, first=False):
+def card(p, first=False, lang="ka"):
+    base, ui = prefix(lang), UI[lang]
     slug, title = p["slug"], p["title"]
     loading = 'loading="eager" fetchpriority="high"' if first else 'loading="lazy"'
     img = (f'<div class="blog-card__img"><img src="{E(p["cover_url"])}" alt="{E(title)}" {loading}></div>'
            if p.get("cover_url") else "")
     ex = f'<p>{E(p["excerpt"])}</p>' if p.get("excerpt") else ""
-    return (f'<a class="blog-card" href="/blog/{slug}/">{img}'
+    return (f'<a class="blog-card" href="{base}/blog/{slug}/">{img}'
             f'<div class="blog-card__body"><time>{day(p.get("created_at"))}</time>'
             f'<h2>{E(title)}</h2>{ex}'
-            f'<span class="blog-card__more">ვრცლად →</span></div></a>')
+            f'<span class="blog-card__more">{ui["more"]}</span></div></a>')
 
 
-def write_list(posts):
-    """Put the cards in the HTML so the list page is not an empty shell.
-    blog.js still replaces the grid at runtime; Googlebot sees this first."""
-    f = os.path.join(ROOT, "blog", "index.html")
-    s = open(f, encoding="utf-8").read()
-    inner = "".join(card(p, first=(i == 0)) for i, p in enumerate(posts)) or \
-            '<p class="muted">მალე დაემატება სტატიები.</p>'
+def write_list(posts, lang="ka"):
+    """Render localized cards once; blog.js preserves this static grid."""
+    f = os.path.join(ROOT, prefix(lang).lstrip("/"), "blog", "index.html")
+    s = Path(f).read_text(encoding="utf-8")
+    inner = "".join(card(p, first=(i == 0), lang=lang) for i, p in enumerate(posts)) or \
+            f'<p class="muted">{UI[lang]["soon"]}</p>'
     block = f'{GRID_START}{inner}{GRID_END}'
+    grid = re.compile(r'(<div\b[^>]*\bid="blogGrid"[^>]*>)(.*?)(</div>\s*</div>)', re.S)
     if GRID_START in s:
         s = re.sub(re.escape(GRID_START) + ".*?" + re.escape(GRID_END), lambda m: block, s, flags=re.S)
     else:
-        s = s.replace('<div class="blog-grid" id="blogGrid" data-noi18n></div>',
-                      f'<div class="blog-grid" id="blogGrid" data-noi18n>{block}</div>')
-    open(f, "w", encoding="utf-8").write(s)
+        s, count = grid.subn(lambda m: m[1] + block + m[3], s, count=1)
+        if count != 1:
+            raise ValueError('Blog list grid missing: ' + f)
+    s = re.sub(r'(<div\b[^>]*\bid="blogGrid")(?![^>]*data-built)', r'\1 data-built="true"', s, count=1)
+    Path(f).write_text(s, encoding="utf-8")
 
 
 def main():
@@ -258,41 +323,29 @@ def main():
         print(f"  ❌ Supabase მიუწვდომელია: {e}")
         return 1
 
-    blog = os.path.join(ROOT, "blog")
-    keep, written = set(), 0
-    for p in posts:
-        slug = safe_slug(p.get("slug"))
-        if not slug:
-            print(f"  ⚠️  გამოტოვებულია არასწორი slug: {p.get('slug')!r}")
-            continue
-        if not (p.get("title") or "").strip():
-            print(f"  ⚠️  გამოტოვებულია უსათაურო პოსტი: {slug}")
-            continue
-        keep.add(slug)
-        d = os.path.join(blog, slug)
-        os.makedirs(d, exist_ok=True)
-        new = page(p)
-        f = os.path.join(d, "index.html")
-        old = open(f, encoding="utf-8").read() if os.path.exists(f) else None
-        if old != new:
-            open(f, "w", encoding="utf-8").write(new)
-            written += 1
-        print(f"  ✅ /blog/{slug}/")
+    editions = publications(posts)
+    written = removed = 0
+    for lang, localized in editions.items():
+        blog = os.path.join(ROOT, prefix(lang).lstrip('/'), 'blog')
+        keep = {p['slug'] for p in localized}
+        for post in localized:
+            directory = os.path.join(blog, post['slug'])
+            os.makedirs(directory, exist_ok=True)
+            target = os.path.join(directory, 'index.html')
+            new = page(post, lang)
+            old = Path(target).read_text(encoding='utf-8') if os.path.exists(target) else None
+            if old != new:
+                Path(target).write_text(new, encoding='utf-8')
+                written += 1
+        # Remove only generated editions of unpublished/deleted or revised posts.
+        for name in os.listdir(blog):
+            target = os.path.join(blog, name, 'index.html')
+            if name not in keep and os.path.isfile(target) and MARK in Path(target).read_text(encoding='utf-8'):
+                shutil.rmtree(os.path.dirname(target))
+                removed += 1
+        write_list(localized, lang)
+    print(f'{sum(map(len, editions.values()))} published editions; {written} written; {removed} removed')
 
-    # unpublished or deleted posts must stop being served; only ever remove
-    # directories this script created, identified by the marker.
-    removed = 0
-    for name in os.listdir(blog):
-        d = os.path.join(blog, name)
-        idx = os.path.join(d, "index.html")
-        if not os.path.isdir(d) or name in keep or not os.path.exists(idx):
-            continue
-        if MARK in open(idx, encoding="utf-8", errors="ignore").read():
-            shutil.rmtree(d); removed += 1
-            print(f"  🗑  წაიშალა /blog/{name}/")
-
-    write_list(posts)
-    print(f"\n  {len(keep)} გამოქვეყნებული პოსტი · {written} ჩაიწერა · {removed} წაიშალა")
     return 0
 
 

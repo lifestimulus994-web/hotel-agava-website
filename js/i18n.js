@@ -24,6 +24,11 @@
     if (!b) return;
     e.preventDefault();
     var L = b.getAttribute("data-lang");
+    var edition = b.getAttribute("data-lang-href");
+    if (edition) {
+      if (location.pathname !== edition) location.href = edition;
+      return;
+    }
     var rest = location.pathname.replace(/^\/(en|ru|tr)(?=\/|$)/, "");
     if (rest.charAt(0) !== "/") rest = "/" + rest;
     var target = (L === "ka" ? rest : "/" + L + rest) + location.hash;

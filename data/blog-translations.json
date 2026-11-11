@@ -1,0 +1,46 @@
+{
+  "business-trip-hotel-tbilisi": {
+    "source_digest": "572595d9068b218b97ab030543ce90b68680c039f225197eaecee8c437d2c08d",
+    "seo_title_ka": "საქმიანი ვიზიტი თბილისში: სასტუმროს არჩევა | აგავა",
+    "published_at": "2026-11-11",
+    "translations": {
+      "en": {
+        "title": "Choosing a Hotel for a Business Trip to Tbilisi",
+        "seo_title": "Choosing a Hotel for a Business Trip to Tbilisi | Agava",
+        "excerpt": "Plan a business stay in Tbilisi: compare hotel location, Wi-Fi, parking, rooms and arrival arrangements with this practical guide from Hotel Agava."
+      },
+      "ru": {
+        "title": "Как выбрать отель для командировки в Тбилиси",
+        "seo_title": "Как выбрать отель для командировки в Тбилиси | Agava",
+        "excerpt": "Как выбрать отель для командировки в Тбилиси: расположение, Wi-Fi, парковка, номера и позднее прибытие. Практический гид от Hotel Agava."
+      },
+      "tr": {
+        "title": "Tiflis İş Seyahati İçin Otel Seçimi",
+        "seo_title": "Tiflis İş Seyahati İçin Otel Seçimi | Agava",
+        "excerpt": "Tiflis iş seyahatiniz için otel seçerken konum, Wi-Fi, otopark, oda ve varış koşullarını karşılaştırın. Hotel Agava’dan pratik öneriler."
+      }
+    }
+  },
+  "hotel-tbilisi-with-parking-car-travel": {
+    "source_digest": "2f9884fd6a8ba4b0a74a22ee33ee10acce3e74a42db2959a35f59d42d47c78bf",
+    "seo_title_ka": "თბილისში მანქანით: სასტუმრო პარკინგით | აგავა",
+    "published_at": "2026-11-11",
+    "translations": {
+      "en": {
+        "title": "Choosing a Tbilisi Hotel with Parking",
+        "seo_title": "Choosing a Tbilisi Hotel with Parking | Agava",
+        "excerpt": "Driving to Tbilisi? Learn what to ask about hotel parking, location, road access and late arrivals before choosing a room at Hotel Agava."
+      },
+      "ru": {
+        "title": "Как выбрать отель с парковкой в Тбилиси",
+        "seo_title": "Как выбрать отель с парковкой в Тбилиси | Agava",
+        "excerpt": "Едете в Тбилиси на машине? Узнайте, что проверить при выборе отеля: парковку, расположение, подъезд, комфорт номера и условия позднего прибытия."
+      },
+      "tr": {
+        "title": "Tiflis’te Otoparklı Otel Nasıl Seçilir?",
+        "seo_title": "Tiflis’te Otoparklı Otel Nasıl Seçilir? | Agava",
+        "excerpt": "Tiflis’e arabayla mı geliyorsunuz? Otel seçmeden önce otoparkı, konumu, araçla erişimi, odaları ve geç varış koşullarını nasıl değerlendireceğinizi öğrenin."
+      }
+    }
+  }
+}

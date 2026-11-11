@@ -20,16 +20,16 @@
   {
     "path": "/blog/business-trip-hotel-tbilisi/",
     "lang": "ka",
-    "label": "როგორ ავირჩიოთ სასტუმრო თბილისში სამუშაო მოგზაურობისას — სასტუმრო აგავა",
+    "label": "საქმიანი ვიზიტი თბილისში: სასტუმროს არჩევა | აგავა",
     "defaults": {
-      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში სამუშაო მოგზაურობისას — სასტუმრო აგავა",
+      "title": "საქმიანი ვიზიტი თბილისში: სასტუმროს არჩევა | აგავა",
       "description": "როგორ შევარჩიოთ სასტუმრო თბილისში საქმიანი ვიზიტისთვის: მდებარეობა, Wi-Fi, მშვიდი ნომერი, პარკინგი, 24/7 რეცეფცია და აეროპორტის ტრანსფერი.",
       "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
       "robots": "index, follow, max-image-preview:large"
     },
-    "has_alternates": false,
+    "has_alternates": true,
     "applied": {
-      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში სამუშაო მოგზაურობისას — სასტუმრო აგავა",
+      "title": "საქმიანი ვიზიტი თბილისში: სასტუმროს არჩევა | აგავა",
       "description": "როგორ შევარჩიოთ სასტუმრო თბილისში საქმიანი ვიზიტისთვის: მდებარეობა, Wi-Fi, მშვიდი ნომერი, პარკინგი, 24/7 რეცეფცია და აეროპორტის ტრანსფერი.",
       "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
       "robots": "index, follow, max-image-preview:large"
@@ -38,16 +38,16 @@
   {
     "path": "/blog/hotel-tbilisi-with-parking-car-travel/",
     "lang": "ka",
-    "label": "როგორ ავირჩიოთ სასტუმრო თბილისში მანქანით მოგზაურობისას — სასტუმრო აგავა",
+    "label": "თბილისში მანქანით: სასტუმრო პარკინგით | აგავა",
     "defaults": {
-      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში მანქანით მოგზაურობისას — სასტუმრო აგავა",
+      "title": "თბილისში მანქანით: სასტუმრო პარკინგით | აგავა",
       "description": "მანქანით მოგზაურობთ თბილისში? რა შეამოწმოთ სასტუმროს არჩევისას: პარკინგი ტერიტორიაზე, მდებარეობა, 24/7 რეცეფცია. სასტუმრო აგავა დიღომში — უფასო დაცული პარკინგით.",
       "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
       "robots": "index, follow, max-image-preview:large"
     },
-    "has_alternates": false,
+    "has_alternates": true,
     "applied": {
-      "title": "როგორ ავირჩიოთ სასტუმრო თბილისში მანქანით მოგზაურობისას — სასტუმრო აგავა",
+      "title": "თბილისში მანქანით: სასტუმრო პარკინგით | აგავა",
       "description": "მანქანით მოგზაურობთ თბილისში? რა შეამოწმოთ სასტუმროს არჩევისას: პარკინგი ტერიტორიაზე, მდებარეობა, 24/7 რეცეფცია. სასტუმრო აგავა დიღომში — უფასო დაცული პარკინგით.",
       "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
       "robots": "index, follow, max-image-preview:large"
@@ -56,16 +56,16 @@
   {
     "path": "/blog/",
     "lang": "ka",
-    "label": "ბლოგი — სასტუმრო აგავა | თბილისი",
+    "label": "თბილისში მოგზაურობის რჩევები — აგავას ბლოგი",
     "defaults": {
-      "title": "ბლოგი — სასტუმრო აგავა | თბილისი",
+      "title": "თბილისში მოგზაურობის რჩევები — აგავას ბლოგი",
       "description": "Hotel Agava-ს ბლოგი: რჩევები თბილისში საქმიანი ვიზიტისა და მანქანით მოგზაურობისთვის. წაიკითხეთ სასტუმროს შერჩევის, პარკინგისა და Wi-Fi-ს შესახებ.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
-      "title": "ბლოგი — სასტუმრო აგავა | თბილისი",
+      "title": "თბილისში მოგზაურობის რჩევები — აგავას ბლოგი",
       "description": "Hotel Agava-ს ბლოგი: რჩევები თბილისში საქმიანი ვიზიტისა და მანქანით მოგზაურობისთვის. წაიკითხეთ სასტუმროს შერჩევის, პარკინგისა და Wi-Fi-ს შესახებ.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"
@@ -108,18 +108,54 @@
     }
   },
   {
+    "path": "/en/blog/business-trip-hotel-tbilisi/",
+    "lang": "en",
+    "label": "Choosing a Hotel for a Business Trip to Tbilisi | Agava",
+    "defaults": {
+      "title": "Choosing a Hotel for a Business Trip to Tbilisi | Agava",
+      "description": "Plan a business stay in Tbilisi: compare hotel location, Wi-Fi, parking, rooms and arrival arrangements with this practical guide from Hotel Agava.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Choosing a Hotel for a Business Trip to Tbilisi | Agava",
+      "description": "Plan a business stay in Tbilisi: compare hotel location, Wi-Fi, parking, rooms and arrival arrangements with this practical guide from Hotel Agava.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/en/blog/hotel-tbilisi-with-parking-car-travel/",
+    "lang": "en",
+    "label": "Choosing a Tbilisi Hotel with Parking | Agava",
+    "defaults": {
+      "title": "Choosing a Tbilisi Hotel with Parking | Agava",
+      "description": "Driving to Tbilisi? Learn what to ask about hotel parking, location, road access and late arrivals before choosing a room at Hotel Agava.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Choosing a Tbilisi Hotel with Parking | Agava",
+      "description": "Driving to Tbilisi? Learn what to ask about hotel parking, location, road access and late arrivals before choosing a room at Hotel Agava.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
     "path": "/en/blog/",
     "lang": "en",
-    "label": "Blog — Hotel Agava | Tbilisi",
+    "label": "Tbilisi Travel & Hotel Guides | Hotel Agava Blog",
     "defaults": {
-      "title": "Blog — Hotel Agava | Tbilisi",
+      "title": "Tbilisi Travel & Hotel Guides | Hotel Agava Blog",
       "description": "Plan your Tbilisi stay with Hotel Agava: explore information for business travellers, hotel parking and direct booking, alongside the hotel blog.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
-      "title": "Blog — Hotel Agava | Tbilisi",
+      "title": "Tbilisi Travel & Hotel Guides | Hotel Agava Blog",
       "description": "Plan your Tbilisi stay with Hotel Agava: explore information for business travellers, hotel parking and direct booking, alongside the hotel blog.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"
@@ -846,18 +882,54 @@
     }
   },
   {
+    "path": "/ru/blog/business-trip-hotel-tbilisi/",
+    "lang": "ru",
+    "label": "Как выбрать отель для командировки в Тбилиси | Agava",
+    "defaults": {
+      "title": "Как выбрать отель для командировки в Тбилиси | Agava",
+      "description": "Как выбрать отель для командировки в Тбилиси: расположение, Wi-Fi, парковка, номера и позднее прибытие. Практический гид от Hotel Agava.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Как выбрать отель для командировки в Тбилиси | Agava",
+      "description": "Как выбрать отель для командировки в Тбилиси: расположение, Wi-Fi, парковка, номера и позднее прибытие. Практический гид от Hotel Agava.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/ru/blog/hotel-tbilisi-with-parking-car-travel/",
+    "lang": "ru",
+    "label": "Как выбрать отель с парковкой в Тбилиси | Agava",
+    "defaults": {
+      "title": "Как выбрать отель с парковкой в Тбилиси | Agava",
+      "description": "Едете в Тбилиси на машине? Узнайте, что проверить при выборе отеля: парковку, расположение, подъезд, комфорт номера и условия позднего прибытия.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Как выбрать отель с парковкой в Тбилиси | Agava",
+      "description": "Едете в Тбилиси на машине? Узнайте, что проверить при выборе отеля: парковку, расположение, подъезд, комфорт номера и условия позднего прибытия.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
     "path": "/ru/blog/",
     "lang": "ru",
-    "label": "Блог — Отель Агава | Тбилиси",
+    "label": "Поездка в Тбилиси: советы и отели | Блог Агавы",
     "defaults": {
-      "title": "Блог — Отель Агава | Тбилиси",
+      "title": "Поездка в Тбилиси: советы и отели | Блог Агавы",
       "description": "Планируйте поездку в Тбилиси с отелем Агава: информация для деловых гостей, условия парковки и прямого бронирования, а также блог отеля.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
-      "title": "Блог — Отель Агава | Тбилиси",
+      "title": "Поездка в Тбилиси: советы и отели | Блог Агавы",
       "description": "Планируйте поездку в Тбилиси с отелем Агава: информация для деловых гостей, условия парковки и прямого бронирования, а также блог отеля.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"
@@ -1404,18 +1476,54 @@
     }
   },
   {
+    "path": "/tr/blog/business-trip-hotel-tbilisi/",
+    "lang": "tr",
+    "label": "Tiflis İş Seyahati İçin Otel Seçimi | Agava",
+    "defaults": {
+      "title": "Tiflis İş Seyahati İçin Otel Seçimi | Agava",
+      "description": "Tiflis iş seyahatiniz için otel seçerken konum, Wi-Fi, otopark, oda ve varış koşullarını karşılaştırın. Hotel Agava’dan pratik öneriler.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis İş Seyahati İçin Otel Seçimi | Agava",
+      "description": "Tiflis iş seyahatiniz için otel seçerken konum, Wi-Fi, otopark, oda ve varış koşullarını karşılaştırın. Hotel Agava’dan pratik öneriler.",
+      "og_image": "https://hotelagava.ge/assets/room-standard-3-800w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
+    "path": "/tr/blog/hotel-tbilisi-with-parking-car-travel/",
+    "lang": "tr",
+    "label": "Tiflis’te Otoparklı Otel Nasıl Seçilir? | Agava",
+    "defaults": {
+      "title": "Tiflis’te Otoparklı Otel Nasıl Seçilir? | Agava",
+      "description": "Tiflis’e arabayla mı geliyorsunuz? Otel seçmeden önce otoparkı, konumu, araçla erişimi, odaları ve geç varış koşullarını nasıl değerlendireceğinizi öğrenin.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "Tiflis’te Otoparklı Otel Nasıl Seçilir? | Agava",
+      "description": "Tiflis’e arabayla mı geliyorsunuz? Otel seçmeden önce otoparkı, konumu, araçla erişimi, odaları ve geç varış koşullarını nasıl değerlendireceğinizi öğrenin.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1792146188708-dih265.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
     "path": "/tr/blog/",
     "lang": "tr",
-    "label": "Blog — Otel Agava | Tiflis",
+    "label": "Tiflis Seyahat ve Otel Rehberi | Agava Blog",
     "defaults": {
-      "title": "Blog — Otel Agava | Tiflis",
+      "title": "Tiflis Seyahat ve Otel Rehberi | Agava Blog",
       "description": "Tiflis seyahatinizi Hotel Agava ile planlayın: iş seyahati, otopark ve doğrudan rezervasyon hakkında bilgilere ve otelin blog sayfasına ulaşın.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
-      "title": "Blog — Otel Agava | Tiflis",
+      "title": "Tiflis Seyahat ve Otel Rehberi | Agava Blog",
       "description": "Tiflis seyahatinizi Hotel Agava ile planlayın: iş seyahati, otopark ve doğrudan rezervasyon hakkında bilgilere ve otelin blog sayfasına ulaşın.",
       "og_image": "https://hotelagava.ge/assets/hero.jpg",
       "robots": "index, follow, max-image-preview:large"

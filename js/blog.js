@@ -9,6 +9,9 @@
   var grid = document.getElementById("blogGrid");
   var article = document.getElementById("blogArticle");
   if (!grid && !article) return;
+  // Published lists are rendered in their own language by the build. Keep
+  // them readable without a database request (also when offline).
+  if (grid && grid.getAttribute("data-built") === "true") return;
 
   function esc(s) {
     return String(s == null ? "" : s)
