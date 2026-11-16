@@ -92,26 +92,26 @@
 
     /* features */
     "მოსახერხებელი მდებარეობა": "Elverişli konum",
-    "მარტივად მისადგომი ადგილმდებარეობა — ქალაქის ცენტრთან და მთავარ გზებთან ახლოს.":
+    "მარტივად მისადგომი ლოკაცია — ქალაქის ცენტრთან და მთავარ გზებთან ახლოს.":
       "Kolay ulaşılabilir konum — şehir merkezine ve ana yollara yakın.",
     "კომფორტული ოთახები": "Konforlu odalar",
-    "თანამედროვე და ელეგანტურად მოწყობილი ოთახები — ცის ჭერით და განსაკუთრებული დიზაინით.":
-      "Modern ve zarif döşenmiş odalar — gökyüzü tavanları ve özgün tasarımla.",
+    "თანამედროვე და ელეგანტური ინტერიერის მქონე ოთახები — პანორამული ჭერითა და განსაკუთრებული დიზაინით.":
+      "Modern ve zarif iç mekânlı odalar — panoramik tavanlar ve özgün tasarımla.",
     "სტუმართმოყვარე პერსონალი": "Misafirperver personel",
-    "ჩვენი გუნდი ზრუნავს, რომ თქვენი ყოფნა იყოს სასიამოვნო და დაუვიწყარი — ნებისმიერ დროს.":
-      "Ekibimiz, konaklamanızın keyifli ve unutulmaz olması için her an özen gösterir.",
+    "ჩვენი გუნდი მუდმივად ზრუნავს იმაზე, რომ თქვენი დასვენება იყოს სასიამოვნო და დაუვიწყარი.":
+      "Ekibimiz, dinlenmenizin keyifli ve unutulmaz olması için sürekli özen gösterir.",
     "საუკეთესო ფასები": "En iyi fiyatlar",
-    "მიიღეთ მაქსიმალური კომფორტი ხელმისაწვდომ ფასად — სპეციალური შეთავაზებებით.":
-      "Uygun fiyata maksimum konfor — özel tekliflerle.",
+    "მიიღეთ მაქსიმალური კომფორტი ხელმისაწვდომ ფასად და ისარგებლეთ სპეციალური შეთავაზებებით.":
+      "Uygun fiyata maksimum konfor elde edin ve özel tekliflerden yararlanın.",
 
     /* about */
-    "სასტუმრო, სადაც კომფორტი ხელოვნებას ხვდება": "Konforun sanatla buluştuğu bir otel",
-    "სასტუმრო აგავა გთავაზობთ ელეგანტურად მოწყობილ ოთახებს, გამორჩეული ინტერიერით — ცის ჭერებით, კლასიკური ავეჯითა და თბილი განათებით. ჩვენი მიზანია, ყოველი სტუმარი თავს განსაკუთრებულად გრძნობდეს.":
-      "Otel Agava, özgün iç mekânlara sahip zarif döşenmiş odalar sunar — gökyüzü tavanları, klasik mobilyalar ve sıcak aydınlatma. Amacımız her misafirin kendini özel hissetmesidir.",
-    "ვრცელი ფოიე, მყუდრო ეზო, დაცული პარკინგი და ყურადღებიანი პერსონალი — ყველაფერი თქვენი დასვენებისთვის.":
-      "Geniş lobi, şirin avlu, güvenli otopark ve ilgili personel — dinlenmeniz için her şey.",
+    "სასტუმრო, სადაც კომფორტი ხელოვნებას ერწყმის": "Konforun sanatla birleştiği bir otel",
+    "სასტუმრო „აგავა“ გთავაზობთ ელეგანტურად მოწყობილ ოთახებს გამორჩეული ინტერიერით — პანორამული ჭერით, კლასიკური ავეჯითა და თბილი განათებით. ჩვენი მიზანია, ყოველი სტუმარი თავს განსაკუთრებულად გრძნობდეს.":
+      "Otel Agava, özgün iç mekânlara sahip zarif döşenmiş odalar sunar — panoramik tavanlar, klasik mobilyalar ve sıcak aydınlatma. Amacımız her misafirin kendini özel hissetmesidir.",
+    "ვრცელი ფოიე, მყუდრო ეზო, დაცული პარკინგი და ყურადღებიანი პერსონალი — ყველაფერი თქვენი სრულყოფილი დასვენებისთვის:":
+      "Geniş lobi, şirin avlu, güvenli otopark ve ilgili personel — kusursuz konaklamanız için her şey:",
     "ელეგანტური ლუქსი და სტანდარტული ოთახები": "Zarif süitler ve standart odalar",
-    "ოჯახური ნომრები 3–4 სტუმარზე": "3–4 misafir için aile odaları",
+    "საოჯახო ნომრები 3–4 სტუმარზე": "3–4 misafir için aile odaları",
     "გაიგეთ მეტი": "Daha fazla bilgi",
     "დახვეწილი და მყუდრო": "Zarif ve huzurlu",
     "თანამედროვე და კომფორტული": "Modern ve konforlu",
@@ -282,7 +282,7 @@
     "კონდიციონერი": "Klima",
     "მაცივარი": "Buzdolabı",
     "აბაზანა": "Banyo",
-    "ცის ჭერი": "Gökyüzü tavan",
+    "პანორამული ჭერი": "Panoramik tavan",
     "გადახდა ადგილზე · უფასო გაუქმება ჩამოსვლამდე 24 სთ-ით ადრე · შესვლა 13:00, გასვლა 12:00":
       "Ödeme yerinde · Gelişten 24 saat öncesine kadar ücretsiz iptal · Giriş 13:00, çıkış 12:00",
 
@@ -352,32 +352,32 @@
 
     /* features */
     "მოსახერხებელი მდებარეობა": ["Convenient location", "Удобное расположение"],
-    "მარტივად მისადგომი ადგილმდებარეობა — ქალაქის ცენტრთან და მთავარ გზებთან ახლოს.":
+    "მარტივად მისადგომი ლოკაცია — ქალაქის ცენტრთან და მთავარ გზებთან ახლოს.":
       ["Easily accessible — close to the city centre and main roads.",
        "Легко добраться — рядом с центром города и главными дорогами."],
     "კომფორტული ოთახები": ["Comfortable rooms", "Комфортные номера"],
-    "თანამედროვე და ელეგანტურად მოწყობილი ოთახები — ცის ჭერით და განსაკუთრებული დიზაინით.":
-      ["Modern, elegantly furnished rooms with sky ceilings and distinctive design.",
-       "Современные, элегантно обставленные номера с потолками-небом и особым дизайном."],
+    "თანამედროვე და ელეგანტური ინტერიერის მქონე ოთახები — პანორამული ჭერითა და განსაკუთრებული დიზაინით.":
+      ["Modern rooms with elegant interiors — panoramic ceilings and distinctive design.",
+       "Современные номера с элегантным интерьером — панорамными потолками и особым дизайном."],
     "სტუმართმოყვარე პერსონალი": ["Hospitable staff", "Гостеприимный персонал"],
-    "ჩვენი გუნდი ზრუნავს, რომ თქვენი ყოფნა იყოს სასიამოვნო და დაუვიწყარი — ნებისმიერ დროს.":
-      ["Our team makes sure your stay is pleasant and memorable — at any hour.",
-       "Наша команда заботится о том, чтобы ваше пребывание было приятным и незабываемым — в любое время."],
+    "ჩვენი გუნდი მუდმივად ზრუნავს იმაზე, რომ თქვენი დასვენება იყოს სასიამოვნო და დაუვიწყარი.":
+      ["Our team constantly makes sure your stay is pleasant and memorable.",
+       "Наша команда постоянно заботится о том, чтобы ваш отдых был приятным и незабываемым."],
     "საუკეთესო ფასები": ["Best prices", "Лучшие цены"],
-    "მიიღეთ მაქსიმალური კომფორტი ხელმისაწვდომ ფასად — სპეციალური შეთავაზებებით.":
-      ["Maximum comfort at an affordable price — with special offers.",
-       "Максимальный комфорт по доступной цене — со специальными предложениями."],
+    "მიიღეთ მაქსიმალური კომფორტი ხელმისაწვდომ ფასად და ისარგებლეთ სპეციალური შეთავაზებებით.":
+      ["Get maximum comfort at an affordable price and take advantage of special offers.",
+       "Получите максимальный комфорт по доступной цене и воспользуйтесь специальными предложениями."],
 
     /* about */
-    "სასტუმრო, სადაც კომფორტი ხელოვნებას ხვდება": ["A hotel where comfort meets art", "Отель, где комфорт встречается с искусством"],
-    "სასტუმრო აგავა გთავაზობთ ელეგანტურად მოწყობილ ოთახებს, გამორჩეული ინტერიერით — ცის ჭერებით, კლასიკური ავეჯითა და თბილი განათებით. ჩვენი მიზანია, ყოველი სტუმარი თავს განსაკუთრებულად გრძნობდეს.":
-      ["Hotel Agava offers elegantly furnished rooms with distinctive interiors — sky ceilings, classic furniture and warm lighting. Our goal is to make every guest feel special.",
-       "Отель Агава предлагает элегантно обставленные номера с особенными интерьерами — потолками-небом, классической мебелью и тёплым освещением. Наша цель — чтобы каждый гость чувствовал себя особенным."],
-    "ვრცელი ფოიე, მყუდრო ეზო, დაცული პარკინგი და ყურადღებიანი პერსონალი — ყველაფერი თქვენი დასვენებისთვის.":
-      ["A spacious lobby, cosy courtyard, secure parking and attentive staff — everything for your rest.",
-       "Просторное фойе, уютный двор, охраняемая парковка и внимательный персонал — всё для вашего отдыха."],
+    "სასტუმრო, სადაც კომფორტი ხელოვნებას ერწყმის": ["A hotel where comfort blends with art", "Отель, где комфорт сливается с искусством"],
+    "სასტუმრო „აგავა“ გთავაზობთ ელეგანტურად მოწყობილ ოთახებს გამორჩეული ინტერიერით — პანორამული ჭერით, კლასიკური ავეჯითა და თბილი განათებით. ჩვენი მიზანია, ყოველი სტუმარი თავს განსაკუთრებულად გრძნობდეს.":
+      ["Hotel Agava offers elegantly furnished rooms with distinctive interiors — panoramic ceilings, classic furniture and warm lighting. Our goal is to make every guest feel special.",
+       "Отель Агава предлагает элегантно обставленные номера с особенными интерьерами — панорамными потолками, классической мебелью и тёплым освещением. Наша цель — чтобы каждый гость чувствовал себя особенным."],
+    "ვრცელი ფოიე, მყუდრო ეზო, დაცული პარკინგი და ყურადღებიანი პერსონალი — ყველაფერი თქვენი სრულყოფილი დასვენებისთვის:":
+      ["A spacious lobby, cosy courtyard, secure parking and attentive staff — everything for your perfect stay:",
+       "Просторное фойе, уютный двор, охраняемая парковка и внимательный персонал — всё для вашего идеального отдыха:"],
     "ელეგანტური ლუქსი და სტანდარტული ოთახები": ["Elegant suites and standard rooms", "Элегантные люксы и стандартные номера"],
-    "ოჯახური ნომრები 3–4 სტუმარზე": ["Family rooms for 3–4 guests", "Семейные номера на 3–4 гостей"],
+    "საოჯახო ნომრები 3–4 სტუმარზე": ["Family rooms for 3–4 guests", "Семейные номера на 3–4 гостей"],
     "გაიგეთ მეტი": ["Learn more", "Узнать больше"],
     "დახვეწილი და მყუდრო": ["Refined & cosy", "Изысканно и уютно"],
     "თანამედროვე და კომფორტული": ["Modern & comfortable", "Современно и комфортно"],
@@ -556,7 +556,7 @@
     "კონდიციონერი": ["Air conditioning", "Кондиционер"],
     "მაცივარი": ["Fridge", "Холодильник"],
     "აბაზანა": ["Bathroom", "Ванная"],
-    "ცის ჭერი": ["Sky ceiling", "Потолок-небо"],
+    "პანორამული ჭერი": ["Panoramic ceiling", "Потолок-небо"],
     "გადახდა ადგილზე · უფასო გაუქმება ჩამოსვლამდე 24 სთ-ით ადრე · შესვლა 13:00, გასვლა 12:00":
       ["Payment on site · Free cancellation up to 24h before arrival · Check-in 13:00, check-out 12:00",
        "Оплата на месте · Бесплатная отмена за 24 ч до заезда · Заезд 13:00, выезд 12:00"],

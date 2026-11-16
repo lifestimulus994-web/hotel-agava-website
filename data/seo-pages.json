@@ -419,14 +419,14 @@
     "label": "Deluxe Room — 2 guests — Hotel Agava · Tbilisi",
     "defaults": {
       "title": "Deluxe Room — 2 guests — Hotel Agava · Tbilisi",
-      "description": "Deluxe room at Agava — an elegant 28 m² in baroque style with a King bed, sky ceiling, fridge and air conditioning. Refined comfort in Tbilisi.",
+      "description": "Deluxe room at Agava — an elegant 28 m² in baroque style with a King bed, panoramic ceiling, fridge and air conditioning. Refined comfort in Tbilisi.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Deluxe Room — 2 guests — Hotel Agava · Tbilisi",
-      "description": "Deluxe room at Agava — an elegant 28 m² in baroque style with a King bed, sky ceiling, fridge and air conditioning. Refined comfort in Tbilisi.",
+      "description": "Deluxe room at Agava — an elegant 28 m² in baroque style with a King bed, panoramic ceiling, fridge and air conditioning. Refined comfort in Tbilisi.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -437,14 +437,14 @@
     "label": "Standard Room — 2 guests — Hotel Agava · Tbilisi",
     "defaults": {
       "title": "Standard Room — 2 guests — Hotel Agava · Tbilisi",
-      "description": "Standard room at Hotel Agava: a comfortable 22 m² for two with a sky ceiling, air conditioning, free Wi-Fi and a private bathroom. Ideal for short stays.",
+      "description": "Standard room at Hotel Agava: a comfortable 22 m² for two with a panoramic ceiling, air conditioning, free Wi-Fi and a private bathroom. Ideal for short stays.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Standard Room — 2 guests — Hotel Agava · Tbilisi",
-      "description": "Standard room at Hotel Agava: a comfortable 22 m² for two with a sky ceiling, air conditioning, free Wi-Fi and a private bathroom. Ideal for short stays.",
+      "description": "Standard room at Hotel Agava: a comfortable 22 m² for two with a panoramic ceiling, air conditioning, free Wi-Fi and a private bathroom. Ideal for short stays.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -455,14 +455,14 @@
     "label": "Superior Suite — 2 guests — Hotel Agava · Tbilisi",
     "defaults": {
       "title": "Superior Suite — 2 guests — Hotel Agava · Tbilisi",
-      "description": "Superior suite — a spacious 36 m² with baroque interior, King bed and sky ceiling. Maximum comfort for two guests at Hotel Agava, Tbilisi.",
+      "description": "Superior suite — a spacious 36 m² with baroque interior, King bed and panoramic ceiling. Maximum comfort for two guests at Hotel Agava, Tbilisi.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Superior Suite — 2 guests — Hotel Agava · Tbilisi",
-      "description": "Superior suite — a spacious 36 m² with baroque interior, King bed and sky ceiling. Maximum comfort for two guests at Hotel Agava, Tbilisi.",
+      "description": "Superior suite — a spacious 36 m² with baroque interior, King bed and panoramic ceiling. Maximum comfort for two guests at Hotel Agava, Tbilisi.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -473,14 +473,14 @@
     "label": "Two-Room Suite — 5 guests — Hotel Agava · Tbilisi",
     "defaults": {
       "title": "Two-Room Suite — 5 guests — Hotel Agava · Tbilisi",
-      "description": "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Sky ceiling, air conditioning and a fridge.",
+      "description": "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Panoramic ceiling, air conditioning and a fridge.",
       "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Two-Room Suite — 5 guests — Hotel Agava · Tbilisi",
-      "description": "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Sky ceiling, air conditioning and a fridge.",
+      "description": "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Panoramic ceiling, air conditioning and a fridge.",
       "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -815,14 +815,14 @@
     "label": "ლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
     "defaults": {
       "title": "ლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "ლუქსი ოთახი აგავაში — ელეგანტური 28 მ² ბაროკოს სტილში, King საწოლით, ცის ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
+      "description": "ლუქსი ოთახი აგავაში — ელეგანტური 28 მ² ბაროკოს სტილში, King საწოლით, პანორამული ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "ლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "ლუქსი ოთახი აგავაში — ელეგანტური 28 მ² ბაროკოს სტილში, King საწოლით, ცის ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
+      "description": "ლუქსი ოთახი აგავაში — ელეგანტური 28 მ² ბაროკოს სტილში, King საწოლით, პანორამული ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -833,14 +833,14 @@
     "label": "სტანდარტული ოთახი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
     "defaults": {
       "title": "სტანდარტული ოთახი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "სტანდარტული ოთახი სასტუმრო აგავაში — კომფორტული 22 მ² ორ სტუმარზე, ცის ჭერით, კონდიციონერით, უფასო Wi-Fi-თ და აბაზანით. მოკლე და ხანგრძლივი ვიზიტისთვის.",
+      "description": "სტანდარტული ოთახი სასტუმრო აგავაში — კომფორტული 22 მ² ორ სტუმარზე, პანორამული ჭერით, კონდიციონერით, უფასო Wi-Fi-თ და აბაზანით. მოკლე და ხანგრძლივი ვიზიტისთვის.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "სტანდარტული ოთახი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "სტანდარტული ოთახი სასტუმრო აგავაში — კომფორტული 22 მ² ორ სტუმარზე, ცის ჭერით, კონდიციონერით, უფასო Wi-Fi-თ და აბაზანით. მოკლე და ხანგრძლივი ვიზიტისთვის.",
+      "description": "სტანდარტული ოთახი სასტუმრო აგავაში — კომფორტული 22 მ² ორ სტუმარზე, პანორამული ჭერით, კონდიციონერით, უფასო Wi-Fi-თ და აბაზანით. მოკლე და ხანგრძლივი ვიზიტისთვის.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -851,14 +851,14 @@
     "label": "სუპერლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
     "defaults": {
       "title": "სუპერლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს ინტერიერით, King საწოლითა და ცის ჭერით. მაქსიმალური კომფორტი ორ სტუმარზე სასტუმრო აგავაში, თბილისში.",
+      "description": "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს ინტერიერით, King საწოლითა და პანორამული ჭერით. მაქსიმალური კომფორტი ორ სტუმარზე სასტუმრო აგავაში, თბილისში.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "სუპერლუქსი — 2 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს ინტერიერით, King საწოლითა და ცის ჭერით. მაქსიმალური კომფორტი ორ სტუმარზე სასტუმრო აგავაში, თბილისში.",
+      "description": "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს ინტერიერით, King საწოლითა და პანორამული ჭერით. მაქსიმალური კომფორტი ორ სტუმარზე სასტუმრო აგავაში, თბილისში.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -869,14 +869,14 @@
     "label": "ორ ოთახიანი ლუქსი — 5 სტუმარზე — სასტუმრო აგავა · თბილისი",
     "defaults": {
       "title": "ორ ოთახიანი ლუქსი — 5 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "ორ ოთახიანი ლუქსი — 45 მ², ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. ცის ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ჯგუფებისთვის თბილისში.",
+      "description": "ორ ოთახიანი ლუქსი — 45 მ², ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. პანორამული ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ჯგუფებისთვის თბილისში.",
       "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "ორ ოთახიანი ლუქსი — 5 სტუმარზე — სასტუმრო აგავა · თბილისი",
-      "description": "ორ ოთახიანი ლუქსი — 45 მ², ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. ცის ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ჯგუფებისთვის თბილისში.",
+      "description": "ორ ოთახიანი ლუქსი — 45 მ², ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. პანორამული ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ჯგუფებისთვის თბილისში.",
       "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -1193,14 +1193,14 @@
     "label": "Люкс — 2 гостя — Отель Агава · Тбилиси",
     "defaults": {
       "title": "Люкс — 2 гостя — Отель Агава · Тбилиси",
-      "description": "Люкс в отеле Агава — элегантные 28 м² в стиле барокко с кроватью King, потолком-небом, холодильником и кондиционером. Изысканный комфорт в Тбилиси.",
+      "description": "Люкс в отеле Агава — элегантные 28 м² в стиле барокко с кроватью King, панорамным потолком, холодильником и кондиционером. Изысканный комфорт в Тбилиси.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Люкс — 2 гостя — Отель Агава · Тбилиси",
-      "description": "Люкс в отеле Агава — элегантные 28 м² в стиле барокко с кроватью King, потолком-небом, холодильником и кондиционером. Изысканный комфорт в Тбилиси.",
+      "description": "Люкс в отеле Агава — элегантные 28 м² в стиле барокко с кроватью King, панорамным потолком, холодильником и кондиционером. Изысканный комфорт в Тбилиси.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -1211,14 +1211,14 @@
     "label": "Стандартный номер — 2 гостя — Отель Агава · Тбилиси",
     "defaults": {
       "title": "Стандартный номер — 2 гостя — Отель Агава · Тбилиси",
-      "description": "Стандартный номер в отеле Агава — комфортные 22 м² на двоих с потолком-небом, кондиционером, бесплатным Wi-Fi и ванной. Для коротких и долгих поездок.",
+      "description": "Стандартный номер в отеле Агава — комфортные 22 м² на двоих с панорамным потолком, кондиционером, бесплатным Wi-Fi и ванной. Для коротких и долгих поездок.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Стандартный номер — 2 гостя — Отель Агава · Тбилиси",
-      "description": "Стандартный номер в отеле Агава — комфортные 22 м² на двоих с потолком-небом, кондиционером, бесплатным Wi-Fi и ванной. Для коротких и долгих поездок.",
+      "description": "Стандартный номер в отеле Агава — комфортные 22 м² на двоих с панорамным потолком, кондиционером, бесплатным Wi-Fi и ванной. Для коротких и долгих поездок.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -1229,14 +1229,14 @@
     "label": "Суперлюкс — 2 гостя — Отель Агава · Тбилиси",
     "defaults": {
       "title": "Суперлюкс — 2 гостя — Отель Агава · Тбилиси",
-      "description": "Суперлюкс — просторные 36 м² с интерьером в стиле барокко, кроватью King и потолком-небом. Максимальный комфорт на двоих в отеле Агава, Тбилиси.",
+      "description": "Суперлюкс — просторные 36 м² с интерьером в стиле барокко, кроватью King и панорамным потолком. Максимальный комфорт на двоих в отеле Агава, Тбилиси.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Суперлюкс — 2 гостя — Отель Агава · Тбилиси",
-      "description": "Суперлюкс — просторные 36 м² с интерьером в стиле барокко, кроватью King и потолком-небом. Максимальный комфорт на двоих в отеле Агава, Тбилиси.",
+      "description": "Суперлюкс — просторные 36 м² с интерьером в стиле барокко, кроватью King и панорамным потолком. Максимальный комфорт на двоих в отеле Агава, Тбилиси.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -1787,14 +1787,14 @@
     "label": "Lüks Oda — 2 misafir — Otel Agava · Tiflis",
     "defaults": {
       "title": "Lüks Oda — 2 misafir — Otel Agava · Tiflis",
-      "description": "Agava'da lüks oda — King yatak, gökyüzü tavanı, buzdolabı ve klimalı barok tarzında zarif 28 m². Tiflis'te ince bir konfor.",
+      "description": "Agava'da lüks oda — King yatak, panoramik tavan, buzdolabı ve klimalı barok tarzında zarif 28 m². Tiflis'te ince bir konfor.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Lüks Oda — 2 misafir — Otel Agava · Tiflis",
-      "description": "Agava'da lüks oda — King yatak, gökyüzü tavanı, buzdolabı ve klimalı barok tarzında zarif 28 m². Tiflis'te ince bir konfor.",
+      "description": "Agava'da lüks oda — King yatak, panoramik tavan, buzdolabı ve klimalı barok tarzında zarif 28 m². Tiflis'te ince bir konfor.",
       "og_image": "https://hotelagava.ge/assets/agava-lux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -1805,14 +1805,14 @@
     "label": "Standart Oda — 2 misafir — Otel Agava · Tiflis",
     "defaults": {
       "title": "Standart Oda — 2 misafir — Otel Agava · Tiflis",
-      "description": "Otel Agava'da standart oda — gökyüzü tavanı, klima, ücretsiz Wi-Fi ve banyolu, iki kişilik konforlu 22 m². Tiflis'te kısa ve uzun konaklamalar için ideal.",
+      "description": "Otel Agava'da standart oda — panoramik tavan, klima, ücretsiz Wi-Fi ve banyolu, iki kişilik konforlu 22 m². Tiflis'te kısa ve uzun konaklamalar için ideal.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Standart Oda — 2 misafir — Otel Agava · Tiflis",
-      "description": "Otel Agava'da standart oda — gökyüzü tavanı, klima, ücretsiz Wi-Fi ve banyolu, iki kişilik konforlu 22 m². Tiflis'te kısa ve uzun konaklamalar için ideal.",
+      "description": "Otel Agava'da standart oda — panoramik tavan, klima, ücretsiz Wi-Fi ve banyolu, iki kişilik konforlu 22 m². Tiflis'te kısa ve uzun konaklamalar için ideal.",
       "og_image": "https://hotelagava.ge/assets/agava-standard.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -1823,14 +1823,14 @@
     "label": "Süper Lüks — 2 misafir — Otel Agava · Tiflis",
     "defaults": {
       "title": "Süper Lüks — 2 misafir — Otel Agava · Tiflis",
-      "description": "Süper lüks — barok iç mekân, King yatak ve gökyüzü tavanlı geniş 36 m². Tiflis'teki Otel Agava'da iki misafir için maksimum konfor.",
+      "description": "Süper lüks — barok iç mekân, King yatak ve panoramik tavanlı geniş 36 m². Tiflis'teki Otel Agava'da iki misafir için maksimum konfor.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "Süper Lüks — 2 misafir — Otel Agava · Tiflis",
-      "description": "Süper lüks — barok iç mekân, King yatak ve gökyüzü tavanlı geniş 36 m². Tiflis'teki Otel Agava'da iki misafir için maksimum konfor.",
+      "description": "Süper lüks — barok iç mekân, King yatak ve panoramik tavanlı geniş 36 m². Tiflis'teki Otel Agava'da iki misafir için maksimum konfor.",
       "og_image": "https://hotelagava.ge/assets/agava-superlux.jpg",
       "robots": "index, follow, max-image-preview:large"
     }
@@ -1841,14 +1841,14 @@
     "label": "İki Odalı Süit — 5 misafir — Otel Agava · Tiflis",
     "defaults": {
       "title": "İki Odalı Süit — 5 misafir — Otel Agava · Tiflis",
-      "description": "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Gökyüzü tavanı, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim.",
+      "description": "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Panoramik tavan, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim.",
       "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "İki Odalı Süit — 5 misafir — Otel Agava · Tiflis",
-      "description": "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Gökyüzü tavanı, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim.",
+      "description": "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Panoramik tavan, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim.",
       "og_image": "https://hotelagava.ge/assets/room-twobedlux-1.jpg",
       "robots": "index, follow, max-image-preview:large"
     }

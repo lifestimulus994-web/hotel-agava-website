@@ -63,7 +63,7 @@
     ],
     rooms: [
       { url: "assets/room-jacuzzi-1.webp", alt: "ოთახის ლუქსური ინტერიერი", caption: "" },
-      { url: "assets/room-lux-2.webp", alt: "ლუქსი ცის ჭერით", caption: "" },
+      { url: "assets/room-lux-2.webp", alt: "ლუქსი პანორამული ჭერით", caption: "" },
       { url: "assets/room-standard-2.webp", alt: "სტანდარტული ოთახი", caption: "" }
     ],
     gallery_breakfast: [
