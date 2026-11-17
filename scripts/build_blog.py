@@ -302,7 +302,10 @@ def write_list(posts, lang="ka"):
     """Render localized cards once; blog.js preserves this static grid."""
     f = os.path.join(ROOT, prefix(lang).lstrip("/"), "blog", "index.html")
     s = Path(f).read_text(encoding="utf-8")
-    inner = "".join(card(p, first=(i == 0), lang=lang) for i, p in enumerate(posts)) or \
+    # "first" means the first card that actually has a photo: a newer post
+    # saved without a cover must not leave the first image on the page lazy
+    lead = next((i for i, p in enumerate(posts) if p.get("cover_url")), -1)
+    inner = "".join(card(p, first=(i == lead), lang=lang) for i, p in enumerate(posts)) or \
             f'<p class="muted">{UI[lang]["soon"]}</p>'
     block = f'{GRID_START}{inner}{GRID_END}'
     grid = re.compile(r'(<div\b[^>]*\bid="blogGrid"[^>]*>)(.*?)(</div>\s*</div>)', re.S)
