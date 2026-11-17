@@ -47,7 +47,7 @@
       ],
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "მაცივარი", "აბაზანა", "პანორამული ჭერი"],
       desc: {
-        ka: "ლუქსი ოთახი აგავაში — ელეგანტური 28 მ² ბაროკოს სტილში, King საწოლით, პანორამული ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
+        ka: "ლუქსი სასტუმრო „აგავაში“ — ელეგანტური 28 მ² სივრცე ბაროკოს სტილში, King ზომის საწოლით, პანორამული ჭერით, მაცივრითა და კონდიციონერით. დახვეწილი კომფორტი თბილისში.",
         en: "Deluxe room at Agava — an elegant 28 m² in baroque style with a King bed, panoramic ceiling, fridge and air conditioning. Refined comfort in Tbilisi.",
         ru: "Люкс в отеле Агава — элегантные 28 м² в стиле барокко с кроватью King, панорамным потолком, холодильником и кондиционером. Изысканный комфорт в Тбилиси.",
         tr: "Agava'da lüks oda — King yatak, panoramik tavan, buzdolabı ve klimalı barok tarzında zarif 28 m². Tiflis'te ince bir konfor."
@@ -69,7 +69,7 @@
       ],
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "მაცივარი", "აბაზანა", "პანორამული ჭერი"],
       desc: {
-        ka: "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს ინტერიერით, King საწოლითა და პანორამული ჭერით. მაქსიმალური კომფორტი ორ სტუმარზე სასტუმრო აგავაში, თბილისში.",
+        ka: "სუპერლუქსი — ფართო 36 მ² ოთახი ბაროკოს სტილის ინტერიერით, King ზომის საწოლითა და პანორამული ჭერით. მაქსიმალური კომფორტი ორი სტუმრისთვის სასტუმრო „აგავაში“, თბილისში.",
         en: "Superior suite — a spacious 36 m² with baroque interior, King bed and panoramic ceiling. Maximum comfort for two guests at Hotel Agava, Tbilisi.",
         ru: "Суперлюкс — просторные 36 м² с интерьером в стиле барокко, кроватью King и панорамным потолком. Максимальный комфорт на двоих в отеле Агава, Тбилиси.",
         tr: "Süper lüks — barok iç mekân, King yatak ve panoramik tavanlı geniş 36 m². Tiflis'teki Otel Agava'da iki misafir için maksimum konfor."
@@ -91,7 +91,7 @@
       ],
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "მაცივარი", "აბაზანა"],
       desc: {
-        ka: "საოჯახო ოთახი 3 სტუმარზე — 32 მ², ორი საწოლი, კონდიციონერი, მაცივარი და აბაზანა. მოსახერხებელი არჩევანი ოჯახებისთვის თბილისში.",
+        ka: "საოჯახო ოთახი 3 სტუმარზე — 32 მ² სივრცე ორი საწოლით, კონდიციონერით, მაცივრითა და საკუთარი სააბაზანოთი. მოსახერხებელი არჩევანი ოჯახებისთვის თბილისში.",
         en: "Family room for 3 guests — 32 m² with two beds, air conditioning, a fridge and a bathroom. A convenient choice for families in Tbilisi.",
         ru: "Семейный номер на 3 гостей — 32 м², две кровати, кондиционер, холодильник и ванная. Удобный выбор для семей в Тбилиси.",
         tr: "3 misafir için aile odası — iki yatak, klima, buzdolabı ve banyolu 32 m². Tiflis'te aileler için kullanışlı bir seçim."
@@ -113,7 +113,7 @@
       ],
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "მაცივარი", "აბაზანა"],
       desc: {
-        ka: "საოჯახო ოთახი 4 სტუმარზე — ვრცელი 38 მ², ორი საწოლი და ყველა კომფორტი. სივრცე მთელი ოჯახისთვის სასტუმრო აგავაში, თბილისში.",
+        ka: "საოჯახო ოთახი 4 სტუმარზე — ვრცელი 38 მ² სივრცე, ორი საწოლი და სრული კომფორტი მთელი ოჯახისთვის სასტუმრო „აგავაში“, თბილისში.",
         en: "Family room for 4 guests — a spacious 38 m² with two beds and every comfort. Room for the whole family at Hotel Agava, Tbilisi.",
         ru: "Семейный номер на 4 гостей — просторные 38 м², две кровати и весь комфорт. Место для всей семьи в отеле Агава, Тбилиси.",
         tr: "4 misafir için aile odası — iki yatak ve tüm konforlarıyla geniş 38 m². Tiflis'teki Otel Agava'da tüm aile için alan."
@@ -135,7 +135,7 @@
       ],
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "მაცივარი", "აბაზანა", "პანორამული ჭერი"],
       desc: {
-        ka: "ორ ოთახიანი ლუქსი — 45 მ², ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. პანორამული ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ჯგუფებისთვის თბილისში.",
+        ka: "ოროთახიანი ლუქსი — 45 მ² ფართობის სივრცე, ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. პანორამული ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ოჯახებისა და ჯგუფებისთვის თბილისში.",
         en: "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Panoramic ceiling, air conditioning and a fridge. The best choice for larger groups in Tbilisi.",
         ru: "Двухкомнатный люкс — 45 м², две отдельные комнаты и три кровати до 5 гостей. Потолок-небо, кондиционер и холодильник. Лучший выбор для больших компаний в Тбилиси.",
         tr: "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Panoramik tavan, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim."
@@ -158,7 +158,7 @@
       ],
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "ჯაკუზი", "აბაზანა", "ქალაქის ხედი"],
       desc: {
-        ka: "ლუქსი ჯაკუზით — რომანტიკული 30 მ² ოთახი პირადი ჯაკუზით, დიდი ორმაგი საწოლითა და ქალაქის ხედით. განსაკუთრებული დასვენება წყვილებისთვის სასტუმრო აგავაში, თბილისში.",
+        ka: "ლუქსი ჯაკუზით — რომანტიკული 30 მ² სივრცე პირადი ჯაკუზით, დიდი ორმაგი საწოლითა და ქალაქის ხედით. განსაკუთრებული დასვენება წყვილებისთვის სასტუმრო „აგავაში“, თბილისში.",
         en: "King room with spa bath — a romantic 30 m² with a private jacuzzi, a large double bed and a city view. A special getaway for couples at Hotel Agava, Tbilisi.",
         ru: "Люкс с джакузи — романтичные 30 м² с личным джакузи, большой двуспальной кроватью и видом на город. Особый отдых для пар в отеле Агава, Тбилиси.",
         tr: "Jakuzili kral odası — özel jakuzi, geniş çift kişilik yatak ve şehir manzaralı romantik 30 m². Tiflis'teki Otel Agava'da çiftler için özel bir kaçamak."
@@ -181,7 +181,7 @@
       ],
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "ჯაკუზი", "აბაზანა"],
       desc: {
-        ka: "სუპერ ლუქსი ჯაკუზით — VIP ოთახი ოქროსფერი ინტერიერით, King საწოლითა და პირადი ჯაკუზით. აგავას ყველაზე პრესტიჟული ნომერი თბილისში.",
+        ka: "სუპერ ლუქსი ჯაკუზით — VIP ოთახი ოქროსფერი ინტერიერით, King ზომის საწოლითა და პირადი ჯაკუზით. სასტუმრო „აგავას“ ყველაზე პრესტიჟული ნომერი თბილისში.",
         en: "Super suite with jacuzzi — a VIP room with golden interior, a King bed and a private jacuzzi. Agava's most prestigious room in Tbilisi.",
         ru: "Суперлюкс с джакузи — VIP-номер с золотым интерьером, кроватью King и личным джакузи. Самый престижный номер Агавы в Тбилиси.",
         tr: "Jakuzili süper süit — altın rengi iç mekân, King yatak ve özel jakuzili VIP oda. Agava'nın Tiflis'teki en prestijli odası."
