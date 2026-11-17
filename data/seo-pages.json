@@ -72,6 +72,24 @@
     }
   },
   {
+    "path": "/blog/sastumro-ori-adamianistvis-kalakidan-gausvlelad/",
+    "lang": "ka",
+    "label": "სასტუმრო ორი ადამიანისთვის: როგორ მოვიწყოთ დასვენება ქალაქიდან გაუსვლელად — სასტუმრო აგავა",
+    "defaults": {
+      "title": "სასტუმრო ორი ადამიანისთვის: როგორ მოვიწყოთ დასვენება ქალაქიდან გაუსვლელად — სასტუმრო აგავა",
+      "description": "დაგეგმეთ დასვენება ორი ადამიანისთვის ქალაქიდან გაუსვლელად. აღმოაჩინეთ სასტუმრო აგავას კომფორტული ნომრები და ლუქსები პირადი ჯაკუზით.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო ორი ადამიანისთვის: როგორ მოვიწყოთ დასვენება ქალაქიდან გაუსვლელად — სასტუმრო აგავა",
+      "description": "დაგეგმეთ დასვენება ორი ადამიანისთვის ქალაქიდან გაუსვლელად. აღმოაჩინეთ სასტუმრო აგავას კომფორტული ნომრები და ლუქსები პირადი ჯაკუზით.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
     "path": "/business-hotel-tbilisi/",
     "lang": "ka",
     "label": "სასტუმრო ბიზნეს მოგზაურებისთვის თბილისში | Hotel Agava",
