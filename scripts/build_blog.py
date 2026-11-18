@@ -120,10 +120,10 @@ def rich(text):
 
 
 UI = {
-    'ka': dict(hotel='სასტუმრო აგავა', home='მთავარი', rooms='ოთახები', services='სერვისები', blog='ბლოგი', contact='კონტაქტი', book='დაჯავშნა', nav='მთავარი ნავიგაცია', back='← ბლოგზე დაბრუნება', more='ვრცლად →', soon='მალე დაემატება სტატიები.', locale='ka_GE'),
-    'en': dict(hotel='Hotel Agava', home='Home', rooms='Rooms', services='Services', blog='Blog', contact='Contact', book='Book', nav='Main navigation', back='← Back to blog', more='Read more →', soon='Articles coming soon.', locale='en_GB'),
-    'ru': dict(hotel='Отель Агава', home='Главная', rooms='Номера', services='Услуги', blog='Блог', contact='Контакты', book='Забронировать', nav='Основная навигация', back='← Назад к блогу', more='Подробнее →', soon='Скоро появятся статьи.', locale='ru_RU'),
-    'tr': dict(hotel='Otel Agava', home='Ana Sayfa', rooms='Odalar', services='Hizmetler', blog='Blog', contact='İletişim', book='Rezervasyon', nav='Ana menü', back='← Bloga dön', more='Devamı →', soon='Yakında makaleler eklenecek.', locale='tr_TR'),
+    'ka': dict(hotel='სასტუმრო აგავა', home='მთავარი', rooms='ოთახები', services='სერვისები', blog='ბლოგი', contact='კონტაქტი', book='დაჯავშნა', nav='მთავარი ნავიგაცია', back='← ბლოგზე დაბრუნება', more='ვრცლად →', soon='მალე დაემატება სტატიები.', related='სხვა სტატიები', locale='ka_GE'),
+    'en': dict(hotel='Hotel Agava', home='Home', rooms='Rooms', services='Services', blog='Blog', contact='Contact', book='Book', nav='Main navigation', back='← Back to blog', more='Read more →', soon='Articles coming soon.', related='More articles', locale='en_GB'),
+    'ru': dict(hotel='Отель Агава', home='Главная', rooms='Номера', services='Услуги', blog='Блог', contact='Контакты', book='Забронировать', nav='Основная навигация', back='← Назад к блогу', more='Подробнее →', soon='Скоро появятся статьи.', related='Другие статьи', locale='ru_RU'),
+    'tr': dict(hotel='Otel Agava', home='Ana Sayfa', rooms='Odalar', services='Hizmetler', blog='Blog', contact='İletişim', book='Rezervasyon', nav='Ana menü', back='← Bloga dön', more='Devamı →', soon='Yakında makaleler eklenecek.', related='Diğer yazılar', locale='tr_TR'),
 }
 
 
@@ -178,7 +178,20 @@ def publications(posts):
     return result
 
 
-def page(p, lang="ka"):
+def related(p, others, lang):
+    """Up to three other posts of the same edition, newest first. Without
+    this a post is reachable from /blog/ alone — one internal link."""
+    rest = [o for o in others if o["slug"] != p["slug"]][:3]
+    if not rest:
+        return ""
+    items = "".join(f'<li style="margin:0 0 10px"><a href="{prefix(lang)}/blog/{o["slug"]}/">{E(o["title"])}</a></li>'
+                    for o in rest)
+    return (f'\n      <aside class="blog-related" style="margin:40px 0 28px;padding-top:26px;border-top:1px solid rgba(0,0,0,.12)">'
+            f'<h2 style="font-family:var(--font-head);color:var(--ink);font-size:1.35rem;margin:0 0 14px">{UI[lang]["related"]}</h2>'
+            f'<ul class="blog-article__body" style="margin:0;padding-left:22px">{items}</ul></aside>')
+
+
+def page(p, lang="ka", others=()):
     ui, base = UI[lang], prefix(lang)
     slug = p["slug"]
     url = f"{SITE}{base}/blog/{slug}/"
@@ -269,7 +282,7 @@ def page(p, lang="ka"):
       </nav>
       <h1 class="blog-article__title">{E(title)}</h1>
       <time class="blog-article__date" datetime="{E(created)}">{day(created)}</time>{cover_img}
-      <div class="blog-article__body">{rich(p.get("body_html"))}</div>
+      <div class="blog-article__body">{rich(p.get("body_html"))}</div>{related(p, others, lang)}
       <a class="rdp-back" href="{base}/blog/">{ui['back']}</a>
     </div>
   </main>
@@ -335,7 +348,7 @@ def main():
             directory = os.path.join(blog, post['slug'])
             os.makedirs(directory, exist_ok=True)
             target = os.path.join(directory, 'index.html')
-            new = page(post, lang)
+            new = page(post, lang, localized)
             old = Path(target).read_text(encoding='utf-8') if os.path.exists(target) else None
             if old != new:
                 Path(target).write_text(new, encoding='utf-8')
