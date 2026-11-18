@@ -51,7 +51,7 @@ for (const f of files) {
   const url = SITE + '/' + f.replace(/index\.html$/, '');
   const iso = lastCommitDate(f);
   const line = `<p class="page-updated" style="margin:28px 0 0;font-size:13.5px;color:var(--ink-soft);text-align:center">${LABEL[lang]}: ${fmt(lang, iso)}</p>`;
-  const ld = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"${url}","url":"${url}","inLanguage":"${lang}","dateModified":"${iso}","isPartOf":{"@type":"WebSite","url":"${SITE}/"}}</script>`;
+  const ld = `<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebPage","@id":"${url}","url":"${url}","inLanguage":"${lang}","dateModified":"${iso}","isPartOf":{"@type":"WebSite","name":"სასტუმრო აგავა","url":"${SITE}/"}}</script>`;
 
   let out = h;
   out = /class="page-updated"/.test(out)

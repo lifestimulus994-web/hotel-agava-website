@@ -156,7 +156,7 @@ def check_delivery(f, h):
     the browser to defer the very thing the score is waiting for."""
     if 'class="navbar__nav"' in h and not re.search(r'src="/?js/navigation\.js\?v=', h):
         fail(f, "მობილური მენიუს საერთო სკრიპტი აკლია")
-    for m in re.findall(r'(?:href|src)="(/(?:css|js)/[a-z-]+\.(?:css|js))"', h):
+    for m in re.findall(r'(?:href|src)="(/(?:css|js)/[a-z0-9-]+\.(?:css|js))"', h):
         fail(f, f"ქეშის ვერსია აკლია: {m}")
     imgs = [t for t in re.findall(r"<img[^>]*>", h) if "logo" not in t]
     if imgs and 'loading="lazy"' in imgs[0]:
