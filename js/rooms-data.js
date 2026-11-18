@@ -136,9 +136,9 @@
       amenities: ["უფასო Wi-Fi", "კონდიციონერი", "მაცივარი", "აბაზანა", "პანორამული ჭერი"],
       desc: {
         ka: "ოროთახიანი ლუქსი — 45 მ² ფართობის სივრცე, ორი ცალკე ოთახი და სამი საწოლი 5 სტუმრამდე. პანორამული ჭერი, კონდიციონერი და მაცივარი. საუკეთესო არჩევანი დიდი ოჯახებისა და ჯგუფებისთვის თბილისში.",
-        en: "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Panoramic ceiling, air conditioning and a fridge. The best choice for larger groups in Tbilisi.",
-        ru: "Двухкомнатный люкс — 45 м², две отдельные комнаты и три кровати до 5 гостей. Потолок-небо, кондиционер и холодильник. Лучший выбор для больших компаний в Тбилиси.",
-        tr: "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Panoramik tavan, klima ve buzdolabı. Tiflis'te kalabalık gruplar için en iyi seçim."
+        en: "Two-room suite — 45 m² with two separate rooms and three beds for up to 5 guests. Panoramic ceiling, air conditioning and a fridge. The best choice for large families and groups in Tbilisi.",
+        ru: "Двухкомнатный люкс — 45 м², две отдельные комнаты и три кровати до 5 гостей. Панорамный потолок, кондиционер и холодильник. Лучший выбор для больших семей и компаний в Тбилиси.",
+        tr: "İki odalı süit — iki ayrı oda ve 5 misafire kadar üç yataklı 45 m². Panoramik tavan, klima ve buzdolabı. Tiflis'te kalabalık aileler ve gruplar için en iyi seçim."
       }
     },
     {
