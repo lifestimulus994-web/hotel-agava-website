@@ -90,6 +90,24 @@
     }
   },
   {
+    "path": "/blog/sastumro-tbilisshi-pirveli-vizitistvis/",
+    "lang": "ka",
+    "label": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე — სასტუმრო აგავა",
+    "defaults": {
+      "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე — სასტუმრო აგავა",
+      "description": "პირველად სტუმრობთ თბილისს? გაიგეთ, რა უნდა დააზუსტოთ სასტუმროს დაჯავშნამდე: მდებარეობა, ნომრის პირობები, საუზმე, ტრანსპორტი და შესვლის დრო.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე — სასტუმრო აგავა",
+      "description": "პირველად სტუმრობთ თბილისს? გაიგეთ, რა უნდა დააზუსტოთ სასტუმროს დაჯავშნამდე: მდებარეობა, ნომრის პირობები, საუზმე, ტრანსპორტი და შესვლის დრო.",
+      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
     "path": "/business-hotel-tbilisi/",
     "lang": "ka",
     "label": "სასტუმრო ბიზნეს მოგზაურებისთვის თბილისში | Hotel Agava",
