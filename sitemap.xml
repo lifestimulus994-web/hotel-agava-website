@@ -107,7 +107,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/blog/business-trip-hotel-tbilisi/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/blog/business-trip-hotel-tbilisi/"/>
     <image:image><image:loc>https://hotelagava.ge/assets/room-standard-3-800w.webp</image:loc></image:image>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -154,7 +154,7 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://hotelagava.ge/ru/blog/hotel-tbilisi-with-parking-car-travel/"/>
     <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/blog/hotel-tbilisi-with-parking-car-travel/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/blog/hotel-tbilisi-with-parking-car-travel/"/>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -199,7 +199,7 @@
     <xhtml:link rel="alternate" hreflang="tr" href="https://hotelagava.ge/tr/blog/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/blog/"/>
     <image:image><image:loc>https://hotelagava.ge/assets/hero.jpg</image:loc></image:image>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -240,11 +240,19 @@
     <priority>0.6</priority>
   </url>
   <url>
+    <loc>https://hotelagava.ge/blog/sastumro-digomshi-erti-gamit/</loc>
+    <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/blog/sastumro-digomshi-erti-gamit/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/blog/sastumro-digomshi-erti-gamit/"/>
+    <lastmod>2026-11-20</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
     <loc>https://hotelagava.ge/blog/sastumro-ori-adamianistvis-kalakidan-gausvlelad/</loc>
     <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/blog/sastumro-ori-adamianistvis-kalakidan-gausvlelad/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/blog/sastumro-ori-adamianistvis-kalakidan-gausvlelad/"/>
     <image:image><image:loc>https://hotelagava.ge/assets/room-jacuzzi-suite-1-800w.webp</image:loc></image:image>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>
@@ -252,8 +260,7 @@
     <loc>https://hotelagava.ge/blog/sastumro-tbilisshi-pirveli-vizitistvis/</loc>
     <xhtml:link rel="alternate" hreflang="ka" href="https://hotelagava.ge/blog/sastumro-tbilisshi-pirveli-vizitistvis/"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://hotelagava.ge/blog/sastumro-tbilisshi-pirveli-vizitistvis/"/>
-    <image:image><image:loc>https://hotelagava.ge/assets/hero.jpg</image:loc></image:image>
-    <lastmod>2026-11-19</lastmod>
+    <lastmod>2026-11-20</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.6</priority>
   </url>

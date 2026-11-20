@@ -72,6 +72,24 @@
     }
   },
   {
+    "path": "/blog/sastumro-digomshi-erti-gamit/",
+    "lang": "ka",
+    "label": "სასტუმრო დიღომში ერთი ღამით: როგორ მოვემზადოთ დილით ადრე დაგეგმილი ვიზიტისთვის — სასტუმრო აგავა",
+    "defaults": {
+      "title": "სასტუმრო დიღომში ერთი ღამით: როგორ მოვემზადოთ დილით ადრე დაგეგმილი ვიზიტისთვის — სასტუმრო აგავა",
+      "description": "სასტუმრო დიღომში ერთი ღამით დარჩენისთვის: გაიგეთ, როგორ შეარჩიოთ ნომერი, დაგეგმოთ გვიანი ჩამოსვლა და მოემზადოთ დილით ადრე გასვლისთვის.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1795151676621-is9wgbsm-photo-1600w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    },
+    "has_alternates": true,
+    "applied": {
+      "title": "სასტუმრო დიღომში ერთი ღამით: როგორ მოვემზადოთ დილით ადრე დაგეგმილი ვიზიტისთვის — სასტუმრო აგავა",
+      "description": "სასტუმრო დიღომში ერთი ღამით დარჩენისთვის: გაიგეთ, როგორ შეარჩიოთ ნომერი, დაგეგმოთ გვიანი ჩამოსვლა და მოემზადოთ დილით ადრე გასვლისთვის.",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1795151676621-is9wgbsm-photo-1600w.webp",
+      "robots": "index, follow, max-image-preview:large"
+    }
+  },
+  {
     "path": "/blog/sastumro-ori-adamianistvis-kalakidan-gausvlelad/",
     "lang": "ka",
     "label": "სასტუმრო ორი ადამიანისთვის: როგორ მოვიწყოთ დასვენება ქალაქიდან გაუსვლელად — სასტუმრო აგავა",
@@ -96,14 +114,14 @@
     "defaults": {
       "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე — სასტუმრო აგავა",
       "description": "პირველად სტუმრობთ თბილისს? გაიგეთ, რა უნდა დააზუსტოთ სასტუმროს დაჯავშნამდე: მდებარეობა, ნომრის პირობები, საუზმე, ტრანსპორტი და შესვლის დრო.",
-      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1795151743178-wuqte5la-photo-1600w.webp",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
       "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე — სასტუმრო აგავა",
       "description": "პირველად სტუმრობთ თბილისს? გაიგეთ, რა უნდა დააზუსტოთ სასტუმროს დაჯავშნამდე: მდებარეობა, ნომრის პირობები, საუზმე, ტრანსპორტი და შესვლის დრო.",
-      "og_image": "https://hotelagava.ge/assets/hero.jpg",
+      "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1795151743178-wuqte5la-photo-1600w.webp",
       "robots": "index, follow, max-image-preview:large"
     }
   },
