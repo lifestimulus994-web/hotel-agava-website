@@ -46,7 +46,7 @@
 
   <link rel="preload" href="/assets/fonts/DejaVuSans.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="/assets/fonts/DejaVuSans-Bold.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="/css/style.css?v=2026112601">
+  <link rel="stylesheet" href="/css/style.css?v=2026112602">
 
   <!-- ═══════════ STRUCTURED DATA — Hotel (JSON-LD) ═══════════ -->
   <script type="application/ld+json">{"@context":"https://schema.org","@type":"Hotel","name":"სასტუმრო აგავა","alternateName":"Hotel Agava","description":"Hotel Agava in Tbilisi — comfortable rooms and suites, breakfast, 24/7 reception, free Wi-Fi and parking.","url":"https://hotelagava.ge/","logo":"https://hotelagava.ge/assets/logo-full.png","image":["https://hotelagava.ge/assets/hero.jpg","https://hotelagava.ge/assets/room-lux-1.jpg","https://hotelagava.ge/assets/room-superlux-1.jpg"],"telephone":"+995597121212","email":"agavahoteltbilisi@gmail.com","address":{"@type":"PostalAddress","streetAddress":"161 Akaki Beliashvili St","addressLocality":"Tbilisi","addressRegion":"Dighomi","addressCountry":"GE"},"geo":{"@type":"GeoCoordinates","latitude":41.793,"longitude":44.762},"hasMap":"https://maps.google.com/maps?q=Akaki+Beliashvili+161,+Tbilisi","starRating":{"@type":"Rating","ratingValue":"3"},"priceRange":"140₾–400₾","currenciesAccepted":"GEL","paymentAccepted":"Cash","checkinTime":"13:00","checkoutTime":"12:00","numberOfRooms":21,"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"00:00","closes":"23:59"},"amenityFeature":[{"@type":"LocationFeatureSpecification","name":"Free Wi-Fi","value":true},{"@type":"LocationFeatureSpecification","name":"Parking","value":true},{"@type":"LocationFeatureSpecification","name":"24/7 reception","value":true},{"@type":"LocationFeatureSpecification","name":"Breakfast","value":true},{"@type":"LocationFeatureSpecification","name":"Air conditioning","value":true},{"@type":"LocationFeatureSpecification","name":"Jacuzzi","value":true}],"@id":"https://hotelagava.ge/#hotel"}</script>
@@ -451,17 +451,28 @@
       <p class="rdp-desc">Hotel Agava is a good choice for business visits too. If you're coming to Tbilisi for work meetings, a training course, a conference or a business trip of several days, it's especially important that the hotel has the essentials you need. Guests have free internet, which lets you work, answer emails or join an online meeting when you need to. The hotel's own parking is convenient when you're getting around by car, and the 24/7 reception lets you plan your arrival time more freely.</p>
       <p class="rdp-desc">Business guests can also choose a room by the length of their visit and the space they want. If you mostly come back to the hotel in the evening, the Standard Room may be enough. If you're staying several days and need more space in the room, the Deluxe Room or the Superior Suite is the more comfortable choice. You can find more about this kind of stay <a href="/en/business-hotel-tbilisi/">on the business travellers page</a>.</p>
 
-      <h2 class="section-title">Breakfast</h2>
-      <p class="rdp-desc">Guests at Hotel Agava can also make use of additional services. Breakfast is available at the hotel, which is especially convenient if you want to head out into the city quickly in the morning without looking for somewhere separate to eat. You can also use the <a href="/en/services/transfer/">airport transfer</a>, which makes planning your arrival in Tbilisi and your departure easier. This service is especially useful for anyone visiting the city for the first time or travelling with luggage.</p>
-
-      <h2 class="section-title">A hotel with a lift — on all four floors</h2>
-      <p class="rdp-desc">A <a href="/en/services/laundry/">laundry service</a> is also available, adding extra comfort on a longer visit. If you're staying at the hotel for several days or longer, a service like this makes everyday life easier and lets you travel with fewer things. A lift serves all four floors of Hotel Agava, which is especially convenient when moving luggage, travelling with children or for guests who find stairs uncomfortable.</p>
-
-      <h2 class="section-title">Free parking</h2>
-      <p class="rdp-desc">The hotel's own parking matters to anyone travelling around Tbilisi by car. Finding a parking space in the city often takes extra time, so being able to leave the car on the hotel grounds makes getting around day to day easier for guests. This advantage is especially convenient for families, for guests arriving with a lot of luggage and for anyone driving to business meetings around the city in their own car.</p>
-
-      <h2 class="section-title">24/7 reception</h2>
-      <p class="rdp-desc">A 24/7 reception lets guests plan their arrival at the hotel more freely. If your flight lands late, there's a delay on the road or you reach Tbilisi during the night, check-in is still available. This matters especially when travelling, because your arrival time can't always be pinned down exactly in advance. You can see the full list of the hotel's services and extras <a href="/en/amenities/">on the amenities page</a>.</p>
+      <div class="la-services">
+        <article class="la-svc">
+          <span class="la-svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M17 8h1a4 4 0 0 1 0 8h-1"/><path d="M3 8h14v9a4 4 0 0 1-4 4H7a4 4 0 0 1-4-4z"/><path d="M6 2v2M10 2v2M14 2v2"/></svg></span>
+          <h2 class="section-title">Breakfast</h2>
+          <p class="rdp-desc">Guests at Hotel Agava can also make use of additional services. Breakfast is available at the hotel, which is especially convenient if you want to head out into the city quickly in the morning without looking for somewhere separate to eat. You can also use the <a href="/en/services/transfer/">airport transfer</a>, which makes planning your arrival in Tbilisi and your departure easier. This service is especially useful for anyone visiting the city for the first time or travelling with luggage.</p>
+        </article>
+        <article class="la-svc">
+          <span class="la-svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M12 3v18"/><path d="M7 10l1.5-2L10 10M14 14l1.5 2 1.5-2"/></svg></span>
+          <h2 class="section-title">A hotel with a lift — on all four floors</h2>
+          <p class="rdp-desc">A <a href="/en/services/laundry/">laundry service</a> is also available, adding extra comfort on a longer visit. If you're staying at the hotel for several days or longer, a service like this makes everyday life easier and lets you travel with fewer things. A lift serves all four floors of Hotel Agava, which is especially convenient when moving luggage, travelling with children or for guests who find stairs uncomfortable.</p>
+        </article>
+        <article class="la-svc">
+          <span class="la-svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="3"/><path d="M9 17V7h4a3 3 0 0 1 0 6H9"/></svg></span>
+          <h2 class="section-title">Free parking</h2>
+          <p class="rdp-desc">The hotel's own parking matters to anyone travelling around Tbilisi by car. Finding a parking space in the city often takes extra time, so being able to leave the car on the hotel grounds makes getting around day to day easier for guests. This advantage is especially convenient for families, for guests arriving with a lot of luggage and for anyone driving to business meetings around the city in their own car.</p>
+        </article>
+        <article class="la-svc">
+          <span class="la-svc__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <h2 class="section-title">24/7 reception</h2>
+          <p class="rdp-desc">A 24/7 reception lets guests plan their arrival at the hotel more freely. If your flight lands late, there's a delay on the road or you reach Tbilisi during the night, check-in is still available. This matters especially when travelling, because your arrival time can't always be pinned down exactly in advance. You can see the full list of the hotel's services and extras <a href="/en/amenities/">on the amenities page</a>.</p>
+        </article>
+      </div>
 
       <h2 class="section-title">Location — Dighomi</h2>
       <p class="rdp-desc">Hotel Agava is in Tbilisi, in Dighomi, which can be convenient for anyone who wants to stay in relatively quiet surroundings. At the hotel you can plan both a short visit and a stay of several days. Guests can choose a room according to their specific needs — one type of accommodation doesn't have to suit everyone.</p>
@@ -799,18 +810,18 @@
     </div>
   </div>
 
-  <script defer="" src="/js/ga.js?v=2026112601"></script>
-  <script defer src="/js/track.js?v=2026112601"></script>
-  <script defer="" src="/js/config.js?v=2026112601"></script>
-  <script defer="" src="/js/i18n.js?v=2026112601"></script>
+  <script defer="" src="/js/ga.js?v=2026112602"></script>
+  <script defer src="/js/track.js?v=2026112602"></script>
+  <script defer="" src="/js/config.js?v=2026112602"></script>
+  <script defer="" src="/js/i18n.js?v=2026112602"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
-  <script defer="" src="/js/content.js?v=2026112601"></script>
-  <script defer="" src="/js/rooms-data.js?v=2026112601"></script>
-  <script defer="" src="/js/prices.js?v=2026112601"></script>
-  <script defer="" src="/js/main.js?v=2026112601"></script>
-  <script defer="" src="/js/booking.js?v=2026112601"></script>
+  <script defer="" src="/js/content.js?v=2026112602"></script>
+  <script defer="" src="/js/rooms-data.js?v=2026112602"></script>
+  <script defer="" src="/js/prices.js?v=2026112602"></script>
+  <script defer="" src="/js/main.js?v=2026112602"></script>
+  <script defer="" src="/js/booking.js?v=2026112602"></script>
   <script defer="" src="/js/seo-meta.js?v=seo-20261103"></script>
 
 
-  <script defer src="/js/navigation.js?v=2026112601"></script>
+  <script defer src="/js/navigation.js?v=2026112602"></script>
 </body></html>

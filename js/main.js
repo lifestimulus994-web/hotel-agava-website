@@ -304,8 +304,13 @@
      the markup, so the text stays visible when scripts do not run. */
   document.querySelectorAll(
     ".landing-article .landing-quickfacts, .landing-article .section-title, " +
-    ".landing-article .rdp-desc:not(.geo-answer__lead), .landing-article .geo-answer"
-  ).forEach(function (el) { el.classList.add("reveal", "la-reveal"); });
+    ".landing-article .rdp-desc:not(.geo-answer__lead), .landing-article .geo-answer, " +
+    ".landing-article .la-svc"
+  ).forEach(function (el) {
+    // a service card reveals as one piece, not line by line
+    if (!el.classList.contains("la-svc") && el.closest(".la-svc")) return;
+    el.classList.add("reveal", "la-reveal");
+  });
 
   /* ─── Reveal on scroll (whileInView, once:true) ─── */
   var revealEls = document.querySelectorAll(".reveal");
