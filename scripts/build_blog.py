@@ -193,16 +193,18 @@ def related(p, others, lang):
 
 def short_title(title, hotel, limit=70):
     """<title> for a post with no SEO title of its own, kept within `limit`
-    characters: title + hotel, else the title alone, else the part before
-    the colon (+ hotel when it fits). The <h1> always keeps the full title."""
-    full = f"{title} — {hotel}"
-    if len(full) <= limit:
-        return full
-    if len(title) <= limit:
-        return title
+    characters and never identical to the <h1> (which keeps the full title):
+    title + hotel when it fits, else the part before the colon + hotel, else
+    the title cut at a word boundary + hotel."""
+    suffix = f" — {hotel}"
+    if len(title + suffix) <= limit:
+        return title + suffix
     head = title.split(":")[0].strip()
-    short = f"{head} — {hotel}"
-    return short if len(short) <= limit else head[:limit].rstrip()
+    if head != title and len(head + suffix) <= limit:
+        return head + suffix
+    room = limit - len(suffix)
+    cut = title[:room + 1].rsplit(" ", 1)[0].rstrip(" :,—-") if len(title) > room else title
+    return cut + suffix
 
 
 def page(p, lang="ka", others=()):
