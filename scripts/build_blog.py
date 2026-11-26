@@ -191,11 +191,25 @@ def related(p, others, lang):
             f'<ul class="blog-article__body" style="margin:0;padding-left:22px">{items}</ul></aside>')
 
 
+def short_title(title, hotel, limit=70):
+    """<title> for a post with no SEO title of its own, kept within `limit`
+    characters: title + hotel, else the title alone, else the part before
+    the colon (+ hotel when it fits). The <h1> always keeps the full title."""
+    full = f"{title} — {hotel}"
+    if len(full) <= limit:
+        return full
+    if len(title) <= limit:
+        return title
+    head = title.split(":")[0].strip()
+    short = f"{head} — {hotel}"
+    return short if len(short) <= limit else head[:limit].rstrip()
+
+
 def page(p, lang="ka", others=()):
     ui, base = UI[lang], prefix(lang)
     slug = p["slug"]
     url = f"{SITE}{base}/blog/{slug}/"
-    seo_title = p.get("seo_title") or p["title"] + " — " + ui["hotel"]
+    seo_title = p.get("seo_title") or short_title(p["title"], ui["hotel"])
     alternates = "".join(f'\n  <link rel="alternate" hreflang="{L}" href="{SITE}{prefix(L)}/blog/{slug}/">' for L in p.get("variants", [lang]))
     alternates += f'\n  <link rel="alternate" hreflang="x-default" href="{SITE}/blog/{slug}/">'
     switcher = "".join(f'<button type="button" data-lang="{L}" data-lang-href="{prefix(L)}/blog/{slug + "/" if L in p.get("variants", [lang]) else ""}">{label}</button>' for L, label in [("ka","ქარ"),("en","ENG"),("ru","РУС"),("tr","TR")])

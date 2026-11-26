@@ -5,6 +5,7 @@
     "deploy": "python scripts/publish_site.py"
   },
   "devDependencies": {
+    "esbuild": "0.25.10",
     "wrangler": "4.157.0"
   }
 }

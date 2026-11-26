@@ -50,6 +50,8 @@ jobs:
           node scripts/freshness.js
           node scripts/llmsfull.js
           python scripts/gen_sitemap.py
+      - name: Install pinned build tools
+        run: npm ci
       - name: Validate and package only public files
         run: |
           python scripts/validate.py

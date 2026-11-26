@@ -4,6 +4,7 @@ import json
 import hashlib
 import re
 import shutil
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 PUBLIC_DIRS = ('assets', 'css', 'js', 'amenities', 'blog', 'business-hotel-tbilisi',
@@ -31,6 +32,20 @@ def public_files(root):
         raise ValueError("Refusing public asset symlink")
     return sorted(found)
 
+def minify(root,out):
+    """Minify the packaged copies of our own JS and CSS. Sources stay readable;
+    only .public/ is touched. Without esbuild installed the files ship as they are."""
+    tool=root/'node_modules'/'.bin'/'esbuild'
+    if not tool.is_file():
+        print('esbuild not installed: JS and CSS packaged unminified');return
+    for folder,pattern in (('js','*.js'),('css','*.css')):
+        for target in sorted((out/folder).glob(pattern)):
+            before=target.read_bytes()
+            done=subprocess.run([str(tool),str(target),'--minify','--charset=utf8','--log-level=error'],capture_output=True)
+            # a file esbuild cannot parse is shipped untouched rather than broken
+            if done.returncode==0 and done.stdout.strip(): target.write_bytes(done.stdout)
+            else: target.write_bytes(before)
+
 def package(root=ROOT):
     files=public_files(root)
     required=('index.html','admin.html','manage.html','js/booking.js','js/admin.js','data/seo-pages.json','_headers')
@@ -43,6 +58,7 @@ def package(root=ROOT):
     for source in files:
         target=out/source.relative_to(root);target.parent.mkdir(parents=True,exist_ok=True)
         shutil.copyfile(source,target)
+    minify(root,out)
     digest=hashlib.sha256()
     for source in files:
         digest.update(source.relative_to(root).as_posix().encode()+b'\0')
