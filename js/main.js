@@ -300,6 +300,13 @@
     });
   }
 
+  /* Long-form copy blocks join the reveal. The class is added here, not in
+     the markup, so the text stays visible when scripts do not run. */
+  document.querySelectorAll(
+    ".landing-article .landing-quickfacts, .landing-article .section-title, " +
+    ".landing-article .rdp-desc:not(.geo-answer__lead), .landing-article .geo-answer"
+  ).forEach(function (el) { el.classList.add("reveal", "la-reveal"); });
+
   /* ─── Reveal on scroll (whileInView, once:true) ─── */
   var revealEls = document.querySelectorAll(".reveal");
   if (prefersReducedMotion) {
