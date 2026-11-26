@@ -110,16 +110,16 @@
   {
     "path": "/blog/sastumro-tbilisshi-pirveli-vizitistvis/",
     "lang": "ka",
-    "label": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე",
+    "label": "სასტუმრო თბილისში პირველი ვიზიტისთვის — სასტუმრო აგავა",
     "defaults": {
-      "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე",
+      "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის — სასტუმრო აგავა",
       "description": "პირველად სტუმრობთ თბილისს? გაიგეთ, რა უნდა დააზუსტოთ სასტუმროს დაჯავშნამდე: მდებარეობა, ნომრის პირობები, საუზმე, ტრანსპორტი და შესვლის დრო.",
       "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1795151743178-wuqte5la-photo-1600w.webp",
       "robots": "index, follow, max-image-preview:large"
     },
     "has_alternates": true,
     "applied": {
-      "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის: რა გავარკვიოთ ჩამოსვლამდე",
+      "title": "სასტუმრო თბილისში პირველი ვიზიტისთვის — სასტუმრო აგავა",
       "description": "პირველად სტუმრობთ თბილისს? გაიგეთ, რა უნდა დააზუსტოთ სასტუმროს დაჯავშნამდე: მდებარეობა, ნომრის პირობები, საუზმე, ტრანსპორტი და შესვლის დრო.",
       "og_image": "https://bkrkrwwyedtujkwlxkzp.supabase.co/storage/v1/object/public/site-photos/img/1795151743178-wuqte5la-photo-1600w.webp",
       "robots": "index, follow, max-image-preview:large"
