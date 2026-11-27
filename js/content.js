@@ -115,11 +115,11 @@
   function imageSrcset(url) {
     var prefix = CFG.SUPABASE_URL + "/storage/v1/object/public/site-photos/img/";
     if (!url || url.indexOf(prefix) !== 0) return "";
-    var match = /^(.*-photo)-([0-9]+)w\.webp$/.exec(url);
+    var match = /^(.*-photo)-([0-9]+)w\.(webp|jpg)$/.exec(url);
     if (!match) return "";
     var width = Number(match[2]);
     return [480, 800].filter(function (w) { return w < width; }).concat(width)
-      .map(function (w) { return match[1] + "-" + w + "w.webp " + w + "w"; }).join(", ");
+      .map(function (w) { return match[1] + "-" + w + "w." + match[3] + " " + w + "w"; }).join(", ");
   }
 
   /* All admin photo entry points share this preparation/upload path. */
@@ -132,9 +132,9 @@
     try {
       // Publish the primary URL only after every responsive variant exists.
       for (var variant of variants) {
-        path = base + "-" + variant.width + "w.webp";
+        path = base + "-" + variant.width + "w." + (variant.ext || "webp");
         var res = await sb.storage.from(BUCKET).upload(path, variant.blob, {
-          cacheControl: "31536000", contentType: "image/webp", upsert: false
+          cacheControl: "31536000", contentType: variant.blob.type, upsert: false
         });
         if (res.error) throw res.error;
         uploaded.push(path);
@@ -175,9 +175,9 @@
       if (url && url.indexOf(marker) !== -1) {
         var path = url.split(marker)[1];
         if (path) {
-          var match = /^(.*-photo)-([0-9]+)w\.webp$/.exec(path);
+          var match = /^(.*-photo)-([0-9]+)w\.(webp|jpg)$/.exec(path);
           var paths = match ? [480, 800].filter(function (w) { return w < Number(match[2]); }).concat(Number(match[2]))
-            .map(function (w) { return match[1] + "-" + w + "w.webp"; }) : [path];
+            .map(function (w) { return match[1] + "-" + w + "w." + match[3]; }) : [path];
           sb.storage.from(BUCKET).remove(paths);
         }
       }

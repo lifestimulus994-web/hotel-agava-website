@@ -13,14 +13,25 @@
     });
   }
 
-  function encode(canvas, quality) {
-    return new Promise(function (resolve, reject) {
-      canvas.toBlob(function (blob) {
-        if (!blob || blob.type !== "image/webp") {
-          reject(new Error("ფოტოს დამუშავება ვერ მოხერხდა. სცადეთ განახლებული ბრაუზერით."));
-        } else resolve(blob);
-      }, "image/webp", quality);
-    });
+  // Safari and every iPhone browser cannot write WebP from a canvas (they
+  // silently hand back PNG). Those browsers get JPEG instead of a failed upload.
+  var format = null;
+  function toBlob(canvas, type, quality) {
+    return new Promise(function (resolve) { canvas.toBlob(resolve, type, quality); });
+  }
+  async function encode(canvas, quality) {
+    var blob;
+    if (format !== "image/jpeg") {
+      blob = await toBlob(canvas, "image/webp", quality);
+      if (blob && blob.type === "image/webp") { format = "image/webp"; return blob; }
+      if (format === "image/webp") throw new Error("ფოტოს დამუშავება ვერ მოხერხდა. სცადეთ ხელახლა.");
+    }
+    blob = await toBlob(canvas, "image/jpeg", quality);
+    if (!blob || blob.type !== "image/jpeg") {
+      throw new Error("ფოტოს დამუშავება ვერ მოხერხდა. სცადეთ განახლებული ბრაუზერით.");
+    }
+    format = "image/jpeg";
+    return blob;
   }
 
   async function prepare(file) {
@@ -46,12 +57,14 @@
         ctx.drawImage(image, 0, 0, canvas.width, canvas.height);
         var budget = widths[i] <= 480 ? 80 * 1024 : widths[i] <= 800 ? 150 * 1024 : 300 * 1024;
         var blob;
-        for (var quality of [0.82, 0.74, 0.66, 0.58]) {
+        for (var quality of [0.82, 0.74, 0.66, 0.58, 0.5]) {
           blob = await encode(canvas, quality);
-          if (blob.size <= budget) break;
+          if (blob.size <= budget * (blob.type === "image/jpeg" ? 1.5 : 1)) break;
         }
-        if (blob.size > budget) throw new Error("ამ ფოტოს ზომა ვერ შემცირდა ხარისხის შენარჩუნებით. აირჩიეთ სხვა ფოტო ან წინასწარ შეამცირეთ.");
-        variants.push({ blob: blob, width: canvas.width, height: canvas.height });
+        // A very detailed photo may stay a little over the target; that is
+        // still far lighter than the original, so it is kept, not refused.
+        if (blob.size > budget * 3) throw new Error("ამ ფოტოს ზომა ვერ შემცირდა ხარისხის შენარჩუნებით. აირჩიეთ სხვა ფოტო ან წინასწარ შეამცირეთ.");
+        variants.push({ blob: blob, width: canvas.width, height: canvas.height, ext: blob.type === "image/jpeg" ? "jpg" : "webp" });
         canvas.width = canvas.height = 1;
       }
       return variants;

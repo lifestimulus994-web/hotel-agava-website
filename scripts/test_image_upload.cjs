@@ -4,7 +4,7 @@ const fs = require('node:fs');
 const vm = require('node:vm');
 const path = require('node:path');
 const source = name => fs.readFileSync(path.join(__dirname, '../js/', name), 'utf8');
-function setup({width=5712, height=4284, failUpload=0, badEncoder=false, large=false}={}) {
+function setup({width=5712, height=4284, failUpload=0, badEncoder=false, large=false, safari=false, size=0}={}) {
   const uploaded=[], removed=[], decoded=[];
   let active=0, maxActive=0;
   const storage={
@@ -16,7 +16,7 @@ function setup({width=5712, height=4284, failUpload=0, badEncoder=false, large=f
     supabase:{createClient:()=>({storage:{from:()=>storage},from:()=>({delete:()=>({eq:async()=>({})})})})},
     async createImageBitmap(file) { active++;maxActive=Math.max(active,maxActive);decoded.push(file); await Promise.resolve(); return {width,height,close(){active--;}};}
   };
-  const context={window,document:{createElement:()=>({width:0,height:0,getContext:()=>({drawImage(){}}),toBlob(cb,type,quality){cb({type:badEncoder?'image/png':type,size:large?500000:Math.round(this.width*100*quality)});}})}};
+  const context={window,document:{createElement:()=>({width:0,height:0,getContext:()=>({drawImage(){}}),toBlob(cb,type,quality){cb({type:badEncoder||(safari&&type==='image/webp')?'image/png':type,size:size||(large?2000000:Math.round(this.width*100*quality))});}})}};
   vm.runInNewContext(source('image-upload.js'),context);
   vm.runInNewContext(source('content.js'),context);
   return {window,uploaded,removed,decoded,maxActive:()=>maxActive};
@@ -54,4 +54,16 @@ test('deleting managed photo removes every variant; legacy photo removes only it
  const s=setup();const result=await s.window.AGAVA_STORE.uploadFile(file);await s.window.AGAVA_STORE.deleteImage(1,result.url);
  assert.deepEqual(s.removed,s.uploaded.map(u=>u.p));
  const legacy='https://photos.test/storage/v1/object/public/site-photos/img/legacy.jpeg';await s.window.AGAVA_STORE.deleteImage(2,legacy);assert.equal(s.removed.at(-1),'img/legacy.jpeg');
+});
+test('browser without WebP encoding (Safari, iPhone) uploads JPEG variants instead of failing',async()=>{
+ const s=setup({safari:true});const result=await s.window.AGAVA_STORE.uploadFile(file);
+ assert.equal(s.uploaded.length,3);assert.ok(result.url.endsWith('-1600w.jpg'));
+ for(const u of s.uploaded){assert.equal(u.blob.type,'image/jpeg');assert.equal(u.options.contentType,'image/jpeg');assert.ok(u.p.endsWith('.jpg'));}
+ const set=s.window.AGAVA_STORE.imageSrcset(result.url);
+ for(const w of [480,800,1600])assert.ok(set.includes('-'+w+'w.jpg '+w+'w'));
+ await s.window.AGAVA_STORE.deleteImage(1,result.url);assert.deepEqual(s.removed,s.uploaded.map(u=>u.p));
+});
+test('detailed photo slightly over the size target is still uploaded',async()=>{
+ const s=setup({width:320,height:240,size:120000});const result=await s.window.AGAVA_STORE.uploadFile(file);
+ assert.equal(s.uploaded.length,1);assert.ok(result.url.endsWith('-320w.webp'));
 });

@@ -29,6 +29,8 @@
     if (!el) return;
     el.textContent = message;
     el.className = "content-status" + (isOk === true ? " is-ok" : isOk === false ? " is-error" : "");
+    /* the status line sits at the top of a long page — a failure must not go unseen */
+    if (isOk === false) alert(message);
   }
 
   /* ordered list of blocks: fixed sections + one per room type */
