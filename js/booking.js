@@ -12,6 +12,12 @@
     return "/" + u;
   }
 
+  /* Small images (wizard list, detail thumbs) take the 480px WebP through
+     main.js's responsive attributes; pages without main.js keep the plain src. */
+  function thumbAttrs(u, sizes) {
+    return window.AGAVA_IMG_ATTRS ? window.AGAVA_IMG_ATTRS(u, sizes) : 'src="' + assetURL(u) + '"';
+  }
+
 
   /* When the backend cannot answer — quota, outage, network — the guest must
      still be able to book. Show the phone and WhatsApp, not just "error". */
@@ -292,7 +298,7 @@
       el.className = "bw-room" + (soldOut ? " is-soldout" : "") +
         (state.preferSlug === room.slug && !soldOut ? " is-preferred" : "");
       el.innerHTML =
-        '<img src="' + assetURL(room.images[0]) + '" alt="" loading="lazy">' +
+        '<img ' + thumbAttrs(room.images[0], "120px") + ' alt="" loading="lazy">' +
         '<div class="bw-room__info">' +
           "<h4>" + esc(room.name) + "</h4>" +
           '<p class="bw-room__meta">' + Math.round(total / nights) + " ₾/ღამე · " + nights + " ღამე" +
@@ -439,7 +445,7 @@
 
     var thumbs = room.images.map(function (src, i) {
       return '<button type="button" class="room-detail__thumb' + (i === 0 ? " is-active" : "") +
-        '" data-gallery-idx="' + i + '"><img src="' + assetURL(src) + '" alt="" loading="lazy"></button>';
+        '" data-gallery-idx="' + i + '"><img ' + thumbAttrs(src, "84px") + ' alt="" loading="lazy"></button>';
     }).join("");
 
     document.getElementById("roomDetail").innerHTML =

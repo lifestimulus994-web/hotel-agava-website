@@ -93,6 +93,7 @@
     return 'src="' + src + '" srcset="' + b + "-480w.webp 480w, " + b + "-800w.webp 800w, " + b +
       '.webp 1600w" sizes="' + sizes + '"';
   }
+  window.AGAVA_IMG_ATTRS = imgAttrs;   // booking.js thumbnails use the same responsive set
   document.addEventListener("error", function (e) {
     var t = e.target;
     if (t && t.tagName === "IMG" && t.hasAttribute("srcset")) t.removeAttribute("srcset");
@@ -234,7 +235,9 @@
     ROOMS.forEach(function (room) {
       var rows = store.roomImages[room.slug];
       if (rows && rows.length) {
-        room.images = rows.map(function (r) { return r.url; });
+        // through imageURL: the booking wizard reads room.images directly, and
+        // without the mapping it fetched the two original 6 MB camera uploads
+        room.images = rows.map(function (r) { return store.imageURL ? store.imageURL(r.url) : r.url; });
         if (rows[0].alt && !/\.(jpe?g|png|webp|heic)$/i.test(rows[0].alt)) room.alt = rows[0].alt;
       }
     });
